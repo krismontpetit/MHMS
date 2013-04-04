@@ -1,0 +1,2307 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       04/Apr/2013  15:23:17 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_lcd.c             #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=!ZAP_PHY_SPI         #
+#                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE             #
+#                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE               #
+#                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE               #
+#                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                  #
+#                     -DZAP_AF_DATA_REQ_FRAG=FALSE                            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_lcd.c -D          #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_COORDINATOR -D             #
+#                     TVSA_DEVICE_ID=0x0016 -D TVSA_DONGLE=1 -D HAL_UART=1    #
+#                     -lC "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP              #
+#                     Coordinator\List\" -lA "C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\ZAP Coordinator\List\" --remarks --diag_suppress     #
+#                     Pe001,Pe193,Pe236,Pe826 -o                              #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                  #
+#                     Coordinator\Obj\" --debug -D__MSP430F5438__ -e          #
+#                     --double=32 --clib -I C:\Users\student\Documents\GitHub #
+#                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 #
+#                     \ -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I    #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\List\hal_lcd.lst                            #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\Obj\hal_lcd.r43                             #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\hal\target\MSP5438ZAP\hal_lcd.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_lcd.c
+      3            Revised:        $Date: 2009-04-01 22:04:53 -0700 (Wed, 01 Apr 2009) $
+      4            Revision:       $Revision: 19626 $
+      5          
+      6            Description:    This file contains the interface to the HAL LCD Service.
+      7          
+      8          
+      9            Copyright 2007-2009 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /**************************************************************************************************
+     41           *                                           INCLUDES
+     42           **************************************************************************************************/
+     43          #include "hal_types.h"
+     44          #include "hal_lcd.h"
+
+   \                                 In  segment DATA16_AN, at 0x260
+   \   union <unnamed> _A_PDIN_L
+   \                     _A_PDIN_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x262
+   \   union <unnamed> _A_PDOUT_L
+   \                     _A_PDOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x264
+   \   union <unnamed> _A_PDDIR_L
+   \                     _A_PDDIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x26a
+   \   union <unnamed> _A_PDSEL_L
+   \                     _A_PDSEL_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x282
+   \   union <unnamed> _A_PEOUT_L
+   \                     _A_PEOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x284
+   \   union <unnamed> _A_PEDIR_L
+   \                     _A_PEDIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x28a
+   \   union <unnamed> _A_PESEL_L
+   \                     _A_PESEL_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x348
+   \   unsigned short volatile TA0CCTL3
+   \                     TA0CCTL3:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x358
+   \   unsigned short volatile TA0CCR3
+   \                     TA0CCR3:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x660
+   \   union <unnamed> _A_UCB2CTLW0_L
+   \                     _A_UCB2CTLW0_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x666
+   \   union <unnamed> _A_UCB2BRW_L
+   \                     _A_UCB2BRW_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x66a
+   \   unsigned char volatile UCB2STAT
+   \                     UCB2STAT:
+   \   000000                DS8 1
+
+   \                                 In  segment DATA16_AN, at 0x66e
+   \   unsigned char volatile UCB2TXBUF
+   \                     UCB2TXBUF:
+   \   000000                DS8 1
+
+   \                                 In  segment DATA16_AN, at 0x67c
+   \   union <unnamed> _A_UCB2ICTL_L
+   \                     _A_UCB2ICTL_L:
+   \   000000                DS8 2
+     45          #include "OSAL.h"
+     46          #include "OnBoard.h"
+     47          #include "hal_assert.h"
+     48          #include <stdlib.h>
+     49          #include <string.h>
+     50          
+     51          #if defined (ZTOOL_P1) || defined (ZTOOL_P2)
+     52            #include "DebugTrace.h"
+     53          #endif
+     54          
+     55          #if (HAL_LCD == TRUE)
+     56          /**************************************************************************************************
+     57           *                                          CONSTANTS
+     58           **************************************************************************************************/
+     59          /* LCD lines */
+     60          #define LCD_MAX_LINE_COUNT              3
+     61          #define LCD_MAX_LINE_LENGTH             16
+     62          #define LCD_MAX_BUF                     25
+     63          
+     64          /* Defines for HW LCD */
+     65          #define HAL_LCD_BACKLIGHT_LEVEL         10   //0-15    0:OFF, 15:MAX
+     66          #define HAL_LCD_CONTRAST_LEVEL          100   //70-127  70:LOW, 127:HIGH
+     67          
+     68          /**************************************************************************************************
+     69           *                                           MACROS
+     70           **************************************************************************************************/
+     71          
+
+   \                                 In  segment DATA16_I, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+     72          unsigned char LcdInitMacro[]={
+   \                     LcdInitMacro:
+   \   000000                DS8 108
+   \   00006C                REQUIRE `?<Initializer for LcdInitMacro>`
+     73                      0x74,0x00,0x00,0x76,0x00,0x01,  // R00 start oscillation
+     74                      0x74,0x00,0x01,0x76,0x00,0x0D,  // R01 driver output control
+     75                      0x74,0x00,0x02,0x76,0x00,0x4C,  // R02 LCD - driving waveform control
+     76                      0x74,0x00,0x03,0x76,0x12,0x14,  // R03 Power control
+     77                      0x74,0x00,0x04,0x76,0x04,0x66,  // R04 Contrast control
+     78                      0x74,0x00,0x05,0x76,0x00,0x10,  // R05 Entry mode
+     79                      0x74,0x00,0x06,0x76,0x00,0x00,  // R06 RAM data write mask
+     80                      0x74,0x00,0x07,0x76,0x00,0x15,  // R07 Display control
+     81                      0x74,0x00,0x08,0x76,0x00,0x03,  // R08 Cursor Control
+     82                      0x74,0x00,0x09,0x76,0x00,0x00,  // R09 RAM data write mask
+     83                      0x74,0x00,0x0A,0x76,0x00,0x15,  // R0A
+     84                      0x74,0x00,0x0B,0x76,0x00,0x03,  // R0B Horizontal Cursor Position
+     85                      0x74,0x00,0x0C,0x76,0x00,0x03,  // R0C Vertical Cursor Position
+     86                      0x74,0x00,0x0D,0x76,0x00,0x00,  // R0D
+     87                      0x74,0x00,0x0E,0x76,0x00,0x15,  // R0E
+     88                      0x74,0x00,0x0F,0x76,0x00,0x03,  // R0F
+     89                      0x74,0x00,0x10,0x76,0x00,0x15,  // R0E
+     90                      0x74,0x00,0x11,0x76,0x00,0x03,  // R0F
+     91          };
+     92          
+     93          #define LCD_ROW                 110
+     94          #define LCD_COL                 138
+     95          #define LCD_Size                3505
+     96          #define LCD_MEM_SIZE            110*17
+     97          #define LCD_LAST_PIXEL          3505
+     98          
+     99          #define FONT_HEIGHT		          12
+    100          
+    101          #define INVERT_TEXT             BIT0
+    102          #define OVERWRITE_TEXT          BIT2
+    103          #define HAL_LCD_TEXT_STYLE      OVERWRITE_TEXT
+    104          
+    105          /**************************************************************************************************
+    106           *                                       GLOBAL VARIABLES
+    107           **************************************************************************************************/
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    108          static uint8 *Lcd_Line1;
+   \                     Lcd_Line1:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_I, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    109          static uint8 HAL_LCD_SETCONTRAST_CONTROL[] = {0x74,0x00,0x04,0x76,0x04,HAL_LCD_CONTRAST_LEVEL};
+   \                     HAL_LCD_SETCONTRAST_CONTROL:
+   \   000000                DS8 6
+   \   000006                REQUIRE `?<Initializer for HAL_LCD_SETCONTRAST_CONTROL>`
+    110          
+
+   \                                 In  segment DATA16_I, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    111          unsigned char Read_Block_Address_Macro[]= {0x74,0x00,0x12,0x77,0x00,0x00};
+   \                     Read_Block_Address_Macro:
+   \   000000                DS8 6
+   \   000006                REQUIRE `?<Initializer for Read_Block_Address_Macro>`
+
+   \                                 In  segment DATA16_I, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    112          unsigned char Draw_Block_Value_Macro[]=   {0x74,0x00,0x12,0x76,0xFF,0xFF};
+   \                     Draw_Block_Value_Macro:
+   \   000000                DS8 6
+   \   000006                REQUIRE `?<Initializer for Draw_Block_Value_Macro>`
+
+   \                                 In  segment DATA16_I, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    113          unsigned char Draw_Block_Address_Macro[]= {0x74,0x00,0x11,0x76,0x00,0x00};
+   \                     Draw_Block_Address_Macro:
+   \   000000                DS8 6
+   \   000006                REQUIRE `?<Initializer for Draw_Block_Address_Macro>`
+    114          
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    115          unsigned int LcdAddress=0, LcdTableAddress=0;
+   \                     LcdAddress:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+   \                     LcdTableAddress:
+   \   000000                DS8 2
+    116          
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    117          int LCD_MEM[LCD_MEM_SIZE];
+   \                     LCD_MEM:
+   \   000000                DS8 3740
+    118          
+
+   \                                 In  segment DATA16_C, align 1, align-sorted
+    119          const unsigned char fonts_lookup[]={
+   \                     fonts_lookup:
+   \   000000   000000000000 DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \            000000000000
+   \            000000000000
+   \            0000000000  
+   \   000017   000000000000 DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 64, 65, 0, 69
+   \            0000003F0000
+   \            000000000040
+   \            410045      
+   \   00002C   004443000001 DC8 0, 68, 67, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 66, 0, 0, 70, 0, 62, 0
+   \            020304050607
+   \            080942000046
+   \            003E00      
+   \   000041   0A0B0C0D0E0F DC8 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
+   \            101112131415
+   \            161718191A  
+   \   000052   1B1C1D1E1F20 DC8 27, 28, 29, 30, 31, 32, 33, 34, 35, 0, 0, 0, 71, 0, 0, 36, 37, 38
+   \            212223000000
+   \            470000242526
+   \   000064   2728292A2B2C DC8 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55
+   \            2D2E2F303132
+   \            3334353637  
+   \   000075   38393A3B3C3D DC8 56, 57, 58, 59, 60, 61, 62, 0, 0, 0, 72, 73, 74, 75, 76, 77, 78, 79
+   \            3E0000004849
+   \            4A4B4C4D4E4F
+   \   000087   5051         DC8 80, 81
+    120                    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,            //Comment
+    121                    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,            //Comment
+    122                    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,            //Comment
+    123                    0x00,0x00,63,0x00,0x00,0x00,0x00,0x00,0x00,0x00,              //Comment
+    124                    64,65,0,69,0,68,67,0,0,1,          //'0' = 48 = 0x30
+    125                    2,3,4,5,6,7,8,9,66,0,              //'9' = 57 = 0x39
+    126                    0,70,0,62,0,10,11,12,13,14,        //'A' --> 'Z'
+    127                    15,16,17,18,19,20,21,22,23,24,
+    128                    25,26,27,28,29,30,31,32,33,34,
+    129                    35,0,0,0,71,0,0,36,37,38,          //'a' = 97
+    130                    39,40,41,42,43,44,45,46,47,48,
+    131                    49,50,51,52,53,54,55,56,57,58,
+    132                    59,60,61,62,0 ,0, 0, 72,73,74,
+    133                    75,76,77,78,79,80,81};             //'z' = 122
+    134          
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+    135          const unsigned int fonts[]= {
+   \                     fonts:
+   \   000000   0000FC0F0F3C DC16 0, 4092, 15375, 16143, 16335, 15567, 15615, 15423, 15375, 4092, 0
+   \            0F3FCF3FCF3C
+   \            FF3C3F3C0F3C
+   \            FC0F0000    
+   \   000016   000000000000 DC16 0, 0, 0, 192, 240, 255, 240, 240, 240, 240, 240, 4095, 0, 0, 0, 0
+   \            C000F000FF00
+   \            F000F000F000
+   \            F000F000FF0F
+   \            000000000000
+   \            0000        
+   \   000036   FC030F0F0F0F DC16 1020, 3855, 3855, 3840, 960, 240, 60, 3855, 4095, 0, 0, 0, 0, 1020
+   \            000FC003F000
+   \            3C000F0FFF0F
+   \            000000000000
+   \            0000FC03    
+   \   000052   0F0F000F000F DC16 3855, 3840, 3840, 1008, 3840, 3840, 3855, 1020, 0, 0, 0, 0, 3840
+   \            F003000F000F
+   \            0F0FFC030000
+   \            000000000000
+   \            000F        
+   \   00006C   C00FF00F3C0F DC16 4032, 4080, 3900, 3855, 16383, 3840, 3840, 16320, 0, 0, 0, 0, 4095
+   \            0F0FFF3F000F
+   \            000FC03F0000
+   \            000000000000
+   \            FF0F        
+   \   000086   0F000F000F00 DC16 15, 15, 15, 1023, 3840, 3840, 3855, 1020, 0, 0, 0, 0, 1008, 60, 15
+   \            FF03000F000F
+   \            0F0FFC030000
+   \            000000000000
+   \            F0033C000F00
+   \   0000A4   0F00FF030F0F DC16 15, 1023, 3855, 3855, 3855, 1020, 0, 0, 0, 0, 16383, 15375, 15375
+   \            0F0F0F0FFC03
+   \            000000000000
+   \            0000FF3F0F3C
+   \            0F3C        
+   \   0000BE   003C000FC003 DC16 15360, 3840, 960, 240, 240, 240, 0, 0, 0, 0, 1020, 3855, 3855
+   \            F000F000F000
+   \            000000000000
+   \            0000FC030F0F
+   \            0F0F        
+   \   0000D8   3F0FFC03CF0F DC16 3903, 1020, 4047, 3855, 3855, 1020, 0, 0, 0, 0, 1020, 3855, 3855
+   \            0F0F0F0FFC03
+   \            000000000000
+   \            0000FC030F0F
+   \            0F0F        
+   \   0000F2   0F0FFC0FC003 DC16 3855, 4092, 960, 960, 240, 252, 0, 0, 0, 0, 240, 1020, 3855, 3855
+   \            C003F000FC00
+   \            000000000000
+   \            0000F000FC03
+   \            0F0F0F0F    
+   \   00010E   0F0FFF0F0F0F DC16 3855, 4095, 3855, 3855, 3855, 0, 0, 0, 0, 4095, 15420, 15420
+   \            0F0F0F0F0000
+   \            000000000000
+   \            FF0F3C3C3C3C
+   \   000126   3C3CFC0F3C3C DC16 15420, 4092, 15420, 15420, 15420, 4095, 0, 0, 0, 0, 4080, 15420
+   \            3C3C3C3CFF0F
+   \            000000000000
+   \            0000F00F3C3C
+   \   00013E   0F3C0F000F00 DC16 15375, 15, 15, 15, 15375, 15420, 4080, 0, 0, 0, 0, 1023, 3900
+   \            0F000F3C3C3C
+   \            F00F00000000
+   \            00000000FF03
+   \            3C0F        
+   \   000158   3C3C3C3C3C3C DC16 15420, 15420, 15420, 15420, 15420, 3900, 1023, 0, 0, 0, 0, 16383
+   \            3C3C3C3C3C0F
+   \            FF0300000000
+   \            00000000FF3F
+   \   000170   3C303C003C0C DC16 12348, 60, 3132, 4092, 3132, 60, 12348, 16383, 0, 0, 0, 0, 16383
+   \            FC0F3C0C3C00
+   \            3C30FF3F0000
+   \            000000000000
+   \            FF3F        
+   \   00018A   3C3C3C303C0C DC16 15420, 12348, 3132, 4092, 3132, 60, 60, 255, 0, 0, 0, 0, 4080
+   \            FC0F3C0C3C00
+   \            3C00FF000000
+   \            000000000000
+   \            F00F        
+   \   0001A4   3C3C0F3C0F00 DC16 15420, 15375, 15, 15, 16143, 15375, 15420, 16368, 0, 0, 0, 0, 3855
+   \            0F000F3F0F3C
+   \            3C3CF03F0000
+   \            000000000000
+   \            0F0F        
+   \   0001BE   0F0F0F0F0F0F DC16 3855, 3855, 3855, 4095, 3855, 3855, 3855, 3855, 0, 0, 0, 0, 1020
+   \            FF0F0F0F0F0F
+   \            0F0F0F0F0000
+   \            000000000000
+   \            FC03        
+   \   0001D8   F000F000F000 DC16 240, 240, 240, 240, 240, 240, 240, 1020, 0, 0, 0, 0, 16320, 3840
+   \            F000F000F000
+   \            F000FC030000
+   \            000000000000
+   \            C03F000F    
+   \   0001F4   000F000F000F DC16 3840, 3840, 3840, 3855, 3855, 3855, 1020, 0, 0, 0, 0, 15423, 15420
+   \            0F0F0F0F0F0F
+   \            FC0300000000
+   \            000000003F3C
+   \            3C3C        
+   \   00020E   3C0F3C0FFC03 DC16 3900, 3900, 1020, 3900, 3900, 15420, 15423, 0, 0, 0, 0, 255, 60
+   \            3C0F3C0F3C3C
+   \            3F3C00000000
+   \            00000000FF00
+   \            3C00        
+   \   000228   3C003C003C00 DC16 60, 60, 60, 12348, 15420, 15420, 16383, 0, 0, 0, 0, 15375, 16191
+   \            3C303C3C3C3C
+   \            FF3F00000000
+   \            000000000F3C
+   \            3F3F        
+   \   000242   FF3FFF3FCF3C DC16 16383, 16383, 15567, 15375, 15375, 15375, 15375, 0, 0, 0, 0, 15375
+   \            0F3C0F3C0F3C
+   \            0F3C00000000
+   \            000000000F3C
+   \   00025A   0F3C3F3CFF3C DC16 15375, 15423, 15615, 16383, 16335, 16143, 15375, 15375, 0, 0, 0, 0
+   \            FF3FCF3F0F3F
+   \            0F3C0F3C0000
+   \            000000000000
+   \   000272   F0033C0F0F3C DC16 1008, 3900, 15375, 15375, 15375, 15375, 15375, 3900, 1008, 0, 0, 0
+   \            0F3C0F3C0F3C
+   \            0F3C3C0FF003
+   \            000000000000
+   \   00028A   0000FF0F3C3C DC16 0, 4095, 15420, 15420, 15420, 4092, 60, 60, 60, 255, 0, 0, 0, 0
+   \            3C3C3C3CFC0F
+   \            3C003C003C00
+   \            FF0000000000
+   \            00000000    
+   \   0002A6   F0033C0F0F3C DC16 1008, 3900, 15375, 15375, 15375, 16143, 16335, 4092, 3840, 16320
+   \            0F3C0F3C0F3F
+   \            CF3FFC0F000F
+   \            C03F        
+   \   0002BA   000000000000 DC16 0, 0, 0, 4095, 15420, 15420, 15420, 4092, 3900, 15420, 15420
+   \            FF0F3C3C3C3C
+   \            3C3CFC0F3C0F
+   \            3C3C3C3C    
+   \   0002D0   3F3C00000000 DC16 15423, 0, 0, 0, 0, 1020, 3855, 3855, 15, 252, 960, 3855, 3855
+   \            00000000FC03
+   \            0F0F0F0F0F00
+   \            FC00C0030F0F
+   \            0F0F        
+   \   0002EA   FC0300000000 DC16 1020, 0, 0, 0, 0, 4095, 3315, 240, 240, 240, 240, 240, 240, 1020
+   \            00000000FF0F
+   \            F30CF000F000
+   \            F000F000F000
+   \            F000FC03    
+   \   000306   000000000000 DC16 0, 0, 0, 0, 3855, 3855, 3855, 3855, 3855, 3855, 3855, 3855, 1020
+   \            00000F0F0F0F
+   \            0F0F0F0F0F0F
+   \            0F0F0F0F0F0F
+   \            FC03        
+   \   000320   000000000000 DC16 0, 0, 0, 0, 3855, 3855, 3855, 3855, 3855, 3855, 3855, 1020, 240, 0
+   \            00000F0F0F0F
+   \            0F0F0F0F0F0F
+   \            0F0F0F0FFC03
+   \            F0000000    
+   \   00033C   000000000000 DC16 0, 0, 0, 15375, 15375, 15375, 15375, 15567, 15567, 3900, 3900
+   \            0F3C0F3C0F3C
+   \            0F3CCF3CCF3C
+   \            3C0F3C0F    
+   \   000352   3C0F00000000 DC16 3900, 0, 0, 0, 0, 3855, 3855, 3855, 1020, 240, 1020, 3855, 3855
+   \            000000000F0F
+   \            0F0F0F0FFC03
+   \            F000FC030F0F
+   \            0F0F        
+   \   00036C   0F0F00000000 DC16 3855, 0, 0, 0, 0, 3855, 3855, 3855, 3855, 1020, 240, 240, 240
+   \            000000000F0F
+   \            0F0F0F0F0F0F
+   \            FC03F000F000
+   \            F000        
+   \   000386   FC0300000000 DC16 1020, 0, 0, 0, 0, 16383, 16143, 963, 960, 240, 60, 12348, 15375
+   \            00000000FF3F
+   \            0F3FC303C003
+   \            F0003C003C30
+   \            0F3C        
+   \   0003A0   FF3F00000000 DC16 16383, 0, 0, 0, 0, 0, 0, 0, 1020, 3840, 4092, 3855, 3855, 15612, 0
+   \            000000000000
+   \            00000000FC03
+   \            000FFC0F0F0F
+   \            0F0FFC3C0000
+   \   0003BE   000000000000 DC16 0, 0, 0, 63, 60, 60, 4092, 15420, 15420, 15420, 15420, 4047, 0, 0
+   \            3F003C003C00
+   \            FC0F3C3C3C3C
+   \            3C3C3C3CCF0F
+   \            00000000    
+   \   0003DA   000000000000 DC16 0, 0, 0, 0, 0, 1020, 3855, 15, 15, 3855, 1020, 0, 0, 0, 0, 4032
+   \            00000000FC03
+   \            0F0F0F000F00
+   \            0F0FFC030000
+   \            000000000000
+   \            C00F        
+   \   0003FA   000F000FFC0F DC16 3840, 3840, 4092, 3855, 3855, 3855, 3855, 15612, 0, 0, 0, 0, 0, 0
+   \            0F0F0F0F0F0F
+   \            0F0FFC3C0000
+   \            000000000000
+   \            00000000    
+   \   000416   0000FC030F0F DC16 0, 1020, 3855, 4095, 15, 3855, 1020, 0, 0, 0, 0, 1008, 3900, 60
+   \            FF0F0F000F0F
+   \            FC0300000000
+   \            00000000F003
+   \            3C0F3C00    
+   \   000432   3C00FF033C00 DC16 60, 1023, 60, 60, 60, 255, 0, 0, 0, 0, 0, 0, 0, 15612, 3855, 3855
+   \            3C003C00FF00
+   \            000000000000
+   \            000000000000
+   \            0000FC3C0F0F
+   \            0F0F        
+   \   000452   0F0FFC0F000F DC16 3855, 4092, 3840, 3855, 1020, 0, 0, 63, 60, 60, 3900, 15612, 15420
+   \            0F0FFC030000
+   \            00003F003C00
+   \            3C003C0FFC3C
+   \            3C3C        
+   \   00046C   3C3C3C3C3F3C DC16 15420, 15420, 15423, 0, 0, 0, 0, 960, 960, 0, 1020, 960, 960, 960
+   \            000000000000
+   \            0000C003C003
+   \            0000FC03C003
+   \            C003C003    
+   \   000488   C003FC3F0000 DC16 960, 16380, 0, 0, 0, 0, 3840, 3840, 0, 4080, 3840, 3840, 3840
+   \            000000000000
+   \            000F000F0000
+   \            F00F000F000F
+   \            000F        
+   \   0004A2   000F0F0F0F0F DC16 3840, 3855, 3855, 1020, 0, 0, 63, 60, 60, 15420, 3900, 1020, 3900
+   \            FC0300000000
+   \            3F003C003C00
+   \            3C3C3C0FFC03
+   \            3C0F        
+   \   0004BC   3C3C3F3C0000 DC16 15420, 15423, 0, 0, 0, 0, 1020, 960, 960, 960, 960, 960, 960, 960
+   \            000000000000
+   \            FC03C003C003
+   \            C003C003C003
+   \            C003C003    
+   \   0004D8   FC3F00000000 DC16 16380, 0, 0, 0, 0, 0, 0, 0, 4095, 15567, 15567, 15567, 15567
+   \            000000000000
+   \            00000000FF0F
+   \            CF3CCF3CCF3C
+   \            CF3C        
+   \   0004F2   0F3C00000000 DC16 15375, 0, 0, 0, 0, 0, 0, 0, 1023, 3855, 3855, 3855, 3855, 3855, 0
+   \            000000000000
+   \            00000000FF03
+   \            0F0F0F0F0F0F
+   \            0F0F0F0F0000
+   \   000510   000000000000 DC16 0, 0, 0, 0, 0, 0, 1020, 3855, 3855, 3855, 3855, 1020, 0, 0, 0, 0
+   \            000000000000
+   \            FC030F0F0F0F
+   \            0F0F0F0FFC03
+   \            000000000000
+   \            0000        
+   \   000530   000000000000 DC16 0, 0, 0, 4047, 15420, 15420, 15420, 15420, 4092, 60, 255, 0, 0, 0
+   \            CF0F3C3C3C3C
+   \            3C3C3C3CFC0F
+   \            3C00FF000000
+   \            00000000    
+   \   00054C   00000000FC3C DC16 0, 0, 15612, 3855, 3855, 3855, 3855, 4092, 3840, 16320, 0, 0, 0, 0
+   \            0F0F0F0F0F0F
+   \            0F0FFC0F000F
+   \            C03F00000000
+   \            00000000    
+   \   000568   00003F0F3C3F DC16 0, 3903, 16188, 15612, 60, 60, 255, 0, 0, 0, 0, 0, 0, 0, 1020
+   \            FC3C3C003C00
+   \            FF0000000000
+   \            000000000000
+   \            00000000FC03
+   \   000586   0F0F3C00C003 DC16 3855, 60, 960, 3855, 1020, 0, 0, 0, 0, 0, 48, 60, 4095, 60, 60, 60
+   \            0F0FFC030000
+   \            000000000000
+   \            000030003C00
+   \            FF0F3C003C00
+   \            3C00        
+   \   0005A6   3C0FF0030000 DC16 3900, 1008, 0, 0, 0, 0, 0, 0, 0, 3855, 3855, 3855, 3855, 3855
+   \            000000000000
+   \            000000000000
+   \            0F0F0F0F0F0F
+   \            0F0F0F0F    
+   \   0005C2   FC3C00000000 DC16 15612, 0, 0, 0, 0, 0, 0, 0, 3855, 3855, 3855, 3855, 1020, 240, 0
+   \            000000000000
+   \            000000000F0F
+   \            0F0F0F0F0F0F
+   \            FC03F0000000
+   \   0005E0   000000000000 DC16 0, 0, 0, 0, 0, 0, 15375, 15375, 15567, 15567, 3900, 3900, 0, 0, 0
+   \            000000000000
+   \            0F3C0F3CCF3C
+   \            CF3C3C0F3C0F
+   \            000000000000
+   \   0005FE   000000000000 DC16 0, 0, 0, 0, 15375, 3900, 1008, 1008, 3900, 15375, 0, 0, 0, 0, 0, 0
+   \            00000F3C3C0F
+   \            F003F0033C0F
+   \            0F3C00000000
+   \            000000000000
+   \            0000        
+   \   00061E   00003C3C3C3C DC16 0, 15420, 15420, 15420, 15420, 4080, 3840, 960, 255, 0, 0, 0, 0, 0
+   \            3C3C3C3CF00F
+   \            000FC003FF00
+   \            000000000000
+   \            00000000    
+   \   00063A   FF0F030FC003 DC16 4095, 3843, 960, 60, 3087, 4095, 0, 0, 0, 0, 1020, 3855, 3840, 960
+   \            3C000F0CFF0F
+   \            000000000000
+   \            0000FC030F0F
+   \            000FC003    
+   \   000656   F000F0000000 DC16 240, 240, 0, 240, 240, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \            F000F0000000
+   \            000000000000
+   \            000000000000
+   \            000000000000
+   \            000000000000
+   \            00000000    
+   \   00067E   00000000000F DC16 0, 0, 3840, 960, 240, 60, 60, 60, 240, 960, 3840, 0, 0, 0, 0, 60
+   \            C003F0003C00
+   \            3C003C00F000
+   \            C003000F0000
+   \            000000000000
+   \            3C00        
+   \   00069E   F000C003000F DC16 240, 960, 3840, 3840, 3840, 960, 240, 60, 0, 0, 0, 0, 0, 0, 1008
+   \            000F000FC003
+   \            F0003C000000
+   \            000000000000
+   \            00000000F003
+   \   0006BC   F00300000000 DC16 1008, 0, 0, 1008, 1008, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1008
+   \            F003F0030000
+   \            000000000000
+   \            000000000000
+   \            000000000000
+   \            00000000F003
+   \   0006E0   F00300000000 DC16 1008, 0, 0, 0, 0, 0, 0, 0, 0, 16380, 16380, 0, 0, 0, 0, 0, 0, 0, 0
+   \            000000000000
+   \            000000000000
+   \            FC3FFC3F0000
+   \            000000000000
+   \            000000000000
+   \            0000        
+   \   000706   0000C003C003 DC16 0, 960, 960, 16380, 16380, 960, 960, 0, 0, 0, 0, 0, 0, 0, 0, 16380
+   \            FC3FFC3FC003
+   \            C00300000000
+   \            000000000000
+   \            000000000000
+   \            FC3F        
+   \   000726   00000000FC3F DC16 0, 0, 16380, 0, 0, 0, 0, 0, 0, 1020, 3855, 3855, 3855, 1020, 0, 0
+   \            000000000000
+   \            000000000000
+   \            FC030F0F0F0F
+   \            0F0FFC030000
+   \            0000        
+   \   000746   000000000000 DC16 0, 0, 0, 0, 0, 0, 4092, 15375, 16143, 16335, 15567, 15615, 15423
+   \            000000000000
+   \            FC0F0F3C0F3F
+   \            CF3FCF3CFF3C
+   \            3F3C        
+   \   000760   0F3CFC0F0000 DC16 15375, 4092, 0, 0, 0, 0, 192, 240, 255, 240, 240, 240, 240, 240
+   \            000000000000
+   \            C000F000FF00
+   \            F000F000F000
+   \            F000F000    
+   \   00077C   FF0F00000000 DC16 4095, 0, 0, 0, 0, 1020, 3855, 3855, 3840, 960, 240, 60, 3855, 4095
+   \            00000000FC03
+   \            0F0F0F0F000F
+   \            C003F0003C00
+   \            0F0FFF0F    
+   \   000798   000000000000 DC16 0, 0, 0, 0, 1020, 3855, 3840, 3840, 1008, 3840, 3840, 3855, 1020
+   \            0000FC030F0F
+   \            000F000FF003
+   \            000F000F0F0F
+   \            FC03        
+   \   0007B2   000000000000 DC16 0, 0, 0, 0, 3840, 4032, 4080, 3900, 3855, 16383, 3840, 3840, 16320
+   \            0000000FC00F
+   \            F00F3C0F0F0F
+   \            FF3F000F000F
+   \            C03F        
+   \   0007CC   000000000000 DC16 0, 0, 0, 0, 4095, 15, 15, 15, 1023, 3840, 3840, 3855, 1020, 0, 0
+   \            0000FF0F0F00
+   \            0F000F00FF03
+   \            000F000F0F0F
+   \            FC0300000000
+   \   0007EA   00000000F003 DC16 0, 0, 1008, 60, 15, 15, 1023, 3855, 3855, 3855, 1020, 0, 0, 0, 0
+   \            3C000F000F00
+   \            FF030F0F0F0F
+   \            0F0FFC030000
+   \            000000000000
+   \   000808   FF3F0F3C0F3C DC16 16383, 15375, 15375, 15360, 3840, 960, 240, 240, 240, 0, 0, 0, 0
+   \            003C000FC003
+   \            F000F000F000
+   \            000000000000
+   \            0000        
+   \   000822   FC030F0F0F0F DC16 1020, 3855, 3855, 3903, 1020, 4047, 3855, 3855, 1020, 0, 0, 0, 0
+   \            3F0FFC03CF0F
+   \            0F0F0F0FFC03
+   \            000000000000
+   \            0000        
+   \   00083C   FC030F0F0F0F DC16 1020, 3855, 3855, 3855, 4092, 960, 960, 240, 252, 0, 0, 0
+   \            0F0FFC0FC003
+   \            C003F000FC00
+   \            000000000000
+    136                    0x0000,0x0ffc,0x3c0f,0x3f0f,0x3fcf,0x3ccf,0x3cff,0x3c3f,0x3c0f,0x0ffc,0x0000,0x0000,0x0000,
+    137                    0x0000,0x00c0,0x00f0,0x00ff,0x00f0,0x00f0,0x00f0,0x00f0,0x00f0,0x0fff,0x0000,0x0000,0x0000,
+    138                    0x0000,0x03fc,0x0f0f,0x0f0f,0x0f00,0x03c0,0x00f0,0x003c,0x0f0f,0x0fff,0x0000,0x0000,0x0000,
+    139                    0x0000,0x03fc,0x0f0f,0x0f00,0x0f00,0x03f0,0x0f00,0x0f00,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    140                    0x0000,0x0f00,0x0fc0,0x0ff0,0x0f3c,0x0f0f,0x3fff,0x0f00,0x0f00,0x3fc0,0x0000,0x0000,0x0000,
+    141                    0x0000,0x0fff,0x000f,0x000f,0x000f,0x03ff,0x0f00,0x0f00,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    142                    0x0000,0x03f0,0x003c,0x000f,0x000f,0x03ff,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    143                    0x0000,0x3fff,0x3c0f,0x3c0f,0x3c00,0x0f00,0x03c0,0x00f0,0x00f0,0x00f0,0x0000,0x0000,0x0000,
+    144                    0x0000,0x03fc,0x0f0f,0x0f0f,0x0f3f,0x03fc,0x0fcf,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    145                    0x0000,0x03fc,0x0f0f,0x0f0f,0x0f0f,0x0ffc,0x03c0,0x03c0,0x00f0,0x00fc,0x0000,0x0000,0x0000,
+    146                    0x0000,0x00f0,0x03fc,0x0f0f,0x0f0f,0x0f0f,0x0fff,0x0f0f,0x0f0f,0x0f0f,0x0000,0x0000,0x0000,
+    147                    0x0000,0x0fff,0x3c3c,0x3c3c,0x3c3c,0x0ffc,0x3c3c,0x3c3c,0x3c3c,0x0fff,0x0000,0x0000,0x0000,
+    148                    0x0000,0x0ff0,0x3c3c,0x3c0f,0x000f,0x000f,0x000f,0x3c0f,0x3c3c,0x0ff0,0x0000,0x0000,0x0000,
+    149                    0x0000,0x03ff,0x0f3c,0x3c3c,0x3c3c,0x3c3c,0x3c3c,0x3c3c,0x0f3c,0x03ff,0x0000,0x0000,0x0000,
+    150                    0x0000,0x3fff,0x303c,0x003c,0x0c3c,0x0ffc,0x0c3c,0x003c,0x303c,0x3fff,0x0000,0x0000,0x0000,
+    151                    0x0000,0x3fff,0x3c3c,0x303c,0x0c3c,0x0ffc,0x0c3c,0x003c,0x003c,0x00ff,0x0000,0x0000,0x0000,
+    152                    0x0000,0x0ff0,0x3c3c,0x3c0f,0x000f,0x000f,0x3f0f,0x3c0f,0x3c3c,0x3ff0,0x0000,0x0000,0x0000,
+    153                    0x0000,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0fff,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0000,0x0000,0x0000,
+    154                    0x0000,0x03fc,0x00f0,0x00f0,0x00f0,0x00f0,0x00f0,0x00f0,0x00f0,0x03fc,0x0000,0x0000,0x0000,
+    155                    0x0000,0x3fc0,0x0f00,0x0f00,0x0f00,0x0f00,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    156                    0x0000,0x3c3f,0x3c3c,0x0f3c,0x0f3c,0x03fc,0x0f3c,0x0f3c,0x3c3c,0x3c3f,0x0000,0x0000,0x0000,
+    157                    0x0000,0x00ff,0x003c,0x003c,0x003c,0x003c,0x303c,0x3c3c,0x3c3c,0x3fff,0x0000,0x0000,0x0000,
+    158                    0x0000,0x3c0f,0x3f3f,0x3fff,0x3fff,0x3ccf,0x3c0f,0x3c0f,0x3c0f,0x3c0f,0x0000,0x0000,0x0000,
+    159                    0x0000,0x3c0f,0x3c0f,0x3c3f,0x3cff,0x3fff,0x3fcf,0x3f0f,0x3c0f,0x3c0f,0x0000,0x0000,0x0000,
+    160                    0x0000,0x03f0,0x0f3c,0x3c0f,0x3c0f,0x3c0f,0x3c0f,0x3c0f,0x0f3c,0x03f0,0x0000,0x0000,0x0000,
+    161                    0x0000,0x0fff,0x3c3c,0x3c3c,0x3c3c,0x0ffc,0x003c,0x003c,0x003c,0x00ff,0x0000,0x0000,0x0000,
+    162                    0x0000,0x03f0,0x0f3c,0x3c0f,0x3c0f,0x3c0f,0x3f0f,0x3fcf,0x0ffc,0x0f00,0x3fc0,0x0000,0x0000,
+    163                    0x0000,0x0fff,0x3c3c,0x3c3c,0x3c3c,0x0ffc,0x0f3c,0x3c3c,0x3c3c,0x3c3f,0x0000,0x0000,0x0000,
+    164                    0x0000,0x03fc,0x0f0f,0x0f0f,0x000f,0x00fc,0x03c0,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    165                    0x0000,0x0fff,0x0cf3,0x00f0,0x00f0,0x00f0,0x00f0,0x00f0,0x00f0,0x03fc,0x0000,0x0000,0x0000,
+    166                    0x0000,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    167                    0x0000,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x00f0,0x0000,0x0000,0x0000,
+    168                    0x0000,0x3c0f,0x3c0f,0x3c0f,0x3c0f,0x3ccf,0x3ccf,0x0f3c,0x0f3c,0x0f3c,0x0000,0x0000,0x0000,
+    169                    0x0000,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x00f0,0x03fc,0x0f0f,0x0f0f,0x0f0f,0x0000,0x0000,0x0000,
+    170                    0x0000,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x00f0,0x00f0,0x00f0,0x03fc,0x0000,0x0000,0x0000,
+    171                    0x0000,0x3fff,0x3f0f,0x03c3,0x03c0,0x00f0,0x003c,0x303c,0x3c0f,0x3fff,0x0000,0x0000,0x0000,
+    172                    0x0000,0x0000,0x0000,0x0000,0x03fc,0x0f00,0x0ffc,0x0f0f,0x0f0f,0x3cfc,0x0000,0x0000,0x0000,
+    173                    0x0000,0x003f,0x003c,0x003c,0x0ffc,0x3c3c,0x3c3c,0x3c3c,0x3c3c,0x0fcf,0x0000,0x0000,0x0000,
+    174                    0x0000,0x0000,0x0000,0x0000,0x03fc,0x0f0f,0x000f,0x000f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    175                    0x0000,0x0fc0,0x0f00,0x0f00,0x0ffc,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x3cfc,0x0000,0x0000,0x0000,
+    176                    0x0000,0x0000,0x0000,0x0000,0x03fc,0x0f0f,0x0fff,0x000f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    177                    0x0000,0x03f0,0x0f3c,0x003c,0x003c,0x03ff,0x003c,0x003c,0x003c,0x00ff,0x0000,0x0000,0x0000,
+    178                    0x0000,0x0000,0x0000,0x0000,0x3cfc,0x0f0f,0x0f0f,0x0f0f,0x0ffc,0x0f00,0x0f0f,0x03fc,0x0000,
+    179                    0x0000,0x003f,0x003c,0x003c,0x0f3c,0x3cfc,0x3c3c,0x3c3c,0x3c3c,0x3c3f,0x0000,0x0000,0x0000,
+    180                    0x0000,0x03c0,0x03c0,0x0000,0x03fc,0x03c0,0x03c0,0x03c0,0x03c0,0x3ffc,0x0000,0x0000,0x0000,
+    181                    0x0000,0x0f00,0x0f00,0x0000,0x0ff0,0x0f00,0x0f00,0x0f00,0x0f00,0x0f0f,0x0f0f,0x03fc,0x0000,
+    182                    0x0000,0x003f,0x003c,0x003c,0x3c3c,0x0f3c,0x03fc,0x0f3c,0x3c3c,0x3c3f,0x0000,0x0000,0x0000,
+    183                    0x0000,0x03fc,0x03c0,0x03c0,0x03c0,0x03c0,0x03c0,0x03c0,0x03c0,0x3ffc,0x0000,0x0000,0x0000,
+    184                    0x0000,0x0000,0x0000,0x0000,0x0fff,0x3ccf,0x3ccf,0x3ccf,0x3ccf,0x3c0f,0x0000,0x0000,0x0000,
+    185                    0x0000,0x0000,0x0000,0x0000,0x03ff,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0000,0x0000,0x0000,
+    186                    0x0000,0x0000,0x0000,0x0000,0x03fc,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    187                    0x0000,0x0000,0x0000,0x0000,0x0fcf,0x3c3c,0x3c3c,0x3c3c,0x3c3c,0x0ffc,0x003c,0x00ff,0x0000,
+    188                    0x0000,0x0000,0x0000,0x0000,0x3cfc,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0ffc,0x0f00,0x3fc0,0x0000,
+    189                    0x0000,0x0000,0x0000,0x0000,0x0f3f,0x3f3c,0x3cfc,0x003c,0x003c,0x00ff,0x0000,0x0000,0x0000,
+    190                    0x0000,0x0000,0x0000,0x0000,0x03fc,0x0f0f,0x003c,0x03c0,0x0f0f,0x03fc,0x0000,0x0000,0x0000,
+    191                    0x0000,0x0000,0x0030,0x003c,0x0fff,0x003c,0x003c,0x003c,0x0f3c,0x03f0,0x0000,0x0000,0x0000,
+    192                    0x0000,0x0000,0x0000,0x0000,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x3cfc,0x0000,0x0000,0x0000,
+    193                    0x0000,0x0000,0x0000,0x0000,0x0f0f,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x00f0,0x0000,0x0000,0x0000,
+    194                    0x0000,0x0000,0x0000,0x0000,0x3c0f,0x3c0f,0x3ccf,0x3ccf,0x0f3c,0x0f3c,0x0000,0x0000,0x0000,
+    195                    0x0000,0x0000,0x0000,0x0000,0x3c0f,0x0f3c,0x03f0,0x03f0,0x0f3c,0x3c0f,0x0000,0x0000,0x0000,
+    196                    0x0000,0x0000,0x0000,0x0000,0x3c3c,0x3c3c,0x3c3c,0x3c3c,0x0ff0,0x0f00,0x03c0,0x00ff,0x0000,
+    197                    0x0000,0x0000,0x0000,0x0000,0x0fff,0x0f03,0x03c0,0x003c,0x0c0f,0x0fff,0x0000,0x0000,0x0000,
+    198                    0x0000,0x03fc,0x0f0f,0x0f00,0x03c0,0x00f0,0x00f0,0x0000,0x00f0,0x00f0,0x0000,0x0000,0x0000,
+    199                    0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
+    200                    0x0000,0x0f00,0x03c0,0x00f0,0x003c,0x003c,0x003c,0x00f0,0x03c0,0x0f00,0x0000,0x0000,0x0000,
+    201                    0x0000,0x003c,0x00f0,0x03c0,0x0f00,0x0f00,0x0f00,0x03c0,0x00f0,0x003c,0x0000,0x0000,0x0000,
+    202                    0x0000,0x0000,0x0000,0x03f0,0x03f0,0x0000,0x0000,0x03f0,0x03f0,0x0000,0x0000,0x0000,0x0000,
+    203                    0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x03f0,0x03f0,0x0000,0x0000,0x0000,
+    204                    0x0000,0x0000,0x0000,0x0000,0x0000,0x3ffc,0x3ffc,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
+    205                    0x0000,0x0000,0x0000,0x03c0,0x03c0,0x3ffc,0x3ffc,0x03c0,0x03c0,0x0000,0x0000,0x0000,0x0000,
+    206                    0x0000,0x0000,0x0000,0x0000,0x3ffc,0x0000,0x0000,0x3ffc,0x0000,0x0000,0x0000,0x0000,0x0000,
+    207                    0x0000,0x03fc,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
+    208                    0x0000,0x0ffc,0x3c0f,0x3f0f,0x3fcf,0x3ccf,0x3cff,0x3c3f,0x3c0f,0x0ffc,0x0000,0x0000,0x0000, //0
+    209                    0x0000,0x00c0,0x00f0,0x00ff,0x00f0,0x00f0,0x00f0,0x00f0,0x00f0,0x0fff,0x0000,0x0000,0x0000, //1
+    210                    0x0000,0x03fc,0x0f0f,0x0f0f,0x0f00,0x03c0,0x00f0,0x003c,0x0f0f,0x0fff,0x0000,0x0000,0x0000, //2
+    211                    0x0000,0x03fc,0x0f0f,0x0f00,0x0f00,0x03f0,0x0f00,0x0f00,0x0f0f,0x03fc,0x0000,0x0000,0x0000, //3
+    212                    0x0000,0x0f00,0x0fc0,0x0ff0,0x0f3c,0x0f0f,0x3fff,0x0f00,0x0f00,0x3fc0,0x0000,0x0000,0x0000, //4
+    213                    0x0000,0x0fff,0x000f,0x000f,0x000f,0x03ff,0x0f00,0x0f00,0x0f0f,0x03fc,0x0000,0x0000,0x0000, //5
+    214                    0x0000,0x03f0,0x003c,0x000f,0x000f,0x03ff,0x0f0f,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000, //6
+    215                    0x0000,0x3fff,0x3c0f,0x3c0f,0x3c00,0x0f00,0x03c0,0x00f0,0x00f0,0x00f0,0x0000,0x0000,0x0000, //7
+    216                    0x0000,0x03fc,0x0f0f,0x0f0f,0x0f3f,0x03fc,0x0fcf,0x0f0f,0x0f0f,0x03fc,0x0000,0x0000,0x0000, //8
+    217                    0x0000,0x03fc,0x0f0f,0x0f0f,0x0f0f,0x0ffc,0x03c0,0x03c0,0x00f0,0x00fc,0x0000,0x0000,0x0000, //9
+    218          } ;
+    219          
+    220          /**************************************************************************************************
+    221           *                                       FUNCTIONS - API
+    222           **************************************************************************************************/
+    223          
+    224          void HalLcd_HW_Init(void);
+    225          void HalLcd_HW_InitBackLight(void);
+    226          void HalLcd_HW_SetContrast(uint8 level);
+    227          void HalLcd_HW_Wait(uint16 i);
+    228          void HalLcd_HW_Clear(void);
+    229          void HalLcd_HW_SendCmd(uint8 cmd[]);
+    230          void HalLcd_HW_SetAddress(int Address);
+    231          void HalLcd_HW_WriteLine(char str[], uint8 line);
+    232          
+    233          void HalLcd_HW_DrawCurrentBlock(unsigned int Value);
+    234          void HalLcd_HW_DrawBlock(unsigned int Address, unsigned int Value);
+    235          
+    236          void HalLcd_HW_Active(void);
+    237          #endif //LCD
+    238          
+    239          /**************************************************************************************************
+    240           * @fn      HalLcdInit
+    241           *
+    242           * @brief   Initilize LCD Service
+    243           *
+    244           * @param   init - pointer to void that contains the initialized value
+    245           *
+    246           * @return  None
+    247           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    248          void HalLcdInit(void)
+   \                     HalLcdInit:
+    249          {
+    250          #if (HAL_LCD == TRUE)
+    251            Lcd_Line1 = NULL;
+   \   000000   8243....     MOV.W   #0x0, &Lcd_Line1
+    252            HalLcd_HW_Init();
+   \   000004   ........     BRA     #HalLcd_HW_Init
+    253          #endif
+    254          }
+    255          
+    256          /*************************************************************************************************
+    257           *                    LCD EMULATION FUNCTIONS
+    258           *
+    259           * Some evaluation boards are equipped with Liquid Crystal Displays
+    260           * (LCD) which may be used to display diagnostic information. These
+    261           * functions provide LCD emulation, sending the diagnostic strings
+    262           * to Z-Tool via the RS232 serial port. These functions are enabled
+    263           * when the "LCD_SUPPORTED" compiler flag is placed in the makefile.
+    264           *
+    265           * Most applications update both lines (1 and 2) of the LCD whenever
+    266           * text is posted to the device. This emulator assumes that line 1 is
+    267           * updated first (saved locally) and the formatting and send operation
+    268           * is triggered by receipt of line 2. Nothing will be transmitted if
+    269           * only line 1 is updated.
+    270           *
+    271           *************************************************************************************************/
+    272          
+    273          
+    274          /**************************************************************************************************
+    275           * @fn      HalLcdWriteString
+    276           *
+    277           * @brief   Write a string to the LCD
+    278           *
+    279           * @param   str    - pointer to the string that will be displayed
+    280           *          line   - line number to display
+    281           *
+    282           * @return  None
+    283           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    284          void HalLcdWriteString ( char *str, uint8 line)
+   \                     HalLcdWriteString:
+    285          {
+   \   000000   7B15         PUSHM.W #0x8, R11
+   \   000002   084C         MOV.W   R12, R8
+   \   000004   494D         MOV.B   R13, R9
+    286          
+    287          #if (HAL_LCD == TRUE)
+    288            uint8 strLen = 0;
+    289            uint8 totalLen = 0;
+    290            uint8 *buf;
+    291            uint8 tmpLen;
+    292          
+    293            if ( Lcd_Line1 == NULL )
+   \   000006   8293....     CMP.W   #0x0, &Lcd_Line1
+   \   00000A   0B20         JNE     ??HalLcdWriteString_0
+    294            {
+    295              Lcd_Line1 = osal_mem_alloc( HAL_LCD_MAX_CHARS+1 );
+   \   00000C   3C401100     MOV.W   #0x11, R12
+   \   000010   ........     CALLA   #osal_mem_alloc
+   \   000014   824C....     MOV.W   R12, &Lcd_Line1
+    296              HalLcdWriteString( "TexasInstruments", 0 );
+   \   000018   4D43         MOV.B   #0x0, R13
+   \   00001A   3C40....     MOV.W   #`?<Constant "TexasInstruments">`, R12
+   \   00001E   ........     CALLA   #HalLcdWriteString
+    297            }
+    298          
+    299            strLen = (uint8)osal_strlen( (char*)str );
+   \                     ??HalLcdWriteString_0:
+   \   000022   0C48         MOV.W   R8, R12
+   \   000024   ........     CALLA   #osal_strlen
+   \   000028   4A4C         MOV.B   R12, R10
+    300          
+    301            /* Check boundries */
+    302            if ( strLen > HAL_LCD_MAX_CHARS )
+   \   00002A   7C901100     CMP.B   #0x11, R12
+   \   00002E   0228         JNC     ??HalLcdWriteString_1
+    303              strLen = HAL_LCD_MAX_CHARS;
+   \   000030   7A401000     MOV.B   #0x10, R10
+    304          
+    305            if ( line == HAL_LCD_LINE_1 )
+   \                     ??HalLcdWriteString_1:
+   \   000034   464A         MOV.B   R10, R6
+   \   000036   474A         MOV.B   R10, R7
+   \   000038   3440....     MOV.W   #Lcd_Line1, R4
+   \   00003C   5993         CMP.B   #0x1, R9
+   \   00003E   0A20         JNE     ??HalLcdWriteString_2
+    306            {
+    307              /* Line 1 gets saved for later */
+    308              osal_memcpy( Lcd_Line1, str, strLen );
+   \   000040   0E47         MOV.W   R7, R14
+   \   000042   0D48         MOV.W   R8, R13
+   \   000044   2C44         MOV.W   @R4, R12
+   \   000046   ........     CALLA   #osal_memcpy
+    309              Lcd_Line1[strLen] = '\0';
+   \   00004A   2F44         MOV.W   @R4, R15
+   \   00004C   0F56         ADD.W   R6, R15
+   \   00004E   CF430000     MOV.B   #0x0, 0(R15)
+   \   000052   233C         JMP     ??HalLcdWriteString_3
+    310            }
+    311            else
+    312            {
+    313              /* Line 2 triggers action */
+    314              tmpLen = (uint8)osal_strlen( (char*)Lcd_Line1 );
+   \                     ??HalLcdWriteString_2:
+   \   000054   2C44         MOV.W   @R4, R12
+   \   000056   ........     CALLA   #osal_strlen
+   \   00005A   4B4C         MOV.B   R12, R11
+    315              totalLen =  tmpLen + 1 + strLen + 1;
+    316              buf = osal_mem_alloc( totalLen );
+   \   00005C   4C5A         ADD.B   R10, R12
+   \   00005E   6C53         ADD.B   #0x2, R12
+   \   000060   ........     CALLA   #osal_mem_alloc
+   \   000064   0A4C         MOV.W   R12, R10
+    317              if ( buf != NULL )
+   \   000066   0C93         CMP.W   #0x0, R12
+   \   000068   1824         JEQ     ??HalLcdWriteString_3
+    318              {
+    319                /* Concatenate strings */
+    320                osal_memcpy( buf, Lcd_Line1, tmpLen );
+   \   00006A   4E4B         MOV.B   R11, R14
+   \   00006C   2D44         MOV.W   @R4, R13
+   \   00006E   ........     CALLA   #osal_memcpy
+    321                buf[tmpLen++] = ' ';
+   \   000072   0F4A         MOV.W   R10, R15
+   \   000074   0F5B         ADD.W   R11, R15
+   \   000076   FF4020000000 MOV.B   #0x20, 0(R15)
+   \   00007C   5B53         ADD.B   #0x1, R11
+    322                osal_memcpy( &buf[tmpLen], str, strLen );
+   \   00007E   0E47         MOV.W   R7, R14
+   \   000080   0D48         MOV.W   R8, R13
+   \   000082   0C4A         MOV.W   R10, R12
+   \   000084   0C5B         ADD.W   R11, R12
+   \   000086   ........     CALLA   #osal_memcpy
+    323                buf[tmpLen+strLen] = '\0';
+   \   00008A   0B56         ADD.W   R6, R11
+   \   00008C   0F4A         MOV.W   R10, R15
+   \   00008E   0F5B         ADD.W   R11, R15
+   \   000090   CF430000     MOV.B   #0x0, 0(R15)
+    324          
+    325                /* Send it out */
+    326          #if defined (ZTOOL_P1) || defined (ZTOOL_P2)
+    327          
+    328          #if (SERIAL_DEBUG_SUPPORTED)
+    329                debug_str( (uint8*)buf );
+    330          #endif //LCD_SUPPORTED
+    331          
+    332          #endif //ZTOOL_P1
+    333          
+    334                /* Free mem */
+    335                osal_mem_free( buf );
+   \   000094   0C4A         MOV.W   R10, R12
+   \   000096   ........     CALLA   #osal_mem_free
+    336              }
+    337            }
+    338            /* Clear the line - print 17 blanks */
+    339            HalLcd_HW_WriteLine ("                 ", line);
+   \                     ??HalLcdWriteString_3:
+   \   00009A   4D49         MOV.B   R9, R13
+   \   00009C   3C40....     MOV.W   #`?<Constant "                 ">`, R12
+   \   0000A0   ........     CALLA   #HalLcd_HW_WriteLine
+    340            /* Display the string */
+    341            HalLcd_HW_WriteLine (str, line);
+   \   0000A4   4D49         MOV.B   R9, R13
+   \   0000A6   0C48         MOV.W   R8, R12
+   \   0000A8   ........     CALLA   #HalLcd_HW_WriteLine
+    342          
+    343          #endif //HAL_LCD
+    344          
+    345          }
+   \   0000AC   7417         POPM.W  #0x8, R11
+   \   0000AE   1001         RETA
+    346          
+    347          /**************************************************************************************************
+    348           * @fn      HalLcdWriteValue
+    349           *
+    350           * @brief   Write a value to the LCD
+    351           *
+    352           * @param   value  - value that will be displayed
+    353           *          radix  - 8, 10, 16
+    354           *          option - display options
+    355           *
+    356           * @return  None
+    357           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    358          void HalLcdWriteValue ( uint32 value, const uint8 radix, uint8 option)
+   \                     HalLcdWriteValue:
+    359          {
+   \   000000   0A12         PUSH.W  R10
+   \   000002   31801A00     SUB.W   #0x1a, SP
+   \   000006   4A4F         MOV.B   R15, R10
+    360          #if (HAL_LCD == TRUE)
+    361            uint8 buf[LCD_MAX_BUF];
+    362          
+    363            _ltoa( value, &buf[0], radix );
+   \   000008   4F4E         MOV.B   R14, R15
+   \   00000A   0E41         MOV.W   SP, R14
+   \   00000C   0E53         ADD.W   #0x0, R14
+   \   00000E   ........     CALLA   #_ltoa
+    364            HalLcdWriteString( (char*)buf, option );
+   \   000012   4D4A         MOV.B   R10, R13
+   \   000014   0C41         MOV.W   SP, R12
+   \   000016   0C53         ADD.W   #0x0, R12
+   \   000018   ........     CALLA   #HalLcdWriteString
+    365          #endif
+    366          }
+   \   00001C   31501A00     ADD.W   #0x1a, SP
+   \   000020   3A41         POP.W   R10
+   \   000022   1001         RETA
+    367          
+    368          /**************************************************************************************************
+    369           * @fn      HalLcdWriteScreen
+    370           *
+    371           * @brief   Write a value to the LCD
+    372           *
+    373           * @param   line1  - string that will be displayed on line 1
+    374           *          line2  - string that will be displayed on line 2
+    375           *
+    376           * @return  None
+    377           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    378          void HalLcdWriteScreen( char *line1, char *line2 )
+   \                     HalLcdWriteScreen:
+    379          {
+   \   000000   0A12         PUSH.W  R10
+   \   000002   0A4D         MOV.W   R13, R10
+    380          #if (HAL_LCD == TRUE)
+    381            HalLcdWriteString( line1, 1 );
+   \   000004   5D43         MOV.B   #0x1, R13
+   \   000006   ........     CALLA   #HalLcdWriteString
+    382            HalLcdWriteString( line2, 2 );
+   \   00000A   6D43         MOV.B   #0x2, R13
+   \   00000C   0C4A         MOV.W   R10, R12
+   \   00000E   ........     CALLA   #HalLcdWriteString
+    383          #endif
+    384          }
+   \   000012   3A41         POP.W   R10
+   \   000014   1001         RETA
+    385          
+    386          /**************************************************************************************************
+    387           * @fn      HalLcdWriteStringValue
+    388           *
+    389           * @brief   Write a string followed by a value to the LCD
+    390           *
+    391           * @param   title  - Title that will be displayed before the value
+    392           *          value  - value
+    393           *          format - redix
+    394           *          line   - line number
+    395           *
+    396           * @return  None
+    397           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    398          void HalLcdWriteStringValue( char *title, uint16 value, uint8 format, uint8 line )
+   \                     HalLcdWriteStringValue:
+    399          {
+   \   000000   5B15         PUSHM.W #0x6, R11
+   \   000002   31801A00     SUB.W   #0x1a, SP
+   \   000006   074C         MOV.W   R12, R7
+   \   000008   094D         MOV.W   R13, R9
+   \   00000A   464E         MOV.B   R14, R6
+   \   00000C   4B4F         MOV.B   R15, R11
+    400          #if (HAL_LCD == TRUE)
+    401            uint8 tmpLen;
+    402            uint8 buf[LCD_MAX_BUF];
+    403            uint32 err;
+    404          
+    405            tmpLen = (uint8)osal_strlen( (char*)title );
+   \   00000E   ........     CALLA   #osal_strlen
+   \   000012   4A4C         MOV.B   R12, R10
+    406            osal_memcpy( buf, title, tmpLen );
+   \   000014   0841         MOV.W   SP, R8
+   \   000016   0853         ADD.W   #0x0, R8
+   \   000018   4E4C         MOV.B   R12, R14
+   \   00001A   0D47         MOV.W   R7, R13
+   \   00001C   0C48         MOV.W   R8, R12
+   \   00001E   ........     CALLA   #osal_memcpy
+    407            buf[tmpLen] = ' ';
+   \   000022   0E48         MOV.W   R8, R14
+   \   000024   0E5A         ADD.W   R10, R14
+   \   000026   FE4020000000 MOV.B   #0x20, 0(R14)
+    408            err = (uint32)(value);
+    409            _ltoa( err, &buf[tmpLen+1], format );
+   \   00002C   4F46         MOV.B   R6, R15
+   \   00002E   1E53         ADD.W   #0x1, R14
+   \   000030   ........     CALLA   #?Subroutine0
+    410            HalLcdWriteString( (char*)buf, line );		
+    411          #endif
+    412          }
+   \                     ??CrossCallReturnLabel_0:
+   \   000034   31501A00     ADD.W   #0x1a, SP
+   \   000038   5617         POPM.W  #0x6, R11
+   \   00003A   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine0:
+   \   000000   0C49         MOV.W   R9, R12
+   \   000002   0D43         MOV.W   #0x0, R13
+   \   000004   ........     CALLA   #_ltoa
+   \   000008   4D4B         MOV.B   R11, R13
+   \   00000A   0C48         MOV.W   R8, R12
+   \   00000C   ........     BRA     #HalLcdWriteString
+    413          
+    414          /**************************************************************************************************
+    415           * @fn      HalLcdWriteStringValue
+    416           *
+    417           * @brief   Write a string followed by a value to the LCD
+    418           *
+    419           * @param   title   - Title that will be displayed before the value
+    420           *          value1  - value #1
+    421           *          format1 - redix of value #1
+    422           *          value2  - value #2
+    423           *          format2 - redix of value #2
+    424           *          line    - line number
+    425           *
+    426           * @return  None
+    427           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    428          void HalLcdWriteStringValueValue( char *title, uint16 value1, uint8 format1,
+   \                     HalLcdWriteStringValueValue:
+    429                                            uint16 value2, uint8 format2, uint8 line )
+    430          {
+   \   000000   7B15         PUSHM.W #0x8, R11
+   \   000002   31801A00     SUB.W   #0x1a, SP
+   \   000006   044C         MOV.W   R12, R4
+   \   000008   074D         MOV.W   R13, R7
+   \   00000A   454E         MOV.B   R14, R5
+   \   00000C   094F         MOV.W   R15, R9
+   \   00000E   56412E00     MOV.B   0x2e(SP), R6
+   \   000012   5B413000     MOV.B   0x30(SP), R11
+    431          
+    432          #if (HAL_LCD == TRUE)
+    433          
+    434            uint8 tmpLen;
+    435            uint8 buf[LCD_MAX_BUF];
+    436            uint32 err;
+    437          
+    438            tmpLen = (uint8)osal_strlen( (char*)title );
+   \   000016   ........     CALLA   #osal_strlen
+   \   00001A   4A4C         MOV.B   R12, R10
+    439            if ( tmpLen )
+   \   00001C   0841         MOV.W   SP, R8
+   \   00001E   0853         ADD.W   #0x0, R8
+   \   000020   4C93         CMP.B   #0x0, R12
+   \   000022   0B24         JEQ     ??HalLcdWriteStringValueValue_0
+    440            {
+    441              osal_memcpy( buf, title, tmpLen );
+   \   000024   4E4C         MOV.B   R12, R14
+   \   000026   0D44         MOV.W   R4, R13
+   \   000028   0C48         MOV.W   R8, R12
+   \   00002A   ........     CALLA   #osal_memcpy
+    442              buf[tmpLen++] = ' ';
+   \   00002E   0F48         MOV.W   R8, R15
+   \   000030   0F5A         ADD.W   R10, R15
+   \   000032   FF4020000000 MOV.B   #0x20, 0(R15)
+   \   000038   5A53         ADD.B   #0x1, R10
+    443            }
+    444          
+    445            err = (uint32)(value1);
+    446            _ltoa( err, &buf[tmpLen], format1 );
+   \                     ??HalLcdWriteStringValueValue_0:
+   \   00003A   4F45         MOV.B   R5, R15
+   \   00003C   0E48         MOV.W   R8, R14
+   \   00003E   0E5A         ADD.W   R10, R14
+   \   000040   0C47         MOV.W   R7, R12
+   \   000042   0D43         MOV.W   #0x0, R13
+   \   000044   ........     CALLA   #_ltoa
+    447            tmpLen = (uint8)osal_strlen( (char*)buf );
+   \   000048   0C48         MOV.W   R8, R12
+   \   00004A   ........     CALLA   #osal_strlen
+   \   00004E   4A4C         MOV.B   R12, R10
+    448          
+    449            buf[tmpLen++] = ',';
+   \   000050   0F48         MOV.W   R8, R15
+   \   000052   0F5A         ADD.W   R10, R15
+   \   000054   FF402C000000 MOV.B   #0x2c, 0(R15)
+   \   00005A   5A53         ADD.B   #0x1, R10
+    450            buf[tmpLen++] = ' ';
+   \   00005C   0F48         MOV.W   R8, R15
+   \   00005E   0F5A         ADD.W   R10, R15
+   \   000060   FF4020000000 MOV.B   #0x20, 0(R15)
+    451            err = (uint32)(value2);
+    452            _ltoa( err, &buf[tmpLen], format2 );
+   \   000066   4F46         MOV.B   R6, R15
+   \   000068   5A53         ADD.B   #0x1, R10
+   \   00006A   0E48         MOV.W   R8, R14
+   \   00006C   0E5A         ADD.W   R10, R14
+   \   00006E   ........     CALLA   #?Subroutine0
+    453          
+    454            HalLcdWriteString( (char *)buf, line );		
+    455          
+    456          #endif
+    457          }
+   \                     ??CrossCallReturnLabel_1:
+   \   000072   31501A00     ADD.W   #0x1a, SP
+   \   000076   7417         POPM.W  #0x8, R11
+   \   000078   1001         RETA
+    458          
+    459          /**************************************************************************************************
+    460           * @fn      HalLcdDisplayPercentBar
+    461           *
+    462           * @brief   Display percentage bar on the LCD
+    463           *
+    464           * @param   title   -
+    465           *          value   -
+    466           *
+    467           * @return  None
+    468           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    469          void HalLcdDisplayPercentBar( char *title, uint8 value )
+   \                     HalLcdDisplayPercentBar:
+    470          {
+   \   000000   3B15         PUSHM.W #0x4, R11
+   \   000002   31801200     SUB.W   #0x12, SP
+   \   000006   4A4D         MOV.B   R13, R10
+    471          #if (HAL_LCD == TRUE)
+    472          
+    473            uint8 percent;
+    474            uint8 leftOver;
+    475            uint8 buf[17];
+    476            uint32 err;
+    477            uint8 x;
+    478          
+    479            /* Write the title: */
+    480            HalLcdWriteString( title, HAL_LCD_LINE_1 );
+   \   000008   5D43         MOV.B   #0x1, R13
+   \   00000A   ........     CALLA   #HalLcdWriteString
+    481          
+    482            if ( value > 100 )
+   \   00000E   7A906500     CMP.B   #0x65, R10
+   \   000012   0228         JNC     ??HalLcdDisplayPercentBar_1
+    483              value = 100;
+   \   000014   7A406400     MOV.B   #0x64, R10
+    484          
+    485            /* convert to blocks */
+    486            percent = (uint8)(value / 10);
+   \                     ??HalLcdDisplayPercentBar_1:
+   \   000018   ........     CALLA   #?Subroutine1
+   \                     ??CrossCallReturnLabel_2:
+   \   00001C   494C         MOV.B   R12, R9
+    487            leftOver = (uint8)(value % 10);
+   \   00001E   ........     CALLA   #?Subroutine1
+   \                     ??CrossCallReturnLabel_3:
+   \   000022   4B4E         MOV.B   R14, R11
+    488          
+    489            /* Make window */
+    490            osal_memcpy( buf, "[          ]  ", 15 );
+   \   000024   0841         MOV.W   SP, R8
+   \   000026   0853         ADD.W   #0x0, R8
+   \   000028   3E400F00     MOV.W   #0xf, R14
+   \   00002C   3D40....     MOV.W   #`?<Constant "[          ]  ">`, R13
+   \   000030   0C48         MOV.W   R8, R12
+   \   000032   ........     CALLA   #osal_memcpy
+    491          
+    492            for ( x = 0; x < percent; x ++ )
+   \   000036   4F43         MOV.B   #0x0, R15
+   \   000038   043C         JMP     ??HalLcdDisplayPercentBar_2
+    493            {
+    494              buf[1+x] = '>';
+   \                     ??HalLcdDisplayPercentBar_0:
+   \   00003A   FE403E000100 MOV.B   #0x3e, 0x1(R14)
+    495            }
+   \   000040   5F53         ADD.B   #0x1, R15
+   \                     ??HalLcdDisplayPercentBar_2:
+   \   000042   0E48         MOV.W   R8, R14
+   \   000044   0E5F         ADD.W   R15, R14
+   \   000046   4F99         CMP.B   R9, R15
+   \   000048   F82B         JNC     ??HalLcdDisplayPercentBar_0
+    496          
+    497            if ( leftOver >= 5 )
+   \   00004A   7B900500     CMP.B   #0x5, R11
+   \   00004E   0328         JNC     ??HalLcdDisplayPercentBar_3
+    498              buf[1+x] = '+';
+   \   000050   FE402B000100 MOV.B   #0x2b, 0x1(R14)
+    499          
+    500            err = (uint32)value;
+    501            _ltoa( err, (uint8*)&buf[13], 10 );
+   \                     ??HalLcdDisplayPercentBar_3:
+   \   000056   7F400A00     MOV.B   #0xa, R15
+   \   00005A   0E48         MOV.W   R8, R14
+   \   00005C   3E500D00     ADD.W   #0xd, R14
+   \   000060   4C4A         MOV.B   R10, R12
+   \   000062   0D43         MOV.W   #0x0, R13
+   \   000064   ........     CALLA   #_ltoa
+    502          
+    503            HalLcdWriteString( (char*)buf, HAL_LCD_LINE_2 );
+   \   000068   6D43         MOV.B   #0x2, R13
+   \   00006A   0C48         MOV.W   R8, R12
+   \   00006C   ........     CALLA   #HalLcdWriteString
+    504          
+    505          #endif
+    506          
+    507          }
+   \   000070   31501200     ADD.W   #0x12, SP
+   \   000074   3817         POPM.W  #0x4, R11
+   \   000076   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine1:
+   \   000000   4C4A         MOV.B   R10, R12
+   \   000002   7E400A00     MOV.B   #0xa, R14
+   \   000006   ........     BRA     #?DivMod8u
+    508          
+    509          /**************************************************************************************************
+    510           *                                    HARDWARE LCD
+    511           **************************************************************************************************/
+    512          #define LCD_BACKLIGHT_OUT P8OUT
+    513          #define LCD_BACKLIGHT_DIR P8DIR
+    514          #define LCD_BACKLIGHT_SEL P8SEL
+    515          #define LCD_BACKLIGHT_PIN BIT3
+    516          
+    517          #define LCD_COMM_OUT_V2   P8OUT
+    518          #define LCD_COMM_DIR_V2   P8DIR
+    519          #define LCD_COMM_SEL_V2   P8SEL
+    520          #define LCD_CS_PIN_V2     BIT1
+    521          #define LCD_RESET_PIN_V2  BIT2
+    522          
+    523          #define LCD_COMM_OUT_V3   P9OUT
+    524          #define LCD_COMM_DIR_V3   P9DIR
+    525          #define LCD_COMM_SEL_V3   P9SEL
+    526          #define LCD_CS_PIN_V3     BIT6
+    527          #define LCD_RESET_PIN_V3  BIT7
+    528          
+    529          #if (HAL_LCD == TRUE)
+    530          /**************************************************************************************************
+    531           * @fn      HalLcd_HW_Init
+    532           *
+    533           * @brief   Initilize HW LCD Driver.
+    534           *
+    535           * @param   None
+    536           *
+    537           * @return  None
+    538           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    539          void HalLcd_HW_Init(void)
+   \                     HalLcd_HW_Init:
+    540          {
+   \   000000   0A12         PUSH.W  R10
+    541            int counter=0, i=0;
+   \   000002   0A43         MOV.W   #0x0, R10
+    542          
+    543            LCD_BACKLIGHT_DIR |= LCD_BACKLIGHT_PIN;
+   \   000004   F2D26502     BIS.B   #0x8, &0x265
+    544            LCD_BACKLIGHT_OUT |= LCD_BACKLIGHT_PIN;
+   \   000008   F2D26302     BIS.B   #0x8, &0x263
+    545            LCD_BACKLIGHT_SEL |= LCD_BACKLIGHT_PIN;
+   \   00000C   F2D26B02     BIS.B   #0x8, &0x26b
+    546          
+    547            if (HAL_MSP_EXP430F5438_REV_02())
+   \   000010   C2936102     CMP.B   #0x0, &0x261
+   \   000014   0B34         JGE     ??HalLcd_HW_Init_1
+    548            {
+    549              LCD_COMM_DIR_V2 |= LCD_CS_PIN_V2 | LCD_RESET_PIN_V2;
+   \   000016   F2D006006502 BIS.B   #0x6, &0x265
+    550              LCD_COMM_OUT_V2 |= LCD_CS_PIN_V2 | LCD_RESET_PIN_V2;
+   \   00001C   F2D006006302 BIS.B   #0x6, &0x263
+    551          
+    552              /* Reset LCD */
+    553              LCD_COMM_OUT_V2 &= ~LCD_RESET_PIN_V2;
+   \   000022   E2C26302     BIC.B   #0x4, &0x263
+    554              for (i = 0x47FF; i > 0; i--);
+    555              LCD_COMM_OUT_V2 |= LCD_RESET_PIN_V2;
+   \   000026   E2D26302     BIS.B   #0x4, &0x263
+   \   00002A   0C3C         JMP     ??HalLcd_HW_Init_2
+    556            }
+    557            else /* Must be MSP EXP430F5438_REV_03 */
+    558            {
+    559              LCD_COMM_DIR_V3 |= LCD_CS_PIN_V3 | LCD_RESET_PIN_V3;
+   \                     ??HalLcd_HW_Init_1:
+   \   00002C   F2D0C0008402 BIS.B   #0xc0, &0x284
+    560              LCD_COMM_OUT_V3 |= LCD_CS_PIN_V3 | LCD_RESET_PIN_V3;
+   \   000032   F2D0C0008202 BIS.B   #0xc0, &0x282
+    561          
+    562              /* Reset LCD */
+    563              LCD_COMM_OUT_V3 &= ~LCD_RESET_PIN_V3;
+   \   000038   F2C080008202 BIC.B   #0x80, &0x282
+    564              for (i = 0x47FF; i > 0; i--);
+    565              LCD_COMM_OUT_V3 |= LCD_RESET_PIN_V3;
+   \   00003E   F2D080008202 BIS.B   #0x80, &0x282
+    566            }
+    567          
+    568            /* UCLK, MOSI setup, SOMI cleared */
+    569            P9SEL |= BIT1 + BIT3;
+   \                     ??HalLcd_HW_Init_2:
+   \   000044   F2D00A008A02 BIS.B   #0xa, &0x28a
+    570            P9SEL &= ~BIT2;
+   \   00004A   E2C28A02     BIC.B   #0x4, &0x28a
+    571            P9DIR |= BIT1 + BIT3;
+   \   00004E   F2D00A008402 BIS.B   #0xa, &0x284
+    572            P9DIR &= ~BIT2;
+   \   000054   E2C28402     BIC.B   #0x4, &0x284
+    573          
+    574            /* 3-pin, 8-bit SPI master */
+    575            UCB2CTL0 |= UCMST+UCSYNC+UCCKPL+UCMSB;
+   \   000058   F2D069006106 BIS.B   #0x69, &0x661
+    576          
+    577            /* SMCLK */
+    578            UCB2CTL1 |= UCSSEL_2;
+   \   00005E   F2D080006006 BIS.B   #0x80, &0x660
+    579            UCB2BR0 = 3;
+   \   000064   F24003006606 MOV.B   #0x3, &0x666
+    580            UCB2BR1 = 0;
+   \   00006A   C2436706     MOV.B   #0x0, &0x667
+    581          
+    582            /* Initialize USCI */
+    583            UCB2CTL1 &= ~UCSWRST;
+   \   00006E   D2C36006     BIC.B   #0x1, &0x660
+    584            UCB2IFG &= ~UCRXIFG;
+   \   000072   D2C37D06     BIC.B   #0x1, &0x67d
+    585          
+    586            /* Initialize backlight */
+    587          #if !defined (POWER_SAVING)
+    588            HalLcd_HW_InitBackLight();
+   \   000076   ........     CALLA   #HalLcd_HW_InitBackLight
+    589          #endif
+    590          
+    591            /* LCD Initialization Routine Using Predefined settings */
+    592            while (counter < 8*6)
+    593            {
+    594              HalLcd_HW_SendCmd(&LcdInitMacro[counter]);
+   \                     ??HalLcd_HW_Init_0:
+   \   00007A   0C4A         MOV.W   R10, R12
+   \   00007C   3C50....     ADD.W   #LcdInitMacro, R12
+   \   000080   ........     CALLA   #HalLcd_HW_SendCmd
+    595              counter += 6;
+   \   000084   3A500600     ADD.W   #0x6, R10
+    596            }
+   \   000088   3A903000     CMP.W   #0x30, R10
+   \   00008C   F63B         JL      ??HalLcd_HW_Init_0
+    597          
+    598            /* Turn LCD ON */
+    599            HalLcd_HW_Active();
+   \   00008E   ........     CALLA   #HalLcd_HW_Active
+    600          
+    601            /* Clear screen */
+    602            HalLcd_HW_Clear();
+   \   000092   ........     CALLA   #HalLcd_HW_Clear
+    603          }
+   \   000096   3A41         POP.W   R10
+   \   000098   1001         RETA
+   \   00009A                REQUIRE _A_PDDIR_L
+   \   00009A                REQUIRE _A_PDOUT_L
+   \   00009A                REQUIRE _A_PDSEL_L
+   \   00009A                REQUIRE _A_PDIN_L
+   \   00009A                REQUIRE _A_PEDIR_L
+   \   00009A                REQUIRE _A_PEOUT_L
+   \   00009A                REQUIRE _A_PESEL_L
+   \   00009A                REQUIRE _A_UCB2CTLW0_L
+   \   00009A                REQUIRE _A_UCB2BRW_L
+   \   00009A                REQUIRE _A_UCB2ICTL_L
+    604          
+    605          /**************************************************************************************************
+    606           * @fn      HalLcd_HW_Control
+    607           *
+    608           * @brief   Write 6 bytes command to the LCD
+    609           *
+    610           * @param   uint8 cmd[] - 6 bytes command to be written to the LCD
+    611           *
+    612           * @return  None
+    613           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    614          void HalLcd_HW_SendCmd(uint8 cmd[])
+   \                     HalLcd_HW_SendCmd:
+    615          {
+    616            unsigned char i;
+    617            unsigned char rev02 = HAL_MSP_EXP430F5438_REV_02();
+   \   000000   F2B080006102 BIT.B   #0x80, &0x261
+   \   000006   4E7E         SUBC.B  R14, R14
+   \   000008   5E53         ADD.B   #0x1, R14
+    618          
+    619            if (rev02)
+   \   00000A   5EB3         BIT.B   #0x1, R14
+   \   00000C   0328         JNC     ??HalLcd_HW_SendCmd_2
+    620            {
+    621              LCD_COMM_OUT_V2 &= ~LCD_CS_PIN_V2;      //CS = 0 --> Start Transfer
+   \   00000E   E2C36302     BIC.B   #0x2, &0x263
+   \   000012   033C         JMP     ??HalLcd_HW_SendCmd_3
+    622            }
+    623            else /* Must be MSP EXP430F5438_REV_03 */
+    624            {
+    625              LCD_COMM_OUT_V3 &= ~LCD_CS_PIN_V3;      //CS = 0 --> Start Transfer
+   \                     ??HalLcd_HW_SendCmd_2:
+   \   000014   F2C040008202 BIC.B   #0x40, &0x282
+    626            }
+    627          
+    628            for ( i=0; i<6; i++ )
+   \                     ??HalLcd_HW_SendCmd_3:
+   \   00001A   4F43         MOV.B   #0x0, R15
+    629            {
+    630              while (!(UCB2IFG & UCTXIFG));
+   \                     ??HalLcd_HW_SendCmd_0:
+   \   00001C   E2B37D06     BIT.B   #0x2, &0x67d
+   \   000020   FD2B         JNC     ??HalLcd_HW_SendCmd_0
+    631              UCB2TXBUF = cmd[i];
+   \   000022   0D4C         MOV.W   R12, R13
+   \   000024   0D5F         ADD.W   R15, R13
+   \   000026   E24D6E06     MOV.B   @R13, &0x66e
+    632          
+    633              while (UCB2STAT & UCBUSY);
+   \                     ??HalLcd_HW_SendCmd_1:
+   \   00002A   D2B36A06     BIT.B   #0x1, &0x66a
+   \   00002E   FD2F         JC      ??HalLcd_HW_SendCmd_1
+    634              if (i==2)                               //Pull CS up after 3 bytes
+   \   000030   6F93         CMP.B   #0x2, R15
+   \   000032   0D20         JNE     ??HalLcd_HW_SendCmd_4
+    635              {
+    636                if (rev02)
+   \   000034   5EB3         BIT.B   #0x1, R14
+   \   000036   0528         JNC     ??HalLcd_HW_SendCmd_5
+    637                {
+    638                  LCD_COMM_OUT_V2 |= LCD_CS_PIN_V2;   //CS = 1 --> Stop Transfer
+   \   000038   E2D36302     BIS.B   #0x2, &0x263
+    639                  LCD_COMM_OUT_V2 &= ~LCD_CS_PIN_V2;  //CS = 0 --> Start Transfer	
+   \   00003C   E2C36302     BIC.B   #0x2, &0x263
+   \   000040   063C         JMP     ??HalLcd_HW_SendCmd_4
+    640                }
+    641                else /* Must be MSP EXP430F5438_REV_03 */
+    642                {
+    643                  LCD_COMM_OUT_V3 |= LCD_CS_PIN_V3;   //CS = 1 --> Stop Transfer
+   \                     ??HalLcd_HW_SendCmd_5:
+   \   000042   F2D040008202 BIS.B   #0x40, &0x282
+    644                  LCD_COMM_OUT_V3 &= ~LCD_CS_PIN_V3;  //CS = 0 --> Start Transfer	
+   \   000048   F2C040008202 BIC.B   #0x40, &0x282
+    645                }
+    646              }
+    647            }
+   \                     ??HalLcd_HW_SendCmd_4:
+   \   00004E   5F53         ADD.B   #0x1, R15
+   \   000050   7F900600     CMP.B   #0x6, R15
+   \   000054   E32B         JNC     ??HalLcd_HW_SendCmd_0
+    648          
+    649            if (rev02)
+   \   000056   5EB3         BIT.B   #0x1, R14
+   \   000058   0328         JNC     ??HalLcd_HW_SendCmd_6
+    650            {
+    651              LCD_COMM_OUT_V2 |= LCD_CS_PIN_V2;       //CS = 1 --> Stop Transfer
+   \   00005A   E2D36302     BIS.B   #0x2, &0x263
+   \   00005E   1001         RETA
+    652            }
+    653            else /* Must be MSP EXP430F5438_REV_03 */
+    654            {
+    655              LCD_COMM_OUT_V3 |= LCD_CS_PIN_V3;       //CS = 1 --> Stop Transfer
+   \                     ??HalLcd_HW_SendCmd_6:
+   \   000060   F2D040008202 BIS.B   #0x40, &0x282
+    656            }
+    657          }
+   \   000066   1001         RETA
+   \   000068                REQUIRE _A_PDIN_L
+   \   000068                REQUIRE _A_PDOUT_L
+   \   000068                REQUIRE _A_PEOUT_L
+   \   000068                REQUIRE _A_UCB2ICTL_L
+   \   000068                REQUIRE UCB2TXBUF
+   \   000068                REQUIRE UCB2STAT
+    658          
+    659          
+    660          /**************************************************************************************************
+    661           * @fn          HalLcd_HW_SetBackLight
+    662           *
+    663           * @brief       Initialize Backlight with predefined value
+    664           *
+    665           * @param       None
+    666           *
+    667           * @return      none
+    668           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    669          void HalLcd_HW_InitBackLight(void)
+   \                     HalLcd_HW_InitBackLight:
+    670          {
+    671            uint8 dutyCycle = 0, i;
+    672          
+    673             if (HAL_LCD_BACKLIGHT_LEVEL > 0)
+    674            {
+    675              TA0CCTL3 = OUTMOD_4;
+   \   000000   B24080004803 MOV.W   #0x80, &0x348
+    676          
+    677              for (i = 0; i < HAL_LCD_BACKLIGHT_LEVEL; i++)
+    678              {
+    679                dutyCycle += 25;
+    680              }
+    681              TA0CCR3 = dutyCycle;
+   \   000006   B240FA005803 MOV.W   #0xfa, &0x358
+    682            }
+    683            else
+    684            {  	
+    685              TA0CCTL3 = 0;
+    686            }
+    687          }
+   \   00000C   1001         RETA
+   \   00000E                REQUIRE TA0CCTL3
+   \   00000E                REQUIRE TA0CCR3
+    688          
+    689          /**************************************************************************************************
+    690           * @fn      HalLcd_HW_Clear
+    691           *
+    692           * @brief   Clear the HW LCD
+    693           *
+    694           * @param   None
+    695           *
+    696           * @return  None
+    697           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    698          void HalLcd_HW_Clear(void)
+   \                     HalLcd_HW_Clear:
+    699          {
+   \   000000   0A12         PUSH.W  R10
+    700            int i;
+    701            HalLcd_HW_SetAddress(0);
+   \   000002   0C43         MOV.W   #0x0, R12
+   \   000004   ........     CALLA   #HalLcd_HW_SetAddress
+    702            for ( i = 0; i < LCD_Size; i++)
+   \   000008   3A40B10D     MOV.W   #0xdb1, R10
+    703                HalLcd_HW_DrawCurrentBlock(0x00);
+   \                     ??HalLcd_HW_Clear_0:
+   \   00000C   0C43         MOV.W   #0x0, R12
+   \   00000E   ........     CALLA   #HalLcd_HW_DrawCurrentBlock
+   \   000012   3A53         ADD.W   #0xffff, R10
+   \   000014   FB23         JNE     ??HalLcd_HW_Clear_0
+    704            HalLcd_HW_SetAddress(0);
+   \   000016   0C43         MOV.W   #0x0, R12
+   \   000018   ........     CALLA   #HalLcd_HW_SetAddress
+    705          }
+   \   00001C   3A41         POP.W   R10
+   \   00001E   1001         RETA
+    706          
+    707          /**************************************************************************************************
+    708           * @fn          halLcdWriteLine
+    709           *
+    710           * @brief       Write one line on display
+    711           *
+    712           * @param       uint8 line - display line
+    713           *              char *pText - text buffer to write
+    714           *
+    715           * @return      none
+    716           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    717          void HalLcd_HW_WriteLine(char str[], uint8 line)
+   \                     HalLcd_HW_WriteLine:
+    718          {
+   \   000000   5B15         PUSHM.W #0x6, R11
+   \   000002   0B4C         MOV.W   R12, R11
+    719            int i,j,Counter=0, BlockValue;
+    720            int Address,  LCD_MEM_Add, ActualAddress;
+    721            char LookUpChar;
+    722            int temp;
+    723          
+    724            /* Set correct line based on font size */
+    725            HalLcd_HW_SetAddress( (line * FONT_HEIGHT) << 5) ;  // 0x20 = 2^5
+   \   000004   4D4D         MOV.B   R13, R13
+   \   000006   0C4D         MOV.W   R13, R12
+   \   000008                RPT     #0xb
+   \   000008   4A180C5D     ADDX.W  R13, R12
+   \   00000C                RPT     #0x5
+   \   00000C   44180C5C     RLAX.W  R12
+   \   000010   ........     CALLA   #HalLcd_HW_SetAddress
+    726          
+    727            ActualAddress = LcdAddress;
+   \   000014   1942....     MOV.W   &LcdAddress, R9
+    728            Counter =  LcdAddress & 0x1F;
+   \   000018   0849         MOV.W   R9, R8
+   \   00001A   38F01F00     AND.W   #0x1f, R8
+    729           	i=0;
+   \   00001E   0643         MOV.W   #0x0, R6
+   \   000020   023C         JMP     ??HalLcd_HW_WriteLine_3
+    730          
+    731            while (str[i]!=0)
+    732            {
+    733              LookUpChar = fonts_lookup[str[i]];
+    734              for (j=0;j < FONT_HEIGHT ;j++)
+    735              {
+    736                Address = ActualAddress + j*0x20;
+    737                temp = Address >> 5;
+    738                temp = temp + (temp <<4);
+    739          
+    740                LCD_MEM_Add = temp + (Address & 0x1F);
+    741          
+    742                BlockValue = LCD_MEM[ LCD_MEM_Add ];
+    743          
+    744                if (HAL_LCD_TEXT_STYLE & INVERT_TEXT)
+    745                {
+    746                  if (HAL_LCD_TEXT_STYLE & OVERWRITE_TEXT)
+    747                    BlockValue = 0xFFFF - fonts[LookUpChar*13+j];
+    748                  else
+    749                    BlockValue |= 0xFFFF - fonts[LookUpChar*13+j];
+    750                }
+    751                else
+    752                {
+    753                  if (HAL_LCD_TEXT_STYLE & OVERWRITE_TEXT)
+    754                    BlockValue = fonts[LookUpChar*(FONT_HEIGHT+1) +j];
+    755                  else
+    756                    BlockValue |= fonts[LookUpChar*(FONT_HEIGHT+1) +j];
+    757                }
+    758                HalLcd_HW_DrawBlock( Address, BlockValue);
+    759              }
+    760          
+    761              Counter++;
+    762              if (Counter == 17)
+    763              {
+    764                Counter = 0;
+    765                ActualAddress += 0x20*FONT_HEIGHT  - 16;
+    766                if (ActualAddress > LCD_LAST_PIXEL-0x20*FONT_HEIGHT )
+    767                  ActualAddress = 0;
+    768              }
+    769              else
+    770                ActualAddress++;
+   \                     ??HalLcd_HW_WriteLine_1:
+   \   000022   1953         ADD.W   #0x1, R9
+    771              i++;
+   \                     ??HalLcd_HW_WriteLine_2:
+   \   000024   1653         ADD.W   #0x1, R6
+   \                     ??HalLcd_HW_WriteLine_3:
+   \   000026   0F4B         MOV.W   R11, R15
+   \   000028   0F56         ADD.W   R6, R15
+   \   00002A   6F4F         MOV.B   @R15, R15
+   \   00002C   4F93         CMP.B   #0x0, R15
+   \   00002E   2024         JEQ     ??HalLcd_HW_WriteLine_4
+   \   000030   5A4F....     MOV.B   fonts_lookup(R15), R10
+   \   000034   0743         MOV.W   #0x0, R7
+   \                     ??HalLcd_HW_WriteLine_0:
+   \   000036   0F47         MOV.W   R7, R15
+   \   000038                RPT     #0xd
+   \   000038   4C180F5A     ADDX.W  R10, R15
+   \   00003C   0F5F         RLA.W   R15
+   \   00003E   1D4F....     MOV.W   fonts(R15), R13
+   \   000042   0F47         MOV.W   R7, R15
+   \   000044                RPT     #0x5
+   \   000044   44180F5F     RLAX.W  R15
+   \   000048   0C49         MOV.W   R9, R12
+   \   00004A   0C5F         ADD.W   R15, R12
+   \   00004C   ........     CALLA   #HalLcd_HW_DrawBlock
+   \   000050   1753         ADD.W   #0x1, R7
+   \   000052   37900C00     CMP.W   #0xc, R7
+   \   000056   EF3B         JL      ??HalLcd_HW_WriteLine_0
+   \   000058   1853         ADD.W   #0x1, R8
+   \   00005A   38901100     CMP.W   #0x11, R8
+   \   00005E   E123         JNE     ??HalLcd_HW_WriteLine_1
+   \   000060   0843         MOV.W   #0x0, R8
+   \   000062   39507001     ADD.W   #0x170, R9
+   \   000066   3990320C     CMP.W   #0xc32, R9
+   \   00006A   DC3B         JL      ??HalLcd_HW_WriteLine_2
+   \   00006C   0943         MOV.W   #0x0, R9
+   \   00006E   DA3F         JMP     ??HalLcd_HW_WriteLine_2
+    772            }
+    773            HalLcd_HW_SetAddress(ActualAddress);
+   \                     ??HalLcd_HW_WriteLine_4:
+   \   000070   0C49         MOV.W   R9, R12
+   \   000072   ........     CALLA   #HalLcd_HW_SetAddress
+    774          }
+   \   000076   5617         POPM.W  #0x6, R11
+   \   000078   1001         RETA
+    775          
+    776          /**************************************************************************************************
+    777           * @fn          HalLcd_HW_InitContrast
+    778           *
+    779           * @brief       Initialize the constrast based on the predefined value
+    780           *
+    781           * @param       uint8 level 70 to 127 - min/max
+    782           *
+    783           * @return      none
+    784           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    785          void HalLcd_HW_SetContrast(uint8 level)
+   \                     HalLcd_HW_SetContrast:
+    786          {
+    787            HAL_LCD_SETCONTRAST_CONTROL[5] = level;
+   \   000000   C24C....     MOV.B   R12, &HAL_LCD_SETCONTRAST_CONTROL + 5
+    788            HalLcd_HW_SendCmd(HAL_LCD_SETCONTRAST_CONTROL);
+   \   000004   3C40....     MOV.W   #HAL_LCD_SETCONTRAST_CONTROL, R12
+   \   000008   ........     BRA     #HalLcd_HW_SendCmd
+    789          }
+    790          
+    791          /**************************************************************************************************
+    792           * @fn          HalLcd_HW_SetAddress
+    793           *
+    794           * @brief       The the current location address
+    795           *
+    796           * @param       Address = LcdAddress  					
+    797           *              LcdTableAddress = Correct Address Row + Column
+    798           *                              = (Address / 0x20)* 17 + Column
+    799           *
+    800           * @return      none
+    801           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    802          void HalLcd_HW_SetAddress(int Address)
+   \                     HalLcd_HW_SetAddress:
+    803          {
+   \   000000   0A12         PUSH.W  R10
+   \   000002   0A4C         MOV.W   R12, R10
+    804            int temp;
+    805            Draw_Block_Address_Macro[4] = Address >> 8;
+   \   000004   0F4C         MOV.W   R12, R15
+   \   000006                RPT     #0x8
+   \   000006   47180F11     RRAX.W  R15
+   \   00000A   C24F....     MOV.B   R15, &Draw_Block_Address_Macro + 4
+    806            Draw_Block_Address_Macro[5] = Address & 0xFF;
+   \   00000E   C24C....     MOV.B   R12, &Draw_Block_Address_Macro + 5
+    807            HalLcd_HW_SendCmd(Draw_Block_Address_Macro);
+   \   000012   3C40....     MOV.W   #Draw_Block_Address_Macro, R12
+   \   000016   ........     CALLA   #HalLcd_HW_SendCmd
+    808            LcdAddress = Address;
+   \   00001A   824A....     MOV.W   R10, &LcdAddress
+    809            temp = Address >> 5;                      // Divided by 0x20
+   \   00001E   0E4A         MOV.W   R10, R14
+   \   000020                RPT     #0x5
+   \   000020   44180E11     RRAX.W  R14
+    810            temp = temp + (temp << 4);
+    811            //Multiplied by (1+16) and added by the offset
+    812            LcdTableAddress = temp + (Address & 0x1F);
+   \   000024   0F4E         MOV.W   R14, R15
+   \   000026   5F0E         RLAM.W  #0x4, R15
+   \   000028   0E5F         ADD.W   R15, R14
+   \   00002A   3AF01F00     AND.W   #0x1f, R10
+   \   00002E   0E5A         ADD.W   R10, R14
+   \   000030   824E....     MOV.W   R14, &LcdTableAddress
+    813          }
+   \   000034   3A41         POP.W   R10
+   \   000036   1001         RETA
+    814          
+    815          /**************************************************************************************************
+    816           * @fn          HalLcd_Active
+    817           *
+    818           * @brief       Enable the LCD
+    819           *
+    820           * @param       None
+    821           *
+    822           * @return      None
+    823           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    824          void HalLcd_HW_Active(void)
+   \                     HalLcd_HW_Active:
+    825          {
+    826            HalLcd_HW_SendCmd(LcdInitMacro);
+   \   000000   3C40....     MOV.W   #LcdInitMacro, R12
+   \   000004   ........     CALLA   #HalLcd_HW_SendCmd
+    827            LcdInitMacro[ 3 * 6 + 5 ] |= BIT3 ;
+    828            LcdInitMacro[ 3 * 6 + 5 ] &= ~BIT0;
+   \   000008   D2C3....     BIC.B   #0x1, &LcdInitMacro + 23
+   \   00000C   F2D2....     BIS.B   #0x8, &LcdInitMacro + 23
+    829            HalLcd_HW_SendCmd(&LcdInitMacro[ 3 * 6 ]);
+   \   000010   3C40....     MOV.W   #LcdInitMacro + 18, R12
+   \   000014   ........     BRA     #HalLcd_HW_SendCmd
+    830          }
+    831          
+    832          
+    833          /**************************************************************************************************
+    834           * @fn          HalLcd_HW_DrawCurrentBlock
+    835           *
+    836           * @brief       Draw the block at current position
+    837           *              Writes Value to LCD CGRAM
+    838           *              Writes Value to MSP430 Internal LCD Table
+    839           *              Updates LcdAddress and LcdTableAddress due to auto increment feature
+    840           *
+    841           * @param       Value - Value of the current block
+    842           *
+    843           * @return      None
+    844           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    845          void HalLcd_HW_DrawCurrentBlock(unsigned int Value)
+   \                     HalLcd_HW_DrawCurrentBlock:
+    846          {
+    847            int temp;
+    848            Draw_Block_Value_Macro[4] = Value >> 8;
+   \   000000   0F4C         MOV.W   R12, R15
+   \   000002                RPT     #0x8
+   \   000002   47190F10     RRUX.W  R15
+   \   000006   C24F....     MOV.B   R15, &Draw_Block_Value_Macro + 4
+    849            Draw_Block_Value_Macro[5] = Value & 0xFF;
+   \   00000A   C24C....     MOV.B   R12, &Draw_Block_Value_Macro + 5
+    850            LCD_MEM[ LcdTableAddress ] = Value;
+   \   00000E   1F42....     MOV.W   &LcdTableAddress, R15
+   \   000012   0F5F         RLA.W   R15
+   \   000014   8F4C....     MOV.W   R12, LCD_MEM(R15)
+    851            HalLcd_HW_SendCmd(Draw_Block_Value_Macro);
+   \   000018   3C40....     MOV.W   #Draw_Block_Value_Macro, R12
+   \   00001C   ........     CALLA   #HalLcd_HW_SendCmd
+    852            LcdAddress++;
+   \   000020   9253....     ADD.W   #0x1, &LcdAddress
+    853            temp = LcdAddress >> 5;                   // Divided by 0x20
+   \   000024   1C42....     MOV.W   &LcdAddress, R12
+   \   000028   0E4C         MOV.W   R12, R14
+   \   00002A                RPT     #0x5
+   \   00002A   44190E10     RRUX.W  R14
+    854            temp = temp + (temp << 4);
+    855            //Multiplied by (1+16) and added by the offset
+    856            LcdTableAddress = temp + (LcdAddress & 0x1F);
+   \   00002E   0F4E         MOV.W   R14, R15
+   \   000030   5F0E         RLAM.W  #0x4, R15
+   \   000032   0E5F         ADD.W   R15, R14
+   \   000034   0F4C         MOV.W   R12, R15
+   \   000036   3FF01F00     AND.W   #0x1f, R15
+   \   00003A   0E5F         ADD.W   R15, R14
+   \   00003C   824E....     MOV.W   R14, &LcdTableAddress
+    857            // If LcdAddress gets off the right edge, move to next line
+    858            if ((LcdAddress & 0x1F) > 0x11)
+   \   000040   4E4C         MOV.B   R12, R14
+   \   000042   7EF01F00     AND.B   #0x1f, R14
+   \   000046   7E901200     CMP.B   #0x12, R14
+   \   00004A   0628         JNC     ??HalLcd_HW_DrawCurrentBlock_0
+    859              HalLcd_HW_SetAddress( (LcdAddress & 0xFFE0) + 0x20 );
+   \   00004C   3CF0E0FF     AND.W   #0xffe0, R12
+   \   000050   3C502000     ADD.W   #0x20, R12
+   \   000054   ........     CALLA   #HalLcd_HW_SetAddress
+    860          
+    861            if (LcdAddress == LCD_Size)
+   \                     ??HalLcd_HW_DrawCurrentBlock_0:
+   \   000058   B290B10D.... CMP.W   #0xdb1, &LcdAddress
+   \   00005E   0320         JNE     ??HalLcd_HW_DrawCurrentBlock_1
+    862              HalLcd_HW_SetAddress( 0 );
+   \   000060   0C43         MOV.W   #0x0, R12
+   \   000062   ........     CALLA   #HalLcd_HW_SetAddress
+    863          }
+   \                     ??HalLcd_HW_DrawCurrentBlock_1:
+   \   000066   1001         RETA
+    864          
+    865          /**************************************************************************************************
+    866           * @fn          HalLcd_HW_DrawBlock
+    867           *
+    868           * @brief       Writes Value to LCD CGRAM and LCD_MEM at Address location
+    869           *
+    870           * @param       Value - Value of the current block
+    871           *
+    872           * @return      None
+    873           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    874          void HalLcd_HW_DrawBlock(unsigned int Address, unsigned int Value)
+   \                     HalLcd_HW_DrawBlock:
+    875          {
+   \   000000   0A12         PUSH.W  R10
+   \   000002   0A4D         MOV.W   R13, R10
+    876            HalLcd_HW_SetAddress(Address);
+   \   000004   ........     CALLA   #HalLcd_HW_SetAddress
+    877            HalLcd_HW_DrawCurrentBlock(Value);
+   \   000008   0C4A         MOV.W   R10, R12
+   \   00000A   ........     CALLA   #HalLcd_HW_DrawCurrentBlock
+    878          }
+   \   00000E   3A41         POP.W   R10
+   \   000010   1001         RETA
+    879          
+    880          /**************************************************************************************************
+    881           * @fn      HalLcd_HW_Wait
+    882           *
+    883           * @brief   wait for 4 "nop"
+    884           *
+    885           * @param   uint16 i - number of 4xNOP
+    886           *
+    887           * @return  None
+    888           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    889          void HalLcd_HW_Wait(uint16 i)
+   \                     HalLcd_HW_Wait:
+    890          {
+   \   000000   043C         JMP     ??HalLcd_HW_Wait_1
+    891            while(i--)
+    892            {
+    893              asm("nop");
+   \                     ??HalLcd_HW_Wait_0:
+   \   000002   0343         nop
+    894              asm("nop");
+   \   000004   0343         nop
+    895              asm("nop");
+   \   000006   0343         nop
+    896              asm("nop");
+   \   000008   0343         nop
+    897            }
+   \                     ??HalLcd_HW_Wait_1:
+   \   00000A   0F4C         MOV.W   R12, R15
+   \   00000C   3C53         ADD.W   #0xffff, R12
+   \   00000E   0F93         CMP.W   #0x0, R15
+   \   000010   F823         JNE     ??HalLcd_HW_Wait_0
+    898          }
+   \   000012   1001         RETA
+
+   \                                 In  segment DATA16_ID, align 1, align-sorted
+   \                     `?<Initializer for LcdInitMacro>`:
+   \   000000   740000760001 DC8 116, 0, 0, 118, 0, 1, 116, 0, 1, 118, 0, 13, 116, 0, 2, 118, 0, 76
+   \            74000176000D
+   \            74000276004C
+   \   000012   740003761214 DC8 116, 0, 3, 118, 18, 20, 116, 0, 4, 118, 4, 102, 116, 0, 5, 118, 0
+   \            740004760466
+   \            7400057600  
+   \   000023   107400067600 DC8 16, 116, 0, 6, 118, 0, 0, 116, 0, 7, 118, 0, 21, 116, 0, 8, 118, 0
+   \            007400077600
+   \            157400087600
+   \   000035   037400097600 DC8 3, 116, 0, 9, 118, 0, 0, 116, 0, 10, 118, 0, 21, 116, 0, 11, 118, 0
+   \            0074000A7600
+   \            1574000B7600
+   \   000047   0374000C7600 DC8 3, 116, 0, 12, 118, 0, 3, 116, 0, 13, 118, 0, 0, 116, 0, 14, 118, 0
+   \            0374000D7600
+   \            0074000E7600
+   \   000059   1574000F7600 DC8 21, 116, 0, 15, 118, 0, 3, 116, 0, 16, 118, 0, 21, 116, 0, 17, 118
+   \            037400107600
+   \            1574001176  
+   \   00006A   0003         DC8 0, 3
+
+   \                                 In  segment DATA16_ID, align 1, align-sorted
+   \                     `?<Initializer for HAL_LCD_SETCONTRAST_CONTROL>`:
+   \   000000   740004760464 DC8 116, 0, 4, 118, 4, 100
+
+   \                                 In  segment DATA16_ID, align 1, align-sorted
+   \                     `?<Initializer for Read_Block_Address_Macro>`:
+   \   000000   740012770000 DC8 116, 0, 18, 119, 0, 0
+
+   \                                 In  segment DATA16_ID, align 1, align-sorted
+   \                     `?<Initializer for Draw_Block_Value_Macro>`:
+   \   000000   74001276FFFF DC8 116, 0, 18, 118, 255, 255
+
+   \                                 In  segment DATA16_ID, align 1, align-sorted
+   \                     `?<Initializer for Draw_Block_Address_Macro>`:
+   \   000000   740011760000 DC8 116, 0, 17, 118, 0, 0
+
+   \                                 In  segment DATA16_C, align 1, align-sorted
+   \                     `?<Constant "TexasInstruments">`:
+   \   000000   546578617349 DC8 "TexasInstruments"
+   \            6E737472756D
+   \            656E747300  
+
+   \                                 In  segment DATA16_C, align 1, align-sorted
+   \                     `?<Constant "                 ">`:
+   \   000000   202020202020 DC8 "                 "
+   \            202020202020
+   \            202020202000
+
+   \                                 In  segment DATA16_C, align 1, align-sorted
+   \                     `?<Constant "[          ]  ">`:
+   \   000000   5B2020202020 DC8 "[          ]  "
+   \            20202020205D
+   \            202000      
+    899          
+    900          /**************************************************************************************************
+    901           * @fn      _itoa
+    902           *
+    903           * @brief   convert a 16bit number to ASCII
+    904           *
+    905           * @param   num -
+    906           *          buf -
+    907           *          radix -
+    908           *
+    909           * @return  void
+    910           *
+    911           **************************************************************************************************/
+    912          /*
+    913          void _itoa(uint16 num, byte *buf, byte radix)
+    914          {
+    915            char c,i;
+    916            byte *p, rst[5];
+    917          
+    918            p = rst;
+    919            for ( i=0; i<5; i++,p++ )
+    920            {
+    921              c = num % radix;  // Isolate a digit
+    922              *p = c + (( c < 10 ) ? '0' : '7');  // Convert to Ascii
+    923              num /= radix;
+    924              if ( !num )
+    925                break;
+    926            }
+    927          
+    928            for ( c=0 ; c<=i; c++ )
+    929              *buf++ = *p--;  // Reverse character order
+    930          
+    931            *buf = '\0';
+    932          }
+    933          */
+    934          #endif
+    935          
+    936          /**************************************************************************************************
+    937          **************************************************************************************************/
+    938          
+    939          
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      30  HalLcdDisplayPercentBar
+            30 -> HalLcdWriteString
+            30 -> _ltoa
+            30 -> osal_memcpy
+       4  HalLcdInit
+             4 -> HalLcd_HW_Init
+       6  HalLcdWriteScreen
+             6 -> HalLcdWriteString
+      20  HalLcdWriteString
+            20 -> HalLcdWriteString
+            20 -> HalLcd_HW_WriteLine
+            20 -> osal_mem_alloc
+            20 -> osal_mem_free
+            20 -> osal_memcpy
+            20 -> osal_strlen
+      42  HalLcdWriteStringValue
+            42 -> HalLcdWriteString
+            42 -> _ltoa
+            42 -> osal_memcpy
+            42 -> osal_strlen
+      46  HalLcdWriteStringValueValue
+            46 -> HalLcdWriteString
+            46 -> _ltoa
+            46 -> osal_memcpy
+            46 -> osal_strlen
+      32  HalLcdWriteValue
+            32 -> HalLcdWriteString
+            32 -> _ltoa
+       4  HalLcd_HW_Active
+             4 -> HalLcd_HW_SendCmd
+       6  HalLcd_HW_Clear
+             6 -> HalLcd_HW_DrawCurrentBlock
+             6 -> HalLcd_HW_SetAddress
+       6  HalLcd_HW_DrawBlock
+             6 -> HalLcd_HW_DrawCurrentBlock
+             6 -> HalLcd_HW_SetAddress
+       4  HalLcd_HW_DrawCurrentBlock
+             4 -> HalLcd_HW_SendCmd
+             4 -> HalLcd_HW_SetAddress
+       6  HalLcd_HW_Init
+             6 -> HalLcd_HW_Active
+             6 -> HalLcd_HW_Clear
+             6 -> HalLcd_HW_InitBackLight
+             6 -> HalLcd_HW_SendCmd
+       4  HalLcd_HW_InitBackLight
+       4  HalLcd_HW_SendCmd
+       6  HalLcd_HW_SetAddress
+             6 -> HalLcd_HW_SendCmd
+       4  HalLcd_HW_SetContrast
+             4 -> HalLcd_HW_SendCmd
+       4  HalLcd_HW_Wait
+      16  HalLcd_HW_WriteLine
+            16 -> HalLcd_HW_DrawBlock
+            16 -> HalLcd_HW_SetAddress
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      18  ?<Constant "                 ">
+      17  ?<Constant "TexasInstruments">
+      15  ?<Constant "[          ]  ">
+       6  ?<Initializer for Draw_Block_Address_Macro>
+       6  ?<Initializer for Draw_Block_Value_Macro>
+       6  ?<Initializer for HAL_LCD_SETCONTRAST_CONTROL>
+     108  ?<Initializer for LcdInitMacro>
+       6  ?<Initializer for Read_Block_Address_Macro>
+      16  ?Subroutine0
+      10  ?Subroutine1
+       6  Draw_Block_Address_Macro
+       6  Draw_Block_Value_Macro
+       6  HAL_LCD_SETCONTRAST_CONTROL
+     120  HalLcdDisplayPercentBar
+       8  HalLcdInit
+      22  HalLcdWriteScreen
+     176  HalLcdWriteString
+      60  HalLcdWriteStringValue
+     122  HalLcdWriteStringValueValue
+      36  HalLcdWriteValue
+      24  HalLcd_HW_Active
+      32  HalLcd_HW_Clear
+      18  HalLcd_HW_DrawBlock
+     104  HalLcd_HW_DrawCurrentBlock
+     154  HalLcd_HW_Init
+      14  HalLcd_HW_InitBackLight
+     104  HalLcd_HW_SendCmd
+      56  HalLcd_HW_SetAddress
+      12  HalLcd_HW_SetContrast
+      20  HalLcd_HW_Wait
+     122  HalLcd_HW_WriteLine
+    3740  LCD_MEM
+       2  LcdAddress
+     108  LcdInitMacro
+       2  LcdTableAddress
+       2  Lcd_Line1
+       6  Read_Block_Address_Macro
+       2  TA0CCR3
+       2  TA0CCTL3
+       1  UCB2STAT
+       1  UCB2TXBUF
+       2  _A_PDDIR_L
+       2  _A_PDIN_L
+       2  _A_PDOUT_L
+       2  _A_PDSEL_L
+       2  _A_PEDIR_L
+       2  _A_PEOUT_L
+       2  _A_PESEL_L
+       2  _A_UCB2BRW_L
+       2  _A_UCB2CTLW0_L
+       2  _A_UCB2ICTL_L
+    2132  fonts
+     137  fonts_lookup
+
+ 
+ 1 230 bytes in segment CODE
+    26 bytes in segment DATA16_AN
+ 2 319 bytes in segment DATA16_C
+   132 bytes in segment DATA16_I
+   132 bytes in segment DATA16_ID
+ 3 746 bytes in segment DATA16_Z
+ 
+ 1 230 bytes of CODE  memory
+ 2 451 bytes of CONST memory
+ 3 878 bytes of DATA  memory (+ 26 bytes shared)
+
+Errors: none
+Warnings: none

@@ -54,6 +54,8 @@
 #include "mt_uart.h"
 #include "OSAL.h"
 #include "OSAL_Tasks.h"
+//MHMS: Inlude NV memory read and write stuff
+#include "OSAL_Nv.h"
 #include "sapi.h"
 #include "zap_app.h"
 #include "zap_phy.h"
@@ -95,7 +97,8 @@ typedef void (*zapProcessFunc_t)(uint8 port, uint8 *pBuf);
  *                                           Global Variables
  * ------------------------------------------------------------------------------------------------
  */
-
+//MHMS:Switches Logical type
+uint8 zLogicalType=ZG_DEVICETYPE_ROUTER;
 uint8 zapTaskId;
 
 // Hook for supporting more than 1 ZNP on different ports.
@@ -218,6 +221,57 @@ static void zapMonitor(void);
 static void zapSync(void);
 static void zapSysEvtMsg(void);
 
+//MHMS:Adding function from ZGlobals.c to avoid includes
+uint8 zgWriteStartupOptions( uint8 action, uint8 bitOptions );
+
+/*********************************************************************
+ * @fn          zgWriteStartupOptions
+ *
+ * @brief       Writes bits into the ZCD_NV_STARTUP_OPTION NV Item.
+ *
+ * @param       action - ZG_STARTUP_SET set bit, ZG_STARTUP_CLEAR to
+ *               clear bit. The set bit is an OR operation, and the
+ *               clear bit is an AND ~(bitOptions) operation.
+ *
+ * @param       bitOptions - which bits to perform action on:
+ *                      ZCD_STARTOPT_DEFAULT_CONFIG_STATE
+ *                      ZCD_STARTOPT_DEFAULT_NETWORK_STATE
+   
+ *
+ * @return      ZSUCCESS if successful
+ */
+uint8 zgWriteStartupOptions( uint8 action, uint8 bitOptions )
+{
+  uint8 status;
+  uint8 startupOptions = 0;
+
+  status = osal_nv_read( ZCD_NV_STARTUP_OPTION,
+                0,
+                sizeof( startupOptions ),
+                &startupOptions );
+
+  if ( status == ZSUCCESS )
+  {
+    if ( action == ZG_STARTUP_SET )
+    {
+      // Set bits
+      startupOptions |= bitOptions;
+    }
+    else
+    {
+      // Clear bits
+      startupOptions &= (bitOptions ^ 0xFF);
+    }
+
+    // Changed?
+    status = osal_nv_write( ZCD_NV_STARTUP_OPTION,
+                 0,
+                 sizeof( startupOptions ),
+                 &startupOptions );
+  }
+
+  return ( status );
+}
 /**************************************************************************************************
  * @fn          zapInit
  *
@@ -640,6 +694,8 @@ static void zapMonInfo(void)
  * None.
  *
  * @return      None.
+* MHMS:SW1 and SW2 here are currently set to change the logical type of the Zigbee node.
+*
  **************************************************************************************************
  */
 static void zapKeys(keyChange_t *msg)
@@ -665,9 +721,26 @@ static void zapKeys(keyChange_t *msg)
   {
     if (keys & HAL_KEY_SW_1)
     {
+      //MHMS:SW1 type change to coordinator
+      zapPhyReset(zapAppPort);
+      if(zgWriteStartupOptions( ZG_STARTUP_SET,ZCD_STARTOPT_DEFAULT_CONFIG_STATE&&ZCD_STARTOPT_DEFAULT_NETWORK_STATE)){
+      zapPhyReset(zapAppPort);
+      zLogicalType=ZG_DEVICETYPE_COORDINATOR;
+      zapSync();
+      zapPhyReset(zapAppPort);
+      HalLcdWriteStringValue("Should be Coord.",0, 16, HAL_LCD_LINE_7);
+      }
     }
     if (keys & HAL_KEY_SW_2)
     {
+     //MHMS: Try and implement ZdoStateChange to Router
+      if(zgWriteStartupOptions( ZG_STARTUP_SET,ZCD_STARTOPT_DEFAULT_CONFIG_STATE&&ZCD_STARTOPT_DEFAULT_NETWORK_STATE)){
+      zapPhyReset(zapAppPort);
+      zLogicalType=ZG_DEVICETYPE_ROUTER;
+      zapSync();
+      zapPhyReset(zapAppPort);
+      HalLcdWriteStringValue("Should be Router.",0, 16, HAL_LCD_LINE_7);
+      }
     }
     if (keys & HAL_KEY_SW_3)
     {
@@ -795,7 +868,9 @@ static void zapSync(void)
   if (devState < DEV_END_DEVICE)
   {
     // Configure the defaults from zap.cfg into the ZNP.
-    pBuf[0] = ZAP_DEVICETYPE;
+    //pBuf[0] = ZAP_DEVICETYPE;
+    //MHMS:fixing zapsync using global variable
+    pBuf[0] = zLogicalType;
     (void)znp_nv_write(ZCD_NV_LOGICAL_TYPE, 0, 1, pBuf);
 
     pBuf[0] = LO_UINT16(ZDAPP_CONFIG_PAN_ID);

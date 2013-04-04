@@ -1,0 +1,2849 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      04/Apr/2013  15:23:22 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    __rt_version  =  3                                                      /
+//    __double_size =  32                                                     /
+//    __reg_r4      =  free                                                   /
+//    __reg_r5      =  free                                                   /
+//    __pic         =  no                                                     /
+//    __core        =  430X                                                   /
+//    __data_model  =  small                                                  /
+//    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\Source\zap_zdo.c                 /
+//    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap /
+//                     .cfg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=!ZAP_PHY_SPI      /
+//                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE            /
+//                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE              /
+//                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE              /
+//                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                 /
+//                     -DZAP_AF_DATA_REQ_FRAG=FALSE                           /
+//                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG           /
+//                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC              /
+//                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC         /
+//                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0        /
+//                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                /
+//                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000          /
+//                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)     /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\Source\zap_zdo.c -D              /
+//                     ZAP_DEVICETYPE=ZG_DEVICETYPE_COORDINATOR -D            /
+//                     TVSA_DEVICE_ID=0x0016 -D TVSA_DONGLE=1 -D HAL_UART=1   /
+//                     -lC "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP            /
+//                     Coordinator\List\" -lA "C:\Users\student\Documents\Git /
+//                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP /
+//                     5438\ZAP Coordinator\List\" --remarks --diag_suppress  /
+//                     Pe001,Pe193,Pe236,Pe826 -o                             /
+//                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5 /
+//                     .1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                /
+//                     Coordinator\Obj\" --debug -D__MSP430F5438__ -e         /
+//                     --double=32 --clib -I C:\Users\student\Documents\GitHu /
+//                     b\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 /
+//                     38\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP4 /
+//                     30-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\   /
+//                     -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\    /
+//                     -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C /
+//                     omponents\hal\target\MSP5438ZAP\ -I                    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\include\ -I C:\Users\student\Documents\GitH /
+//                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 /
+//                     438\..\..\..\..\..\Components\mac\include\ -I          /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\Z /
+//                     AP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\.. /
+//                     \..\..\..\Components\osal\include\ -I                  /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\osal\mcu\msp430\ -I                             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\services\saddr\ -I C:\Users\student\Documents\G /
+//                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\E /
+//                     XP5438\..\..\..\..\..\Components\services\sdata\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\af\ -I C:\Users\student\Documents\GitHub\ /
+//                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 /
+//                     \..\..\..\..\..\Components\stack\nwk\ -I               /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sapi\ -I C:\Users\student\Documents\GitHu /
+//                     b\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 /
+//                     38\..\..\..\..\..\Components\stack\sec\ -I             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sys\ -I C:\Users\student\Documents\GitHub /
+//                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP543 /
+//                     8\..\..\..\..\..\Components\stack\zdo\ -I              /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\zmac\ -I C:\Users\student\Documents\GitHub\MHMS /
+//                     \ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\ /
+//                     ..\..\..\..\Components\zmac\f8w\ --core=430X           /
+//                     --data_model=small -Ohz --multiplier=32                /
+//                     --multiplier_location=4C0 --require_prototypes         /
+//                     --hw_workaround=CPU40 --hw_workaround=CPU42            /
+//    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                 /
+//                     Coordinator\List\zap_zdo.s43                           /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME zap_zdo
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__core", "430X"
+        RTMODEL "__data_model", "small"
+        RTMODEL "__double_size", "32"
+        RTMODEL "__pic", "no"
+        RTMODEL "__reg_r4", "free"
+        RTMODEL "__reg_r5", "free"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:SORT:NOROOT(0)
+
+        EXTERN ?cstart_init_zero
+        EXTERN ?longjmp_r4
+        EXTERN ?longjmp_r5
+        EXTERN ?setjmp_r4
+        EXTERN ?setjmp_r5
+
+        PUBWEAK ?setjmp_save_r4
+        PUBWEAK ?setjmp_save_r5
+        PUBLIC ZDOInitDevice
+        FUNCTION ZDOInitDevice,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC ZDO_ParseDeviceAnnce
+        FUNCTION ZDO_ParseDeviceAnnce,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 8, STACK
+        PUBLIC ZDO_ParseEPListRsp
+        FUNCTION ZDO_ParseEPListRsp,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 16, STACK
+        PUBLIC ZDO_ParseSimpleDescBuf
+        FUNCTION ZDO_ParseSimpleDescBuf,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC ZDO_ParseSimpleDescRsp
+        FUNCTION ZDO_ParseSimpleDescRsp,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC ZDO_RegisterForZDOMsg
+        FUNCTION ZDO_RegisterForZDOMsg,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC ZDO_RegisterForZdoCB
+        FUNCTION ZDO_RegisterForZdoCB,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC ZDO_RemoveRegisteredCB
+        FUNCTION ZDO_RemoveRegisteredCB,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 14, STACK
+        FUNCTION ZDO_SendMsgCBs,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC ZDO_UpdateNwkStatus
+        FUNCTION ZDO_UpdateNwkStatus,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 8, STACK
+        PUBLIC ZDP_EndDeviceBindReq
+        FUNCTION ZDP_EndDeviceBindReq,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 18, STACK
+        PUBLIC ZDP_MatchDescReq
+        FUNCTION ZDP_MatchDescReq,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 18, STACK
+        PUBLIC ZDP_SimpleDescReq
+        FUNCTION ZDP_SimpleDescReq,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 14, STACK
+        FUNCTION zapZDO_ConcentratorIndicationCB,041203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 10, STACK
+        PUBLIC zapZdoProcessIncoming
+        FUNCTION zapZdoProcessIncoming,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 28, STACK
+        PUBLIC zapZdoSync
+        FUNCTION zapZdoSync,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA SP DATA
+          CFI Resource PC:20, SP:20, SR:16, R4L:16, R4H:4, R4:20, R5L:16, R5H:4
+          CFI Resource R5:20, R6L:16, R6H:4, R6:20, R7L:16, R7H:4, R7:20, R8L:16
+          CFI Resource R8H:4, R8:20, R9L:16, R9H:4, R9:20, R10L:16, R10H:4
+          CFI Resource R10:20, R11L:16, R11H:4, R11:20, R12L:16, R12H:4, R12:20
+          CFI Resource R13L:16, R13H:4, R13:20, R14L:16, R14H:4, R14:20, R15L:16
+          CFI Resource R15H:4, R15:20
+          CFI ResourceParts R4 R4H, R4L
+          CFI ResourceParts R5 R5H, R5L
+          CFI ResourceParts R6 R6H, R6L
+          CFI ResourceParts R7 R7H, R7L
+          CFI ResourceParts R8 R8H, R8L
+          CFI ResourceParts R9 R9H, R9L
+          CFI ResourceParts R10 R10H, R10L
+          CFI ResourceParts R11 R11H, R11L
+          CFI ResourceParts R12 R12H, R12L
+          CFI ResourceParts R13 R13H, R13L
+          CFI ResourceParts R14 R14H, R14L
+          CFI ResourceParts R15 R15H, R15L
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L Undefined
+          CFI R12H Undefined
+          CFI R12 Undefined
+          CFI R13L Undefined
+          CFI R13H Undefined
+          CFI R13 Undefined
+          CFI R14L Undefined
+          CFI R14H Undefined
+          CFI R14 Undefined
+          CFI R15L Undefined
+          CFI R15H Undefined
+          CFI R15 Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L SameValue
+          CFI R12H 0
+          CFI R12 Concat
+          CFI R13L SameValue
+          CFI R13H 0
+          CFI R13 Concat
+          CFI R14L SameValue
+          CFI R14H 0
+          CFI R14 Concat
+          CFI R15L SameValue
+          CFI R15H 0
+          CFI R15 Concat
+          CFI EndCommon cfiCommon1
+        
+        EXTERN osal_msg_allocate
+        FUNCTION osal_msg_allocate,0202H
+        EXTERN osal_memcpy
+        FUNCTION osal_memcpy,0202H
+        EXTERN osal_msg_send
+        FUNCTION osal_msg_send,0202H
+        EXTERN zap_msg_allocate
+        FUNCTION zap_msg_allocate,0202H
+        EXTERN zapAppPort
+        EXTERN zapPhySend
+        FUNCTION zapPhySend,0202H
+        EXTERN zap_msg_deallocate
+        FUNCTION zap_msg_deallocate,0202H
+        EXTERN osal_mem_free
+        FUNCTION osal_mem_free,0202H
+        EXTERN osal_mem_alloc
+        FUNCTION osal_mem_alloc,0202H
+        EXTERN znp_ZDO_RegisterForZDOMsg
+        FUNCTION znp_ZDO_RegisterForZDOMsg,0202H
+        EXTERN sAddrExtCpy
+        FUNCTION sAddrExtCpy,0202H
+        EXTERN epList
+        EXTERN osal_msg_find
+        FUNCTION osal_msg_find,0202H
+        EXTERN zapTaskId
+        EXTERN osal_set_event
+        FUNCTION osal_set_event,0202H
+        EXTERN devState
+        EXTERN zb_GetDeviceInfo
+        FUNCTION zb_GetDeviceInfo,0202H
+        EXTERN osal_start_timerEx
+        FUNCTION osal_start_timerEx,0202H
+
+// C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\Source\zap_zdo.c
+//    1 /**************************************************************************************************
+//    2     Filename:       zap_zdo.c
+//    3     Revised:        $Date: 2011-06-07 11:43:24 -0700 (Tue, 07 Jun 2011) $
+//    4     Revision:       $Revision: 26237 $
+//    5 
+//    6     Description:
+//    7 
+//    8     This file declares the ZNP Application Processor proxy ZDO API functions.
+//    9 
+//   10 
+//   11     Copyright 2009-2011 Texas Instruments Incorporated. All rights reserved.
+//   12 
+//   13     IMPORTANT: Your use of this Software is limited to those specific rights
+//   14     granted under the terms of a software license agreement between the user
+//   15     who downloaded the software, his/her employer (which must be your employer)
+//   16     and Texas Instruments Incorporated (the "License").  You may not use this
+//   17     Software unless you agree to abide by the terms of the License. The License
+//   18     limits your use, and you acknowledge, that the Software may not be modified,
+//   19     copied or distributed unless embedded on a Texas Instruments microcontroller
+//   20     or used solely and exclusively in conjunction with a Texas Instruments radio
+//   21     frequency transceiver, which is integrated into your product.  Other than for
+//   22     the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   23     works of, modify, distribute, perform, display or sell this Software and/or
+//   24     its documentation for any purpose.
+//   25 
+//   26     YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   27     PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   28     INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   29     NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   30     TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   31     NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   32     LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   33     INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   34     OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   35     OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   36     (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   37 
+//   38     Should you have any questions regarding your right to use this Software,
+//   39     contact Texas Instruments Incorporated at www.TI.com.
+//   40 **************************************************************************************************/
+//   41 
+//   42 /* ------------------------------------------------------------------------------------------------
+//   43  *                                          Includes
+//   44  * ------------------------------------------------------------------------------------------------
+//   45  */
+//   46 
+//   47 #include "mt.h"
+//   48 #include "mt_rpc.h"
+//   49 #include "OSAL.h"
+//   50 #include "sapi.h"
+//   51 #include "zap_app.h"
+//   52 #include "zap_phy.h"
+//   53 #include "zap_znp.h"
+//   54 #include "ZComDef.h"
+//   55 #include "ZDApp.h"
+//   56 #include "ZDObject.h"
+//   57 
+//   58 #if defined (ZAP_ZDO_FUNC)
+//   59 /* ------------------------------------------------------------------------------------------------
+//   60  *                                           Constants
+//   61  * ------------------------------------------------------------------------------------------------
+//   62  */
+//   63 
+//   64 /* ------------------------------------------------------------------------------------------------
+//   65  *                                           Typedefs
+//   66  * ------------------------------------------------------------------------------------------------
+//   67  */
+//   68 
+//   69 typedef struct
+//   70 {
+//   71   void *next;
+//   72   uint8 taskID;
+//   73   uint16 clusterID;
+//   74 } ZDO_MsgCB_t;
+//   75 
+//   76 /* ------------------------------------------------------------------------------------------------
+//   77  *                                           Macros
+//   78  * ------------------------------------------------------------------------------------------------
+//   79  */
+//   80 
+//   81 /* ------------------------------------------------------------------------------------------------
+//   82  *                                           Global Variables
+//   83  * ------------------------------------------------------------------------------------------------
+//   84  */
+//   85 
+//   86 /* ------------------------------------------------------------------------------------------------
+//   87  *                                           Local Variables
+//   88  * ------------------------------------------------------------------------------------------------
+//   89  */
+//   90 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//   91 static ZDO_MsgCB_t *zdoMsgCBs = (ZDO_MsgCB_t *)NULL;
+zdoMsgCBs:
+        DS8 2
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//   92 static pfnZdoCb zdoCBFunc[MAX_ZDO_CB_FUNC];
+zdoCBFunc:
+        DS8 28
+//   93 
+//   94 /* ------------------------------------------------------------------------------------------------
+//   95  *                                           Local Functions
+//   96  * ------------------------------------------------------------------------------------------------
+//   97  */
+//   98 
+//   99 static void zapZDO_ConcentratorIndicationCB(uint8 *pBuf);
+//  100 static void ZDO_SendMsgCBs(zdoIncomingMsg_t *inMsg);
+//  101 
+//  102 /**************************************************************************************************
+//  103  * @fn          zapZdoProcessIncoming
+//  104  *
+//  105  * @brief       This function processes the ZDO sub-system response from the ZNP.
+//  106  *
+//  107  * input parameters
+//  108  *
+//  109  * @param       port - Port Id corresponding to the ZNP that sent the message.
+//  110  * @param       pBuf - A pointer to the RPC response.
+//  111  *
+//  112  * output parameters
+//  113  *
+//  114  * None.
+//  115  *
+//  116  * @return      None.
+//  117  **************************************************************************************************
+//  118  */
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine12:
+          CFI Block cfiCond0 Using cfiCommon0
+          CFI Function ZDO_UpdateNwkStatus
+          CFI Conditional ??CrossCallReturnLabel_23
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+          CFI Block cfiCond1 Using cfiCommon0
+          CFI (cfiCond1) Function zapZdoProcessIncoming
+          CFI (cfiCond1) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond1) CFA SP+32
+          CFI Block cfiPicker2 Using cfiCommon1
+          CFI (cfiPicker2) NoFunction
+          CFI (cfiPicker2) Picker
+        MOV.W   #0x400, R13
+          CFI EndBlock cfiCond0
+          CFI EndBlock cfiCond1
+          CFI EndBlock cfiPicker2
+        REQUIRE ??Subroutine12_0
+        // Fall through to label ??Subroutine12_0
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+??Subroutine12_0:
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI Function ZDOInitDevice
+          CFI Conditional ??ZDOInitDevice_1
+          CFI CFA SP+10
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI (cfiCond4) Function zapZdoSync
+          CFI (cfiCond4) Conditional ??zapZdoSync_2
+          CFI (cfiCond4) R10L Frame(CFA, -6)
+          CFI (cfiCond4) CFA SP+10
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI (cfiCond5) Function ZDO_UpdateNwkStatus
+          CFI (cfiCond5) Conditional ??CrossCallReturnLabel_23
+          CFI (cfiCond5) R10L Frame(CFA, -8)
+          CFI (cfiCond5) R11L Frame(CFA, -6)
+          CFI (cfiCond5) CFA SP+12
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI (cfiCond6) Function zapZdoProcessIncoming
+          CFI (cfiCond6) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond6) CFA SP+32
+          CFI Block cfiPicker7 Using cfiCommon1
+          CFI (cfiPicker7) NoFunction
+          CFI (cfiPicker7) Picker
+        MOV.B   &zapTaskId, R12
+        BRA     #osal_set_event
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiPicker7
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine11:
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI Function zapZdoProcessIncoming
+          CFI Conditional ??CrossCallReturnLabel_27
+          CFI CFA SP+32
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI (cfiCond9) Function zapZdoProcessIncoming
+          CFI (cfiCond9) Conditional ??CrossCallReturnLabel_28
+          CFI (cfiCond9) CFA SP+32
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function zapZdoProcessIncoming
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_29
+          CFI (cfiCond10) CFA SP+32
+          CFI Block cfiPicker11 Using cfiCommon1
+          CFI (cfiPicker11) NoFunction
+          CFI (cfiPicker11) Picker
+        MOV.B   @R13, R14
+        MOV.B   0x1(R13), R15
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiPicker11
+        REQUIRE ??Subroutine11_0
+        // Fall through to label ??Subroutine11_0
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+??Subroutine11_0:
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI Function ZDO_ParseSimpleDescRsp
+          CFI Conditional ??CrossCallReturnLabel_24
+          CFI CFA SP+8
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function ZDO_ParseDeviceAnnce
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_25
+          CFI (cfiCond13) R10L Frame(CFA, -8)
+          CFI (cfiCond13) R11L Frame(CFA, -6)
+          CFI (cfiCond13) CFA SP+12
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI (cfiCond14) Function zapZDO_ConcentratorIndicationCB
+          CFI (cfiCond14) Conditional ??CrossCallReturnLabel_26
+          CFI (cfiCond14) CFA SP+14
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI (cfiCond15) Function zapZdoProcessIncoming
+          CFI (cfiCond15) Conditional ??CrossCallReturnLabel_27
+          CFI (cfiCond15) CFA SP+32
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI (cfiCond16) Function zapZdoProcessIncoming
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_28
+          CFI (cfiCond16) CFA SP+32
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI (cfiCond17) Function zapZdoProcessIncoming
+          CFI (cfiCond17) Conditional ??CrossCallReturnLabel_29
+          CFI (cfiCond17) CFA SP+32
+          CFI Block cfiPicker18 Using cfiCommon1
+          CFI (cfiPicker18) NoFunction
+          CFI (cfiPicker18) Picker
+        RPT     #0x8
+        RLAX.W  R15
+        ADD.W   R15, R14
+        RETA
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiPicker18
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine13:
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI Function ZDOInitDevice
+          CFI Conditional ??CrossCallReturnLabel_8
+          CFI CFA SP+10
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI (cfiCond20) Function zapZdoSync
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond20) R10L Frame(CFA, -6)
+          CFI (cfiCond20) CFA SP+10
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function zapZdoProcessIncoming
+          CFI (cfiCond21) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond21) CFA SP+32
+          CFI Block cfiPicker22 Using cfiCommon1
+          CFI (cfiPicker22) NoFunction
+          CFI (cfiPicker22) Picker
+        MOV.B   &zapTaskId, R12
+        CALLA   #osal_start_timerEx
+        CMP.B   #0x0, R12
+        RETA
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiPicker22
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  119 void zapZdoProcessIncoming(uint8 port, uint8 *pBuf)
+zapZdoProcessIncoming:
+          CFI Block cfiBlock23 Using cfiCommon0
+          CFI Function zapZdoProcessIncoming
+//  120 {
+        FUNCALL zapZdoProcessIncoming, osal_start_timerEx
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL zapZdoProcessIncoming, osal_set_event
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL zapZdoProcessIncoming, zapZDO_ConcentratorIndicationCB
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL zapZdoProcessIncoming, ZDO_SendMsgCBs
+        LOCFRAME CSTACK, 28, STACK
+        SUB.W   #0x18, SP
+          CFI CFA SP+28
+//  121   uint8 len = pBuf[MT_RPC_POS_LEN];
+        MOV.B   @R13, R12
+//  122   uint8 cmd1 = pBuf[MT_RPC_POS_CMD1];
+        MOV.B   0x2(R13), R14
+//  123 
+//  124   pBuf += MT_RPC_FRAME_HDR_SZ;
+        ADD.W   #0x3, R13
+//  125 
+//  126   switch (cmd1)
+        SUB.B   #0xc0, R14
+        JEQ     ??zapZdoProcessIncoming_0
+        SUB.B   #0x8, R14
+        JEQ     ??zapZdoProcessIncoming_1
+        SUB.B   #0x37, R14
+        JEQ     ??zapZdoProcessIncoming_2
+        JMP     ??zapZdoProcessIncoming_3
+//  127   {
+//  128   case MT_ZDO_STATUS_ERROR_RSP:  // TODO: fill-in when/if needed.
+//  129     break;
+//  130 
+//  131   case MT_ZDO_STATE_CHANGE_IND:
+//  132     // Especially for UART transport, allow time for multiple got syncs before acting on it.
+//  133     if (ZSuccess != osal_start_timerEx(zapTaskId, ZAP_APP_ZDO_STATE_CHANGE_EVT,
+//  134                                                   ZAP_APP_ZDO_STATE_CHANGE_DLY))
+??zapZdoProcessIncoming_0:
+        MOV.W   #0x64, R14
+        MOV.W   #0x400, R13
+        CALLA   #?Subroutine13
+??CrossCallReturnLabel_10:
+        JEQ     ??zapZdoProcessIncoming_3
+//  135     {
+//  136       (void)osal_set_event(zapTaskId, ZAP_APP_ZDO_STATE_CHANGE_EVT);
+        CALLA   #?Subroutine12
+//  137     }
+??CrossCallReturnLabel_22:
+        JMP     ??zapZdoProcessIncoming_3
+//  138     break;
+//  139 
+//  140   case MT_ZDO_MATCH_DESC_RSP_SENT:  // TODO: fill-in when/if needed.
+//  141     break;
+//  142 
+//  143   case MT_ZDO_SRC_RTG_IND:  // TODO: fill-in when/if needed.
+//  144     break;
+//  145 
+//  146   case MT_ZDO_JOIN_CNF:  // TODO: fill-in when/if needed.
+//  147     break;
+//  148 
+//  149   case MT_ZDO_CONCENTRATOR_IND_CB:
+//  150     zapZDO_ConcentratorIndicationCB(pBuf);
+??zapZdoProcessIncoming_1:
+        MOV.W   R13, R12
+        CALLA   #zapZDO_ConcentratorIndicationCB
+//  151     break;
+        JMP     ??zapZdoProcessIncoming_3
+//  152 
+//  153   case MT_ZDO_MSG_CB_INCOMING:
+//  154     {
+//  155       zdoIncomingMsg_t inMsg;
+//  156 
+//  157       // Assuming exclusive use of network short addresses.
+//  158       inMsg.srcAddr.addrMode = Addr16Bit;
+??zapZdoProcessIncoming_2:
+        MOV.B   #0x2, 0xa(SP)
+//  159       inMsg.srcAddr.addr.shortAddr = BUILD_UINT16(pBuf[0], pBuf[1]);
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_27:
+        MOV.W   R14, 0x2(SP)
+//  160       pBuf += 2;
+        ADD.W   #0x2, R13
+//  161       inMsg.wasBroadcast = *pBuf++;
+        MOV.B   @R13+, 0xc(SP)
+//  162       inMsg.clusterID = BUILD_UINT16(pBuf[0], pBuf[1]);
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_28:
+        MOV.W   R14, 0xe(SP)
+//  163       pBuf += 2;
+        ADD.W   #0x2, R13
+//  164       inMsg.SecurityUse = *pBuf++;
+        MOV.B   @R13+, 0x10(SP)
+//  165       inMsg.TransSeq = *pBuf++;
+        MOV.B   @R13+, 0x11(SP)
+//  166       inMsg.asduLen = len-9;
+        ADD.B   #0xf7, R12
+        MOV.B   R12, 0x12(SP)
+//  167       inMsg.macDestAddr = BUILD_UINT16(pBuf[0], pBuf[1]);
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_29:
+        MOV.W   R14, 0x14(SP)
+//  168       pBuf += 2;
+//  169       inMsg.asdu = pBuf;
+        ADD.W   #0x2, R13
+        MOV.W   R13, 0x16(SP)
+//  170 
+//  171       ZDO_SendMsgCBs(&inMsg);
+        MOV.W   SP, R12
+        ADD.W   #0x0, R12
+        CALLA   #ZDO_SendMsgCBs
+//  172     }
+//  173     break;
+//  174 
+//  175   default:
+//  176     break;
+//  177   }
+//  178 }
+??zapZdoProcessIncoming_3:
+        ADD.W   #0x18, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock23
+//  179 
+//  180 /**************************************************************************************************
+//  181  * @fn          zapZdoSync
+//  182  *
+//  183  * @brief       This function syncs the ZDO registered callbacks (which are not NV restored on ZNP.)
+//  184  *
+//  185  * input parameters
+//  186  *
+//  187  * None.
+//  188  *
+//  189  * output parameters
+//  190  *
+//  191  * None.
+//  192  *
+//  193  * @return      None.
+//  194  **************************************************************************************************
+//  195  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  196 void zapZdoSync(void)
+zapZdoSync:
+          CFI Block cfiBlock24 Using cfiCommon0
+          CFI Function zapZdoSync
+//  197 {
+        FUNCALL zapZdoSync, znp_ZDO_RegisterForZDOMsg
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL zapZdoSync, osal_start_timerEx
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL zapZdoSync, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+//  198   ZDO_MsgCB_t *pCB = zdoMsgCBs;
+        MOV.W   &zdoMsgCBs, R10
+        JMP     ??zapZdoSync_1
+//  199 
+//  200   while (pCB)
+//  201   {
+//  202     if (znp_ZDO_RegisterForZDOMsg(pCB->clusterID) != ZSuccess)
+??zapZdoSync_0:
+        MOV.W   0x4(R10), R12
+        CALLA   #znp_ZDO_RegisterForZDOMsg
+        CMP.B   #0x0, R12
+        JEQ     ??zapZdoSync_2
+//  203     {
+//  204       // Especially for UART transport, allow time for multiple got syncs before acting on it.
+//  205       if (ZSuccess != osal_start_timerEx(zapTaskId, ZAP_APP_SYNC_EVT, ZAP_APP_SYNC_DLY))
+        MOV.W   #0x64, R14
+        MOV.W   #0x800, R13
+        CALLA   #?Subroutine13
+??CrossCallReturnLabel_9:
+        JEQ     ??zapZdoSync_2
+//  206       {
+//  207         (void)osal_set_event(zapTaskId, ZAP_APP_SYNC_EVT);
+        MOV.W   #0x800, R13
+        CALLA   #??Subroutine12_0
+//  208       }
+//  209     }
+//  210     pCB = (ZDO_MsgCB_t *)pCB->next;
+??zapZdoSync_2:
+        MOV.W   @R10, R10
+//  211   }
+??zapZdoSync_1:
+        CMP.W   #0x0, R10
+        JNE     ??zapZdoSync_0
+//  212 }
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock24
+
+        RSEG CODE:CODE:NOROOT(1)
+ZDO_RemoveRegisteredCB:
+          CFI Block cfiBlock25 Using cfiCommon0
+          CFI Function ZDO_RemoveRegisteredCB
+        FUNCALL ZDO_RemoveRegisteredCB, zap_msg_allocate
+        LOCFRAME CSTACK, 14, STACK
+        FUNCALL ZDO_RemoveRegisteredCB, zapPhySend
+        LOCFRAME CSTACK, 14, STACK
+        FUNCALL ZDO_RemoveRegisteredCB, zap_msg_deallocate
+        LOCFRAME CSTACK, 14, STACK
+        FUNCALL ZDO_RemoveRegisteredCB, osal_mem_free
+        LOCFRAME CSTACK, 14, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        SUB.W   #0x2, SP
+          CFI CFA SP+14
+        MOV.W   R13, R10
+        MOV.W   #0x0, R11
+        MOV.W   &zdoMsgCBs, R8
+        JMP     ??ZDO_RemoveRegisteredCB_1
+??ZDO_RemoveRegisteredCB_0:
+        MOV.W   R8, R11
+        MOV.W   @R8, R8
+??ZDO_RemoveRegisteredCB_1:
+        CMP.W   #0x0, R8
+        JEQ     ??ZDO_RemoveRegisteredCB_2
+        CMP.B   R12, 0x2(R8)
+        JNE     ??ZDO_RemoveRegisteredCB_0
+        CMP.W   R13, 0x4(R8)
+        JNE     ??ZDO_RemoveRegisteredCB_0
+        MOV.B   #0x3f, R14
+        MOV.B   #0x25, R13
+        MOV.B   #0x2, R12
+        CALLA   #?Subroutine15
+??CrossCallReturnLabel_16:
+        JNE     ??ZDO_RemoveRegisteredCB_3
+        MOV.B   #0x10, R12
+        JMP     ??ZDO_RemoveRegisteredCB_4
+??ZDO_RemoveRegisteredCB_3:
+        MOV.B   R10, 0(R12)
+        RPT     #0x8
+        RRUX.W  R10
+        MOV.W   @SP, R15
+        MOV.B   R10, 0x1(R15)
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_21:
+        MOV.W   @SP, R15
+        MOV.B   @R15, R10
+        CALLA   #?Subroutine6
+??CrossCallReturnLabel_2:
+        CMP.B   #0x0, R10
+        JEQ     ??ZDO_RemoveRegisteredCB_5
+        MOV.B   R10, R12
+        JMP     ??ZDO_RemoveRegisteredCB_4
+??ZDO_RemoveRegisteredCB_5:
+        MOV.W   @R8, R15
+        CMP.W   #0x0, R11
+        JEQ     ??ZDO_RemoveRegisteredCB_6
+        MOV.W   R15, 0(R11)
+        JMP     ??ZDO_RemoveRegisteredCB_7
+??ZDO_RemoveRegisteredCB_6:
+        CMP.W   #0x0, R15
+        JEQ     ??ZDO_RemoveRegisteredCB_8
+        MOV.W   R15, &zdoMsgCBs
+        JMP     ??ZDO_RemoveRegisteredCB_7
+??ZDO_RemoveRegisteredCB_8:
+        MOV.W   #0x0, &zdoMsgCBs
+??ZDO_RemoveRegisteredCB_7:
+        MOV.W   R8, R12
+        CALLA   #osal_mem_free
+        MOV.B   #0x0, R12
+        JMP     ??ZDO_RemoveRegisteredCB_4
+??ZDO_RemoveRegisteredCB_2:
+        MOV.B   #0x1, R12
+          CFI EndBlock cfiBlock25
+??ZDO_RemoveRegisteredCB_4:
+        REQUIRE ?Subroutine0
+        // Fall through to label ?Subroutine0
+//  213 
+//  214 
+//  215 /* ------------------------------------------------------------------------------------------------
+//  216  *                                     ZDApp Proxy
+//  217  * ------------------------------------------------------------------------------------------------
+//  218  */
+//  219 
+//  220 /*********************************************************************
+//  221  * @fn      ZDOInitDevice
+//  222  *
+//  223  * @brief   Start the device in the network.  This function will read
+//  224  *   ZCD_NV_STARTUP_OPTION (NV item) to determine whether or not to
+//  225  *   restore the network state of the device.
+//  226  *
+//  227  * @param   startDelay - timeDelay to start device (in milliseconds).
+//  228  *      There is a jitter added to this delay:
+//  229  *              ((NWK_START_DELAY + startDelay)
+//  230  *              + (osal_rand() & EXTENDED_JOINING_RANDOM_MASK))
+//  231  *
+//  232  * NOTE:    If the application would like to force a "new" join, the
+//  233  *          application should set the ZCD_STARTOPT_DEFAULT_NETWORK_STATE
+//  234  *          bit in the ZCD_NV_STARTUP_OPTION NV item before calling
+//  235  *          this function. "new" join means to not restore the network
+//  236  *          state of the device. Use zgWriteStartupOptions() to set these
+//  237  *          options.
+//  238  *
+//  239  * @return
+//  240  *    ZDO_INITDEV_RESTORED_NETWORK_STATE  - The device's network state was
+//  241  *          restored.
+//  242  *    ZDO_INITDEV_NEW_NETWORK_STATE - The network state was initialized.
+//  243  *          This could mean that ZCD_NV_STARTUP_OPTION said to not restore, or
+//  244  *          it could mean that there was no network state to restore.
+//  245  *    ZDO_INITDEV_LEAVE_NOT_STARTED - Before the reset, a network leave was issued
+//  246  *          with the rejoin option set to TRUE.  So, the device was not
+//  247  *          started in the network (one time only).  The next time this
+//  248  *          function is called it will start.
+//  249  *    0xFF for failure.
+//  250  */
+//  251 uint8 ZDOInitDevice(uint16 startDelay)
+//  252 {
+//  253   uint8 *pBuf;
+//  254 #if !ZAP_ZDO_STARTUP_AREQ
+//  255   uint8 rtrn;
+//  256 #endif
+//  257 
+//  258   (void)startDelay;  // ZNP MT_ZDO_STARTUP_FROM_APP processing forces delay 0.
+//  259 
+//  260   zb_GetDeviceInfo(ZB_INFO_DEV_STATE, &devState);
+//  261   if ((DEV_HOLD != devState) && (DEV_INIT != devState) && (DEV_NWK_ORPHAN != devState))
+//  262   {
+//  263     return FAILURE;
+//  264   }
+//  265 
+//  266 #if ZAP_ZDO_STARTUP_AREQ
+//  267   pBuf = zap_msg_allocate(0, (uint8)MT_RPC_SYS_ZDO | (uint8)MT_RPC_CMD_AREQ,
+//  268                              (uint8)MT_ZDO_STARTUP_FROM_APP);
+//  269 #else
+//  270   pBuf = zap_msg_allocate(0, (uint8)MT_RPC_SYS_ZDO | (uint8)MT_RPC_CMD_SREQ,
+//  271                              (uint8)MT_ZDO_STARTUP_FROM_APP);
+//  272 #endif
+//  273 
+//  274   if (NULL == pBuf)
+//  275   {
+//  276     return 0xFF;
+//  277   }
+//  278 
+//  279   zapPhySend(zapAppPort, pBuf);
+//  280 #if !ZAP_ZDO_STARTUP_AREQ
+//  281   if (ZSuccess == (rtrn = ZAP_SRSP_STATUS(pBuf)))
+//  282 #endif
+//  283   // Need to locally enter the discovery state to holdoff calls to ZDOInitDevice() until the ZAP
+//  284   // monitoring task requests the actual ZNP state.
+//  285   devState = DEV_NWK_DISC;
+//  286   zap_msg_deallocate(&pBuf);
+//  287 
+//  288   // Joining can take some time - especially with > 1 scan channel.
+//  289   if (ZSuccess != osal_start_timerEx(zapTaskId, ZAP_APP_TMR_EVT, ZAP_APP_JOIN_DLY))
+//  290   {
+//  291     (void)osal_set_event(zapTaskId, ZAP_APP_TMR_EVT);
+//  292   }
+//  293 
+//  294 #if ZAP_ZDO_STARTUP_AREQ
+//  295   // Made into an AREQ after empirical results showed > 400 msec delay on SRSP.
+//  296 #if ZAP_NV_RESTORE
+//  297   return ZDO_INITDEV_RESTORED_NETWORK_STATE;
+//  298 #else
+//  299   return ZDO_INITDEV_NEW_NETWORK_STATE;
+//  300 #endif
+//  301 #else
+//  302   return rtrn;
+//  303 #endif
+//  304 }
+//  305 
+//  306 /*********************************************************************
+//  307  * @fn          ZDO_ConcentratorIndicationCB
+//  308  *
+//  309  * @brief       This function allows the next higher layer of a
+//  310  *              device to be notified of existence of the concentrator.
+//  311  *
+//  312  * @param       nwkAddr - 16-bit NWK address of the concentrator
+//  313  * @param       extAddr - pointer to extended Address
+//  314  *                        NULL if not available
+//  315  * @param       pktCost - PktCost from RREQ
+//  316  *
+//  317  * @return      void
+//  318  */
+//  319 static void zapZDO_ConcentratorIndicationCB(uint8 *pBuf)
+//  320 {
+//  321   if (zdoCBFunc[ZDO_CONCENTRATOR_IND_CBID] != NULL)
+//  322   {
+//  323     zdoConcentratorInd_t conInd;
+//  324 
+//  325     conInd.nwkAddr = BUILD_UINT16(pBuf[0], pBuf[1]);
+//  326     pBuf += 2;
+//  327     conInd.extAddr = pBuf;
+//  328     pBuf += Z_EXTADDR_LEN;
+//  329     conInd.pktCost = *pBuf;
+//  330     zdoCBFunc[ZDO_CONCENTRATOR_IND_CBID]((void *)&conInd);
+//  331   }
+//  332 }
+//  333 
+//  334 /*********************************************************************
+//  335  * @fn          ZDO_RegisterForZdoCB
+//  336  *
+//  337  * @brief       Call this function to register the higher layer (for
+//  338  *              example, the Application layer or MT layer) with ZDO
+//  339  *              callbacks to get notified of some ZDO indication like
+//  340  *              existence of a concentrator or receipt of a source
+//  341  *              route record.
+//  342  *
+//  343  * @param       indID - ZDO Indication ID
+//  344  * @param       pFn   - Callback function pointer
+//  345  *
+//  346  * @return      ZSuccess - successful, ZInvalidParameter if not
+//  347  */
+//  348 ZStatus_t ZDO_RegisterForZdoCB( uint8 indID, pfnZdoCb pFn )
+//  349 {
+//  350   // Check the range of the indication ID
+//  351   if ( indID < MAX_ZDO_CB_FUNC )
+//  352   {
+//  353     zdoCBFunc[indID] = pFn;
+//  354     return ZSuccess;
+//  355   }
+//  356 
+//  357   return ZInvalidParameter;
+//  358 }
+//  359 
+//  360 
+//  361 /* ------------------------------------------------------------------------------------------------
+//  362  *                                     ZDObject Proxy
+//  363  * ------------------------------------------------------------------------------------------------
+//  364  */
+//  365 
+//  366 /**************************************************************************************************
+//  367  * @fn          ZDO_UpdateNwkStatus
+//  368  *
+//  369  * @brief       This function sends a ZDO_STATE_CHANGE message to the task of every EndPoint
+//  370  *              registered with AF (except, of course, the ZDO_EP). Even if a single task has more
+//  371  *              than one registered EndPoint, it will only receive one notification per state
+//  372  *              change. Although the device may go through a sequence of state changes, the
+//  373  *              Application task may only receive notification of the final, steady-state state
+//  374  *              because it has the lowest priority and never even runs to receive the intermediate
+//  375  *              state change notifications.
+//  376  *
+//  377  * input parameters
+//  378  *
+//  379  * @param       state - The current device state.
+//  380  *
+//  381  * output parameters
+//  382  *
+//  383  * None.
+//  384  *
+//  385  * @return      None.
+//  386  **************************************************************************************************
+//  387  */
+//  388 void ZDO_UpdateNwkStatus(devStates_t state)
+//  389 {
+//  390   epList_t *pItem = epList;
+//  391 
+//  392   while (pItem != NULL)
+//  393   {
+//  394     if (pItem->epDesc->endPoint != ZDO_EP)
+//  395     {
+//  396       osal_event_hdr_t *pMsg = (osal_event_hdr_t *)osal_msg_find(*(pItem->epDesc->task_id),
+//  397                                                                          ZDO_STATE_CHANGE);
+//  398 
+//  399       if (NULL == pMsg)
+//  400       {
+//  401         if (NULL == (pMsg = (osal_event_hdr_t *)osal_msg_allocate(sizeof(osal_event_hdr_t))))
+//  402         {
+//  403           // Upon failure to notify any EndPoint of the state change, re-set the ZDO event to
+//  404           // try again later when more Heap may be available.
+//  405           osal_set_event(zapTaskId, ZAP_APP_ZDO_STATE_CHANGE_EVT);
+//  406         }
+//  407         else
+//  408         {
+//  409           pMsg->event = ZDO_STATE_CHANGE;
+//  410           pMsg->status = (uint8)state;
+//  411 
+//  412           (void)osal_msg_send(*(pItem->epDesc->task_id), (uint8 *)pMsg);
+//  413         }
+//  414       }
+//  415       else
+//  416       {
+//  417         // Modify in place the status of an existing ZDO_STATE_CHANGE message to the EndPoint.
+//  418         pMsg->status = (uint8)state;
+//  419       }
+//  420     }
+//  421 
+//  422     pItem = pItem->nextDesc;
+//  423   }
+//  424 }
+//  425 
+//  426 /*********************************************************************
+//  427  * @fn          ZDO_ParseDeviceAnnce
+//  428  *
+//  429  * @brief       Parse a Device Announce message.
+//  430  *
+//  431  * @param       inMsg - Incoming message
+//  432  * @param       pAnnce - place to put the parsed information
+//  433  *
+//  434  * @return      none
+//  435  */
+//  436 void ZDO_ParseDeviceAnnce( zdoIncomingMsg_t *inMsg, ZDO_DeviceAnnce_t *pAnnce )
+//  437 {
+//  438   uint8 *msg;
+//  439 
+//  440   // Parse incoming message
+//  441   msg = inMsg->asdu;
+//  442   pAnnce->nwkAddr = BUILD_UINT16( msg[0], msg[1] );
+//  443   msg += 2;
+//  444   osal_cpyExtAddr( pAnnce->extAddr, msg );
+//  445   msg += Z_EXTADDR_LEN;
+//  446   pAnnce->capabilities = *msg;
+//  447 }
+//  448 
+//  449 /*********************************************************************
+//  450  * @fn          ZDO_ParseSimpleDescRsp
+//  451  *
+//  452  * @brief       This function parse the Simple_Desc_rsp message.
+//  453  *
+//  454  *   NOTE: The pAppInClusterList and pAppOutClusterList fields
+//  455  *         in the SimpleDescriptionFormat_t structure are allocated
+//  456  *         and the calling function needs to free [osal_msg_free()]
+//  457  *         these buffers.
+//  458  *
+//  459  * @param       inMsg  - incoming message
+//  460  * @param       pSimpleDescRsp - place to parse the message into
+//  461  *
+//  462  * @return      none
+//  463  */
+//  464 void ZDO_ParseSimpleDescRsp( zdoIncomingMsg_t *inMsg, ZDO_SimpleDescRsp_t *pSimpleDescRsp )
+//  465 {
+//  466   uint8 *msg;
+//  467 
+//  468   msg = inMsg->asdu;
+//  469   pSimpleDescRsp->status = *msg++;
+//  470   pSimpleDescRsp->nwkAddr = BUILD_UINT16( msg[0], msg[1] );
+//  471   msg += sizeof ( uint16 );
+//  472   msg++; // Skip past the length field.
+//  473 
+//  474   if ( pSimpleDescRsp->status == ZDP_SUCCESS )
+//  475   {
+//  476     ZDO_ParseSimpleDescBuf( msg, &(pSimpleDescRsp->simpleDesc) );
+//  477   }
+//  478 }
+//  479 
+//  480 /*********************************************************************
+//  481  * @fn          ZDO_ParseEPListRsp
+//  482  *
+//  483  * @brief       This parse the Active_EP_rsp or Match_Desc_rsp message.
+//  484  *
+//  485  * @param       inMsg  - incoming message
+//  486  *
+//  487  * @return      none
+//  488  */
+//  489 ZDO_ActiveEndpointRsp_t *ZDO_ParseEPListRsp( zdoIncomingMsg_t *inMsg )
+//  490 {
+//  491   ZDO_ActiveEndpointRsp_t *pRsp;
+//  492   uint8 *msg;
+//  493   uint8 Status;
+//  494   uint8 cnt;
+//  495 
+//  496   msg = inMsg->asdu;
+//  497   Status = *msg++;
+//  498   cnt = msg[2];
+//  499 
+//  500   pRsp = (ZDO_ActiveEndpointRsp_t *)osal_mem_alloc( sizeof(  ZDO_ActiveEndpointRsp_t ) + cnt );
+//  501   if ( pRsp )
+//  502   {
+//  503     pRsp->status = Status;
+//  504     pRsp->nwkAddr = BUILD_UINT16( msg[0], msg[1] );
+//  505     msg += sizeof( uint16 );
+//  506     pRsp->cnt = cnt;
+//  507     msg++; // pass cnt
+//  508     osal_memcpy( pRsp->epList, msg, cnt );
+//  509   }
+//  510 
+//  511   return ( pRsp );
+//  512 }
+//  513 
+//  514 /*********************************************************************
+//  515  * @fn          ZDO_ParseSimpleDescBuf
+//  516  *
+//  517  * @brief       Parse a byte sequence representation of a Simple Descriptor.
+//  518  *
+//  519  * @param       buf  - pointer to a byte array representing a Simple Desc.
+//  520  * @param       desc - SimpleDescriptionFormat_t *
+//  521  *
+//  522  *              This routine allocates storage for the cluster IDs because
+//  523  *              they are 16-bit and need to be aligned to be properly processed.
+//  524  *              This routine returns non-zero if an allocation fails.
+//  525  *
+//  526  *              NOTE: This means that the caller or user of the input structure
+//  527  *                    is responsible for freeing the memory
+//  528  *
+//  529  * @return      0: success
+//  530  *              1: failure due to malloc failure.
+//  531  */
+//  532 uint8 ZDO_ParseSimpleDescBuf( uint8 *buf, SimpleDescriptionFormat_t *desc )
+//  533 {
+//  534   uint8 num, i;
+//  535 
+//  536   desc->EndPoint = *buf++;
+//  537   desc->AppProfId = BUILD_UINT16( buf[0], buf[1] );
+//  538   buf += 2;
+//  539   desc->AppDeviceId = BUILD_UINT16( buf[0], buf[1] );
+//  540   buf += 2;
+//  541   desc->AppDevVer = *buf >> 4;
+//  542 
+//  543   desc->Reserved = 0;
+//  544   buf++;
+//  545 
+//  546   // move in input cluster list (if any). allocate aligned memory.
+//  547   num = desc->AppNumInClusters = *buf++;
+//  548   if ( num )
+//  549   {
+//  550     if (!(desc->pAppInClusterList = (uint16 *)osal_mem_alloc(num*sizeof(uint16))))
+//  551     {
+//  552       // malloc failed. we're done.
+//  553       return 1;
+//  554     }
+//  555     for (i=0; i<num; ++i)
+//  556     {
+//  557       desc->pAppInClusterList[i] = BUILD_UINT16( buf[0], buf[1] );
+//  558       buf += 2;
+//  559     }
+//  560   }
+//  561 
+//  562   // move in output cluster list (if any). allocate aligned memory.
+//  563   num = desc->AppNumOutClusters = *buf++;
+//  564   if (num)
+//  565   {
+//  566     if (!(desc->pAppOutClusterList = (uint16 *)osal_mem_alloc(num*sizeof(uint16))))
+//  567     {
+//  568       // malloc failed. free input cluster list memory if there is any
+//  569       if ( desc->pAppInClusterList != NULL )
+//  570       {
+//  571         osal_mem_free(desc->pAppInClusterList);
+//  572       }
+//  573       return 1;
+//  574     }
+//  575     for (i=0; i<num; ++i)
+//  576     {
+//  577       desc->pAppOutClusterList[i] = BUILD_UINT16( buf[0], buf[1] );
+//  578       buf += 2;
+//  579     }
+//  580   }
+//  581   return 0;
+//  582 }
+//  583 
+//  584 
+//  585 /* ------------------------------------------------------------------------------------------------
+//  586  *                                     ZDProfile Proxy
+//  587  * ------------------------------------------------------------------------------------------------
+//  588  */
+//  589 
+//  590 /**************************************************************************************************
+//  591  * @fn          ZDP_MatchDescReq
+//  592  *
+//  593  * @brief       This builds and send a Match_Desc_req message.  This
+//  594  *              function sends a broadcast or unicast message
+//  595  *              requesting the list of endpoint/interfaces that
+//  596  *              match profile ID and cluster IDs.
+//  597  *
+//  598  * input parameters
+//  599  *
+//  600  * @param       dstAddr - destination address
+//  601  * @param       ProfileID - Profile ID
+//  602  * @param       NumInClusters - number of input clusters
+//  603  * @param       InClusterList - input cluster ID list
+//  604  * @param       NumOutClusters - number of output clusters
+//  605  * @param       OutClusterList - output cluster ID list
+//  606  * @param       SecurityEnable - Security Options
+//  607  *
+//  608  * output parameters
+//  609  *
+//  610  * None.
+//  611  *
+//  612  * @return      afStatus_t
+//  613  **************************************************************************************************
+//  614  */
+//  615 afStatus_t ZDP_MatchDescReq(zAddrType_t *dstAddr, uint16 nwkAddr,
+//  616                             uint16 ProfileID,
+//  617                             byte NumInClusters, cId_t *InClusterList,
+//  618                             byte NumOutClusters, cId_t *OutClusterList,
+//  619                             byte SecurityEnable)
+//  620 {
+//  621   const uint8 len = 8 + ((NumInClusters + NumOutClusters) * 2);
+//  622   uint8 *pBuf, *pPtr, cnt;
+//  623 
+//  624   (void)SecurityEnable;
+//  625 
+//  626   if ((Addr16Bit != dstAddr->addrMode) && (AddrBroadcast != dstAddr->addrMode))
+//  627   {
+//  628     return afStatus_INVALID_PARAMETER;
+//  629   }
+//  630 
+//  631   pBuf = zap_msg_allocate(len, (uint8)MT_RPC_SYS_ZDO | (uint8)MT_RPC_CMD_SREQ,
+//  632                                (uint8)MT_ZDO_MATCH_DESC_REQ);
+//  633 
+//  634   if (NULL == pBuf)
+//  635   {
+//  636     return afStatus_MEM_FAIL;
+//  637   }
+//  638 
+//  639   pPtr = pBuf;
+//  640   *pPtr++ = LO_UINT16(dstAddr->addr.shortAddr);
+//  641   *pPtr++ = HI_UINT16(dstAddr->addr.shortAddr);
+//  642   *pPtr++ = LO_UINT16(nwkAddr);
+//  643   *pPtr++ = HI_UINT16(nwkAddr);
+//  644   *pPtr++ = LO_UINT16(ProfileID);
+//  645   *pPtr++ = HI_UINT16(ProfileID);
+//  646   *pPtr++ = NumInClusters;
+//  647   for (cnt = 0; cnt < NumInClusters; cnt++)
+//  648   {
+//  649     *pPtr++ = LO_UINT16(*InClusterList);
+//  650     *pPtr++ = HI_UINT16(*InClusterList);
+//  651     InClusterList++;
+//  652   }
+//  653   *pPtr++ = NumOutClusters;
+//  654   for (cnt = 0; cnt < NumOutClusters; cnt++)
+//  655   {
+//  656     *pPtr++ = LO_UINT16(*OutClusterList);
+//  657     *pPtr++ = HI_UINT16(*OutClusterList);
+//  658     OutClusterList++;
+//  659   }
+//  660 
+//  661   zapPhySend(zapAppPort, pBuf);
+//  662   cnt = ZAP_SRSP_STATUS(pBuf);
+//  663   zap_msg_deallocate(&pBuf);
+//  664 
+//  665   return (afStatus_t)cnt;
+//  666 }
+//  667 
+//  668 /*********************************************************************
+//  669  * @fn          ZDP_SimpleDescReq
+//  670  *
+//  671  * @brief       This builds and send a NWK_Simple_Desc_req
+//  672  *              message.  This function sends unicast message to the
+//  673  *              destination device.
+//  674  *
+//  675  * @param       dstAddr - destination address
+//  676  * @param       nwkAddr - 16 bit address
+//  677  * @param       epIntf - endpoint/interface
+//  678  * @param       SecurityEnable - Security Options
+//  679  *
+//  680  * @return      afStatus_t
+//  681  */
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiBlock26 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA SP+14
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+//  682 afStatus_t ZDP_SimpleDescReq( zAddrType_t *dstAddr, uint16 nwkAddr,
+//  683                                     byte endPoint, byte SecurityEnable )
+//  684 
+//  685 {
+//  686   uint8 *pBuf, rtrn;
+//  687 
+//  688   (void)SecurityEnable;
+//  689 
+//  690   pBuf = zap_msg_allocate(5, (uint8)MT_RPC_SYS_ZDO | (uint8)MT_RPC_CMD_SREQ,
+//  691                              (uint8)MT_ZDO_SIMPLE_DESC_REQ);
+//  692   if (NULL == pBuf)
+//  693   {
+//  694     return afStatus_MEM_FAIL;
+//  695   }
+//  696 
+//  697   pBuf[0] = LO_UINT16(dstAddr->addr.shortAddr);
+//  698   pBuf[1] = HI_UINT16(dstAddr->addr.shortAddr);
+//  699   pBuf[2] = LO_UINT16(nwkAddr);
+//  700   pBuf[3] = HI_UINT16(nwkAddr);
+//  701   pBuf[4] = endPoint;
+//  702 
+//  703   zapPhySend(zapAppPort, pBuf);
+        ADD.W   #0x2, SP
+          CFI CFA SP+12
+        POPM.W  #0x4, R11
+          CFI CFA SP+4
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI R10L SameValue
+          CFI R11L SameValue
+        RETA
+          CFI EndBlock cfiBlock26
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI Function ZDO_RemoveRegisteredCB
+          CFI Conditional ??CrossCallReturnLabel_21
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+18
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI (cfiCond28) Function ZDP_MatchDescReq
+          CFI (cfiCond28) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond28) R6L Frame(CFA, -16)
+          CFI (cfiCond28) R7L Frame(CFA, -14)
+          CFI (cfiCond28) R8L Frame(CFA, -12)
+          CFI (cfiCond28) R9L Frame(CFA, -10)
+          CFI (cfiCond28) R10L Frame(CFA, -8)
+          CFI (cfiCond28) R11L Frame(CFA, -6)
+          CFI (cfiCond28) CFA SP+22
+          CFI Block cfiPicker29 Using cfiCommon1
+          CFI (cfiPicker29) NoFunction
+          CFI (cfiPicker29) Picker
+        MOV.W   0x4(SP), R13
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiPicker29
+        REQUIRE ??Subroutine16_0
+        // Fall through to label ??Subroutine16_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine16_0:
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI Function ZDOInitDevice
+          CFI Conditional ??CrossCallReturnLabel_19
+          CFI CFA SP+10
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function ZDO_RemoveRegisteredCB
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond31) R8L Frame(CFA, -12)
+          CFI (cfiCond31) R9L Frame(CFA, -10)
+          CFI (cfiCond31) R10L Frame(CFA, -8)
+          CFI (cfiCond31) R11L Frame(CFA, -6)
+          CFI (cfiCond31) CFA SP+18
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function ZDP_MatchDescReq
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_20
+          CFI (cfiCond32) R6L Frame(CFA, -16)
+          CFI (cfiCond32) R7L Frame(CFA, -14)
+          CFI (cfiCond32) R8L Frame(CFA, -12)
+          CFI (cfiCond32) R9L Frame(CFA, -10)
+          CFI (cfiCond32) R10L Frame(CFA, -8)
+          CFI (cfiCond32) R11L Frame(CFA, -6)
+          CFI (cfiCond32) CFA SP+22
+          CFI Block cfiPicker33 Using cfiCommon1
+          CFI (cfiPicker33) NoFunction
+          CFI (cfiPicker33) Picker
+        MOV.B   &zapAppPort, R12
+        BRA     #zapPhySend
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiPicker33
+
+        RSEG CODE:CODE:NOROOT(1)
+ZDO_RegisterForZDOMsg:
+          CFI Block cfiBlock34 Using cfiCommon0
+          CFI Function ZDO_RegisterForZDOMsg
+        FUNCALL ZDO_RegisterForZDOMsg, osal_mem_alloc
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL ZDO_RegisterForZDOMsg, znp_ZDO_RegisterForZDOMsg
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.B   R12, R10
+        MOV.W   R13, R11
+        MOV.W   &zdoMsgCBs, R8
+        MOV.W   R8, R15
+        JMP     ??ZDO_RegisterForZDOMsg_1
+??ZDO_RegisterForZDOMsg_0:
+        MOV.W   R15, R8
+        MOV.W   @R15, R15
+??ZDO_RegisterForZDOMsg_1:
+        CMP.W   #0x0, R15
+        JEQ     ??ZDO_RegisterForZDOMsg_2
+        CMP.B   R12, 0x2(R15)
+        JNE     ??ZDO_RegisterForZDOMsg_0
+        CMP.W   R13, 0x4(R15)
+        JNE     ??ZDO_RegisterForZDOMsg_0
+        MOV.B   #0x0, R12
+        JMP     ??ZDO_RegisterForZDOMsg_3
+??ZDO_RegisterForZDOMsg_2:
+        MOV.W   #0x6, R12
+        CALLA   #osal_mem_alloc
+        CMP.W   #0x0, R12
+        JEQ     ??ZDO_RegisterForZDOMsg_4
+        MOV.B   R10, 0x2(R12)
+        MOV.W   R11, 0x4(R12)
+        MOV.W   #0x0, 0(R12)
+        CMP.W   #0x0, &zdoMsgCBs
+        JEQ     ??ZDO_RegisterForZDOMsg_5
+        MOV.W   R12, 0(R8)
+        JMP     ??ZDO_RegisterForZDOMsg_6
+??ZDO_RegisterForZDOMsg_5:
+        MOV.W   R12, &zdoMsgCBs
+??ZDO_RegisterForZDOMsg_6:
+        MOV.W   R11, R12
+        CALLA   #znp_ZDO_RegisterForZDOMsg
+        JMP     ??ZDO_RegisterForZDOMsg_3
+??ZDO_RegisterForZDOMsg_4:
+        MOV.B   #0x10, R12
+??ZDO_RegisterForZDOMsg_3:
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock34
+
+        RSEG CODE:CODE:NOROOT(1)
+ZDP_EndDeviceBindReq:
+          CFI Block cfiBlock35 Using cfiCommon0
+          CFI Function ZDP_EndDeviceBindReq
+        FUNCALL ZDP_EndDeviceBindReq, zap_msg_allocate
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL ZDP_EndDeviceBindReq, zapPhySend
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL ZDP_EndDeviceBindReq, zap_msg_deallocate
+        LOCFRAME CSTACK, 18, STACK
+        PUSHM.W #0x6, R11
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+        SUB.W   #0x2, SP
+          CFI CFA SP+18
+        MOV.W   R12, R10
+        MOV.W   R13, R11
+        MOV.B   R14, R7
+        MOV.W   R15, R8
+        MOV.B   0x12(SP), R9
+        MOV.B   0x16(SP), R6
+        MOV.B   R9, R12
+        ADD.B   R6, R12
+        RLA.B   R12
+        ADD.B   #0x11, R12
+        MOV.B   0x8(R10), R14
+        CMP.B   #0x2, R14
+        JEQ     ??ZDP_EndDeviceBindReq_2
+        CMP.B   #0xf, R14
+        JEQ     ??ZDP_EndDeviceBindReq_2
+        MOV.B   #0x2, R12
+        JMP     ??ZDP_EndDeviceBindReq_3
+??ZDP_EndDeviceBindReq_2:
+        MOV.B   #0x20, R14
+        CALLA   #?Subroutine2
+??CrossCallReturnLabel_14:
+        JNE     ??ZDP_EndDeviceBindReq_4
+        MOV.B   #0x10, R12
+        JMP     ??ZDP_EndDeviceBindReq_3
+??ZDP_EndDeviceBindReq_4:
+        MOV.W   R12, R15
+        MOV.B   @R10, 0(R12)
+        ADD.W   #0x1, R15
+        MOV.B   0x1(R10), 0(R15)
+        ADD.W   #0x1, R15
+        MOV.B   R11, 0(R15)
+        ADD.W   #0x1, R15
+        RPT     #0x8
+        RRUX.W  R11
+        MOV.B   R11, 0(R15)
+        ADD.W   #0x1, R15
+        ADD.W   #0x8, R15
+        MOV.B   R7, 0(R15)
+        CALLA   #?Subroutine7
+??CrossCallReturnLabel_3:
+        MOV.B   #0x0, R10
+        MOV.W   0x14(SP), R11
+        JMP     ??ZDP_EndDeviceBindReq_5
+??ZDP_EndDeviceBindReq_0:
+        CALLA   #?Subroutine8
+??ZDP_EndDeviceBindReq_5:
+        CMP.B   R9, R10
+        JNC     ??ZDP_EndDeviceBindReq_0
+        MOV.B   R6, 0(R15)
+        ADD.W   #0x1, R15
+        MOV.B   #0x0, R10
+        MOV.W   0x18(SP), R11
+        JMP     ??ZDP_EndDeviceBindReq_6
+??ZDP_EndDeviceBindReq_1:
+        CALLA   #?Subroutine8
+??ZDP_EndDeviceBindReq_6:
+        CMP.B   R6, R10
+        JNC     ??ZDP_EndDeviceBindReq_1
+        CALLA   #?Subroutine3
+          CFI EndBlock cfiBlock35
+??ZDP_EndDeviceBindReq_3:
+        REQUIRE ?Subroutine1
+        // Fall through to label ?Subroutine1
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiBlock36 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA SP+18
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+        ADD.W   #0x2, SP
+          CFI CFA SP+16
+        POPM.W  #0x6, R11
+          CFI CFA SP+4
+          CFI R6L SameValue
+          CFI R7L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI R10L SameValue
+          CFI R11L SameValue
+        RETA
+          CFI EndBlock cfiBlock36
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine8:
+          CFI Block cfiCond37 Using cfiCommon0
+          CFI Function ZDP_EndDeviceBindReq
+          CFI Conditional ??ZDP_EndDeviceBindReq_5
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+22
+          CFI Block cfiCond38 Using cfiCommon0
+          CFI (cfiCond38) Function ZDP_EndDeviceBindReq
+          CFI (cfiCond38) Conditional ??ZDP_EndDeviceBindReq_6
+          CFI (cfiCond38) R6L Frame(CFA, -16)
+          CFI (cfiCond38) R7L Frame(CFA, -14)
+          CFI (cfiCond38) R8L Frame(CFA, -12)
+          CFI (cfiCond38) R9L Frame(CFA, -10)
+          CFI (cfiCond38) R10L Frame(CFA, -8)
+          CFI (cfiCond38) R11L Frame(CFA, -6)
+          CFI (cfiCond38) CFA SP+22
+          CFI Block cfiPicker39 Using cfiCommon1
+          CFI (cfiPicker39) NoFunction
+          CFI (cfiPicker39) Picker
+        MOV.B   @R11, 0(R15)
+        ADD.W   #0x1, R15
+        MOV.W   @R11+, R14
+        RPT     #0x8
+        RRUX.W  R14
+        MOV.B   R14, 0(R15)
+        ADD.W   #0x1, R15
+        ADD.B   #0x1, R10
+        RETA
+          CFI EndBlock cfiCond37
+          CFI EndBlock cfiCond38
+          CFI EndBlock cfiPicker39
+
+        RSEG CODE:CODE:NOROOT(1)
+ZDP_SimpleDescReq:
+          CFI Block cfiBlock40 Using cfiCommon0
+          CFI Function ZDP_SimpleDescReq
+        FUNCALL ZDP_SimpleDescReq, zap_msg_allocate
+        LOCFRAME CSTACK, 14, STACK
+        FUNCALL ZDP_SimpleDescReq, zapPhySend
+        LOCFRAME CSTACK, 14, STACK
+        FUNCALL ZDP_SimpleDescReq, zap_msg_deallocate
+        LOCFRAME CSTACK, 14, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        SUB.W   #0x2, SP
+          CFI CFA SP+14
+        MOV.W   R12, R8
+        MOV.W   R13, R10
+        MOV.B   R14, R11
+        MOV.B   #0x4, R14
+        MOV.B   #0x25, R13
+        MOV.B   #0x5, R12
+        CALLA   #?Subroutine15
+??CrossCallReturnLabel_17:
+        JNE     ??ZDP_SimpleDescReq_0
+        MOV.B   #0x10, R12
+        JMP     ??ZDP_SimpleDescReq_1
+??ZDP_SimpleDescReq_0:
+        MOV.B   @R8, 0(R12)
+        MOV.W   @SP, R15
+        MOV.B   0x1(R8), 0x1(R15)
+        MOV.W   @SP, R15
+        MOV.B   R10, 0x2(R15)
+        RPT     #0x8
+        RRUX.W  R10
+        MOV.W   @SP, R15
+        MOV.B   R10, 0x3(R15)
+        MOV.W   @SP, R15
+        MOV.B   R11, 0x4(R15)
+        CALLA   #?Subroutine3
+??ZDP_SimpleDescReq_1:
+        JMP     ?Subroutine0
+        NOP
+          CFI EndBlock cfiBlock40
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine15:
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI Function ZDO_RemoveRegisteredCB
+          CFI Conditional ??CrossCallReturnLabel_16
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+18
+          CFI Block cfiCond42 Using cfiCommon0
+          CFI (cfiCond42) Function ZDP_SimpleDescReq
+          CFI (cfiCond42) Conditional ??CrossCallReturnLabel_17
+          CFI (cfiCond42) R8L Frame(CFA, -12)
+          CFI (cfiCond42) R9L Frame(CFA, -10)
+          CFI (cfiCond42) R10L Frame(CFA, -8)
+          CFI (cfiCond42) R11L Frame(CFA, -6)
+          CFI (cfiCond42) CFA SP+18
+          CFI Block cfiCond43 Using cfiCommon0
+          CFI (cfiCond43) Function ZDOInitDevice
+          CFI (cfiCond43) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond43) CFA SP+10
+          CFI Block cfiCond44 Using cfiCommon0
+          CFI (cfiCond44) Function ZDP_EndDeviceBindReq
+          CFI (cfiCond44) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond44) R6L Frame(CFA, -16)
+          CFI (cfiCond44) R7L Frame(CFA, -14)
+          CFI (cfiCond44) R8L Frame(CFA, -12)
+          CFI (cfiCond44) R9L Frame(CFA, -10)
+          CFI (cfiCond44) R10L Frame(CFA, -8)
+          CFI (cfiCond44) R11L Frame(CFA, -6)
+          CFI (cfiCond44) CFA SP+22
+          CFI Block cfiCond45 Using cfiCommon0
+          CFI (cfiCond45) Function ZDP_MatchDescReq
+          CFI (cfiCond45) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond45) R6L Frame(CFA, -16)
+          CFI (cfiCond45) R7L Frame(CFA, -14)
+          CFI (cfiCond45) R8L Frame(CFA, -12)
+          CFI (cfiCond45) R9L Frame(CFA, -10)
+          CFI (cfiCond45) R10L Frame(CFA, -8)
+          CFI (cfiCond45) R11L Frame(CFA, -6)
+          CFI (cfiCond45) CFA SP+22
+          CFI Block cfiPicker46 Using cfiCommon1
+          CFI (cfiPicker46) NoFunction
+          CFI (cfiPicker46) Picker
+        CALLA   #zap_msg_allocate
+        MOV.W   R12, 0x4(SP)
+        CMP.W   #0x0, R12
+        RETA
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiCond42
+          CFI EndBlock cfiCond43
+          CFI EndBlock cfiCond44
+          CFI EndBlock cfiCond45
+          CFI EndBlock cfiPicker46
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond47 Using cfiCommon0
+          CFI Function ZDP_EndDeviceBindReq
+          CFI Conditional ??ZDP_EndDeviceBindReq_3
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+22
+          CFI Block cfiCond48 Using cfiCommon0
+          CFI (cfiCond48) Function ZDP_SimpleDescReq
+          CFI (cfiCond48) Conditional ??ZDP_SimpleDescReq_1
+          CFI (cfiCond48) R8L Frame(CFA, -12)
+          CFI (cfiCond48) R9L Frame(CFA, -10)
+          CFI (cfiCond48) R10L Frame(CFA, -8)
+          CFI (cfiCond48) R11L Frame(CFA, -6)
+          CFI (cfiCond48) CFA SP+18
+          CFI Block cfiPicker49 Using cfiCommon1
+          CFI (cfiPicker49) NoFunction
+          CFI (cfiPicker49) Picker
+        MOV.W   0x4(SP), R13
+        MOV.B   &zapAppPort, R12
+        CALLA   #zapPhySend
+        MOV.W   0x4(SP), R15
+        MOV.B   @R15, R10
+        MOV.W   SP, R12
+        ADD.W   #0x4, R12
+        CALLA   #zap_msg_deallocate
+        MOV.B   R10, R12
+        RETA
+          CFI EndBlock cfiCond47
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiPicker49
+
+        RSEG CODE:CODE:NOROOT(1)
+ZDP_MatchDescReq:
+          CFI Block cfiBlock50 Using cfiCommon0
+          CFI Function ZDP_MatchDescReq
+        FUNCALL ZDP_MatchDescReq, zap_msg_allocate
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL ZDP_MatchDescReq, zapPhySend
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL ZDP_MatchDescReq, zap_msg_deallocate
+        LOCFRAME CSTACK, 18, STACK
+        PUSHM.W #0x6, R11
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+        SUB.W   #0x2, SP
+          CFI CFA SP+18
+        MOV.W   R12, R11
+        MOV.W   R13, R8
+        MOV.W   R14, R9
+        MOV.B   R15, R10
+        MOV.B   0x14(SP), R6
+        MOV.B   R15, R12
+        ADD.B   R6, R12
+        RLA.B   R12
+        ADD.B   #0x8, R12
+        MOV.B   0x8(R11), R14
+        CMP.B   #0x2, R14
+        JEQ     ??ZDP_MatchDescReq_2
+        CMP.B   #0xf, R14
+        JEQ     ??ZDP_MatchDescReq_2
+        MOV.B   #0x2, R12
+        JMP     ??ZDP_MatchDescReq_3
+??ZDP_MatchDescReq_2:
+        MOV.B   #0x6, R14
+        CALLA   #?Subroutine2
+??CrossCallReturnLabel_15:
+        JNE     ??ZDP_MatchDescReq_4
+        MOV.B   #0x10, R12
+        JMP     ??ZDP_MatchDescReq_3
+??ZDP_MatchDescReq_4:
+        MOV.W   R12, R15
+        MOV.B   @R11, 0(R12)
+        ADD.W   #0x1, R15
+        MOV.B   0x1(R11), 0(R15)
+        CALLA   #?Subroutine7
+??CrossCallReturnLabel_4:
+        RPT     #0x8
+        RRUX.W  R9
+        MOV.B   R9, 0(R15)
+        ADD.W   #0x1, R15
+        MOV.B   R10, 0(R15)
+        ADD.W   #0x1, R15
+        MOV.B   #0x0, R11
+        MOV.W   0x12(SP), R13
+        JMP     ??ZDP_MatchDescReq_5
+??ZDP_MatchDescReq_0:
+        CALLA   #?Subroutine9
+??ZDP_MatchDescReq_5:
+        CMP.B   R10, R11
+        JNC     ??ZDP_MatchDescReq_0
+        MOV.B   R6, 0(R15)
+        ADD.W   #0x1, R15
+        MOV.B   #0x0, R11
+        MOV.W   0x16(SP), R13
+        JMP     ??ZDP_MatchDescReq_6
+??ZDP_MatchDescReq_1:
+        CALLA   #?Subroutine9
+??ZDP_MatchDescReq_6:
+        CMP.B   R6, R11
+        JNC     ??ZDP_MatchDescReq_1
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_20:
+        MOV.W   @SP, R15
+        MOV.B   @R15, R11
+        CALLA   #?Subroutine6
+??CrossCallReturnLabel_1:
+        MOV.B   R11, R12
+??ZDP_MatchDescReq_3:
+        JMP     ?Subroutine1
+        NOP
+          CFI EndBlock cfiBlock50
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine9:
+          CFI Block cfiCond51 Using cfiCommon0
+          CFI Function ZDP_MatchDescReq
+          CFI Conditional ??ZDP_MatchDescReq_5
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+22
+          CFI Block cfiCond52 Using cfiCommon0
+          CFI (cfiCond52) Function ZDP_MatchDescReq
+          CFI (cfiCond52) Conditional ??ZDP_MatchDescReq_6
+          CFI (cfiCond52) R6L Frame(CFA, -16)
+          CFI (cfiCond52) R7L Frame(CFA, -14)
+          CFI (cfiCond52) R8L Frame(CFA, -12)
+          CFI (cfiCond52) R9L Frame(CFA, -10)
+          CFI (cfiCond52) R10L Frame(CFA, -8)
+          CFI (cfiCond52) R11L Frame(CFA, -6)
+          CFI (cfiCond52) CFA SP+22
+          CFI Block cfiPicker53 Using cfiCommon1
+          CFI (cfiPicker53) NoFunction
+          CFI (cfiPicker53) Picker
+        MOV.B   @R13, 0(R15)
+        ADD.W   #0x1, R15
+        MOV.W   @R13+, R14
+        RPT     #0x8
+        RRUX.W  R14
+        MOV.B   R14, 0(R15)
+        ADD.W   #0x1, R15
+        ADD.B   #0x1, R11
+        RETA
+          CFI EndBlock cfiCond51
+          CFI EndBlock cfiCond52
+          CFI EndBlock cfiPicker53
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond54 Using cfiCommon0
+          CFI Function ZDP_EndDeviceBindReq
+          CFI Conditional ??CrossCallReturnLabel_3
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+22
+          CFI Block cfiCond55 Using cfiCommon0
+          CFI (cfiCond55) Function ZDP_MatchDescReq
+          CFI (cfiCond55) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond55) R6L Frame(CFA, -16)
+          CFI (cfiCond55) R7L Frame(CFA, -14)
+          CFI (cfiCond55) R8L Frame(CFA, -12)
+          CFI (cfiCond55) R9L Frame(CFA, -10)
+          CFI (cfiCond55) R10L Frame(CFA, -8)
+          CFI (cfiCond55) R11L Frame(CFA, -6)
+          CFI (cfiCond55) CFA SP+22
+          CFI Block cfiPicker56 Using cfiCommon1
+          CFI (cfiPicker56) NoFunction
+          CFI (cfiPicker56) Picker
+        ADD.W   #0x1, R15
+        MOV.B   R8, 0(R15)
+        ADD.W   #0x1, R15
+        RPT     #0x8
+        RRUX.W  R8
+        MOV.B   R8, 0(R15)
+        ADD.W   #0x1, R15
+        MOV.B   R9, 0(R15)
+        ADD.W   #0x1, R15
+        RETA
+          CFI EndBlock cfiCond54
+          CFI EndBlock cfiCond55
+          CFI EndBlock cfiPicker56
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond57 Using cfiCommon0
+          CFI Function ZDO_RemoveRegisteredCB
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+18
+          CFI Block cfiCond58 Using cfiCommon0
+          CFI (cfiCond58) Function ZDP_MatchDescReq
+          CFI (cfiCond58) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond58) R6L Frame(CFA, -16)
+          CFI (cfiCond58) R7L Frame(CFA, -14)
+          CFI (cfiCond58) R8L Frame(CFA, -12)
+          CFI (cfiCond58) R9L Frame(CFA, -10)
+          CFI (cfiCond58) R10L Frame(CFA, -8)
+          CFI (cfiCond58) R11L Frame(CFA, -6)
+          CFI (cfiCond58) CFA SP+22
+          CFI Block cfiCond59 Using cfiCommon0
+          CFI (cfiCond59) Function ZDOInitDevice
+          CFI (cfiCond59) Conditional ??CrossCallReturnLabel_0
+          CFI (cfiCond59) CFA SP+10
+          CFI Block cfiPicker60 Using cfiCommon1
+          CFI (cfiPicker60) NoFunction
+          CFI (cfiPicker60) Picker
+        MOV.W   SP, R12
+        ADD.W   #0x4, R12
+        BRA     #zap_msg_deallocate
+          CFI EndBlock cfiCond57
+          CFI EndBlock cfiCond58
+          CFI EndBlock cfiCond59
+          CFI EndBlock cfiPicker60
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond61 Using cfiCommon0
+          CFI Function ZDP_EndDeviceBindReq
+          CFI Conditional ??CrossCallReturnLabel_14
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+22
+          CFI Block cfiCond62 Using cfiCommon0
+          CFI (cfiCond62) Function ZDP_MatchDescReq
+          CFI (cfiCond62) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond62) R6L Frame(CFA, -16)
+          CFI (cfiCond62) R7L Frame(CFA, -14)
+          CFI (cfiCond62) R8L Frame(CFA, -12)
+          CFI (cfiCond62) R9L Frame(CFA, -10)
+          CFI (cfiCond62) R10L Frame(CFA, -8)
+          CFI (cfiCond62) R11L Frame(CFA, -6)
+          CFI (cfiCond62) CFA SP+22
+          CFI Block cfiPicker63 Using cfiCommon1
+          CFI (cfiPicker63) NoFunction
+          CFI (cfiPicker63) Picker
+        MOV.B   #0x25, R13
+        JMP     ?Subroutine15
+        NOP
+          CFI EndBlock cfiCond61
+          CFI EndBlock cfiCond62
+          CFI EndBlock cfiPicker63
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+ZDOInitDevice:
+          CFI Block cfiBlock64 Using cfiCommon0
+          CFI Function ZDOInitDevice
+        FUNCALL ZDOInitDevice, zb_GetDeviceInfo
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL ZDOInitDevice, zap_msg_allocate
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL ZDOInitDevice, zapPhySend
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL ZDOInitDevice, zap_msg_deallocate
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL ZDOInitDevice, osal_start_timerEx
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL ZDOInitDevice, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        SUB.W   #0x2, SP
+          CFI CFA SP+6
+        MOV.W   #devState, R13
+        MOV.B   #0x0, R12
+        CALLA   #zb_GetDeviceInfo
+        MOV.B   &devState, R14
+        CMP.B   #0x0, R14
+        JEQ     ??ZDOInitDevice_0
+        CMP.B   #0x1, R14
+        JEQ     ??ZDOInitDevice_0
+        CMP.B   #0xa, R14
+        JNE     ??ZDOInitDevice_1
+??ZDOInitDevice_0:
+        MOV.B   #0x40, R14
+        MOV.B   #0x45, R13
+        MOV.B   #0x0, R12
+        CALLA   #?Subroutine15
+??CrossCallReturnLabel_18:
+        JNE     ??ZDOInitDevice_2
+        MOV.B   #0xff, R12
+        JMP     ??ZDOInitDevice_3
+??ZDOInitDevice_2:
+        MOV.W   R12, R13
+        CALLA   #??Subroutine16_0
+??CrossCallReturnLabel_19:
+        MOV.B   #0x2, &devState
+        CALLA   #?Subroutine6
+??CrossCallReturnLabel_0:
+        MOV.W   #0x2710, R14
+        MOV.W   #0x1000, R13
+        CALLA   #?Subroutine13
+??CrossCallReturnLabel_8:
+        JEQ     ??ZDOInitDevice_1
+        MOV.W   #0x1000, R13
+        CALLA   #??Subroutine12_0
+??ZDOInitDevice_1:
+        MOV.B   #0x1, R12
+??ZDOInitDevice_3:
+        ADD.W   #0x2, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock64
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+zapZDO_ConcentratorIndicationCB:
+          CFI Block cfiBlock65 Using cfiCommon0
+          CFI Function zapZDO_ConcentratorIndicationCB
+        FUNCALL zapZDO_ConcentratorIndicationCB
+        LOCFRAME CSTACK, 10, STACK
+        SUB.W   #0x6, SP
+          CFI CFA SP+10
+        MOV.W   &zdoCBFunc + 4, R15
+        BIS.W   &zdoCBFunc + 6, R15
+        CMP.W   #0x0, R15
+        JEQ     ??zapZDO_ConcentratorIndicationCB_0
+        MOV.B   @R12, R14
+        MOV.B   0x1(R12), R15
+        CALLA   #??Subroutine11_0
+??CrossCallReturnLabel_26:
+        MOV.W   R14, 0(SP)
+        ADD.W   #0x2, R12
+        MOV.W   R12, 0x2(SP)
+        MOV.B   0x8(R12), 0x4(SP)
+        MOV.W   SP, R12
+        ADD.W   #0x0, R12
+        CALLA   &zdoCBFunc + 4
+??zapZDO_ConcentratorIndicationCB_0:
+        ADD.W   #0x6, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock65
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+ZDO_RegisterForZdoCB:
+          CFI Block cfiBlock66 Using cfiCommon0
+          CFI Function ZDO_RegisterForZdoCB
+        CMP.B   #0x7, R12
+        JC      ??ZDO_RegisterForZdoCB_0
+        MOV.B   R12, R12
+        RLAM.W  #0x2, R12
+        MOV.W   R14, zdoCBFunc(R12)
+        MOV.W   R15, zdoCBFunc + 2(R12)
+        MOV.B   #0x0, R12
+        RETA
+??ZDO_RegisterForZdoCB_0:
+        MOV.B   #0x2, R12
+        RETA
+          CFI EndBlock cfiBlock66
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+ZDO_UpdateNwkStatus:
+          CFI Block cfiBlock67 Using cfiCommon0
+          CFI Function ZDO_UpdateNwkStatus
+        FUNCALL ZDO_UpdateNwkStatus, osal_msg_find
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL ZDO_UpdateNwkStatus, osal_msg_allocate
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL ZDO_UpdateNwkStatus, osal_set_event
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL ZDO_UpdateNwkStatus, osal_msg_send
+        LOCFRAME CSTACK, 8, STACK
+        PUSHM.W #0x2, R11
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+8
+        MOV.B   R12, R10
+        MOV.W   &epList, R11
+        JMP     ??ZDO_UpdateNwkStatus_2
+??ZDO_UpdateNwkStatus_1:
+        MOV.B   R10, 0x1(R12)
+??ZDO_UpdateNwkStatus_0:
+        MOV.W   @R11, R11
+??ZDO_UpdateNwkStatus_2:
+        CMP.W   #0x0, R11
+        JEQ     ??ZDO_UpdateNwkStatus_3
+        MOV.W   0x2(R11), R15
+        CMP.B   #0x0, 0(R15)
+        JEQ     ??ZDO_UpdateNwkStatus_0
+        MOV.B   #0xd1, R13
+        MOV.W   0x2(R15), R15
+        MOV.B   @R15, R12
+        CALLA   #osal_msg_find
+        CMP.W   #0x0, R12
+        JNE     ??ZDO_UpdateNwkStatus_1
+        MOV.W   #0x2, R12
+        CALLA   #osal_msg_allocate
+        MOV.W   R12, R13
+        CMP.W   #0x0, R12
+        JNE     ??ZDO_UpdateNwkStatus_4
+        CALLA   #?Subroutine12
+??CrossCallReturnLabel_23:
+        JMP     ??ZDO_UpdateNwkStatus_0
+??ZDO_UpdateNwkStatus_4:
+        MOV.B   #0xd1, 0(R12)
+        MOV.B   R10, 0x1(R12)
+        MOV.W   0x2(R11), R15
+        MOV.W   0x2(R15), R15
+        MOV.B   @R15, R12
+        CALLA   #osal_msg_send
+        JMP     ??ZDO_UpdateNwkStatus_0
+??ZDO_UpdateNwkStatus_3:
+        POPM.W  #0x2, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock67
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+ZDO_ParseDeviceAnnce:
+          CFI Block cfiBlock68 Using cfiCommon0
+          CFI Function ZDO_ParseDeviceAnnce
+        FUNCALL ZDO_ParseDeviceAnnce, sAddrExtCpy
+        LOCFRAME CSTACK, 8, STACK
+        PUSHM.W #0x2, R11
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+8
+        MOV.W   R13, R10
+        MOV.W   0x16(R12), R11
+        MOV.B   @R11, R14
+        MOV.B   0x1(R11), R15
+        CALLA   #??Subroutine11_0
+??CrossCallReturnLabel_25:
+        MOV.W   R14, 0(R13)
+        ADD.W   #0x2, R11
+        MOV.W   R11, R13
+        MOV.W   R10, R12
+        ADD.W   #0x2, R12
+        CALLA   #sAddrExtCpy
+        MOV.B   0x8(R11), 0xa(R10)
+        POPM.W  #0x2, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock68
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+ZDO_ParseSimpleDescRsp:
+          CFI Block cfiBlock69 Using cfiCommon0
+          CFI Function ZDO_ParseSimpleDescRsp
+        FUNCALL ZDO_ParseSimpleDescRsp, ZDO_ParseSimpleDescBuf
+        LOCFRAME CSTACK, 4, STACK
+        MOV.W   0x16(R12), R12
+        MOV.B   @R12+, 0(R13)
+        MOV.B   @R12, R14
+        MOV.B   0x1(R12), R15
+        CALLA   #??Subroutine11_0
+??CrossCallReturnLabel_24:
+        MOV.W   R14, 0x2(R13)
+        CMP.B   #0x0, 0(R13)
+        JNE     ??ZDO_ParseSimpleDescRsp_0
+        ADD.W   #0x4, R13
+        ADD.W   #0x3, R12
+        CALLA   #ZDO_ParseSimpleDescBuf
+??ZDO_ParseSimpleDescRsp_0:
+        RETA
+          CFI EndBlock cfiBlock69
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+ZDO_ParseEPListRsp:
+          CFI Block cfiBlock70 Using cfiCommon0
+          CFI Function ZDO_ParseEPListRsp
+        FUNCALL ZDO_ParseEPListRsp, osal_mem_alloc
+        LOCFRAME CSTACK, 16, STACK
+        FUNCALL ZDO_ParseEPListRsp, osal_memcpy
+        LOCFRAME CSTACK, 16, STACK
+        PUSHM.W #0x6, R11
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+        MOV.W   0x16(R12), R8
+        MOV.B   @R8+, R6
+        MOV.B   0x2(R8), R10
+        MOV.B   R10, R11
+        MOV.W   R11, R12
+        ADD.W   #0x6, R12
+        CALLA   #osal_mem_alloc
+        MOV.W   R12, R9
+        CMP.W   #0x0, R12
+        JEQ     ??ZDO_ParseEPListRsp_0
+        MOV.B   R6, 0(R12)
+        CALLA   #?Subroutine10
+??CrossCallReturnLabel_7:
+        MOV.W   R14, 0x2(R12)
+        MOV.B   R10, 0x4(R12)
+        MOV.W   R11, R14
+        ADD.W   #0x3, R8
+        MOV.W   R8, R13
+        ADD.W   #0x5, R12
+        CALLA   #osal_memcpy
+??ZDO_ParseEPListRsp_0:
+        MOV.W   R9, R12
+        POPM.W  #0x6, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R6L SameValue
+          CFI R7L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock70
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine10:
+          CFI Block cfiCond71 Using cfiCommon0
+          CFI Function ZDO_ParseSimpleDescBuf
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+          CFI Block cfiCond72 Using cfiCommon0
+          CFI (cfiCond72) Function ZDO_ParseSimpleDescBuf
+          CFI (cfiCond72) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond72) R8L Frame(CFA, -12)
+          CFI (cfiCond72) R9L Frame(CFA, -10)
+          CFI (cfiCond72) R10L Frame(CFA, -8)
+          CFI (cfiCond72) R11L Frame(CFA, -6)
+          CFI (cfiCond72) CFA SP+16
+          CFI Block cfiCond73 Using cfiCommon0
+          CFI (cfiCond73) Function ZDO_ParseEPListRsp
+          CFI (cfiCond73) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond73) R6L Frame(CFA, -16)
+          CFI (cfiCond73) R7L Frame(CFA, -14)
+          CFI (cfiCond73) R8L Frame(CFA, -12)
+          CFI (cfiCond73) R9L Frame(CFA, -10)
+          CFI (cfiCond73) R10L Frame(CFA, -8)
+          CFI (cfiCond73) R11L Frame(CFA, -6)
+          CFI (cfiCond73) CFA SP+20
+          CFI Block cfiPicker74 Using cfiCommon1
+          CFI (cfiPicker74) NoFunction
+          CFI (cfiPicker74) Picker
+        MOV.B   @R8, R14
+        CALLA   #?Subroutine14
+??CrossCallReturnLabel_13:
+        ADD.W   R15, R14
+        RETA
+          CFI EndBlock cfiCond71
+          CFI EndBlock cfiCond72
+          CFI EndBlock cfiCond73
+          CFI EndBlock cfiPicker74
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine14:
+          CFI Block cfiCond75 Using cfiCommon0
+          CFI Function ZDO_ParseSimpleDescBuf
+          CFI Conditional ??CrossCallReturnLabel_11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+          CFI Block cfiCond76 Using cfiCommon0
+          CFI (cfiCond76) Function ZDO_ParseSimpleDescBuf
+          CFI (cfiCond76) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond76) R8L Frame(CFA, -12)
+          CFI (cfiCond76) R9L Frame(CFA, -10)
+          CFI (cfiCond76) R10L Frame(CFA, -8)
+          CFI (cfiCond76) R11L Frame(CFA, -6)
+          CFI (cfiCond76) CFA SP+16
+          CFI Block cfiCond77 Using cfiCommon0
+          CFI (cfiCond77) Function ZDO_ParseSimpleDescBuf
+          CFI (cfiCond77) Conditional ??CrossCallReturnLabel_13, ??CrossCallReturnLabel_5
+          CFI (cfiCond77) R8L Frame(CFA, -12)
+          CFI (cfiCond77) R9L Frame(CFA, -10)
+          CFI (cfiCond77) R10L Frame(CFA, -8)
+          CFI (cfiCond77) R11L Frame(CFA, -6)
+          CFI (cfiCond77) CFA SP+20
+          CFI Block cfiCond78 Using cfiCommon0
+          CFI (cfiCond78) Function ZDO_ParseSimpleDescBuf
+          CFI (cfiCond78) Conditional ??CrossCallReturnLabel_13, ??CrossCallReturnLabel_6
+          CFI (cfiCond78) R8L Frame(CFA, -12)
+          CFI (cfiCond78) R9L Frame(CFA, -10)
+          CFI (cfiCond78) R10L Frame(CFA, -8)
+          CFI (cfiCond78) R11L Frame(CFA, -6)
+          CFI (cfiCond78) CFA SP+20
+          CFI Block cfiCond79 Using cfiCommon0
+          CFI (cfiCond79) Function ZDO_ParseEPListRsp
+          CFI (cfiCond79) Conditional ??CrossCallReturnLabel_13, ??CrossCallReturnLabel_7
+          CFI (cfiCond79) R6L Frame(CFA, -16)
+          CFI (cfiCond79) R7L Frame(CFA, -14)
+          CFI (cfiCond79) R8L Frame(CFA, -12)
+          CFI (cfiCond79) R9L Frame(CFA, -10)
+          CFI (cfiCond79) R10L Frame(CFA, -8)
+          CFI (cfiCond79) R11L Frame(CFA, -6)
+          CFI (cfiCond79) CFA SP+24
+          CFI Block cfiPicker80 Using cfiCommon1
+          CFI (cfiPicker80) NoFunction
+          CFI (cfiPicker80) Picker
+        MOV.B   0x1(R8), R15
+        RPT     #0x8
+        RLAX.W  R15
+        RETA
+          CFI EndBlock cfiCond75
+          CFI EndBlock cfiCond76
+          CFI EndBlock cfiCond77
+          CFI EndBlock cfiCond78
+          CFI EndBlock cfiCond79
+          CFI EndBlock cfiPicker80
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+ZDO_ParseSimpleDescBuf:
+          CFI Block cfiBlock81 Using cfiCommon0
+          CFI Function ZDO_ParseSimpleDescBuf
+        FUNCALL ZDO_ParseSimpleDescBuf, osal_mem_alloc
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL ZDO_ParseSimpleDescBuf, osal_mem_alloc
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL ZDO_ParseSimpleDescBuf, osal_mem_free
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.W   R12, R8
+        MOV.W   R13, R11
+        MOV.B   @R8+, 0(R13)
+        CALLA   #?Subroutine10
+??CrossCallReturnLabel_5:
+        MOV.W   R14, 0x2(R13)
+        ADD.W   #0x2, R8
+        CALLA   #?Subroutine10
+??CrossCallReturnLabel_6:
+        MOV.W   R14, 0x4(R13)
+        ADD.W   #0x2, R8
+        MOV.B   @R8+, R14
+        RPT     #0x4
+        RRUX.B  R14
+        MOV.B   R14, 0x6(R13)
+        MOV.B   @R8+, R10
+        MOV.B   R10, 0x7(R13)
+        CMP.B   #0x0, R10
+        JEQ     ??ZDO_ParseSimpleDescBuf_2
+        MOV.B   R10, R12
+        RLA.W   R12
+        CALLA   #osal_mem_alloc
+        MOV.W   R12, 0x8(R11)
+        CMP.W   #0x0, R12
+        JEQ     ??ZDO_ParseSimpleDescBuf_3
+        MOV.B   #0x0, R14
+        JMP     ??ZDO_ParseSimpleDescBuf_4
+??ZDO_ParseSimpleDescBuf_0:
+        MOV.B   @R8, R13
+        CALLA   #?Subroutine14
+??CrossCallReturnLabel_11:
+        ADD.W   R15, R13
+        MOV.B   R14, R9
+        RLA.W   R9
+        MOV.W   R12, R15
+        ADD.W   R9, R15
+        MOV.W   R13, 0(R15)
+        ADD.W   #0x2, R8
+        ADD.B   #0x1, R14
+??ZDO_ParseSimpleDescBuf_4:
+        CMP.B   R10, R14
+        JNC     ??ZDO_ParseSimpleDescBuf_0
+??ZDO_ParseSimpleDescBuf_2:
+        MOV.B   @R8+, R10
+        MOV.B   R10, 0xa(R11)
+        CMP.B   #0x0, R10
+        JEQ     ??ZDO_ParseSimpleDescBuf_5
+        MOV.B   R10, R12
+        RLA.W   R12
+        CALLA   #osal_mem_alloc
+        MOV.W   R12, 0xc(R11)
+        CMP.W   #0x0, R12
+        JNE     ??ZDO_ParseSimpleDescBuf_6
+        MOV.W   0x8(R11), R12
+        CMP.W   #0x0, R12
+        JEQ     ??ZDO_ParseSimpleDescBuf_3
+        CALLA   #osal_mem_free
+??ZDO_ParseSimpleDescBuf_3:
+        MOV.B   #0x1, R12
+        JMP     ??ZDO_ParseSimpleDescBuf_7
+??ZDO_ParseSimpleDescBuf_6:
+        MOV.B   #0x0, R14
+        JMP     ??ZDO_ParseSimpleDescBuf_8
+??ZDO_ParseSimpleDescBuf_1:
+        MOV.B   @R8, R11
+        CALLA   #?Subroutine14
+??CrossCallReturnLabel_12:
+        ADD.W   R15, R11
+        MOV.B   R14, R9
+        RLA.W   R9
+        MOV.W   R12, R15
+        ADD.W   R9, R15
+        MOV.W   R11, 0(R15)
+        ADD.W   #0x2, R8
+        ADD.B   #0x1, R14
+??ZDO_ParseSimpleDescBuf_8:
+        CMP.B   R10, R14
+        JNC     ??ZDO_ParseSimpleDescBuf_1
+??ZDO_ParseSimpleDescBuf_5:
+        MOV.B   #0x0, R12
+??ZDO_ParseSimpleDescBuf_7:
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock81
+//  704   rtrn = ZAP_SRSP_STATUS(pBuf);
+//  705   zap_msg_deallocate(&pBuf);
+//  706 
+//  707   return (afStatus_t)rtrn;
+//  708 }
+//  709 
+//  710 /**************************************************************************************************
+//  711  * @fn          ZDP_EndDeviceBindReq
+//  712  *
+//  713  * @brief       This builds and sends a End_Device_Bind_req message.
+//  714  *              This function sends a unicast message.
+//  715  *
+//  716  * input parameters
+//  717  *
+//  718  * @param       dstAddr - destination address
+//  719  * @param       LocalCoordinator - short address of local coordinator
+//  720  * @param       epIntf - Endpoint/Interface of Simple Desc
+//  721  * @param       ProfileID - Profile ID
+//  722  *
+//  723  *   The Input cluster list is the opposite of what you would think.
+//  724  *   This is the output cluster list of this device
+//  725  * @param       NumInClusters - number of input clusters
+//  726  * @param       InClusterList - input cluster ID list
+//  727  *
+//  728  *   The Output cluster list is the opposite of what you would think.
+//  729  *   This is the input cluster list of this device
+//  730  * @param       NumOutClusters - number of output clusters
+//  731  * @param       OutClusterList - output cluster ID list
+//  732  *
+//  733  * @param       SecurityEnable - Security Options
+//  734  *
+//  735  * output parameters
+//  736  *
+//  737  * None.
+//  738  *
+//  739  * @return      afStatus_t
+//  740  **************************************************************************************************
+//  741  */
+//  742 afStatus_t ZDP_EndDeviceBindReq(zAddrType_t *dstAddr,
+//  743                                 uint16 LocalCoordinator,
+//  744                                 byte endPoint,
+//  745                                 uint16 ProfileID,
+//  746                                 byte NumInClusters, cId_t *InClusterList,
+//  747                                 byte NumOutClusters, cId_t *OutClusterList,
+//  748                                 byte SecurityEnable)
+//  749 {
+//  750   const uint8 len = 17 + ((NumInClusters + NumOutClusters) * 2);
+//  751   uint8 *pBuf, *pPtr, cnt;
+//  752 
+//  753   (void)SecurityEnable;
+//  754 
+//  755   if ((Addr16Bit != dstAddr->addrMode) && (AddrBroadcast != dstAddr->addrMode))
+//  756   {
+//  757     return afStatus_INVALID_PARAMETER;
+//  758   }
+//  759 
+//  760   pBuf = zap_msg_allocate(len, (uint8)MT_RPC_SYS_ZDO | (uint8)MT_RPC_CMD_SREQ,
+//  761                                (uint8)MT_ZDO_END_DEV_BIND_REQ);
+//  762 
+//  763   if (NULL == pBuf)
+//  764   {
+//  765     return afStatus_MEM_FAIL;
+//  766   }
+//  767 
+//  768   pPtr = pBuf;
+//  769   *pPtr++ = LO_UINT16(dstAddr->addr.shortAddr);
+//  770   *pPtr++ = HI_UINT16(dstAddr->addr.shortAddr);
+//  771   *pPtr++ = LO_UINT16(LocalCoordinator);
+//  772   *pPtr++ = HI_UINT16(LocalCoordinator);
+//  773   //(void)osal_memset(pPtr, 0, Z_EXTADDR_LEN);  // MT_ZDO ignores extended address.
+//  774   pPtr += Z_EXTADDR_LEN;
+//  775   *pPtr++ = endPoint;
+//  776   *pPtr++ = LO_UINT16(ProfileID);
+//  777   *pPtr++ = HI_UINT16(ProfileID);
+//  778   *pPtr++ = NumInClusters;
+//  779   for (cnt = 0; cnt < NumInClusters; cnt++)
+//  780   {
+//  781     *pPtr++ = LO_UINT16(*InClusterList);
+//  782     *pPtr++ = HI_UINT16(*InClusterList);
+//  783     InClusterList++;
+//  784   }
+//  785   *pPtr++ = NumOutClusters;
+//  786   for (cnt = 0; cnt < NumOutClusters; cnt++)
+//  787   {
+//  788     *pPtr++ = LO_UINT16(*OutClusterList);
+//  789     *pPtr++ = HI_UINT16(*OutClusterList);
+//  790     OutClusterList++;
+//  791   }
+//  792 
+//  793   zapPhySend(zapAppPort, pBuf);
+//  794   cnt = ZAP_SRSP_STATUS(pBuf);
+//  795   zap_msg_deallocate(&pBuf);
+//  796 
+//  797   return (afStatus_t)cnt;
+//  798 }
+//  799 
+//  800 /*********************************************************************
+//  801  * @fn          ZDO_RegisterForZDOMsg
+//  802  *
+//  803  * @brief       Call this function to register of an incoming over
+//  804  *              the air ZDO message - probably a response message
+//  805  *              but requests can also be received.
+//  806  *              Messages are delivered to the task with ZDO_CB_MSG
+//  807  *              as the message ID.
+//  808  *
+//  809  * @param       taskID - Where you would like the message delivered
+//  810  * @param       clusterID - What message?
+//  811  *
+//  812  * @return      ZSuccess - successful, ZMemError if not
+//  813  */
+//  814 ZStatus_t ZDO_RegisterForZDOMsg(uint8 taskID, uint16 clusterID)
+//  815 {
+//  816   ZDO_MsgCB_t *pList;
+//  817   ZDO_MsgCB_t *pLast;
+//  818   ZDO_MsgCB_t *pNew;
+//  819   (void)taskID;
+//  820 
+//  821   // Look for duplicate
+//  822   pList = pLast = zdoMsgCBs;
+//  823   while ( pList )
+//  824   {
+//  825     if ( pList->taskID == taskID && pList->clusterID == clusterID )
+//  826       return ( ZSuccess );
+//  827     pLast = pList;
+//  828     pList = (ZDO_MsgCB_t *)pList->next;
+//  829   }
+//  830 
+//  831   // Add to the list
+//  832   pNew = (ZDO_MsgCB_t *)osal_mem_alloc( sizeof ( ZDO_MsgCB_t ) );
+//  833   if ( pNew )
+//  834   {
+//  835     pNew->taskID = taskID;
+//  836     pNew->clusterID = clusterID;
+//  837     pNew->next = NULL;
+//  838     if ( zdoMsgCBs )
+//  839     {
+//  840       pLast->next = pNew;
+//  841     }
+//  842     else
+//  843       zdoMsgCBs = pNew;
+//  844 
+//  845     return znp_ZDO_RegisterForZDOMsg(clusterID);
+//  846   }
+//  847 
+//  848   return ZMemError;
+//  849 }
+//  850 
+//  851 /*********************************************************************
+//  852  * @fn          ZDO_RemoveRegisteredCB
+//  853  *
+//  854  * @brief       Call this function if you don't want to receive the
+//  855  *              incoming message.
+//  856  *
+//  857  * @param       taskID - Where the messages are being delivered.
+//  858  * @param       clusterID - What message?
+//  859  *
+//  860  * @return      ZSuccess - successful, ZFailure if not found
+//  861  */
+//  862 ZStatus_t ZDO_RemoveRegisteredCB( uint8 taskID, uint16 clusterID )
+//  863 {
+//  864   ZDO_MsgCB_t *pList;
+//  865   ZDO_MsgCB_t *pLast = NULL;
+//  866 
+//  867   pList = zdoMsgCBs;
+//  868   while ( pList )
+//  869   {
+//  870     if ( pList->taskID == taskID && pList->clusterID == clusterID )
+//  871     {
+//  872       uint8 *pBuf, rtrn;
+//  873 
+//  874       // Note that this could be sent AREQ to free up the host (but then no status.)
+//  875       if (NULL == (pBuf = zap_msg_allocate(2, (uint8)MT_RPC_SYS_ZDO | (uint8)MT_RPC_CMD_SREQ,
+//  876                                               (uint8)MT_ZDO_MSG_CB_REMOVE)))
+//  877       {
+//  878         return ZMemError;
+//  879       }
+//  880 
+//  881       pBuf[0] = LO_UINT16(clusterID);
+//  882       pBuf[1] = HI_UINT16(clusterID);
+//  883 
+//  884       zapPhySend(zapAppPort, pBuf);
+//  885       rtrn = ZAP_SRSP_STATUS(pBuf);
+//  886       zap_msg_deallocate(&pBuf);
+//  887 
+//  888       if (ZSuccess != rtrn)
+//  889       {
+//  890         return (ZStatus_t)rtrn;
+//  891       }
+//  892 
+//  893       if ( pLast )
+//  894       {
+//  895         // remove this one from the linked list
+//  896         pLast->next = pList->next;
+//  897       }
+//  898       else if ( pList->next )
+//  899       {
+//  900         // remove the first one from the linked list
+//  901         zdoMsgCBs = pList->next;
+//  902       }
+//  903       else
+//  904       {
+//  905         // remove the only item from the list
+//  906         zdoMsgCBs = (ZDO_MsgCB_t *)NULL;
+//  907       }
+//  908       osal_mem_free( pList );
+//  909       return ( ZSuccess );
+//  910     }
+//  911     pLast = pList;
+//  912     pList = pList->next;
+//  913   }
+//  914 
+//  915   return ( ZFailure );
+//  916 }
+//  917 
+//  918 /*********************************************************************
+//  919  * @fn          ZDO_SendMsgCBs
+//  920  *
+//  921  * @brief       De-mux the ZDO_CB_MSG from the ZNP.
+//  922  *
+//  923  * @param       inMsg - pointer to the incoming message buffer.
+//  924  *
+//  925  * @return      none
+//  926  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  927 static void ZDO_SendMsgCBs(zdoIncomingMsg_t *inMsg)
+ZDO_SendMsgCBs:
+          CFI Block cfiBlock82 Using cfiCommon0
+          CFI Function ZDO_SendMsgCBs
+//  928 {
+        FUNCALL ZDO_SendMsgCBs, osal_msg_allocate
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL ZDO_SendMsgCBs, osal_memcpy
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL ZDO_SendMsgCBs, osal_memcpy
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL ZDO_SendMsgCBs, osal_msg_send
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.W   R12, R10
+//  929   ZDO_MsgCB_t *pList = zdoMsgCBs;
+        MOV.W   &zdoMsgCBs, R11
+        JMP     ??ZDO_SendMsgCBs_1
+//  930 
+//  931   while ( pList )
+//  932   {
+//  933     if ( pList->clusterID == inMsg->clusterID )
+??ZDO_SendMsgCBs_0:
+        CMP.W   0xe(R10), 0x4(R11)
+        JNE     ??ZDO_SendMsgCBs_2
+//  934     {
+//  935       zdoIncomingMsg_t *msgPtr;
+//  936 
+//  937       // Send the address to the task
+//  938       msgPtr = (zdoIncomingMsg_t *)osal_msg_allocate( sizeof( zdoIncomingMsg_t ) + inMsg->asduLen );
+        MOV.B   0x12(R10), R12
+        ADD.W   #0x18, R12
+        CALLA   #osal_msg_allocate
+        MOV.W   R12, R8
+//  939       if ( msgPtr )
+        CMP.W   #0x0, R12
+        JEQ     ??ZDO_SendMsgCBs_2
+//  940       {
+//  941         // copy struct
+//  942         osal_memcpy( msgPtr, inMsg, sizeof( zdoIncomingMsg_t ));
+        MOV.W   #0x18, R14
+        MOV.W   R10, R13
+        CALLA   #osal_memcpy
+//  943 
+//  944         if ( inMsg->asduLen )
+        CMP.B   #0x0, 0x12(R10)
+        JEQ     ??ZDO_SendMsgCBs_3
+//  945         {
+//  946           msgPtr->asdu = (byte*)(((byte*)msgPtr) + sizeof( zdoIncomingMsg_t ));
+        MOV.W   R8, R12
+        ADD.W   #0x18, R12
+        MOV.W   R12, 0x16(R8)
+//  947           osal_memcpy( msgPtr->asdu, inMsg->asdu, inMsg->asduLen );
+        MOV.B   0x12(R10), R14
+        MOV.W   0x16(R10), R13
+        CALLA   #osal_memcpy
+//  948         }
+//  949 
+//  950         msgPtr->hdr.event = ZDO_CB_MSG;
+??ZDO_SendMsgCBs_3:
+        MOV.B   #0xd3, 0(R8)
+//  951         osal_msg_send( pList->taskID, (uint8 *)msgPtr );
+        MOV.W   R8, R13
+        MOV.B   0x2(R11), R12
+        CALLA   #osal_msg_send
+//  952       }
+//  953     }
+//  954     pList = (ZDO_MsgCB_t *)pList->next;
+??ZDO_SendMsgCBs_2:
+        MOV.W   @R11, R11
+//  955   }
+??ZDO_SendMsgCBs_1:
+        CMP.W   #0x0, R11
+        JNE     ??ZDO_SendMsgCBs_0
+//  956 }
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock82
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r4:
+        REQUIRE ?setjmp_r4
+        REQUIRE ?longjmp_r4
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r5:
+        REQUIRE ?setjmp_r5
+        REQUIRE ?longjmp_r5
+
+        END
+//  957 
+//  958 #endif
+//  959 /**************************************************************************************************
+//  960 */
+// 
+// 1 686 bytes in segment CODE
+//    30 bytes in segment DATA16_Z
+// 
+// 1 686 bytes of CODE memory
+//    30 bytes of DATA memory
+//
+//Errors: none
+//Warnings: none

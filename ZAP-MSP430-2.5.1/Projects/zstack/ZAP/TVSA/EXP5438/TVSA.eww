@@ -4,23 +4,7 @@
   <project>
     <path>$WS_DIR$\TVSA.ewp</path>
   </project>
-  <batchBuild>
-    <batchDefinition>
-      <name>ALL</name>
-      <member>
-        <project>TVSA</project>
-        <configuration>ZAP Coordinator</configuration>
-      </member>
-      <member>
-        <project>TVSA</project>
-        <configuration>ZAP Router</configuration>
-      </member>
-      <member>
-        <project>TVSA</project>
-        <configuration>ZAP EndDevice</configuration>
-      </member>
-    </batchDefinition>
-  </batchBuild>
+  <batchBuild/>
 </workspace>
 
 
