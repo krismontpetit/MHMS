@@ -44,7 +44,7 @@
  * ------------------------------------------------------------------------------------------------
  */
 
-//#include "hal_board.h"
+#include "hal_board.h"
 #include "hal_key.h"
 #include "hal_lcd.h"
 #include "hal_led.h"
