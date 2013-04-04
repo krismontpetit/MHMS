@@ -159,6 +159,93 @@
 #endif
 
 #define TVSA_DATA_CNF              TRUE
+   
+//MHMS  Defined constants for the Pulse Sensor
+
+//PULSE task event flags defines
+#define PULSE_EVT_ANN               0x4000
+#define PULSE_EVT_DAT               PULSE_EVT_ANN  /* Mutually exclusive use by PULSE_DONGLE. */
+#define PULSE_EVT_REQ               0x2000   
+   
+// Expanding on a TI proprietary Profile Id used for Z-Accel / ZASA / CC2480.
+//MHMS the following defines are used for SimpleDescriptionFormat_t PULSE_SimpleDesc
+
+#if !defined PULSE_DEVICE_ID
+// Master for CC2480 ZASA reports sets to zero.
+#if defined HAL_BOARD_CC2430BB
+#define PULSE_DEVICE_ID             0x0001
+#elif defined HAL_BOARD_CC2430DB
+#define PULSE_DEVICE_ID             0x0002
+#elif defined HAL_BOARD_CC2430EB
+#define PULSE_DEVICE_ID             0x0003
+#elif defined HAL_BOARD_CC2530EB_REV13
+#define PULSE_DEVICE_ID             0x0004
+#elif defined HAL_BOARD_CC2530EB_REV17
+#define PULSE_DEVICE_ID             0x0005
+#elif defined HAL_BOARD_F5438
+#define PULSE_DEVICE_ID             0x0006  //MHMS this is defined for our particular experimenter's board
+#elif defined HAL_BOARD_F2618
+#define PULSE_DEVICE_ID             0x0007
+#else
+
+//efine PULSE_DEVICE_ID             0x0016  // ZAP pre-defined for MSP5438-CC2530EM
+//efine PULSE_DEVICE_ID             0x0017  // ZAP pre-defined for MSP2618-CC2530EM
+
+#error Unexpected HAL_BOARD - need specific Temp/Volt conversion from specific A2D channel.
+#endif
+#endif
+
+#define PULSE_PROFILE_ID            0x0F10
+#define PULSE_CLUSTER_ID            0x0002
+#define PULSE_CLUSTER_CNT           1
+#define PULSE_DEVICE_VERSION        0
+#define PULSE_FLAGS                 0
+ 
+#define PULSE_ENDPOINT              3
+
+//pulseDat (uint8) array defines 
+#define PULSE_DAT_LEN                   23
+
+  // PULSE Command set.
+#define PULSE_CMD_DAT 0                  // PULSE data message.
+#define PULSE_CMD_BEG 1                  // Start reporting Pulse data.
+#define PULSE_CMD_END 2                  // Stop reporting Pulse data.   
+   
+#define PULSE_CMD_IDX                   0
+#define PULSE_IEE_IDX                   1
+#define PULSE_PAR_LSB                   9
+#define PULSE_PAR_MSB                   10
+#define PULSE_BPM_CHAR                  11
+#define PULSE_BPM                       12
+#define PULSE_RAW_CHAR                  13
+#define PULSE_RAW_LSB                   14
+#define PULSE_RAW_MSB                   15
+#define PULSE_IBI_CHAR                  16
+#define PULSE_IBI                       17
+#define PULSE_TYP_IDX                   18
+#define PULSE_OPT_IDX                   19
+#define PULSE_RTG_IDX                   20
+
+#define PULSE_ADR_LSB               1
+#define PULSE_ADR_MSB               2
+
+#if TVSA_DONGLE
+#define PULSE_SOP_VAL               0xFE
+#define PULSE_PORT                  0
+#define SOP_STATE                  0
+#define CMD_STATE                  1
+#define FCS_STATE                  2
+
+#define PULSE_SOP_IDX               0
+#define PULSE_DAT_OFF               PULSE_ADR_MSB+1
+// Not adding +1 for FCS because 1st byte of message is skipped - CMD is always 0 for data.
+#define PULSE_BUF_LEN               PULSE_DAT_LEN+PULSE_DAT_OFF
+#define PULSE_FCS_IDX               PULSE_BUF_LEN-1
+#endif
+
+// Defined constants for Pulse capture and calculations
+#define PULSE_DLY_DAT               2  //MHMS every 2ms PULSE calc interrupt
+#define PULSE_DLY_DATAREQ           20  //MHMS every 20ms PULSE datareq interrupt 
 
 /* ------------------------------------------------------------------------------------------------
  *                                          Macros
@@ -174,6 +261,16 @@
 extern uint8 tvsaCnfErrCnt;
 #endif
 extern uint8 tvsaTaskId;
+
+//MHMS Pulse Sensor Global Variables   
+
+#if PULSE_DATA_CNF
+extern uint8 pulseCnfErrCnt;
+#endif
+extern uint8 pulseTaskId;
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
  *                                          Functions
@@ -220,3 +317,40 @@ uint16 tvsaAppEvt(uint8 id, uint16 evts);
 #endif
 /**************************************************************************************************
 */
+
+/**************************************************************************************************
+ * @fn          pulseAppInit
+ *
+ * @brief       This function is the application's task initialization.
+ *
+ * input parameters
+ *
+ * None.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+void pulseAppInit(uint8 id);
+
+/**************************************************************************************************
+ * @fn          pulseAppEvt
+ *
+ * @brief       This function is called to process the OSAL events for the task.
+ *
+ * input parameters
+ *
+ * @param       id - OSAL task Id.
+ * @param       evts - OSAL events bit mask of pending events.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      evts - OSAL events bit mask of unprocessed events.
+ **************************************************************************************************
+ */
+uint16 pulseAppEvt(uint8 id, uint16 evts);

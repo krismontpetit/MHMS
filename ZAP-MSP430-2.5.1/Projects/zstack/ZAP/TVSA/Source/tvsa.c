@@ -56,17 +56,20 @@
 #include "tvsa.h"
 #include "ZComDef.h"
 #include "ZDApp.h"
+#include "hal_led.h"  //MHMS for indicating if pulse is found
+#include "hal_adc.h"  //MHMS used for capturing signal from pulse sensor
 
-#if !TVSA_DONGLE
+/*#if !TVSA_DONGLE  //MHMS dont' need this
 #include "tvsa_cc2530znp.c"
 #endif
+*/
 
 /* ------------------------------------------------------------------------------------------------
  *                                           Constants
  * ------------------------------------------------------------------------------------------------
  */
 
-//#define TVSA_DEMO  // TODO - define this constant for "Web Demo" TVSA behavior.
+
 
 static const cId_t TVSA_ClusterList[TVSA_CLUSTER_CNT] =
 {
@@ -94,6 +97,33 @@ static const endPointDesc_t TVSA_epDesc=
   noLatencyReqs,
 };
 
+// Constants for Pulse Sensor
+
+static const cId_t PULSE_ClusterList[PULSE_CLUSTER_CNT] =
+{
+  PULSE_CLUSTER_ID
+};
+
+static const SimpleDescriptionFormat_t PULSE_SimpleDesc =
+{
+  PULSE_ENDPOINT,
+  PULSE_PROFILE_ID,
+  PULSE_DEVICE_ID,
+  PULSE_DEVICE_VERSION,
+  PULSE_FLAGS,
+  PULSE_CLUSTER_CNT,
+  (cId_t *)PULSE_ClusterList,
+  PULSE_CLUSTER_CNT,
+  (cId_t *)PULSE_ClusterList
+};
+
+static const endPointDesc_t PULSE_epDesc=
+{
+  PULSE_ENDPOINT,
+  &pulseTaskId,
+  (SimpleDescriptionFormat_t *)&PULSE_SimpleDesc,
+  noLatencyReqs,
+};
 /* ------------------------------------------------------------------------------------------------
  *                                           Typedefs
  * ------------------------------------------------------------------------------------------------
@@ -114,6 +144,10 @@ uint8 tvsaCnfErrCnt;
 #endif
 uint8 tvsaTaskId;
 
+//MHMS  Global Variables
+uint8 pulseTaskId;
+
+
 /* ------------------------------------------------------------------------------------------------
  *                                           Local Variables
  * ------------------------------------------------------------------------------------------------
@@ -121,19 +155,43 @@ uint8 tvsaTaskId;
 
 // Network address of the TVSA Dongle.
 static uint16 tvsaAddr;
+static uint16 pulseAddr;
 // Report counter.
 static uint16 tvsaCnt;
 // ZigBee-required packet transaction sequence number in calls to AF_DataRequest().
 static uint8 tvsaTSN;
+static uint8 pulseTSN;           //MHMS
 
 #if TVSA_DONGLE
-static uint8 tvsaBuf[TVSA_BUF_LEN];
+static uint8 pulseBuf[PULSE_BUF_LEN];
 #if defined TVSA_DEMO
 static uint8 tvsaCmd, tvsaState;
 #endif
 #else
 static uint8 tvsaDat[TVSA_DAT_LEN];
+static uint8 pulseDat[PULSE_DAT_LEN];  //MHMS define data array length for Pulse sensor
 #endif
+
+//MHMS From arduino interrupt
+volatile int rate[10];                    // used to hold last ten IBI values
+volatile uint32 sampleCounter = 0;          // used to determine pulse timing
+volatile uint32 lastBeatTime = 0;           // used to find the inter beat interval
+volatile int P = 512;                      // used to find peak in pulse wave
+volatile int T = 512;                     // used to find trough in pulse wave
+volatile int thresh = 512;                // used to find instant moment of heart beat
+volatile int amp = 100;                   // used to hold amplitude of pulse waveform
+volatile bool firstBeat = true;        // used to seed rate array so we startup with reasonable BPM
+volatile bool secondBeat = true;       // used to seed rate array so we startup with reasonable BPM
+
+// these variables are volatile because they are used during the interrupt service routine!
+//MHMS From Arduino 1.1
+volatile int BPM;                   // used to hold the pulse rate
+volatile int Signal;                // holds the incoming raw data
+volatile int IBI = 600;             // holds the time between beats, the Inter-Beat Interval
+volatile bool Pulse = false;     // true when pulse wave is high, false when it's low
+volatile bool QS = false;        // becomes true when Arduoino finds a beat.  
+
+
 
 /* ------------------------------------------------------------------------------------------------
  *                                           Local Functions
@@ -142,9 +200,12 @@ static uint8 tvsaDat[TVSA_DAT_LEN];
 
 static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg);
 static void tvsaSysEvtMsg(void);
+
 #if !TVSA_DONGLE
-static void tvsaDataCalc(void);
-static void tvsaDataReq(void);
+static void pulseBPM(uint8 *pulsedata);  //MHMS Pulse calculation function
+static void pulseDataCalc(void);
+static void pulseDataReq(void);
+
 static void tvsaZdoStateChange(void);
 #else //if TVSA_DONGLE
 static void tvsaAnnce(void);
@@ -158,107 +219,7 @@ static void sysPingRsp(void);
 
 #endif
 
-/**************************************************************************************************
- * @fn          tvsaAppInit
- *
- * @brief       This function is the application's task initialization.
- *
- * input parameters
- *
- * None.
- *
- * output parameters
- *
- * None.
- *
- * @return      None.
- **************************************************************************************************
- */
-void tvsaAppInit(uint8 id)
-{
-#if TVSA_DONGLE
-  halUARTCfg_t uartConfig;
 
-  uartConfig.configured           = TRUE;              // 2x30 don't care - see uart driver.
-  
-#ifdef TVSA_DEMO
-  uartConfig.baudRate             = HAL_UART_BR_115200;
-#else
-  uartConfig.baudRate             = HAL_UART_BR_38400;
-#endif
-  
-  uartConfig.flowControl          = FALSE;
-  uartConfig.flowControlThreshold = 16;                // 2x30 don't care - see uart driver.
-  uartConfig.rx.maxBufSize        = 32;                // 2x30 don't care - see uart driver.
-  uartConfig.tx.maxBufSize        = 254;               // 2x30 don't care - see uart driver.
-  uartConfig.idleTimeout          = 6;                 // 2x30 don't care - see uart driver.
-  uartConfig.intEnable            = TRUE;              // 2x30 don't care - see uart driver.
-  uartConfig.callBackFunc         = tvsaUartRx;
-  HalUARTOpen(TVSA_PORT, &uartConfig);
-#else
-  tvsaDat[TVSA_TYP_IDX] = (uint8)TVSA_DEVICE_ID;
-#if defined TVSA_SRC_RTG
-  tvsaDat[TVSA_OPT_IDX] = TVSA_OPT_SRC_RTG;
-#endif
-#endif
-
-  tvsaTaskId = id;
-  tvsaAddr = INVALID_NODE_ADDR;
-  (void)afRegister((endPointDesc_t *)&TVSA_epDesc);
-}
-
-/**************************************************************************************************
- * @fn          tvsaAppEvt
- *
- * @brief       This function is called to process the OSAL events for the task.
- *
- * input parameters
- *
- * @param       id - OSAL task Id.
- * @param       evts - OSAL events bit mask of pending events.
- *
- * output parameters
- *
- * None.
- *
- * @return      evts - OSAL events bit mask of unprocessed events.
- **************************************************************************************************
- */
-uint16 tvsaAppEvt(uint8 id, uint16 evts)
-{
-  uint16 mask = 0;
-  (void)id;
-  
-  if (evts & SYS_EVENT_MSG)
-  {
-    mask = SYS_EVENT_MSG;
-    tvsaSysEvtMsg();
-  }
-#if TVSA_DONGLE
-  else if (evts & TVSA_EVT_ANN)
-  {
-    mask = TVSA_EVT_ANN;
-    tvsaAnnce();
-  }
-#else
-  else if (evts & TVSA_EVT_DAT)
-  {
-    mask = TVSA_EVT_DAT;
-    tvsaDataCalc();
-  }
-  else if (evts & TVSA_EVT_REQ)
-  {
-    mask = TVSA_EVT_REQ;
-    tvsaDataReq();
-  }
-#endif
-  else
-  {
-    mask = evts;  // Discard unknown events - should never happen.
-  }
-
-  return (evts ^ mask);  // Return unprocessed events.
-}
 
 /**************************************************************************************************
  * @fn          tvsaAfMsgRx
@@ -280,26 +241,26 @@ static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg)
 {
   uint8 *buf = msg->cmd.Data;
 
-  switch (buf[TVSA_CMD_IDX])
+  switch (buf[PULSE_CMD_IDX])
   {
 #if TVSA_DONGLE
-  case TVSA_CMD_DAT:
+  case PULSE_CMD_DAT:
     tvsaDataRx(msg);
     break;
 #else
 
-  case TVSA_CMD_BEG:
-    if (INVALID_NODE_ADDR == tvsaAddr)
+  case PULSE_CMD_BEG:
+    if (INVALID_NODE_ADDR == pulseAddr)
     {
       NLME_SetPollRate(0);
-      (void)osal_set_event(tvsaTaskId, TVSA_EVT_DAT);
+      (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
     }
-    tvsaAddr = BUILD_UINT16(buf[TVSA_ADR_LSB], buf[TVSA_ADR_MSB]);
+    pulseAddr = BUILD_UINT16(buf[TVSA_ADR_LSB], buf[TVSA_ADR_MSB]);
     break;
 
-  case TVSA_CMD_END:
+  case PULSE_CMD_END:
     NLME_SetPollRate(POLL_RATE);
-    tvsaAddr = INVALID_NODE_ADDR;
+    pulseAddr = INVALID_NODE_ADDR;
     break;
 #endif
 
@@ -328,7 +289,7 @@ static void tvsaSysEvtMsg(void)
 {
   uint8 *msg;
 
-  while ((msg = osal_msg_receive(tvsaTaskId)))
+  while ((msg = osal_msg_receive(pulseTaskId)))
   {
     switch (*msg)
     {
@@ -361,82 +322,6 @@ static void tvsaSysEvtMsg(void)
 }
 
 #if !TVSA_DONGLE
-/**************************************************************************************************
- * @fn          tvsaDataCalc
- *
- * @brief       This function is called by tvsaAppEvt() to calculate the data for a TVSA report.
- *
- * input parameters
- *
- * None.
- *
- * output parameters
- *
- * None.
- *
- * @return      None.
- **************************************************************************************************
- */
-static void tvsaDataCalc(void)
-{
-  if (INVALID_NODE_ADDR == tvsaAddr)
-  {
-    return;
-  }
-
-  if (ZSuccess != osal_start_timerEx(tvsaTaskId, TVSA_EVT_DAT, TVSA_DLY_DAT))
-  {
-    (void)osal_set_event(tvsaTaskId, TVSA_EVT_DAT);
-  }
-
-  HalCalcTV(tvsaDat);
-#if TVSA_DATA_CNF
-  tvsaDat[TVSA_RTG_IDX] = tvsaCnfErrCnt;
-#else
-  tvsaDat[TVSA_RTG_IDX] = 0;
-#endif
-  osal_set_event(tvsaTaskId, TVSA_EVT_REQ);
-}
-
-/**************************************************************************************************
- * @fn          tvsaDataReq
- *
- * @brief       This function is called by tvsaAppEvt() to send a TVSA data report.
- *
- * input parameters
- *
- * None.
- *
- * output parameters
- *
- * None.
- *
- * @return      None.
- **************************************************************************************************
- */
-static void tvsaDataReq(void)
-{
-  afAddrType_t addr;
-  
-  addr.addr.shortAddr = tvsaAddr;
-  addr.addrMode = afAddr16Bit;
-  addr.endPoint = TVSA_ENDPOINT;
-
-  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&TVSA_epDesc, TVSA_CLUSTER_ID,
-                                          TVSA_DAT_LEN, tvsaDat, &tvsaTSN,
-                                          AF_DISCV_ROUTE
-#if TVSA_DATA_CNF
-                                        | AF_ACK_REQUEST
-#endif
-                                         ,AF_DEFAULT_RADIUS))
-  {
-    osal_set_event(tvsaTaskId, TVSA_EVT_REQ);
-  }
-  else
-  {
-    tvsaCnt++;
-  }
-}
 
 /**************************************************************************************************
  * @fn          tvsaZdoStateChange
@@ -456,45 +341,45 @@ static void tvsaDataReq(void)
  */
 static void tvsaZdoStateChange(void)
 {
-  (void)osal_stop_timerEx(tvsaTaskId, TVSA_EVT_DAT);
+  (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
 
   if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
   {
     uint16 tmp = NLME_GetCoordShortAddr();
     uint8 dly = TVSA_STG_DAT;
 
-    tvsaDat[TVSA_PAR_LSB] = LO_UINT16(tmp);
-    tvsaDat[TVSA_PAR_MSB] = HI_UINT16(tmp);
+    pulseDat[TVSA_PAR_LSB] = LO_UINT16(tmp);
+    pulseDat[TVSA_PAR_MSB] = HI_UINT16(tmp);
     if ((DEV_ROUTER == devState) || (DEV_ZB_COORD == devState))
     {
-      tvsaDat[TVSA_TYP_IDX] |= 0x80;
+      pulseDat[TVSA_TYP_IDX] |= 0x80;
     }
     else
     {
-      tvsaDat[TVSA_TYP_IDX] &= (0xFF ^ 0x80);
+      pulseDat[TVSA_TYP_IDX] &= (0xFF ^ 0x80);
     }
 
-#if TVSA_DONGLE_IS_ZC
+#if TVSA_DONGLE_IS_ZC  //MHMS do we need this?
     if (INVALID_NODE_ADDR == tvsaAddr)
     {
       // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
-      tvsaAddr = NWK_PAN_COORD_ADDR;
+      pulseAddr = NWK_PAN_COORD_ADDR;
     }
 #endif
 
     if (INVALID_NODE_ADDR != tvsaAddr)
     {
-      if (ZSuccess != osal_start_timerEx(tvsaTaskId, TVSA_EVT_DAT, (dly + TVSA_DLY_MIN)))
+      if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, (dly + TVSA_DLY_MIN)))
       {
-        (void)osal_set_event(tvsaTaskId, TVSA_EVT_DAT);
+        (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
       }
     }
 
 #if !TVSA_DONGLE
-    if (0 == voltageAtTemp22)
+    if (0 == 0)//voltageAtTemp22)
     {
-      HalInitTV();
-      (void)osal_cpyExtAddr(tvsaDat+TVSA_IEE_IDX, &aExtendedAddress);
+     // HalInitTV();
+      (void)osal_cpyExtAddr(pulseDat+PULSE_IEE_IDX, &aExtendedAddress);
     }
 #endif
   }
@@ -582,36 +467,36 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
     (void)osal_set_event(tvsaTaskId, TVSA_EVT_ANN);
   }
 
-  tvsaBuf[TVSA_SOP_IDX] = TVSA_SOP_VAL;
-  tvsaBuf[TVSA_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
-  tvsaBuf[TVSA_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+  pulseBuf[PULSE_SOP_IDX] = PULSE_SOP_VAL;
+  pulseBuf[PULSE_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+  pulseBuf[PULSE_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
 
   // 1st byte of message is skipped - CMD is always 0 for data.
-  (void)osal_memcpy(tvsaBuf+TVSA_DAT_OFF, msg->cmd.Data+1, TVSA_DAT_LEN-1);
+  (void)osal_memcpy(pulseBuf+PULSE_DAT_OFF, msg->cmd.Data+1, PULSE_DAT_LEN-1);  //MHMS copies one buffer to another
 
-  for (idx = TVSA_ADR_LSB; idx < TVSA_FCS_IDX; idx++)
+  for (idx = PULSE_ADR_LSB; idx < PULSE_FCS_IDX; idx++)
   {
-    fcs ^= tvsaBuf[idx];
+    fcs ^= pulseBuf[idx];
   }
-  tvsaBuf[idx] = fcs;
+  pulseBuf[idx] = fcs;
   
 #ifdef TVSA_DEMO
 
-  HalUARTWrite(TVSA_PORT, tvsaBuf, TVSA_BUF_LEN);
+  HalUARTWrite(TVSA_PORT, pulseBuf, TVSA_BUF_LEN);
 
 #else
   
   
-  uint8 deviceTemp;
+  uint8 deviceBPM;
   uint8 deviceVolt;
   uint8 parentAddrLSB;
   uint8 parentAddrMSB;
   uint8 zsensorBuf[15];
   
-  parentAddrLSB= tvsaBuf[11];
-  parentAddrMSB= tvsaBuf[12];  
-  deviceTemp = tvsaBuf[13];
-  deviceVolt = tvsaBuf[14];
+  parentAddrLSB= pulseBuf[11];
+  parentAddrMSB= pulseBuf[12];  
+  deviceBPM = pulseBuf[14];
+  deviceVolt = 0xFF;
   
   //Start of Frame Delimiter
   zsensorBuf[0]=0xFE;
@@ -631,8 +516,8 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
   zsensorBuf[9]=HI_UINT16(4);
   
   //Temperature and Voltage Data
-  zsensorBuf[10]= deviceTemp;
-  zsensorBuf[11]=deviceVolt;
+  zsensorBuf[10]= deviceBPM;
+  zsensorBuf[11]= deviceBPM; //deviceVolt;
   
   //Parent Address
   zsensorBuf[12]=parentAddrLSB;
@@ -645,9 +530,17 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
 
   HalUARTWrite(TVSA_PORT, zsensorBuf, 15);
   
+  //MHMS USB communication with Pulse sensor Processor application
+  /*int16 S
+  int16
+  int16  
+  HalUARTWrite(TVSA_PORT, (pulseBuf+, 15);*/
   
 #endif  
-  
+ /* sendDataToProcessing('S', Signal)
+            sendDataToProcessing('B',BPM);   // send heart rate with a 'B' prefix
+        sendDataToProcessing('Q',IBI);  */
+        
 }
 
 /**************************************************************************************************
@@ -752,9 +645,9 @@ static void tvsaZdoStateChange(void)
 
     if (INVALID_NODE_ADDR != tvsaAddr)
     {
-      if (ZSuccess != osal_start_timerEx(tvsaTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+      if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
       {
-        (void)osal_set_event(tvsaTaskId, TVSA_EVT_ANN);
+        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
       }
     }
   }
@@ -831,3 +724,334 @@ static void sysPingRsp(void)
 
 /**************************************************************************************************
 */
+
+
+
+/*  //MHMS Pulse Sensor Functions */ 
+
+/**************************************************************************************************
+ * @fn          pulseAppInit
+ *
+ * @brief       This function is the application's task initialization.
+ *
+ * input parameters
+ *
+ * None.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+void pulseAppInit(uint8 id)
+{
+#if TVSA_DONGLE
+  halUARTCfg_t uartConfig;
+
+  uartConfig.configured           = TRUE;              // 2x30 don't care - see uart driver.
+  
+#ifdef TVSA_DEMO
+  uartConfig.baudRate             = HAL_UART_BR_115200;
+#else
+  uartConfig.baudRate             = HAL_UART_BR_38400;
+#endif
+  
+  uartConfig.flowControl          = FALSE;
+  uartConfig.flowControlThreshold = 16;                // 2x30 don't care - see uart driver.
+  uartConfig.rx.maxBufSize        = 32;                // 2x30 don't care - see uart driver.
+  uartConfig.tx.maxBufSize        = 254;               // 2x30 don't care - see uart driver.
+  uartConfig.idleTimeout          = 6;                 // 2x30 don't care - see uart driver.
+  uartConfig.intEnable            = TRUE;              // 2x30 don't care - see uart driver.
+  uartConfig.callBackFunc         = tvsaUartRx;
+  HalUARTOpen(TVSA_PORT, &uartConfig);
+#else
+//  tvsaDat[TVSA_TYP_IDX] = (uint8)TVSA_DEVICE_ID;
+    pulseDat[PULSE_TYP_IDX] = (uint8)PULSE_DEVICE_ID;
+#if defined PULSE_SRC_RTG
+//  tvsaDat[TVSA_OPT_IDX] = TVSA_OPT_SRC_RTG;
+    pulseDat[PULSE_OPT_IDX] = PULSE_OPT_SRC_RTG;
+#endif
+#endif
+
+  pulseTaskId = id;
+  pulseAddr = INVALID_NODE_ADDR;
+  (void)afRegister((endPointDesc_t *)&PULSE_epDesc);  //MHMS registers endpoint object
+  
+  //Initialize Px.y (5.0) to power Pulse sensor
+  P5DIR = 0x1; 
+  P5OUT = 0x1;
+ 
+}
+
+/**************************************************************************************************
+ * @fn          pulseAppEvt
+ *
+ * @brief       This function is called to process the OSAL events for the task.
+ *
+ * input parameters
+ *
+ * @param       id - OSAL task Id.
+ * @param       evts - OSAL events bit mask of pending events.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      evts - OSAL events bit mask of unprocessed events.
+ **************************************************************************************************
+ */
+uint16 pulseAppEvt(uint8 id, uint16 evts)
+{
+  uint16 mask = 0;
+  (void)id;  //MHMS casts a void to ignore warning for not using variable
+  
+  if (evts & SYS_EVENT_MSG)
+  {
+    mask = SYS_EVENT_MSG;
+    tvsaSysEvtMsg();
+  }
+#if TVSA_DONGLE
+  else if (evts & TVSA_EVT_ANN)
+  {
+    mask = TVSA_EVT_ANN;
+    tvsaAnnce();
+  }
+#else
+  else if (evts & PULSE_EVT_DAT)
+  {
+    mask = PULSE_EVT_DAT;
+    pulseDataCalc();
+  }
+  else if (evts & PULSE_EVT_REQ)
+  {
+    mask = PULSE_EVT_REQ;
+    pulseDataReq();
+  }
+#endif
+  else
+  {
+    mask = evts;  // Discard unknown events - should never happen.
+  }
+
+  return (evts ^ mask);  // Return unprocessed events.
+}
+
+
+//MHMS put coord stuff here, recieve func and sys
+
+
+#if !TVSA_DONGLE  //Group 1
+/**************************************************************************************************
+ * @fn          pulseDataCalc
+ *
+ * @brief       This function is called by tvsaAppEvt() to calculate the data for a PULSE report.
+ *              The function will called on a 2ms interval and detect whether a pulse is being measured.
+ *              If a pulse is determined it will invoke the PulsedataReq interrupt timer (20ms intervals)
+ *
+ * input parameters
+ *
+ * None.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+static void pulseDataCalc(void)
+{
+  if (INVALID_NODE_ADDR == pulseAddr)
+  {
+    return;
+  }
+
+  if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, PULSE_DLY_DAT))  //If the timer can't be started set event flag again for it to be service again
+  {
+    (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+  }
+  pulseBPM(pulseDat);
+  //  HalCalcTV(tvsaDat);
+#if TVSA_DATA_CNF
+  tvsaDat[TVSA_RTG_IDX] = tvsaCnfErrCnt;
+#else
+  tvsaDat[TVSA_RTG_IDX] = 0;
+#endif
+  //osal_set_event(tvsaTaskId, TVSA_EVT_REQ);
+  if(QS == true && SUCCESS == osal_set_event(pulseTaskId, PULSE_EVT_REQ)){}  //If pulse is being measured synchronize pulsedatareq event
+  
+ 
+}
+/**************************************************************************************************
+ * @fn          pulseBPM
+ *
+ * @brief       This function is called by tvsaAppEvt() to calculate the data for a BPM report.
+ *
+ * input parameters
+ *
+* uint8 *pulsedata is a pointer to the PULSE over the air payload structure
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+static void pulseBPM(uint8 *pulsedata)
+{
+  
+
+
+int BPM = pulsedata[PULSE_BPM];                         // used to hold the pulse rate
+int Signal;                                             // holds the incoming raw data
+int IBI = pulsedata[PULSE_IBI];                         // holds the time between beats, the Inter-Beat Interval
+
+//    cli();                                    // disable interrupts while we do this
+//    Signal = analogRead(pulsePin);              // read the Pulse Sensor  //MHMS orginal arduino code
+//MHMS we will use uint16 HalAdcRead() function and set channel to read and 10 Bit resolution
+  Signal = HalAdcRead(HAL_ADC_CHANNEL_7, HAL_ADC_RESOLUTION_10);
+  sampleCounter += 2;                         // keep track of the time in mS with this variable
+    int Number = (sampleCounter - lastBeatTime);     // monitor the time since the last beat to avoid noise
+
+//  find the peak and trough of the pulse wave
+    if(Signal < thresh && Number > (IBI/5)*3){       // avoid dichrotic noise by waiting 3/5 of last IBI
+        if (Signal < T){                        // T is the trough
+            T = Signal;                         // keep track of lowest point in pulse wave 
+         }
+       }
+      
+    if(Signal > thresh && Signal > P){          // thresh condition helps avoid noise
+        P = Signal;                             // P is the peak
+       }                                        // keep track of highest point in pulse wave
+    
+  //  NOW IT'S TIME TO LOOK FOR THE HEART BEAT
+  // signal surges up in value every time there is a pulse
+if (Number > 500){                                   // avoid high frequency noise //increased from 250 to reduce high freq noise
+  if ((Signal > thresh) && (Pulse == false) && (Number > (int)(IBI/5)*3) ){        
+    Pulse = true;                               // set the Pulse flag when we think there is a pulse
+    
+    //digitalWrite(blinkPin,HIGH);                // turn on pin 13 LED
+    //MHMS  could define some external LED or just write to LCD screen "Pulse found"
+    // Use void HalLedSet (uint8 led, uint8 mode);
+    HalLedSet (HAL_LED_2, HAL_LED_MODE_OFF);    //MHMS beat found
+    HalLedSet (HAL_LED_1, HAL_LED_MODE_ON);     //MHMS LED on upbeat
+    
+    IBI = sampleCounter - lastBeatTime;         // measure time between beats in mS
+    lastBeatTime = sampleCounter;               // keep track of time for next pulse
+         
+         if(firstBeat){                         // if it's the first time we found a beat, if firstBeat == TRUE
+             firstBeat = false;                 // clear firstBeat flag
+             return;                            // IBI value is unreliable so discard it
+            }   
+         if(secondBeat){                        // if this is the second beat, if secondBeat == TRUE
+            secondBeat = false;                 // clear secondBeat flag
+               for(int i=0; i<=9; i++){         // seed the running total to get a realisitic BPM at startup
+                    rate[i] = IBI;                      
+                    }
+            }
+          
+    // keep a running total of the last 10 IBI values
+    int16 runningTotal = 0; //word runningTotal = 0;                   // clear the runningTotal variable    
+
+    for(int i=0; i<=8; i++){                // shift data in the rate array
+          rate[i] = rate[i+1];              // and drop the oldest IBI value 
+          runningTotal += rate[i];          // add up the 9 oldest IBI values
+        }
+        
+    rate[9] = IBI;                          // add the latest IBI to the rate array
+    runningTotal += rate[9];                // add the latest IBI to runningTotal
+    runningTotal /= 10;                     // average the last 10 IBI values 
+    BPM = 60000/runningTotal;               // how many beats can fit into a minute? that's BPM!
+    QS = true;                              // set Quantified Self flag //MHMS we will use this to flag other event to transmit data over network
+    
+    HalLcdWriteStringValue("BPM:",BPM, 10, 6); //MHMS display BPM on LCD screen
+    // QS FLAG IS NOT CLEARED INSIDE THIS ISR
+    }                       
+}
+
+  if (Signal < thresh && Pulse == true){     // when the values are going down, the beat is over
+      //digitalWrite(blinkPin,LOW);            // turn off pin 13 LED
+     //MHMS  could define some external LED or just write to LCD screen "Pulse Not found"
+      HalLedSet (HAL_LED_1, HAL_LED_MODE_OFF);
+      
+      Pulse = false;                         // reset the Pulse flag so we can do it again
+      amp = P - T;                           // get amplitude of the pulse wave
+      thresh = amp/2 + T;                    // set thresh at 50% of the amplitude
+      P = thresh;                            // reset these for next time
+      T = thresh;
+     }
+  
+  if (Number > 2500){                             // if 2.5 seconds go by without a beat
+      HalLedSet (HAL_LED_2, HAL_LED_MODE_ON);  //MHMS No beat found
+      thresh = 512;                          // set thresh default
+      P = 512;                               // set P default
+      T = 512;                               // set T default
+      lastBeatTime = sampleCounter;          // bring the lastBeatTime up to date        
+      firstBeat = true;                      // set these to avoid noise
+      secondBeat = true;                     // when we get the heartbeat back
+     }
+
+//MHMS Loading 16 bit results into 8 bit blocks for pulsedata array              
+pulsedata[PULSE_BPM] = (uint8)((BPM & 0x00FF));
+pulsedata[PULSE_RAW_MSB] = (uint8)((Signal >> 8));
+pulsedata[PULSE_RAW_LSB] = (uint8)((Signal & 0x00FF));
+pulsedata[PULSE_IBI] = (uint8)((IBI & 0x00FF));
+
+pulsedata[PULSE_BPM_CHAR] = 'B';
+pulsedata[PULSE_RAW_CHAR] = 'Q';
+pulsedata[PULSE_IBI_CHAR] = 'S';
+
+
+  //sei();                                     // enable interrupts when youre done!
+}// end isr
+
+/**************************************************************************************************
+ * @fn          pulseDataReq
+ *
+ * @brief       This function is called by tvsaAppEvt() to send a PULSE data report. When it is detected that
+ *              a pulse is found (QS flag is set) this function will start to transfer BPM, IBI, and raw Signal
+ *              data over the air to the coordinator at 20ms intervals. When there is no BPM detected
+ *              this function will stop sending information over the air to the coordinator.
+ *
+ * input parameters
+ *
+ * None.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+static void pulseDataReq(void)
+{
+  afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
+  
+  addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
+  addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
+  addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+
+  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+                                          PULSE_DAT_LEN, pulseDat, &pulseTSN,
+                                          AF_DISCV_ROUTE
+#if TVSA_DATA_CNF
+                                        | AF_ACK_REQUEST
+#endif
+                                         ,AF_DEFAULT_RADIUS))  //MHMS
+  { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
+        osal_set_event(pulseTaskId, PULSE_EVT_REQ);
+  }
+  else
+  {
+    tvsaCnt++;
+  }
+  if(QS == true){
+    osal_start_timerEx(pulseTaskId, PULSE_EVT_REQ, PULSE_DLY_DATAREQ);  //send next Pulse data report in 20ms
+    QS = false;     //Clears Pulse measurement quantifier flag 
+  }
+}
+#endif //Group 1
