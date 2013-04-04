@@ -10,7 +10,7 @@
     <Static>
       <Workspace>
         <ColumnWidths>
-          <Column0>413</Column0>
+          <Column0>361</Column0>
           <Column1>27</Column1>
           <Column2>27</Column2>
           <Column3>27</Column3>
@@ -22,35 +22,47 @@
         <ColumnWidth2>252</ColumnWidth2>
         <ColumnWidth3>63</ColumnWidth3>
       </Build>
+      <Debug-Log>
+        <ColumnWidth0>19</ColumnWidth0>
+        <ColumnWidth1>1262</ColumnWidth1>
+      </Debug-Log>
+      <TerminalIO/>
     </Static>
     <Windows>
-      <Wnd0>
+      <Wnd2>
         <Tabs>
           <Tab>
-            <Identity>TabID-11119-30320</Identity>
+            <Identity>TabID-22015-213</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
               <NodeDict>
                 <ExpandedNode>TVSA</ExpandedNode>
+                <ExpandedNode>TVSA/App</ExpandedNode>
                 <ExpandedNode>TVSA/ZAP</ExpandedNode>
               </NodeDict>
             </Session>
           </Tab>
         </Tabs>
         <SelectedTab>0</SelectedTab>
-      </Wnd0>
-      <Wnd1>
+      </Wnd2>
+      <Wnd3>
         <Tabs>
           <Tab>
-            <Identity>TabID-26343-30444</Identity>
+            <Identity>TabID-15741-331</Identity>
             <TabName>Build</TabName>
             <Factory>Build</Factory>
             <Session/>
           </Tab>
+          <Tab>
+            <Identity>TabID-22893-811</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
         </Tabs>
         <SelectedTab>0</SelectedTab>
-      </Wnd1>
+      </Wnd3>
     </Windows>
     <Editor>
       <Pane>
@@ -70,11 +82,47 @@
           <SelStart>0</SelStart>
           <SelEnd>0</SelEnd>
           <XPos2>0</XPos2>
-          <YPos2>31</YPos2>
-          <SelStart2>27638</SelStart2>
-          <SelEnd2>27638</SelEnd2>
+          <YPos2>36</YPos2>
+          <SelStart2>0</SelStart2>
+          <SelEnd2>0</SelEnd2>
         </Tab>
-        <ActiveTab>2</ActiveTab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_main.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>50</YPos2>
+          <SelStart2>3571</SelStart2>
+          <SelEnd2>3571</SelEnd2>
+        </Tab>
+        <ActiveTab>3</ActiveTab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\..\Source\tvsa.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>0</YPos2>
+          <SelStart2>0</SelStart2>
+          <SelEnd2>0</SelEnd2>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\..\Source\OSAL_TVSA.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>0</YPos2>
+          <SelStart2>0</SelStart2>
+          <SelEnd2>0</SelEnd2>
+        </Tab>
       </Pane>
       <ActivePane>0</ActivePane>
       <Sizes>
@@ -89,31 +137,49 @@
       <Top>
         <Row0>
           <Sizes>
-            <Toolbar-00db2500>
+            <Toolbar-01212500>
               <key>iaridepm.enu1</key>
-            </Toolbar-00db2500>
+            </Toolbar-01212500>
           </Sizes>
         </Row0>
+        <Row1>
+          <Sizes/>
+        </Row1>
+        <Row2>
+          <Sizes/>
+        </Row2>
+        <Row3>
+          <Sizes/>
+        </Row3>
+        <Row4>
+          <Sizes/>
+        </Row4>
+        <Row5>
+          <Sizes/>
+        </Row5>
+        <Row6>
+          <Sizes/>
+        </Row6>
       </Top>
       <Left>
         <Row0>
           <Sizes>
-            <Wnd0>
+            <Wnd2>
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>766</Bottom>
-                <Right>487</Right>
+                <Bottom>673</Bottom>
+                <Right>435</Right>
                 <x>-2</x>
                 <y>-2</y>
                 <xscreen>200</xscreen>
                 <yscreen>200</yscreen>
-                <sizeHorzCX>151630</sizeHorzCX>
-                <sizeHorzCY>198216</sizeHorzCY>
-                <sizeVertCX>370735</sizeVertCX>
-                <sizeVertCY>761150</sizeVertCY>
+                <sizeHorzCX>119048</sizeHorzCX>
+                <sizeHorzCY>206398</sizeHorzCY>
+                <sizeVertCX>260119</sizeVertCX>
+                <sizeVertCY>696594</sizeVertCY>
               </Rect>
-            </Wnd0>
+            </Wnd2>
           </Sizes>
         </Row0>
       </Left>
@@ -125,22 +191,22 @@
       <Bottom>
         <Row0>
           <Sizes>
-            <Wnd1>
+            <Wnd3>
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>198</Bottom>
-                <Right>1321</Right>
+                <Bottom>251</Bottom>
+                <Right>1682</Right>
                 <x>-2</x>
                 <y>-2</y>
-                <xscreen>1323</xscreen>
-                <yscreen>200</yscreen>
-                <sizeHorzCX>1003033</sizeHorzCX>
-                <sizeHorzCY>198216</sizeHorzCY>
-                <sizeVertCX>151630</sizeVertCX>
-                <sizeVertCY>198216</sizeVertCY>
+                <xscreen>1684</xscreen>
+                <yscreen>253</yscreen>
+                <sizeHorzCX>1002381</sizeHorzCX>
+                <sizeHorzCY>261094</sizeHorzCY>
+                <sizeVertCX>119048</sizeVertCX>
+                <sizeVertCY>206398</sizeVertCY>
               </Rect>
-            </Wnd1>
+            </Wnd3>
           </Sizes>
         </Row0>
       </Bottom>
