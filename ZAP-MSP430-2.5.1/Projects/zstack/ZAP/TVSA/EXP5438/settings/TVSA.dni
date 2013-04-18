@@ -20,7 +20,7 @@ NextState1=0
 Break=0
 State Storage=0
 [DebugChecksum]
-Checksum=1449675318
+Checksum=1033742324
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -41,7 +41,10 @@ Graph=0
 Symbiont=0
 Exclusions=
 [Breakpoints]
-Count=0
+Bp0=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.417.3" 1 0 0 0 "" 0 ""
+Bp1=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.413.3" 1 0 0 0 "" 0 ""
+Bp2=_ "STD_CODE" "{$PROJ_DIR$\..\..\Source\zap_app.c}.841.11" 1 0 0 0 "" 0 ""
+Count=3
 [FET]
 Clock mode=14
 Extended Clock mode=-1

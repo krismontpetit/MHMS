@@ -304,6 +304,29 @@ uint8 *zap_msg_allocate(uint8 len, uint8 cmd0, uint8 cmd1);
  */
 void zap_msg_deallocate(uint8 **ppBuf);
 
+uint8 *zap_msg_allocate(uint8 len, uint8 cmd0, uint8 cmd1);
+
+/**************************************************************************************************
+ * @fn          zap_set_logicalType
+ *
+ * @brief       Changes device logical type based on input, returns success or fail
+ *
+ * input parameters
+ *
+ * @param       ppBuf - A pointer to the buffer pointer returned by zap_msg_allocate().
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+bool zap_set_logicalType(uint8 newType);
+//makeRPC
+//void makeRPC(uint8 length, uint8 cmd0,uint8 cmd1,uint8 * args);
+//quick Reset
+void quickReset(void);
 #endif
 /**************************************************************************************************
 */

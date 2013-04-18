@@ -98,7 +98,8 @@ typedef void (*zapProcessFunc_t)(uint8 port, uint8 *pBuf);
  * ------------------------------------------------------------------------------------------------
  */
 //MHMS:Switches Logical type
-uint8 zLogicalType=ZG_DEVICETYPE_ROUTER;
+static uint8 zLogicalType=ZG_DEVICETYPE_ROUTER;
+
 uint8 zapTaskId;
 
 // Hook for supporting more than 1 ZNP on different ports.
@@ -107,8 +108,11 @@ uint8 zapAppPort;
 
 // Count of the global ZNP variables that are cached locally on ZAP.
 #define ZAP_MON_INFO_CNT  5
+
+//MHMS:Sending the IEEE address will
 // IEEE Address (64-bit Extended Address) of the ZNP device.
 uint8 znpIEEE[8];
+
 // ZigBee Network Address of the ZNP device.
 uint16 znpAddr;
 // ZigBee Network Address of the parent of the ZNP device.
@@ -722,24 +726,21 @@ static void zapKeys(keyChange_t *msg)
     if (keys & HAL_KEY_SW_1)
     {
       //MHMS:SW1 type change to coordinator
-      zapPhyReset(zapAppPort);
-      if(zgWriteStartupOptions( ZG_STARTUP_SET,ZCD_STARTOPT_DEFAULT_CONFIG_STATE&&ZCD_STARTOPT_DEFAULT_NETWORK_STATE)){
-      zapPhyReset(zapAppPort);
-      zLogicalType=ZG_DEVICETYPE_COORDINATOR;
-      zapSync();
-      zapPhyReset(zapAppPort);
+      if(zap_set_logicalType(ZG_DEVICETYPE_COORDINATOR)){
       HalLcdWriteStringValue("Should be Coord.",0, 16, HAL_LCD_LINE_7);
+      }
+      else{
+      HalLcdWriteStringValue("Problem Writing",0, 16, HAL_LCD_LINE_7);
       }
     }
     if (keys & HAL_KEY_SW_2)
     {
      //MHMS: Try and implement ZdoStateChange to Router
-      if(zgWriteStartupOptions( ZG_STARTUP_SET,ZCD_STARTOPT_DEFAULT_CONFIG_STATE&&ZCD_STARTOPT_DEFAULT_NETWORK_STATE)){
-      zapPhyReset(zapAppPort);
-      zLogicalType=ZG_DEVICETYPE_ROUTER;
-      zapSync();
-      zapPhyReset(zapAppPort);
-      HalLcdWriteStringValue("Should be Router.",0, 16, HAL_LCD_LINE_7);
+     if(zap_set_logicalType(ZG_DEVICETYPE_ROUTER)){
+      HalLcdWriteStringValue("Should be Router",0, 16, HAL_LCD_LINE_7);
+      }
+      else{
+      HalLcdWriteStringValue("Problem Writing",0, 16, HAL_LCD_LINE_7);
       }
     }
     if (keys & HAL_KEY_SW_3)
@@ -872,9 +873,9 @@ static void zapSync(void)
     //MHMS:fixing zapsync using global variable
     pBuf[0] = zLogicalType;
     (void)znp_nv_write(ZCD_NV_LOGICAL_TYPE, 0, 1, pBuf);
-
-    pBuf[0] = LO_UINT16(ZDAPP_CONFIG_PAN_ID);
-    pBuf[1] = HI_UINT16(ZDAPP_CONFIG_PAN_ID);
+    //MHMS: CHANGING PANID HERE
+    pBuf[0] = LO_UINT16(znpPanId);
+    pBuf[1] = HI_UINT16(znpPanId);
     (void)znp_nv_write(ZCD_NV_PANID, 0, 2, pBuf);
 
     pBuf[0] = BREAK_UINT32(DEFAULT_CHANLIST, 0);
@@ -971,5 +972,38 @@ void MT_BuildAndSendZToolResponse(uint8 cmdType, uint8 cmdId, uint8 dataLen, uin
 }
 #endif
 
+//MHMS: Making function to set logical type
+bool zap_set_logicalType(uint8 newType)
+{
+          uint8 pBuf[Z_EXTADDR_LEN];
+          
+          //very important to make sure STARTOPT_CONFIG_STATE is clear
+          pBuf[0] = ZCD_STARTOPT_CLEAR_STATE;
+          (void)znp_nv_write(ZCD_NV_STARTUP_OPTION, 0, 1, pBuf);
+          quickReset();
+          
+          //set to auto start?
+          pBuf[0] = ZCD_STARTOPT_AUTO_START;
+          (void)znp_nv_write(ZCD_NV_STARTUP_OPTION, 0, 1, pBuf);
+          
+          //Set Default PanId (0xFFFF)
+          pBuf[0] = LO_UINT16(ZDAPP_CONFIG_PAN_ID);
+          pBuf[1] = HI_UINT16(ZDAPP_CONFIG_PAN_ID);
+          (void)znp_nv_write(ZCD_NV_PANID, 0, 2, pBuf);
+          quickReset();
+          zLogicalType=newType;
+          (void)znp_nv_write(ZCD_NV_LOGICAL_TYPE, 0, 1, pBuf);
+          quickReset();
+         //(void)ZDOInitDevice(NWK_START_DELAY);
+          //Realistically nothing returns from here...
+          return 1;       
+}
+
+//MHMS: skips lostSync in ZapPhyReset
+void quickReset(void){
+  HAL_ZNP_RST();
+  MicroWait(100);
+  HAL_ZNP_RUN();
+}
 /**************************************************************************************************
 */
