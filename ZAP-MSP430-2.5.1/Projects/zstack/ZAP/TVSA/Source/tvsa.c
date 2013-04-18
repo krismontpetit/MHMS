@@ -384,7 +384,7 @@ static void tvsaZdoStateChange(void)
 #endif
   }
 #if defined LCD_SUPPORTED
-  HalLcdWriteValue(devState, 10, HAL_LCD_LINE_3);
+  HalLcdWriteValue(devState, 10, HAL_LCD_LINE_5);
 #endif
 }
 
@@ -417,9 +417,9 @@ static void tvsaAnnce(void)
   if (INVALID_NODE_ADDR != tvsaAddr)
   {
     msg[TVSA_CMD_IDX] = TVSA_CMD_BEG;
-    if (ZSuccess != osal_start_timerEx(tvsaTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+    if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
     {
-      (void)osal_set_event(tvsaTaskId, TVSA_EVT_ANN);
+      (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
     }
   }
   else
@@ -464,7 +464,7 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
   // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
   if (INVALID_NODE_ADDR == tvsaAddr)
   {
-    (void)osal_set_event(tvsaTaskId, TVSA_EVT_ANN);
+    (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
   }
 
   pulseBuf[PULSE_SOP_IDX] = PULSE_SOP_VAL;
@@ -528,19 +528,48 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
   zsensorBuf[14] = calcFCS(&zsensorBuf[1], 13 );
 
 
-  HalUARTWrite(TVSA_PORT, zsensorBuf, 15);
+  //HalUARTWrite(TVSA_PORT, zsensorBuf, 15);
   
   //MHMS USB communication with Pulse sensor Processor application
-  /*int16 S
-  int16
-  int16  
-  HalUARTWrite(TVSA_PORT, (pulseBuf+, 15);*/
+
+  uint8 BPMBuf[7] = {'B',0,0,0,10,13};
+  uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
+  uint8 SignalBuf[7] = {'S',0,0,0,10,13};
   
+  //conversion Signal Dec to ASCII
+  uint16 temp = (BUILD_UINT16(pulseBuf[16], pulseBuf[17])) - 400;
+  if(temp > 999){
+    SignalBuf[1] = '9';
+    SignalBuf[2] = '9';
+    SignalBuf[3] = '9';
+  }
+  else { 
+    SignalBuf[1] = (uint8)((temp/100)+ 48);
+    SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+    SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+  }
+  
+  //conversion BPM Dec to ASCII
+  temp = (uint16)pulseBuf[14];
+  BPMBuf[1] = (uint8)((temp/100)+ 48);
+  BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+  BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+  
+  //conversion IBI Dec to ASCII
+  temp = (uint16)pulseBuf[19];
+  IBIBuf[1] = (uint8)((temp/100)+ 48);
+  IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+  IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+   
+  
+  HalUARTWrite(TVSA_PORT, SignalBuf, 6);
+ // HalUARTWrite(TVSA_PORT, BPMBuf, 6);
+ // HalUARTWrite(TVSA_PORT, IBIBuf, 6);
+
+  
+
 #endif  
- /* sendDataToProcessing('S', Signal)
-            sendDataToProcessing('B',BPM);   // send heart rate with a 'B' prefix
-        sendDataToProcessing('Q',IBI);  */
-        
+//pulseAddr = BUILD_UINT16(buf[TVSA_ADR_LSB], buf[TVSA_ADR_MSB]);
 }
 
 /**************************************************************************************************
@@ -592,7 +621,7 @@ static void tvsaUartRx(uint8 port, uint8 event)
         {
           tvsaAddr = INVALID_NODE_ADDR;
         }
-        (void)osal_set_event(tvsaTaskId, TVSA_EVT_ANN);
+        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
       }
 
       tvsaState = SOP_STATE;
@@ -631,7 +660,7 @@ static void tvsaUartRx(uint8 port, uint8 event)
  */
 static void tvsaZdoStateChange(void)
 {
-  (void)osal_stop_timerEx(tvsaTaskId, TVSA_EVT_ANN);
+  (void)osal_stop_timerEx(pulseTaskId, TVSA_EVT_ANN);
 
   if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
   {
@@ -755,7 +784,8 @@ void pulseAppInit(uint8 id)
 #ifdef TVSA_DEMO
   uartConfig.baudRate             = HAL_UART_BR_115200;
 #else
-  uartConfig.baudRate             = HAL_UART_BR_38400;
+  //uartConfig.baudRate             = HAL_UART_BR_38400;        //MHMS This baud rate is required to communicate with Zigbee Sensor Monitor
+  uartConfig.baudRate             = HAL_UART_BR_115200;         //MHMS This baud rate is required to communicate with the Pulse processing program on PC
 #endif
   
   uartConfig.flowControl          = FALSE;
@@ -775,14 +805,16 @@ void pulseAppInit(uint8 id)
 #endif
 #endif
 
-  pulseTaskId = id;
+  pulseTaskId = id;                                    
   pulseAddr = INVALID_NODE_ADDR;
   (void)afRegister((endPointDesc_t *)&PULSE_epDesc);  //MHMS registers endpoint object
   
   //Initialize Px.y (5.0) to power Pulse sensor
-  P5DIR = 0x1; 
-  P5OUT = 0x1;
+  P5DIR = 0x1;  //Set IO direction as output
+  P5OUT = 0x1;  //Set output to high
  
+  //Setup ADC reference 
+  REFCTL0 = REFVSEL_2;  /* REF Reference Voltage Level Select 2.5V */
 }
 
 /**************************************************************************************************
@@ -816,7 +848,7 @@ uint16 pulseAppEvt(uint8 id, uint16 evts)
   else if (evts & TVSA_EVT_ANN)
   {
     mask = TVSA_EVT_ANN;
-    tvsaAnnce();
+   tvsaAnnce();
   }
 #else
   else if (evts & PULSE_EVT_DAT)
@@ -884,42 +916,27 @@ static void pulseDataCalc(void)
   
  
 }
-/**************************************************************************************************
- * @fn          pulseBPM
- *
- * @brief       This function is called by tvsaAppEvt() to calculate the data for a BPM report.
- *
- * input parameters
- *
-* uint8 *pulsedata is a pointer to the PULSE over the air payload structure
- *
- * output parameters
- *
- * None.
- *
- * @return      None.
- **************************************************************************************************
- */
 static void pulseBPM(uint8 *pulsedata)
 {
-  
 
-
+//MHMS 
 int BPM = pulsedata[PULSE_BPM];                         // used to hold the pulse rate
 int Signal;                                             // holds the incoming raw data
 int IBI = pulsedata[PULSE_IBI];                         // holds the time between beats, the Inter-Beat Interval
 
-//    cli();                                    // disable interrupts while we do this
-//    Signal = analogRead(pulsePin);              // read the Pulse Sensor  //MHMS orginal arduino code
-//MHMS we will use uint16 HalAdcRead() function and set channel to read and 10 Bit resolution
+//    cli();                                            // disable interrupts while we do this
+//    Signal = analogRead(pulsePin);                    // read the Pulse Sensor  //MHMS orginal arduino code
+
+//MHMS using HAL layer API to set channel to read and 10 Bit resolution
   Signal = HalAdcRead(HAL_ADC_CHANNEL_7, HAL_ADC_RESOLUTION_10);
-  sampleCounter += 2;                         // keep track of the time in mS with this variable
-    int Number = (sampleCounter - lastBeatTime);     // monitor the time since the last beat to avoid noise
+  
+  sampleCounter += 2;                                   // keep track of the time in mS with this variable
+  int Number = (sampleCounter - lastBeatTime);          // monitor the time since the last beat to avoid noise
 
 //  find the peak and trough of the pulse wave
-    if(Signal < thresh && Number > (IBI/5)*3){       // avoid dichrotic noise by waiting 3/5 of last IBI
-        if (Signal < T){                        // T is the trough
-            T = Signal;                         // keep track of lowest point in pulse wave 
+    if(Signal < thresh && Number > (IBI/5)*3){          // avoid dichrotic noise by waiting 3/5 of last IBI
+        if (Signal < T){                                // T is the trough
+            T = Signal;                                 // keep track of lowest point in pulse wave 
          }
        }
       
@@ -929,15 +946,13 @@ int IBI = pulsedata[PULSE_IBI];                         // holds the time betwee
     
   //  NOW IT'S TIME TO LOOK FOR THE HEART BEAT
   // signal surges up in value every time there is a pulse
-if (Number > 500){                                   // avoid high frequency noise //increased from 250 to reduce high freq noise
+if (Number > 250){                                   // avoid high frequency noise //MHMS increased from 250 to 500 to reduce high freq noise
   if ((Signal > thresh) && (Pulse == false) && (Number > (int)(IBI/5)*3) ){        
     Pulse = true;                               // set the Pulse flag when we think there is a pulse
     
-    //digitalWrite(blinkPin,HIGH);                // turn on pin 13 LED
     //MHMS  could define some external LED or just write to LCD screen "Pulse found"
-    // Use void HalLedSet (uint8 led, uint8 mode);
     HalLedSet (HAL_LED_2, HAL_LED_MODE_OFF);    //MHMS beat found
-    HalLedSet (HAL_LED_1, HAL_LED_MODE_ON);     //MHMS LED on upbeat
+    HalLedSet (HAL_LED_1, HAL_LED_MODE_ON);     //MHMS LED on during upbeat
     
     IBI = sampleCounter - lastBeatTime;         // measure time between beats in mS
     lastBeatTime = sampleCounter;               // keep track of time for next pulse
@@ -967,8 +982,8 @@ if (Number > 500){                                   // avoid high frequency noi
     BPM = 60000/runningTotal;               // how many beats can fit into a minute? that's BPM!
     QS = true;                              // set Quantified Self flag //MHMS we will use this to flag other event to transmit data over network
     
+    
     HalLcdWriteStringValue("BPM:",BPM, 10, 6); //MHMS display BPM on LCD screen
-    // QS FLAG IS NOT CLEARED INSIDE THIS ISR
     }                       
 }
 
@@ -979,19 +994,20 @@ if (Number > 500){                                   // avoid high frequency noi
       
       Pulse = false;                         // reset the Pulse flag so we can do it again
       amp = P - T;                           // get amplitude of the pulse wave
-      thresh = amp/2 + T;                    // set thresh at 50% of the amplitude
+      thresh = amp/2 + T + 100;              // set thresh at 50% of the amplitude  //MHMS offset up by 100 to ignore small flucuations due to noise
       P = thresh;                            // reset these for next time
       T = thresh;
      }
   
-  if (Number > 2500){                             // if 2.5 seconds go by without a beat
-      HalLedSet (HAL_LED_2, HAL_LED_MODE_ON);  //MHMS No beat found
-      thresh = 512;                          // set thresh default
+  if (Number > 2500){                        // if 2.5 seconds go by without a beat
+      HalLedSet (HAL_LED_2, HAL_LED_MODE_ON);//MHMS No beat found
+      thresh = 512 + 100;                    // set thresh default //MHMS offset up by 100 to ignore small flucuations due to noise
       P = 512;                               // set P default
       T = 512;                               // set T default
       lastBeatTime = sampleCounter;          // bring the lastBeatTime up to date        
       firstBeat = true;                      // set these to avoid noise
       secondBeat = true;                     // when we get the heartbeat back
+      QS = false;                            // Clears Pulse measurement quantifier flag so no data  is sent over the air
      }
 
 //MHMS Loading 16 bit results into 8 bit blocks for pulsedata array              
@@ -1003,6 +1019,8 @@ pulsedata[PULSE_IBI] = (uint8)((IBI & 0x00FF));
 pulsedata[PULSE_BPM_CHAR] = 'B';
 pulsedata[PULSE_RAW_CHAR] = 'Q';
 pulsedata[PULSE_IBI_CHAR] = 'S';
+
+//HalLcdWriteStringValue("Signal:",Signal, 10, 7); //MHMS  for testing ADC values
 
 
   //sei();                                     // enable interrupts when youre done!
@@ -1029,6 +1047,8 @@ pulsedata[PULSE_IBI_CHAR] = 'S';
  */
 static void pulseDataReq(void)
 {
+  static bool pulseDataReqFlag;
+  pulseDataReqFlag = false;
   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
   
   addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
@@ -1049,9 +1069,47 @@ static void pulseDataReq(void)
   {
     tvsaCnt++;
   }
-  if(QS == true){
+  if((QS == true) && (pulseDataReqFlag == false)){
     osal_start_timerEx(pulseTaskId, PULSE_EVT_REQ, PULSE_DLY_DATAREQ);  //send next Pulse data report in 20ms
-    QS = false;     //Clears Pulse measurement quantifier flag 
+    pulseDataReqFlag = true;  //to prevent restarting of timer if existing already running
+    
   }
+  
+  //testing USB
+  //MHMS USB communication with Pulse sensor Processor application
+
+  uint8 BPMBuf[7] = {'B',0,0,0,10,13};
+  uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
+  uint8 SignalBuf[7] = {'S',0,0,0,10,13};
+  
+  //conversion Signal Dec to ASCII
+  uint16 temp = (BUILD_UINT16(pulseDat[14], pulseDat[15])) - 400;
+  if(temp > 999){
+    SignalBuf[1] = '9';
+    SignalBuf[2] = '9';
+    SignalBuf[3] = '9';
+  }
+  else { 
+    SignalBuf[1] = (uint8)((temp/100)+ 48);
+    SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+    SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+  }
+  
+  //conversion BPM Dec to ASCII
+  temp = (uint16)pulseDat[12];
+  BPMBuf[1] = (uint8)((temp/100)+ 48);
+  BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+  BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+  
+  //conversion IBI Dec to ASCII
+  temp = (uint16)pulseDat[17];
+  IBIBuf[1] = (uint8)((temp/100)+ 48);
+  IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+  IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+   
+  
+  HalUARTWrite(0, SignalBuf, 6);
+  HalUARTWrite(0, BPMBuf, 6);
+  HalUARTWrite(0, IBIBuf, 6);
 }
 #endif //Group 1

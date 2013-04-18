@@ -58,7 +58,7 @@ const pTaskEventHandlerFn tasksArr[] = {
   Hal_ProcessEvent,  // HAL should be a higher priority than any ZNP task.
   zapEvt,            // ZAP APP should be the highest priority ZNP task.
   pulseAppEvt
-  //tvsaAppEvt
+  
 };
 
 const uint8 tasksCnt = sizeof( tasksArr ) / sizeof( tasksArr[0] );
