@@ -1,0 +1,408 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       18/Apr/2013  16:58:50 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_adc.c             #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=0                    #
+#                     -DZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER                   #
+#                     -DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1 -DHAL_UART=1    #
+#                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE             #
+#                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE               #
+#                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE               #
+#                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                  #
+#                     -DZAP_AF_DATA_REQ_FRAG=FALSE                            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_adc.c -D          #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER -D                  #
+#                     TVSA_DEVICE_ID=0x0016 -lC "C:\Users\student\Documents\G #
+#                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EX #
+#                     P5438\ZAP Router\List\" -lA                             #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\List\"    #
+#                     --remarks --diag_suppress Pe001,Pe193,Pe236,Pe826 -o    #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\Obj\"     #
+#                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I     #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I         #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\List\hal_adc.lst                                 #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\Obj\hal_adc.r43                                  #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\hal\target\MSP5438ZAP\hal_adc.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_adc.c
+      3            Revised:        $Date: 2010-11-24 13:27:14 -0800 (Wed, 24 Nov 2010) $
+      4            Revision:       $Revision: 24498 $
+      5          
+      6            Description:    This file contains the interface to the HAL ADC.
+      7          
+      8          
+      9            Copyright 2007-2010 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /**************************************************************************************************
+     41           *                                           INCLUDES
+     42           **************************************************************************************************/
+     43          
+     44          #include "hal_types.h"
+     45          #include "hal_adc.h"
+
+   \                                 In  segment DATA16_AN, at 0x700
+   \   union <unnamed> _A_ADC12CTL0_L
+   \                     _A_ADC12CTL0_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x702
+   \   union <unnamed> _A_ADC12CTL1_L
+   \                     _A_ADC12CTL1_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x704
+   \   union <unnamed> _A_ADC12CTL2_L
+   \                     _A_ADC12CTL2_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x70a
+   \   union <unnamed> _A_ADC12IFG_L
+   \                     _A_ADC12IFG_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x720
+   \   union <unnamed> _A_ADC12MEM0_L
+   \                     _A_ADC12MEM0_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x710
+   \   unsigned char volatile ADC12MCTL0
+   \                     ADC12MCTL0:
+   \   000000                DS8 1
+     46          #include "hal_mcu.h"
+     47          
+     48          /**************************************************************************************************
+     49           * @fn      HalAdcInit
+     50           *
+     51           * @brief   Initialize ADC Service
+     52           *
+     53           * @param   None
+     54           *
+     55           * @return  None
+     56           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+     57          void HalAdcInit (void)
+   \                     HalAdcInit:
+     58          {
+     59          }
+   \   000000   1001         RETA
+     60          
+     61          /**************************************************************************************************
+     62           * @fn      HalAdcRead
+     63           *
+     64           * @brief   Read the ADC based on given channel and resolution
+     65           *
+     66           * @param   channel - channel where ADC will be read
+     67           * @param   resolution - the resolution of the value
+     68           *
+     69           * @return  8 to 12-bit value of the ADC in binary unsigned format.
+     70           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+     71          uint16 HalAdcRead (uint8 channel, uint8 resolution)
+   \                     HalAdcRead:
+     72          {
+     73            ADC12CTL0 = ADC12REF2_5V | ADC12REFON | ADC12ON;
+   \   000000   B24070000007 MOV.W   #0x70, &0x700
+     74            ADC12CTL1 = ADC12SHP;
+   \   000006   B24000020207 MOV.W   #0x200, &0x702
+     75          
+     76            switch (channel)
+   \   00000C   4E4C         MOV.B   R12, R14
+   \   00000E   7E800E00     SUB.B   #0xe, R14
+   \   000012   0324         JEQ     ??HalAdcRead_1
+   \   000014   5E83         SUB.B   #0x1, R14
+   \   000016   0424         JEQ     ??HalAdcRead_2
+   \   000018   093C         JMP     ??HalAdcRead_3
+     77            {
+     78            case HAL_ADC_CHANNEL_TEMP:
+     79              channel = ADC12INCH_10;
+   \                     ??HalAdcRead_1:
+   \   00001A   7C400A00     MOV.B   #0xa, R12
+     80              break;
+   \   00001E   083C         JMP     ??HalAdcRead_4
+     81          
+     82            case HAL_ADC_CHANNEL_VDD:
+     83              channel = ADC12INCH_11;
+   \                     ??HalAdcRead_2:
+   \   000020   7C400B00     MOV.B   #0xb, R12
+     84              ADC12CTL0 &= ~ADC12REF2_5V;
+   \   000024   B2C040000007 BIC.W   #0x40, &0x700
+     85              break;
+   \   00002A   023C         JMP     ??HalAdcRead_4
+     86          
+     87            default:
+     88              channel &= ADC12INCH_15;
+   \                     ??HalAdcRead_3:
+   \   00002C   7CF00F00     AND.B   #0xf, R12
+     89              break;
+     90            }
+     91          
+     92            switch (resolution)
+   \                     ??HalAdcRead_4:
+   \   000030   5D83         SUB.B   #0x1, R13
+   \   000032   0324         JEQ     ??HalAdcRead_5
+   \   000034   5D83         SUB.B   #0x1, R13
+   \   000036   0324         JEQ     ??HalAdcRead_6
+   \   000038   053C         JMP     ??HalAdcRead_7
+     93            {
+     94            case HAL_ADC_RESOLUTION_8:
+     95              resolution = ADC12RES_0;
+   \                     ??HalAdcRead_5:
+   \   00003A   4D43         MOV.B   #0x0, R13
+     96              break;
+   \   00003C   053C         JMP     ??HalAdcRead_8
+     97          
+     98            case HAL_ADC_RESOLUTION_10:
+     99              resolution = ADC12RES_1;
+   \                     ??HalAdcRead_6:
+   \   00003E   7D401000     MOV.B   #0x10, R13
+    100              break;
+   \   000042   023C         JMP     ??HalAdcRead_8
+    101          
+    102            case HAL_ADC_RESOLUTION_12:
+    103            case HAL_ADC_RESOLUTION_14:
+    104            default:
+    105              resolution = ADC12RES_2;
+   \                     ??HalAdcRead_7:
+   \   000044   7D402000     MOV.B   #0x20, R13
+    106              break;
+    107            }
+    108          
+    109            ADC12CTL2 = resolution;
+   \                     ??HalAdcRead_8:
+   \   000048   824D0407     MOV.W   R13, &0x704
+    110            ADC12MCTL0 = ADC12SREF_1 | ADC12EOS | channel;
+   \   00004C   7CD09000     BIS.B   #0x90, R12
+   \   000050   C24C1007     MOV.B   R12, &0x710
+    111          
+    112            __delay_cycles(6000);                    // Settling time for reference.
+   \   000054   ........     CALLA   #?Subroutine0
+    113          
+    114            ADC12CTL0 |= ADC12ENC + ADC12SC;         // Sampling and conversion start.
+    115            while (ADC12IFG == 0);
+    116            ADC12CTL0 = 0;                           // Disable the ADC
+    117            ADC12CTL0 = 0;                           // Turn off reference (must be done AFTER clearing ENC).
+    118           
+    119            return ADC12MEM0;
+   \                     ??CrossCallReturnLabel_1:
+   \   000058   1C422007     MOV.W   &0x720, R12
+   \   00005C   1001         RETA
+   \   00005E                REQUIRE _A_ADC12CTL0_L
+   \   00005E                REQUIRE _A_ADC12CTL1_L
+   \   00005E                REQUIRE _A_ADC12CTL2_L
+   \   00005E                REQUIRE ADC12MCTL0
+   \   00005E                REQUIRE _A_ADC12IFG_L
+   \   00005E                REQUIRE _A_ADC12MEM0_L
+    120          }
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine0:
+   \   000000                ////////////// Start of 6000 cycles delay.
+   \   000000   0343         NOP
+   \   000002   3F40CE07     MOV.W   #0x7ce, R15
+   \                     ??Subroutine0_0:
+   \   000006   3F53         ADD.W   #0xffff, R15
+   \   000008   FE2F         JC      ??Subroutine0_0
+   \   00000A                ////////////// End of delay code.
+   \   00000A   B2D003000007 BIS.W   #0x3, &0x700
+   \                     ??HalAdcCheckVdd_0:
+   \   000010   82930A07     CMP.W   #0x0, &0x70a
+   \   000014   FD27         JEQ     ??HalAdcCheckVdd_0
+   \   000016   82430007     MOV.W   #0x0, &0x700
+   \   00001A   82430007     MOV.W   #0x0, &0x700
+   \   00001E   1001         RETA
+    121          
+    122          /*********************************************************************
+    123           * @fn       HalAdcCheckVdd
+    124           *
+    125           * @brief    Check for minimum Vdd specified.
+    126           *
+    127           * @param   vdd - The board-specific Vdd reading to check for.
+    128           *
+    129           * @return  TRUE if the Vdd measured is greater than the 'vdd' minimum parameter;
+    130           *          FALSE if not.
+    131           *
+    132           *********************************************************************/
+
+   \                                 In  segment CODE, align 2
+    133          bool HalAdcCheckVdd(uint8 vdd)
+   \                     HalAdcCheckVdd:
+    134          {
+    135            ADC12CTL0 = ADC12REFON | ADC12ON;
+   \   000000   B24030000007 MOV.W   #0x30, &0x700
+    136            ADC12CTL1 = ADC12SHP;
+   \   000006   B24000020207 MOV.W   #0x200, &0x702
+    137            ADC12CTL2 = 0;
+   \   00000C   82430407     MOV.W   #0x0, &0x704
+    138            ADC12MCTL0 = ADC12SREF_1 | ADC12EOS | ADC12INCH_11;
+   \   000010   F2409B001007 MOV.B   #0x9b, &0x710
+    139          
+    140            __delay_cycles(6000);                    // Settling time for reference.
+   \   000016   ........     CALLA   #?Subroutine0
+    141          
+    142            ADC12CTL0 |= ADC12ENC + ADC12SC;         // Sampling and conversion start.
+    143            while (ADC12IFG == 0);
+    144            ADC12CTL0 = 0;                           // Disable the ADC
+    145            ADC12CTL0 = 0;                           // Turn off reference (must be done AFTER clearing ENC).
+    146           
+    147            return ((uint8)ADC12MEM0 > vdd);
+   \                     ??CrossCallReturnLabel_0:
+   \   00001A   1E422007     MOV.W   &0x720, R14
+   \   00001E   4C9E         CMP.B   R14, R12
+   \   000020   4C7C         SUBC.B  R12, R12
+   \   000022   5CF3         AND.B   #0x1, R12
+   \   000024   1001         RETA
+   \   000026                REQUIRE _A_ADC12CTL0_L
+   \   000026                REQUIRE _A_ADC12CTL1_L
+   \   000026                REQUIRE _A_ADC12CTL2_L
+   \   000026                REQUIRE ADC12MCTL0
+   \   000026                REQUIRE _A_ADC12IFG_L
+   \   000026                REQUIRE _A_ADC12MEM0_L
+    148          }
+    149          
+    150          /**************************************************************************************************
+    151          **************************************************************************************************/
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  HalAdcCheckVdd
+       4  HalAdcInit
+       4  HalAdcRead
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      32  ?Subroutine0
+       1  ADC12MCTL0
+      38  HalAdcCheckVdd
+       2  HalAdcInit
+      94  HalAdcRead
+       2  _A_ADC12CTL0_L
+       2  _A_ADC12CTL1_L
+       2  _A_ADC12CTL2_L
+       2  _A_ADC12IFG_L
+       2  _A_ADC12MEM0_L
+
+ 
+ 166 bytes in segment CODE
+  11 bytes in segment DATA16_AN
+ 
+ 166 bytes of CODE memory
+   0 bytes of DATA memory (+ 11 bytes shared)
+
+Errors: none
+Warnings: none

@@ -1,0 +1,1888 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       18/Apr/2013  16:58:53 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\Source\tvsa.c                 #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=0                    #
+#                     -DZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER                   #
+#                     -DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1 -DHAL_UART=1    #
+#                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE             #
+#                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE               #
+#                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE               #
+#                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                  #
+#                     -DZAP_AF_DATA_REQ_FRAG=FALSE                            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\Source\tvsa.c -D              #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER -D                  #
+#                     TVSA_DEVICE_ID=0x0016 -lC "C:\Users\student\Documents\G #
+#                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EX #
+#                     P5438\ZAP Router\List\" -lA                             #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\List\"    #
+#                     --remarks --diag_suppress Pe001,Pe193,Pe236,Pe826 -o    #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\Obj\"     #
+#                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I     #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I         #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\List\tvsa.lst                                    #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\Obj\tvsa.r43                                     #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\Source\tvsa.c
+      1          /**************************************************************************************************
+      2              Filename:       tvsa.c
+      3              Revised:        $Date: 2011-07-25 20:23:05 -0700 (Mon, 25 Jul 2011) $
+      4              Revision:       $Revision: 26899 $
+      5          
+      6              Description:
+      7          
+      8              This file implements the Temperature/Voltage Sample Application.
+      9          
+     10          
+     11          
+     12          
+     13              Copyright 2009 Texas Instruments Incorporated. All rights reserved.
+     14          
+     15              IMPORTANT: Your use of this Software is limited to those specific rights
+     16              granted under the terms of a software license agreement between the user
+     17              who downloaded the software, his/her employer (which must be your employer)
+     18              and Texas Instruments Incorporated (the "License").  You may not use this
+     19              Software unless you agree to abide by the terms of the License. The License
+     20              limits your use, and you acknowledge, that the Software may not be modified,
+     21              copied or distributed unless embedded on a Texas Instruments microcontroller
+     22              or used solely and exclusively in conjunction with a Texas Instruments radio
+     23              frequency transceiver, which is integrated into your product.  Other than for
+     24              the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     25              works of, modify, distribute, perform, display or sell this Software and/or
+     26              its documentation for any purpose.
+     27          
+     28              YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     29              PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     30              INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     31              NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     32              TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     33              NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     34              LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     35              INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     36              OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     37              OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     38              (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     39          
+     40              Should you have any questions regarding your right to use this Software,
+     41              contact Texas Instruments Incorporated at www.TI.com.
+     42          **************************************************************************************************/
+     43          
+     44          /* ------------------------------------------------------------------------------------------------
+     45           *                                          Includes
+     46           * ------------------------------------------------------------------------------------------------
+     47           */
+     48          
+     49          #include "af.h"
+     50          #if defined LCD_SUPPORTED
+     51          #include "hal_lcd.h"
+
+   \                                 In  segment DATA16_AN, at 0x242
+   \   union <unnamed> _A_PCOUT_L
+   \                     _A_PCOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x244
+   \   union <unnamed> _A_PCDIR_L
+   \                     _A_PCDIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x1b0
+   \   union <unnamed> _A_REFCTL0_L
+   \                     _A_REFCTL0_L:
+   \   000000                DS8 2
+     52          #endif
+     53          #include "hal_uart.h"
+     54          #include "OnBoard.h"
+     55          #include "OSAL.h"
+     56          #include "tvsa.h"
+     57          #include "ZComDef.h"
+     58          #include "ZDApp.h"
+     59          #include "hal_led.h"  //MHMS for indicating if pulse is found
+     60          #include "hal_adc.h"  //MHMS used for capturing signal from pulse sensor
+     61          
+     62          /*#if !TVSA_DONGLE  //MHMS dont' need this
+     63          #include "tvsa_cc2530znp.c"
+     64          #endif
+     65          */
+     66          
+     67          /* ------------------------------------------------------------------------------------------------
+     68           *                                           Constants
+     69           * ------------------------------------------------------------------------------------------------
+     70           */
+     71          
+     72          
+     73          
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+     74          static const cId_t TVSA_ClusterList[TVSA_CLUSTER_CNT] =
+   \                     TVSA_ClusterList:
+   \   000000   0200         DC16 2
+     75          {
+     76            TVSA_CLUSTER_ID
+     77          };
+     78          
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+     79          static const SimpleDescriptionFormat_t TVSA_SimpleDesc =
+   \                     TVSA_SimpleDesc:
+   \   000000   0300         DC8 3, 0
+   \   000002   100F1600     DC16 3856, 22
+   \   000006   0001         DC8 0, 1
+   \   000008   ....         DC16 TVSA_ClusterList
+   \   00000A   0100         DC8 1, 0
+   \   00000C   ....         DC16 TVSA_ClusterList
+     80          {
+     81            TVSA_ENDPOINT,
+     82            TVSA_PROFILE_ID,
+     83            TVSA_DEVICE_ID,
+     84            TVSA_DEVICE_VERSION,
+     85            TVSA_FLAGS,
+     86            TVSA_CLUSTER_CNT,
+     87            (cId_t *)TVSA_ClusterList,
+     88            TVSA_CLUSTER_CNT,
+     89            (cId_t *)TVSA_ClusterList
+     90          };
+     91          
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+     92          static const endPointDesc_t TVSA_epDesc=
+   \                     TVSA_epDesc:
+   \   000000   0300         DC8 3, 0
+   \   000002   ........     DC16 tvsaTaskId, TVSA_SimpleDesc
+   \   000006   0000         DC8 0, 0
+     93          {
+     94            TVSA_ENDPOINT,
+     95            &tvsaTaskId,
+     96            (SimpleDescriptionFormat_t *)&TVSA_SimpleDesc,
+     97            noLatencyReqs,
+     98          };
+     99          
+    100          // Constants for Pulse Sensor
+    101          
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+    102          static const cId_t PULSE_ClusterList[PULSE_CLUSTER_CNT] =
+   \                     PULSE_ClusterList:
+   \   000000   0200         DC16 2
+    103          {
+    104            PULSE_CLUSTER_ID
+    105          };
+    106          
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+    107          static const SimpleDescriptionFormat_t PULSE_SimpleDesc =
+   \                     PULSE_SimpleDesc:
+   \   000000   0300         DC8 3, 0
+   \   000002   100F0600     DC16 3856, 6
+   \   000006   0001         DC8 0, 1
+   \   000008   ....         DC16 PULSE_ClusterList
+   \   00000A   0100         DC8 1, 0
+   \   00000C   ....         DC16 PULSE_ClusterList
+    108          {
+    109            PULSE_ENDPOINT,
+    110            PULSE_PROFILE_ID,
+    111            PULSE_DEVICE_ID,
+    112            PULSE_DEVICE_VERSION,
+    113            PULSE_FLAGS,
+    114            PULSE_CLUSTER_CNT,
+    115            (cId_t *)PULSE_ClusterList,
+    116            PULSE_CLUSTER_CNT,
+    117            (cId_t *)PULSE_ClusterList
+    118          };
+    119          
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+    120          static const endPointDesc_t PULSE_epDesc=
+   \                     PULSE_epDesc:
+   \   000000   0300         DC8 3, 0
+   \   000002   ........     DC16 pulseTaskId, PULSE_SimpleDesc
+   \   000006   0000         DC8 0, 0
+    121          {
+    122            PULSE_ENDPOINT,
+    123            &pulseTaskId,
+    124            (SimpleDescriptionFormat_t *)&PULSE_SimpleDesc,
+    125            noLatencyReqs,
+    126          };
+    127          /* ------------------------------------------------------------------------------------------------
+    128           *                                           Typedefs
+    129           * ------------------------------------------------------------------------------------------------
+    130           */
+    131          
+    132          /* ------------------------------------------------------------------------------------------------
+    133           *                                           Macros
+    134           * ------------------------------------------------------------------------------------------------
+    135           */
+    136          
+    137          /* ------------------------------------------------------------------------------------------------
+    138           *                                           Global Variables
+    139           * ------------------------------------------------------------------------------------------------
+    140           */
+    141          
+    142          #if TVSA_DATA_CNF
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    143          uint8 tvsaCnfErrCnt;
+   \                     tvsaCnfErrCnt:
+   \   000000                DS8 1
+    144          #endif
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    145          uint8 tvsaTaskId;
+   \                     tvsaTaskId:
+   \   000000                DS8 1
+    146          
+    147          //MHMS  Global Variables
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    148          uint8 pulseTaskId;
+   \                     pulseTaskId:
+   \   000000                DS8 1
+    149          
+    150          
+    151          /* ------------------------------------------------------------------------------------------------
+    152           *                                           Local Variables
+    153           * ------------------------------------------------------------------------------------------------
+    154           */
+    155          
+    156          // Network address of the TVSA Dongle.
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    157          static uint16 tvsaAddr;
+   \                     tvsaAddr:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    158          static uint16 pulseAddr;
+   \                     pulseAddr:
+   \   000000                DS8 2
+    159          // Report counter.
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    160          static uint16 tvsaCnt;
+   \                     tvsaCnt:
+   \   000000                DS8 2
+    161          // ZigBee-required packet transaction sequence number in calls to AF_DataRequest().
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    162          static uint8 tvsaTSN;
+   \                     tvsaTSN:
+   \   000000                DS8 1
+    163          static uint8 pulseTSN;           //MHMS
+    164          
+    165          #if TVSA_DONGLE
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    166          static uint8 pulseBuf[PULSE_BUF_LEN];
+   \                     pulseBuf:
+   \   000000                DS8 26
+    167          #if defined TVSA_DEMO
+    168          static uint8 tvsaCmd, tvsaState;
+    169          #endif
+    170          #else
+    171          static uint8 tvsaDat[TVSA_DAT_LEN];
+    172          static uint8 pulseDat[PULSE_DAT_LEN];  //MHMS define data array length for Pulse sensor
+    173          #endif
+    174          
+    175          //MHMS From arduino interrupt
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    176          volatile int rate[10];                    // used to hold last ten IBI values
+   \                     rate:
+   \   000000                DS8 20
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    177          volatile uint32 sampleCounter = 0;          // used to determine pulse timing
+   \                     sampleCounter:
+   \   000000                DS8 4
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    178          volatile uint32 lastBeatTime = 0;           // used to find the inter beat interval
+   \                     lastBeatTime:
+   \   000000                DS8 4
+
+   \                                 In  segment DATA16_I, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    179          volatile int P = 512;                      // used to find peak in pulse wave
+   \                     P:
+   \   000000                DS8 2
+   \   000002                REQUIRE `?<Initializer for P>`
+
+   \                                 In  segment DATA16_I, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    180          volatile int T = 512;                     // used to find trough in pulse wave
+   \                     T:
+   \   000000                DS8 2
+   \   000002                REQUIRE `?<Initializer for T>`
+
+   \                                 In  segment DATA16_I, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    181          volatile int thresh = 512;                // used to find instant moment of heart beat
+   \                     thresh:
+   \   000000                DS8 2
+   \   000002                REQUIRE `?<Initializer for thresh>`
+
+   \                                 In  segment DATA16_I, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    182          volatile int amp = 100;                   // used to hold amplitude of pulse waveform
+   \                     amp:
+   \   000000                DS8 2
+   \   000002                REQUIRE `?<Initializer for amp>`
+
+   \                                 In  segment DATA16_I, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    183          volatile bool firstBeat = true;        // used to seed rate array so we startup with reasonable BPM
+   \                     firstBeat:
+   \   000000                DS8 1
+   \   000001                REQUIRE `?<Initializer for firstBeat>`
+
+   \                                 In  segment DATA16_I, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    184          volatile bool secondBeat = true;       // used to seed rate array so we startup with reasonable BPM
+   \                     secondBeat:
+   \   000000                DS8 1
+   \   000001                REQUIRE `?<Initializer for secondBeat>`
+    185          
+    186          // these variables are volatile because they are used during the interrupt service routine!
+    187          //MHMS From Arduino 1.1
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    188          volatile int BPM;                   // used to hold the pulse rate
+   \                     BPM:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    189          volatile int Signal;                // holds the incoming raw data
+   \                     Signal:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_I, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_copy
+    190          volatile int IBI = 600;             // holds the time between beats, the Inter-Beat Interval
+   \                     IBI:
+   \   000000                DS8 2
+   \   000002                REQUIRE `?<Initializer for IBI>`
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    191          volatile bool Pulse = false;     // true when pulse wave is high, false when it's low
+   \                     Pulse:
+   \   000000                DS8 1
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    192          volatile bool QS = false;        // becomes true when Arduoino finds a beat.  
+   \                     QS:
+   \   000000                DS8 1
+    193          
+    194          
+    195          
+    196          /* ------------------------------------------------------------------------------------------------
+    197           *                                           Local Functions
+    198           * ------------------------------------------------------------------------------------------------
+    199           */
+    200          
+    201          static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg);
+    202          static void tvsaSysEvtMsg(void);
+    203          
+    204          #if !TVSA_DONGLE
+    205          static void pulseBPM(uint8 *pulsedata);  //MHMS Pulse calculation function
+    206          static void pulseDataCalc(void);
+    207          static void pulseDataReq(void);
+    208          
+    209          static void tvsaZdoStateChange(void);
+    210          #else //if TVSA_DONGLE
+    211          static void tvsaAnnce(void);
+    212          static void tvsaDataRx(afIncomingMSGPacket_t *msg);
+    213          static void tvsaUartRx(uint8 port, uint8 event);
+    214          static void tvsaZdoStateChange(void);
+    215          #ifndef TVSA_DEMO
+    216          static uint8 calcFCS(uint8 *pBuf, uint8 len);
+    217          static void sysPingRsp(void);
+    218          #endif
+    219          
+    220          #endif
+    221          
+    222          
+    223          
+    224          /**************************************************************************************************
+    225           * @fn          tvsaAfMsgRx
+    226           *
+    227           * @brief       This function is called by tvsaSysEvtMsg() to process an incoming AF message.
+    228           *
+    229           * input parameters
+    230           *
+    231           * @param       msg - A pointer to the afIncomingMSGPacket_t packet.
+    232           *
+    233           * output parameters
+    234           *
+    235           * None.
+    236           *
+    237           * @return      None.
+    238           **************************************************************************************************
+    239           */
+    240          static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg)
+    241          {
+    242            uint8 *buf = msg->cmd.Data;
+    243          
+    244            switch (buf[PULSE_CMD_IDX])
+    245            {
+    246          #if TVSA_DONGLE
+    247            case PULSE_CMD_DAT:
+    248              tvsaDataRx(msg);
+    249              break;
+    250          #else
+    251          
+    252            case PULSE_CMD_BEG:
+    253              if (INVALID_NODE_ADDR == pulseAddr)
+    254              {
+    255                NLME_SetPollRate(0);
+    256                (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+    257              }
+    258              pulseAddr = BUILD_UINT16(buf[TVSA_ADR_LSB], buf[TVSA_ADR_MSB]);
+    259              break;
+    260          
+    261            case PULSE_CMD_END:
+    262              NLME_SetPollRate(POLL_RATE);
+    263              pulseAddr = INVALID_NODE_ADDR;
+    264              break;
+    265          #endif
+    266          
+    267            default:
+    268              break;
+    269            }
+    270          }
+    271          
+    272          /**************************************************************************************************
+    273           * @fn          tvsaSysEvtMsg
+    274           *
+    275           * @brief       This function is called by tvsaAppEvt() to process all of the pending OSAL messages.
+    276           *
+    277           * input parameters
+    278           *
+    279           * None.
+    280           *
+    281           * output parameters
+    282           *
+    283           * None.
+    284           *
+    285           * @return      None.
+    286           **************************************************************************************************
+    287           */
+
+   \                                 In  segment CODE, align 2
+    288          static void tvsaSysEvtMsg(void)
+   \                     tvsaSysEvtMsg:
+    289          {
+   \   000000   0A12         PUSH.W  R10
+   \   000002   053C         JMP     ??tvsaSysEvtMsg_3
+    290            uint8 *msg;
+    291          
+    292            while ((msg = osal_msg_receive(pulseTaskId)))
+    293            {
+    294              switch (*msg)
+    295              {
+    296          #if TVSA_DATA_CNF
+    297              case AF_DATA_CONFIRM_CMD:
+    298                if (ZSuccess != ((afDataConfirm_t *)msg)->hdr.status)
+    299                {
+    300                  if (0 == ++tvsaCnfErrCnt)
+    301                  {
+    302                    tvsaCnfErrCnt = 255;
+    303                  }
+    304                }
+    305                break;
+    306          #endif
+    307          
+    308              case AF_INCOMING_MSG_CMD:
+    309                tvsaAfMsgRx((afIncomingMSGPacket_t *)msg);
+    310                break;
+    311          
+    312              case ZDO_STATE_CHANGE:
+    313                tvsaZdoStateChange();
+   \                     ??tvsaSysEvtMsg_0:
+   \   000004   ........     CALLA   #tvsaZdoStateChange
+    314                break;
+    315          
+    316              default:
+    317                break;
+    318              }
+    319          
+    320              (void)osal_msg_deallocate(msg);  // Receiving task is responsible for releasing the memory.
+   \                     ??tvsaSysEvtMsg_1:
+   \   000008   0C4A         MOV.W   R10, R12
+   \   00000A   ........     CALLA   #osal_msg_deallocate
+   \                     ??tvsaSysEvtMsg_3:
+   \   00000E   5C42....     MOV.B   &pulseTaskId, R12
+   \   000012   ........     CALLA   #osal_msg_receive
+   \   000016   0A4C         MOV.W   R12, R10
+   \   000018   0C93         CMP.W   #0x0, R12
+   \   00001A   1B24         JEQ     ??tvsaSysEvtMsg_4
+   \   00001C   6E4C         MOV.B   @R12, R14
+   \   00001E   7E801A00     SUB.B   #0x1a, R14
+   \   000022   0F24         JEQ     ??tvsaSysEvtMsg_5
+   \   000024   7E80B700     SUB.B   #0xb7, R14
+   \   000028   ED27         JEQ     ??tvsaSysEvtMsg_0
+   \   00002A   7E802C00     SUB.B   #0x2c, R14
+   \   00002E   EC23         JNE     ??tvsaSysEvtMsg_1
+   \   000030   CC930100     CMP.B   #0x0, 0x1(R12)
+   \   000034   E927         JEQ     ??tvsaSysEvtMsg_1
+   \   000036   D253....     ADD.B   #0x1, &tvsaCnfErrCnt
+   \   00003A   E623         JNE     ??tvsaSysEvtMsg_1
+   \   00003C   F243....     MOV.B   #0xff, &tvsaCnfErrCnt
+   \   000040   E33F         JMP     ??tvsaSysEvtMsg_1
+   \                     ??tvsaSysEvtMsg_5:
+   \   000042   1F4C2400     MOV.W   0x24(R12), R15
+   \   000046   CF930000     CMP.B   #0x0, 0(R15)
+   \   00004A   DE23         JNE     ??tvsaSysEvtMsg_1
+   \   00004C   ........     CALLA   #tvsaDataRx
+   \   000050   DB3F         JMP     ??tvsaSysEvtMsg_1
+    321            }
+    322          }
+   \                     ??tvsaSysEvtMsg_4:
+   \   000052   3A41         POP.W   R10
+   \   000054   1001         RETA
+    323          
+    324          #if !TVSA_DONGLE
+    325          
+    326          /**************************************************************************************************
+    327           * @fn          tvsaZdoStateChange
+    328           *
+    329           * @brief       This function is called by tvsaSysEvtMsg() for a ZDO_STATE_CHANGE message.
+    330           *
+    331           * input parameters
+    332           *
+    333           * None.
+    334           *
+    335           * output parameters
+    336           *
+    337           * None.
+    338           *
+    339           * @return      None.
+    340           **************************************************************************************************
+    341           */
+    342          static void tvsaZdoStateChange(void)
+    343          {
+    344            (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
+    345          
+    346            if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
+    347            {
+    348              uint16 tmp = NLME_GetCoordShortAddr();
+    349              uint8 dly = TVSA_STG_DAT;
+    350          
+    351              pulseDat[TVSA_PAR_LSB] = LO_UINT16(tmp);
+    352              pulseDat[TVSA_PAR_MSB] = HI_UINT16(tmp);
+    353              if ((DEV_ROUTER == devState) || (DEV_ZB_COORD == devState))
+    354              {
+    355                pulseDat[TVSA_TYP_IDX] |= 0x80;
+    356              }
+    357              else
+    358              {
+    359                pulseDat[TVSA_TYP_IDX] &= (0xFF ^ 0x80);
+    360              }
+    361          
+    362          #if TVSA_DONGLE_IS_ZC  //MHMS do we need this?
+    363              if (INVALID_NODE_ADDR == tvsaAddr)
+    364              {
+    365                // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+    366                pulseAddr = NWK_PAN_COORD_ADDR;
+    367              }
+    368          #endif
+    369          
+    370              if (INVALID_NODE_ADDR != tvsaAddr)
+    371              {
+    372                if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, (dly + TVSA_DLY_MIN)))
+    373                {
+    374                  (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+    375                }
+    376              }
+    377          
+    378          #if !TVSA_DONGLE
+    379              if (0 == 0)//voltageAtTemp22)
+    380              {
+    381               // HalInitTV();
+    382                (void)osal_cpyExtAddr(pulseDat+PULSE_IEE_IDX, &aExtendedAddress);
+    383              }
+    384          #endif
+    385            }
+    386          #if defined LCD_SUPPORTED
+    387            HalLcdWriteValue(devState, 10, HAL_LCD_LINE_5);
+    388          #endif
+    389          }
+    390          
+    391          #else // if TVSA_DONGLE
+    392          /**************************************************************************************************
+    393           * @fn          tvsaAnnce
+    394           *
+    395           * @brief       This function is called by tvsaAppEvt() to send a TVSA announce to start or stop.
+    396           *
+    397           * input parameters
+    398           *
+    399           * None.
+    400           *
+    401           * output parameters
+    402           *
+    403           * None.
+    404           *
+    405           * @return      None.
+    406           **************************************************************************************************
+    407           */
+
+   \                                 In  segment CODE, align 2
+    408          static void tvsaAnnce(void)
+   \                     tvsaAnnce:
+    409          {
+   \   000000   31801000     SUB.W   #0x10, SP
+    410            uint8 msg[3];
+    411            afAddrType_t addr;
+    412            
+    413            addr.addr.shortAddr = NWK_BROADCAST_SHORTADDR_DEVALL;
+   \   000004   B1430400     MOV.W   #0xffff, 0x4(SP)
+    414            addr.addrMode = afAddrBroadcast;
+   \   000008   F1400F000C00 MOV.B   #0xf, 0xc(SP)
+    415            addr.endPoint = TVSA_ENDPOINT;
+   \   00000E   F14003000D00 MOV.B   #0x3, 0xd(SP)
+    416          
+    417            if (INVALID_NODE_ADDR != tvsaAddr)
+   \   000014   B290FEFF.... CMP.W   #0xfffe, &tvsaAddr
+   \   00001A   0824         JEQ     ??tvsaAnnce_0
+    418            {
+    419              msg[TVSA_CMD_IDX] = TVSA_CMD_BEG;
+   \   00001C   D1430000     MOV.B   #0x1, 0(SP)
+    420              if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+   \   000020   ........     CALLA   #?Subroutine1
+   \                     ??CrossCallReturnLabel_1:
+   \   000024   0524         JEQ     ??tvsaAnnce_1
+    421              {
+    422                (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+   \   000026   ........     CALLA   #?Subroutine0
+    423              }
+    424            }
+   \                     ??CrossCallReturnLabel_0:
+   \   00002A   023C         JMP     ??tvsaAnnce_1
+    425            else
+    426            {
+    427              msg[TVSA_CMD_IDX] = TVSA_CMD_END;
+   \                     ??tvsaAnnce_0:
+   \   00002C   E1430000     MOV.B   #0x2, 0(SP)
+    428            }
+    429          
+    430            msg[TVSA_ADR_LSB] = LO_UINT16(tvsaAddr);
+   \                     ??tvsaAnnce_1:
+   \   000030   D142....0100 MOV.B   &tvsaAddr, 0x1(SP)
+    431            msg[TVSA_ADR_MSB] = HI_UINT16(tvsaAddr);
+   \   000036   D142....0200 MOV.B   &tvsaAddr + 1, 0x2(SP)
+    432          
+    433            if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&TVSA_epDesc, TVSA_CLUSTER_ID,
+    434                                                    3, msg, &tvsaTSN, AF_TX_OPTIONS_NONE, AF_DEFAULT_RADIUS))
+   \   00003C   70121E00     PUSH.B  #0x1e
+   \   000040   4312         PUSH.B  #0x0
+   \   000042   3012....     PUSH.W  #tvsaTSN
+   \   000046   0F41         MOV.W   SP, R15
+   \   000048   3F500600     ADD.W   #0x6, R15
+   \   00004C   0F12         PUSH.W  R15
+   \   00004E   3F400300     MOV.W   #0x3, R15
+   \   000052   2E43         MOV.W   #0x2, R14
+   \   000054   3D40....     MOV.W   #TVSA_epDesc, R13
+   \   000058   0C41         MOV.W   SP, R12
+   \   00005A   3C500C00     ADD.W   #0xc, R12
+   \   00005E   ........     CALLA   #AF_DataRequest
+   \   000062   3152         ADD.W   #0x8, SP
+   \   000064   4C93         CMP.B   #0x0, R12
+   \   000066   0724         JEQ     ??tvsaAnnce_2
+    435            {
+    436              osal_set_event(tvsaTaskId, TVSA_EVT_REQ);
+   \   000068   3D400020     MOV.W   #0x2000, R13
+   \   00006C   5C42....     MOV.B   &tvsaTaskId, R12
+   \   000070   ........     CALLA   #osal_set_event
+   \   000074   023C         JMP     ??tvsaAnnce_3
+    437            }
+    438            else
+    439            {
+    440              tvsaCnt++;
+   \                     ??tvsaAnnce_2:
+   \   000076   9253....     ADD.W   #0x1, &tvsaCnt
+    441            }
+    442          }
+   \                     ??tvsaAnnce_3:
+   \   00007A   31501000     ADD.W   #0x10, SP
+   \   00007E   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine1:
+   \   000000   3E4060EA     MOV.W   #0xea60, R14
+   \   000004   ........     CALLA   #?Subroutine4
+   \                     ??CrossCallReturnLabel_9:
+   \   000008   ........     CALLA   #osal_start_timerEx
+   \   00000C   4C93         CMP.B   #0x0, R12
+   \   00000E   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine4:
+   \   000000   3D400040     MOV.W   #0x4000, R13
+   \   000004   5C42....     MOV.B   &pulseTaskId, R12
+   \   000008   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine0:
+   \   000000   ........     CALLA   #?Subroutine4
+   \                     ??CrossCallReturnLabel_8:
+   \   000004   ........     BRA     #osal_set_event
+    443          
+    444          /**************************************************************************************************
+    445           * @fn          tvsaDataRx
+    446           *
+    447           * @brief       This function is called by tvsaAfMsgRx() to process incoming TVSA data.
+    448           *
+    449           * input parameters
+    450           *
+    451           * @param       msg - A pointer to the afIncomingMSGPacket_t packet.
+    452           *
+    453           * output parameters
+    454           *
+    455           * None.
+    456           *
+    457           * @return      None.
+    458           **************************************************************************************************
+    459           */
+
+   \                                 In  segment CODE, align 2
+    460          static void tvsaDataRx(afIncomingMSGPacket_t *msg)
+   \                     tvsaDataRx:
+    461          {
+   \   000000   3B15         PUSHM.W #0x4, R11
+   \   000002   31801600     SUB.W   #0x16, SP
+   \   000006   0B4C         MOV.W   R12, R11
+    462            uint8 fcs = 0, idx;
+   \   000008   4843         MOV.B   #0x0, R8
+    463          
+    464            // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
+    465            if (INVALID_NODE_ADDR == tvsaAddr)
+   \   00000A   B290FEFF.... CMP.W   #0xfffe, &tvsaAddr
+   \   000010   0220         JNE     ??tvsaDataRx_1
+    466            {
+    467              (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+   \   000012   ........     CALLA   #?Subroutine0
+    468            }
+    469          
+    470            pulseBuf[PULSE_SOP_IDX] = PULSE_SOP_VAL;
+   \                     ??tvsaDataRx_1:
+   \   000016   F240FE00.... MOV.B   #0xfe, &pulseBuf
+    471            pulseBuf[PULSE_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+   \   00001C   0A4B         MOV.W   R11, R10
+   \   00001E   3A500600     ADD.W   #0x6, R10
+   \   000022   E24A....     MOV.B   @R10, &pulseBuf + 1
+    472            pulseBuf[PULSE_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+   \   000026   D24A0100.... MOV.B   0x1(R10), &pulseBuf + 2
+    473          
+    474            // 1st byte of message is skipped - CMD is always 0 for data.
+    475            (void)osal_memcpy(pulseBuf+PULSE_DAT_OFF, msg->cmd.Data+1, PULSE_DAT_LEN-1);  //MHMS copies one buffer to another
+   \   00002C   3E401600     MOV.W   #0x16, R14
+   \   000030   1D4B2400     MOV.W   0x24(R11), R13
+   \   000034   1D53         ADD.W   #0x1, R13
+   \   000036   3C40....     MOV.W   #pulseBuf + 3, R12
+   \   00003A   ........     CALLA   #osal_memcpy
+    476          
+    477            for (idx = PULSE_ADR_LSB; idx < PULSE_FCS_IDX; idx++)
+   \   00003E   5F43         MOV.B   #0x1, R15
+    478            {
+    479              fcs ^= pulseBuf[idx];
+   \                     ??tvsaDataRx_0:
+   \   000040   58EF....     XOR.B   pulseBuf(R15), R8
+    480            }
+   \   000044   5F53         ADD.B   #0x1, R15
+   \   000046   7F901900     CMP.B   #0x19, R15
+   \   00004A   FA2B         JNC     ??tvsaDataRx_0
+    481            pulseBuf[idx] = fcs;
+   \   00004C   CF48....     MOV.B   R8, pulseBuf(R15)
+    482            
+    483          #ifdef TVSA_DEMO
+    484          
+    485            HalUARTWrite(TVSA_PORT, pulseBuf, TVSA_BUF_LEN);
+    486          
+    487          #else
+    488            
+    489            
+    490            uint8 deviceBPM;
+    491            uint8 deviceVolt;
+                         ^
+Warning[Pe550]: variable "deviceVolt" was set but never used
+    492            uint8 parentAddrLSB;
+    493            uint8 parentAddrMSB;
+    494            uint8 zsensorBuf[15];
+    495            
+    496            parentAddrLSB= pulseBuf[11];
+   \   000050   5E42....     MOV.B   &pulseBuf + 11, R14
+    497            parentAddrMSB= pulseBuf[12];  
+   \   000054   5F42....     MOV.B   &pulseBuf + 12, R15
+    498            deviceBPM = pulseBuf[14];
+   \   000058   5D42....     MOV.B   &pulseBuf + 14, R13
+    499            deviceVolt = 0xFF;
+    500            
+    501            //Start of Frame Delimiter
+    502            zsensorBuf[0]=0xFE;
+   \   00005C   F140FE000700 MOV.B   #0xfe, 0x7(SP)
+    503            
+    504            
+    505            zsensorBuf[1]=10;
+   \   000062   F1400A000800 MOV.B   #0xa, 0x8(SP)
+    506            zsensorBuf[2]=LO_UINT16(0x8746);
+   \   000068   F14046000900 MOV.B   #0x46, 0x9(SP)
+    507            zsensorBuf[3]=HI_UINT16(0x8746);
+   \   00006E   F14087000A00 MOV.B   #0x87, 0xa(SP)
+    508            
+    509            //Source Address
+    510            zsensorBuf[4] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+   \   000074   E14A0B00     MOV.B   @R10, 0xb(SP)
+    511            zsensorBuf[5] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+   \   000078   D14A01000C00 MOV.B   0x1(R10), 0xc(SP)
+    512            
+    513            zsensorBuf[6]=LO_UINT16(2);
+   \   00007E   E1430D00     MOV.B   #0x2, 0xd(SP)
+    514            zsensorBuf[7]=HI_UINT16(2);
+   \   000082   C1430E00     MOV.B   #0x0, 0xe(SP)
+    515            zsensorBuf[8]=LO_UINT16(4);
+   \   000086   E1420F00     MOV.B   #0x4, 0xf(SP)
+    516            zsensorBuf[9]=HI_UINT16(4);
+   \   00008A   C1431000     MOV.B   #0x0, 0x10(SP)
+    517            
+    518            //Temperature and Voltage Data
+    519            zsensorBuf[10]= deviceBPM;
+   \   00008E   C14D1100     MOV.B   R13, 0x11(SP)
+    520            zsensorBuf[11]= deviceBPM; //deviceVolt;
+   \   000092   C14D1200     MOV.B   R13, 0x12(SP)
+    521            
+    522            //Parent Address
+    523            zsensorBuf[12]=parentAddrLSB;
+   \   000096   C14E1300     MOV.B   R14, 0x13(SP)
+    524            zsensorBuf[13]=parentAddrMSB;
+   \   00009A   C14F1400     MOV.B   R15, 0x14(SP)
+    525          
+    526          
+    527            //FCS Check on the middle 13 bytes
+    528            zsensorBuf[14] = calcFCS(&zsensorBuf[1], 13 );
+   \   00009E   7D400D00     MOV.B   #0xd, R13
+   \   0000A2   0C41         MOV.W   SP, R12
+   \   0000A4   3C52         ADD.W   #0x8, R12
+   \   0000A6   ........     CALLA   #calcFCS
+   \   0000AA   C14C1500     MOV.B   R12, 0x15(SP)
+    529          
+    530          
+    531            //HalUARTWrite(TVSA_PORT, zsensorBuf, 15);
+    532            
+    533            //MHMS USB communication with Pulse sensor Processor application
+    534          
+    535            uint8 BPMBuf[7] = {'B',0,0,0,10,13};
+                         ^
+Warning[Pe550]: variable "BPMBuf" was set but never used
+    536            uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
+                         ^
+Warning[Pe550]: variable "IBIBuf" was set but never used
+
+  static uint16 pulseAddr;
+                ^
+"C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\Source\tvsa.c",158  Warning[Pe550]: 
+          variable "pulseAddr" was set but never used
+
+  static uint8 pulseTSN;           //MHMS
+               ^
+"C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\Source\tvsa.c",163  Warning[Pe177]: 
+          variable "pulseTSN" was declared but never referenced
+    537            uint8 SignalBuf[7] = {'S',0,0,0,10,13};
+   \   0000AE   0C41         MOV.W   SP, R12
+   \   0000B0   0C53         ADD.W   #0x0, R12
+   \   0000B2   3E40....     MOV.W   #`?<Constant {83, 0, 0, 0, 10, 13}>`, R14
+   \   0000B6   3D400700     MOV.W   #0x7, R13
+   \   0000BA   ........     CALLA   #?CopyMemoryBytes
+    538            
+    539            //conversion Signal Dec to ASCII
+    540            uint16 temp = (BUILD_UINT16(pulseBuf[16], pulseBuf[17])) - 400;
+   \   0000BE   5A42....     MOV.B   &pulseBuf + 16, R10
+   \   0000C2   5F42....     MOV.B   &pulseBuf + 17, R15
+   \   0000C6                RPT     #0x8
+   \   0000C6   47180F5F     RLAX.W  R15
+   \   0000CA   0A5F         ADD.W   R15, R10
+   \   0000CC   3A5070FE     ADD.W   #0xfe70, R10
+    541            if(temp > 999){
+   \   0000D0   3A90E803     CMP.W   #0x3e8, R10
+   \   0000D4   0A28         JNC     ??tvsaDataRx_2
+    542              SignalBuf[1] = '9';
+   \   0000D6   F14039000100 MOV.B   #0x39, 0x1(SP)
+    543              SignalBuf[2] = '9';
+   \   0000DC   F14039000200 MOV.B   #0x39, 0x2(SP)
+    544              SignalBuf[3] = '9';
+   \   0000E2   F14039000300 MOV.B   #0x39, 0x3(SP)
+   \   0000E8   1D3C         JMP     ??tvsaDataRx_3
+    545            }
+   \                     ??tvsaDataRx_2:
+   \   0000EA   ........     CALLA   #?Subroutine2
+   \                     ??CrossCallReturnLabel_3:
+   \   0000EE   7C503000     ADD.B   #0x30, R12
+   \   0000F2   C14C0100     MOV.B   R12, 0x1(SP)
+    546            else { 
+    547              SignalBuf[1] = (uint8)((temp/100)+ 48);
+    548              SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+   \   0000F6   ........     CALLA   #?Subroutine2
+   \                     ??CrossCallReturnLabel_4:
+   \   0000FA   0B4E         MOV.W   R14, R11
+   \   0000FC   0C4E         MOV.W   R14, R12
+   \   0000FE   3E400A00     MOV.W   #0xa, R14
+   \   000102   ........     CALLA   #?DivMod16u
+   \   000106   4A4E         MOV.B   R14, R10
+   \   000108   0B8E         SUB.W   R14, R11
+   \   00010A   0C4B         MOV.W   R11, R12
+   \   00010C   3E400A00     MOV.W   #0xa, R14
+   \   000110   ........     CALLA   #?DivMod16u
+   \   000114   7C503000     ADD.B   #0x30, R12
+   \   000118   C14C0200     MOV.B   R12, 0x2(SP)
+    549              SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+   \   00011C   7A503000     ADD.B   #0x30, R10
+   \   000120   C14A0300     MOV.B   R10, 0x3(SP)
+    550            }
+    551            
+    552            //conversion BPM Dec to ASCII
+    553            temp = (uint16)pulseBuf[14];
+    554            BPMBuf[1] = (uint8)((temp/100)+ 48);
+    555            BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+    556            BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+    557            
+    558            //conversion IBI Dec to ASCII
+    559            temp = (uint16)pulseBuf[19];
+    560            IBIBuf[1] = (uint8)((temp/100)+ 48);
+    561            IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+    562            IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+    563             
+    564            
+    565            HalUARTWrite(TVSA_PORT, SignalBuf, 6);
+   \                     ??tvsaDataRx_3:
+   \   000124   3E400600     MOV.W   #0x6, R14
+   \   000128   ........     CALLA   #?Subroutine3
+    566           // HalUARTWrite(TVSA_PORT, BPMBuf, 6);
+    567           // HalUARTWrite(TVSA_PORT, IBIBuf, 6);
+    568          
+    569            
+    570          
+    571          #endif  
+    572          //pulseAddr = BUILD_UINT16(buf[TVSA_ADR_LSB], buf[TVSA_ADR_MSB]);
+    573          }
+   \                     ??CrossCallReturnLabel_5:
+   \   00012C   31501600     ADD.W   #0x16, SP
+   \   000130   3817         POPM.W  #0x4, R11
+   \   000132   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine3:
+   \   000000   0D41         MOV.W   SP, R13
+   \   000002   2D52         ADD.W   #0x4, R13
+   \   000004   4C43         MOV.B   #0x0, R12
+   \   000006   ........     BRA     #HalUARTWrite
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine2:
+   \   000000   0C4A         MOV.W   R10, R12
+   \   000002   3E406400     MOV.W   #0x64, R14
+   \   000006   ........     BRA     #?DivMod16u
+    574          
+    575          /**************************************************************************************************
+    576           * @fn          tvsaUartRx
+    577           *
+    578           * @brief       This function is the Uart callback for Rx data.
+    579           *
+    580           * input parameters
+    581           *
+    582           * @param       port - Don't care.
+    583           * @param       event - Don't care.
+    584           *
+    585           * output parameters
+    586           *
+    587           * None.
+    588           *
+    589           * @return      None.
+    590           **************************************************************************************************
+    591           */
+
+   \                                 In  segment CODE, align 2
+    592          static void tvsaUartRx(uint8 port, uint8 event)
+   \                     tvsaUartRx:
+    593          {
+   \   000000   31800600     SUB.W   #0x6, SP
+    594          #ifdef TVSA_DEMO
+    595            uint8 ch;
+    596          
+    597            while (HalUARTRead(TVSA_PORT, &ch, 1))
+    598            {
+    599              switch (tvsaState)
+    600              {
+    601              case SOP_STATE:
+    602                if (TVSA_SOP_VAL == ch)
+    603                {
+    604                  tvsaState = CMD_STATE;
+    605                }
+    606                break;
+    607          
+    608              case CMD_STATE:
+    609                tvsaCmd = ch;
+    610                tvsaState = FCS_STATE;
+    611                break;
+    612          
+    613              case FCS_STATE:
+    614                if (tvsaCmd == ch)
+    615                {
+    616                  if (tvsaCmd == TVSA_CMD_BEG)
+    617                  {
+    618                    tvsaAddr = NLME_GetShortAddr();
+    619                  }
+    620                  else if (tvsaCmd == TVSA_CMD_END)
+    621                  {
+    622                    tvsaAddr = INVALID_NODE_ADDR;
+    623                  }
+    624                  (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+    625                }
+    626          
+    627                tvsaState = SOP_STATE;
+    628                break;
+    629          
+    630              default:
+    631               break;
+    632              }
+    633            }
+    634          #else
+    635            uint8 ch[5];
+    636            
+    637            HalUARTRead(TVSA_PORT, ch, 5);
+   \   000004   3E400500     MOV.W   #0x5, R14
+   \   000008   0D41         MOV.W   SP, R13
+   \   00000A   0D53         ADD.W   #0x0, R13
+   \   00000C   4C43         MOV.B   #0x0, R12
+   \   00000E   ........     CALLA   #HalUARTRead
+    638            if (ch[2]==0x21)   //if statement to check for command from Z-Sensor Monitor
+   \   000012   F19021000200 CMP.B   #0x21, 0x2(SP)
+   \   000018   0220         JNE     ??tvsaUartRx_0
+    639            {
+    640              sysPingRsp();
+   \   00001A   ........     CALLA   #sysPingRsp
+    641            }
+    642          #endif
+    643          }
+   \                     ??tvsaUartRx_0:
+   \   00001E   31500600     ADD.W   #0x6, SP
+   \   000022   1001         RETA
+    644          
+    645          /**************************************************************************************************
+    646           * @fn          tvsaZdoStateChange
+    647           *
+    648           * @brief       This function is called by tvsaSysEvtMsg() for a ZDO_STATE_CHANGE message.
+    649           *
+    650           * input parameters
+    651           *
+    652           * None.
+    653           *
+    654           * output parameters
+    655           *
+    656           * None.
+    657           *
+    658           * @return      None.
+    659           **************************************************************************************************
+    660           */
+
+   \                                 In  segment CODE, align 2
+    661          static void tvsaZdoStateChange(void)
+   \                     tvsaZdoStateChange:
+    662          {
+    663            (void)osal_stop_timerEx(pulseTaskId, TVSA_EVT_ANN);
+   \   000000   ........     CALLA   #?Subroutine4
+   \                     ??CrossCallReturnLabel_7:
+   \   000004   ........     CALLA   #osal_stop_timerEx
+    664          
+    665            if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
+   \   000008   5E42....     MOV.B   &devState, R14
+   \   00000C   7E900900     CMP.B   #0x9, R14
+   \   000010   0624         JEQ     ??tvsaZdoStateChange_0
+   \   000012   7E900700     CMP.B   #0x7, R14
+   \   000016   0324         JEQ     ??tvsaZdoStateChange_0
+   \   000018   7E900600     CMP.B   #0x6, R14
+   \   00001C   0B20         JNE     ??tvsaZdoStateChange_1
+    666            {
+    667          #if TVSA_DONGLE_IS_ZC
+    668              if (INVALID_NODE_ADDR == tvsaAddr)
+   \                     ??tvsaZdoStateChange_0:
+   \   00001E   B290FEFF.... CMP.W   #0xfffe, &tvsaAddr
+   \   000024   0220         JNE     ??tvsaZdoStateChange_2
+    669              {
+    670                // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+    671                tvsaAddr = NWK_PAN_COORD_ADDR;
+   \   000026   8243....     MOV.W   #0x0, &tvsaAddr
+    672              }
+    673          #endif
+    674          
+    675              if (INVALID_NODE_ADDR != tvsaAddr)
+    676              {
+    677                if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+   \                     ??tvsaZdoStateChange_2:
+   \   00002A   ........     CALLA   #?Subroutine1
+   \                     ??CrossCallReturnLabel_2:
+   \   00002E   0224         JEQ     ??tvsaZdoStateChange_1
+    678                {
+    679                  (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+   \   000030   ........     CALLA   #?Subroutine0
+    680                }
+    681              }
+    682            }
+    683          }
+   \                     ??tvsaZdoStateChange_1:
+   \   000034   1001         RETA
+    684          
+    685          #ifndef TVSA_DEMO
+    686          /******************************************************************************
+    687           * @fn          calcFCS
+    688           *
+    689           * @brief       This function calculates the FCS checksum for the serial message 
+    690           *
+    691           * @param       pBuf - Pointer to the end of a buffer to calculate the FCS.
+    692           *              len - Length of the pBuf.
+    693           *
+    694           * @return      The calculated FCS.
+    695           ******************************************************************************
+    696           */
+
+   \                                 In  segment CODE, align 2
+    697          static uint8 calcFCS(uint8 *pBuf, uint8 len)
+   \                     calcFCS:
+    698          {
+    699            uint8 rtrn = 0;
+   \   000000   4F43         MOV.B   #0x0, R15
+   \   000002   013C         JMP     ??calcFCS_1
+    700          
+    701            while (len--)
+    702            {
+    703              rtrn ^= *pBuf++;
+   \                     ??calcFCS_0:
+   \   000004   7FEC         XOR.B   @R12+, R15
+    704            }
+   \                     ??calcFCS_1:
+   \   000006   4E4D         MOV.B   R13, R14
+   \   000008   7D53         ADD.B   #0xff, R13
+   \   00000A   4E93         CMP.B   #0x0, R14
+   \   00000C   FB23         JNE     ??calcFCS_0
+    705          
+    706            return rtrn;
+   \   00000E   4C4F         MOV.B   R15, R12
+   \   000010   1001         RETA
+    707          }
+    708          
+    709          /*************************************************************************************************
+    710           * @fn          sysPingRsp
+    711           *
+    712           * @brief       Build and send Ping response
+    713           *
+    714           * @param       none
+    715           *              
+    716           * @return      none
+    717          **************************************************************************************************
+    718           */
+
+   \                                 In  segment CODE, align 2
+    719          static void sysPingRsp(void)
+   \                     sysPingRsp:
+    720          {
+   \   000000   3182         SUB.W   #0x8, SP
+    721            uint8 pingBuff[7];
+    722            
+    723            // Start of Frame Delimiter
+    724            pingBuff[0] = 0xFE;
+   \   000002   F140FE000000 MOV.B   #0xfe, 0(SP)
+    725            
+    726            // Length
+    727            pingBuff[1] = 0x02; 
+   \   000008   E1430100     MOV.B   #0x2, 0x1(SP)
+    728            
+    729            // Command type
+    730            pingBuff[2] = LO_UINT16(0x0161); 
+   \   00000C   F14061000200 MOV.B   #0x61, 0x2(SP)
+    731            pingBuff[3] = HI_UINT16(0x0161);
+   \   000012   D1430300     MOV.B   #0x1, 0x3(SP)
+    732            
+    733            // Stack profile
+    734            pingBuff[4] = LO_UINT16(0x0041);
+   \   000016   F14041000400 MOV.B   #0x41, 0x4(SP)
+    735            pingBuff[5] = HI_UINT16(0x0041);
+   \   00001C   C1430500     MOV.B   #0x0, 0x5(SP)
+    736            
+    737            // Frame Check Sequence
+    738            pingBuff[6] = calcFCS(&pingBuff[1], 5);
+   \   000020   7D400500     MOV.B   #0x5, R13
+   \   000024   0C41         MOV.W   SP, R12
+   \   000026   1C53         ADD.W   #0x1, R12
+   \   000028   ........     CALLA   #calcFCS
+   \   00002C   C14C0600     MOV.B   R12, 0x6(SP)
+    739            
+    740            
+    741            HalUARTWrite(TVSA_PORT,pingBuff, 7);
+   \   000030   3E400700     MOV.W   #0x7, R14
+   \   000034   ........     CALLA   #?Subroutine3
+    742          
+    743          }
+   \                     ??CrossCallReturnLabel_6:
+   \   000038   3152         ADD.W   #0x8, SP
+   \   00003A   1001         RETA
+    744          
+    745          
+    746          #endif
+    747          
+    748          
+    749          
+    750          
+    751          
+    752          #endif
+    753          
+    754          /**************************************************************************************************
+    755          */
+    756          
+    757          
+    758          
+    759          /*  //MHMS Pulse Sensor Functions */ 
+    760          
+    761          /**************************************************************************************************
+    762           * @fn          pulseAppInit
+    763           *
+    764           * @brief       This function is the application's task initialization.
+    765           *
+    766           * input parameters
+    767           *
+    768           * None.
+    769           *
+    770           * output parameters
+    771           *
+    772           * None.
+    773           *
+    774           * @return      None.
+    775           **************************************************************************************************
+    776           */
+
+   \                                 In  segment CODE, align 2
+    777          void pulseAppInit(uint8 id)
+   \                     pulseAppInit:
+    778          {
+   \   000000   0A12         PUSH.W  R10
+   \   000002   31802200     SUB.W   #0x22, SP
+   \   000006   4A4C         MOV.B   R12, R10
+    779          #if TVSA_DONGLE
+    780            halUARTCfg_t uartConfig;
+    781          
+    782            uartConfig.configured           = TRUE;              // 2x30 don't care - see uart driver.
+   \   000008   D1430000     MOV.B   #0x1, 0(SP)
+    783            
+    784          #ifdef TVSA_DEMO
+    785            uartConfig.baudRate             = HAL_UART_BR_115200;
+    786          #else
+    787            //uartConfig.baudRate             = HAL_UART_BR_38400;        //MHMS This baud rate is required to communicate with Zigbee Sensor Monitor
+    788            uartConfig.baudRate             = HAL_UART_BR_115200;         //MHMS This baud rate is required to communicate with the Pulse processing program on PC
+   \   00000C   E1420100     MOV.B   #0x4, 0x1(SP)
+    789          #endif
+    790            
+    791            uartConfig.flowControl          = FALSE;
+   \   000010   C1430200     MOV.B   #0x0, 0x2(SP)
+    792            uartConfig.flowControlThreshold = 16;                // 2x30 don't care - see uart driver.
+   \   000014   B14010000400 MOV.W   #0x10, 0x4(SP)
+    793            uartConfig.rx.maxBufSize        = 32;                // 2x30 don't care - see uart driver.
+   \   00001A   B14020000C00 MOV.W   #0x20, 0xc(SP)
+    794            uartConfig.tx.maxBufSize        = 254;               // 2x30 don't care - see uart driver.
+   \   000020   B140FE001400 MOV.W   #0xfe, 0x14(SP)
+    795            uartConfig.idleTimeout          = 6;                 // 2x30 don't care - see uart driver.
+   \   000026   F14006000600 MOV.B   #0x6, 0x6(SP)
+    796            uartConfig.intEnable            = TRUE;              // 2x30 don't care - see uart driver.
+   \   00002C   D1431800     MOV.B   #0x1, 0x18(SP)
+    797            uartConfig.callBackFunc         = tvsaUartRx;
+   \   000030   B140....1E00 MOV.W   #LWRD(tvsaUartRx), 0x1e(SP)
+   \   000036   B140....2000 MOV.W   #HWRD(tvsaUartRx), 0x20(SP)
+    798            HalUARTOpen(TVSA_PORT, &uartConfig);
+   \   00003C   0D41         MOV.W   SP, R13
+   \   00003E   0D53         ADD.W   #0x0, R13
+   \   000040   4C43         MOV.B   #0x0, R12
+   \   000042   ........     CALLA   #HalUARTOpen
+    799          #else
+    800          //  tvsaDat[TVSA_TYP_IDX] = (uint8)TVSA_DEVICE_ID;
+    801              pulseDat[PULSE_TYP_IDX] = (uint8)PULSE_DEVICE_ID;
+    802          #if defined PULSE_SRC_RTG
+    803          //  tvsaDat[TVSA_OPT_IDX] = TVSA_OPT_SRC_RTG;
+    804              pulseDat[PULSE_OPT_IDX] = PULSE_OPT_SRC_RTG;
+    805          #endif
+    806          #endif
+    807          
+    808            pulseTaskId = id;                                    
+   \   000046   C24A....     MOV.B   R10, &pulseTaskId
+    809            pulseAddr = INVALID_NODE_ADDR;
+   \   00004A   B240FEFF.... MOV.W   #0xfffe, &pulseAddr
+    810            (void)afRegister((endPointDesc_t *)&PULSE_epDesc);  //MHMS registers endpoint object
+   \   000050   3C40....     MOV.W   #PULSE_epDesc, R12
+   \   000054   ........     CALLA   #afRegister
+    811            
+    812            //Initialize Px.y (5.0) to power Pulse sensor
+    813            P5DIR = 0x1;  //Set IO direction as output
+   \   000058   D2434402     MOV.B   #0x1, &0x244
+    814            P5OUT = 0x1;  //Set output to high
+   \   00005C   D2434202     MOV.B   #0x1, &0x242
+    815           
+    816            //Setup ADC reference 
+    817            REFCTL0 = REFVSEL_2;  /* REF Reference Voltage Level Select 2.5V */
+   \   000060   B2402000B001 MOV.W   #0x20, &0x1b0
+    818          }
+   \   000066   31502200     ADD.W   #0x22, SP
+   \   00006A   3A41         POP.W   R10
+   \   00006C   1001         RETA
+   \   00006E                REQUIRE _A_PCDIR_L
+   \   00006E                REQUIRE _A_PCOUT_L
+   \   00006E                REQUIRE _A_REFCTL0_L
+    819          
+    820          /**************************************************************************************************
+    821           * @fn          pulseAppEvt
+    822           *
+    823           * @brief       This function is called to process the OSAL events for the task.
+    824           *
+    825           * input parameters
+    826           *
+    827           * @param       id - OSAL task Id.
+    828           * @param       evts - OSAL events bit mask of pending events.
+    829           *
+    830           * output parameters
+    831           *
+    832           * None.
+    833           *
+    834           * @return      evts - OSAL events bit mask of unprocessed events.
+    835           **************************************************************************************************
+    836           */
+
+   \                                 In  segment CODE, align 2
+    837          uint16 pulseAppEvt(uint8 id, uint16 evts)
+   \                     pulseAppEvt:
+    838          {
+   \   000000   1B15         PUSHM.W #0x2, R11
+   \   000002   0A4D         MOV.W   R13, R10
+    839            uint16 mask = 0;
+    840            (void)id;  //MHMS casts a void to ignore warning for not using variable
+    841            
+    842            if (evts & SYS_EVENT_MSG)
+   \   000004   0D93         CMP.W   #0x0, R13
+   \   000006   0534         JGE     ??pulseAppEvt_0
+    843            {
+    844              mask = SYS_EVENT_MSG;
+   \   000008   3B400080     MOV.W   #0x8000, R11
+    845              tvsaSysEvtMsg();
+   \   00000C   ........     CALLA   #tvsaSysEvtMsg
+   \   000010   093C         JMP     ??pulseAppEvt_1
+    846            }
+    847          #if TVSA_DONGLE
+    848            else if (evts & TVSA_EVT_ANN)
+   \                     ??pulseAppEvt_0:
+   \   000012   3DB00040     BIT.W   #0x4000, R13
+   \   000016   0528         JNC     ??pulseAppEvt_2
+    849            {
+    850              mask = TVSA_EVT_ANN;
+   \   000018   3B400040     MOV.W   #0x4000, R11
+    851             tvsaAnnce();
+   \   00001C   ........     CALLA   #tvsaAnnce
+   \   000020   013C         JMP     ??pulseAppEvt_1
+    852            }
+    853          #else
+    854            else if (evts & PULSE_EVT_DAT)
+    855            {
+    856              mask = PULSE_EVT_DAT;
+    857              pulseDataCalc();
+    858            }
+    859            else if (evts & PULSE_EVT_REQ)
+    860            {
+    861              mask = PULSE_EVT_REQ;
+    862              pulseDataReq();
+    863            }
+    864          #endif
+    865            else
+    866            {
+    867              mask = evts;  // Discard unknown events - should never happen.
+   \                     ??pulseAppEvt_2:
+   \   000022   0B4D         MOV.W   R13, R11
+    868            }
+    869          
+    870            return (evts ^ mask);  // Return unprocessed events.
+   \                     ??pulseAppEvt_1:
+   \   000024   0AEB         XOR.W   R11, R10
+   \   000026   0C4A         MOV.W   R10, R12
+   \   000028   1A17         POPM.W  #0x2, R11
+   \   00002A   1001         RETA
+    871          }
+
+   \                                 In  segment DATA16_ID, align 2, align-sorted
+   \                     `?<Initializer for P>`:
+   \   000000   0002         DC16 512
+
+   \                                 In  segment DATA16_ID, align 2, align-sorted
+   \                     `?<Initializer for T>`:
+   \   000000   0002         DC16 512
+
+   \                                 In  segment DATA16_ID, align 2, align-sorted
+   \                     `?<Initializer for thresh>`:
+   \   000000   0002         DC16 512
+
+   \                                 In  segment DATA16_ID, align 2, align-sorted
+   \                     `?<Initializer for amp>`:
+   \   000000   6400         DC16 100
+
+   \                                 In  segment DATA16_ID, align 1, align-sorted
+   \                     `?<Initializer for firstBeat>`:
+   \   000000   01           DC8 1
+
+   \                                 In  segment DATA16_ID, align 1, align-sorted
+   \                     `?<Initializer for secondBeat>`:
+   \   000000   01           DC8 1
+
+   \                                 In  segment DATA16_ID, align 2, align-sorted
+   \                     `?<Initializer for IBI>`:
+   \   000000   5802         DC16 600
+
+   \                                 In  segment DATA16_C, align 1, align-sorted
+   \                     `?<Constant {83, 0, 0, 0, 10, 13}>`:
+   \   000000   530000000A0D DC8 83, 0, 0, 0, 10, 13, 0
+   \            00          
+    872          
+    873          
+    874          //MHMS put coord stuff here, recieve func and sys
+    875          
+    876          
+    877          #if !TVSA_DONGLE  //Group 1
+    878          /**************************************************************************************************
+    879           * @fn          pulseDataCalc
+    880           *
+    881           * @brief       This function is called by tvsaAppEvt() to calculate the data for a PULSE report.
+    882           *              The function will called on a 2ms interval and detect whether a pulse is being measured.
+    883           *              If a pulse is determined it will invoke the PulsedataReq interrupt timer (20ms intervals)
+    884           *
+    885           * input parameters
+    886           *
+    887           * None.
+    888           *
+    889           * output parameters
+    890           *
+    891           * None.
+    892           *
+    893           * @return      None.
+    894           **************************************************************************************************
+    895           */
+    896          static void pulseDataCalc(void)
+    897          {
+    898            if (INVALID_NODE_ADDR == pulseAddr)
+    899            {
+    900              return;
+    901            }
+    902          
+    903            if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, PULSE_DLY_DAT))  //If the timer can't be started set event flag again for it to be service again
+    904            {
+    905              (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+    906            }
+    907            pulseBPM(pulseDat);
+    908            //  HalCalcTV(tvsaDat);
+    909          #if TVSA_DATA_CNF
+    910            tvsaDat[TVSA_RTG_IDX] = tvsaCnfErrCnt;
+    911          #else
+    912            tvsaDat[TVSA_RTG_IDX] = 0;
+    913          #endif
+    914            //osal_set_event(tvsaTaskId, TVSA_EVT_REQ);
+    915            if(QS == true && SUCCESS == osal_set_event(pulseTaskId, PULSE_EVT_REQ)){}  //If pulse is being measured synchronize pulsedatareq event
+    916            
+    917           
+    918          }
+    919          static void pulseBPM(uint8 *pulsedata)
+    920          {
+    921          
+    922          //MHMS 
+    923          int BPM = pulsedata[PULSE_BPM];                         // used to hold the pulse rate
+    924          int Signal;                                             // holds the incoming raw data
+    925          int IBI = pulsedata[PULSE_IBI];                         // holds the time between beats, the Inter-Beat Interval
+    926          
+    927          //    cli();                                            // disable interrupts while we do this
+    928          //    Signal = analogRead(pulsePin);                    // read the Pulse Sensor  //MHMS orginal arduino code
+    929          
+    930          //MHMS using HAL layer API to set channel to read and 10 Bit resolution
+    931            Signal = HalAdcRead(HAL_ADC_CHANNEL_7, HAL_ADC_RESOLUTION_10);
+    932            
+    933            sampleCounter += 2;                                   // keep track of the time in mS with this variable
+    934            int Number = (sampleCounter - lastBeatTime);          // monitor the time since the last beat to avoid noise
+    935          
+    936          //  find the peak and trough of the pulse wave
+    937              if(Signal < thresh && Number > (IBI/5)*3){          // avoid dichrotic noise by waiting 3/5 of last IBI
+    938                  if (Signal < T){                                // T is the trough
+    939                      T = Signal;                                 // keep track of lowest point in pulse wave 
+    940                   }
+    941                 }
+    942                
+    943              if(Signal > thresh && Signal > P){          // thresh condition helps avoid noise
+    944                  P = Signal;                             // P is the peak
+    945                 }                                        // keep track of highest point in pulse wave
+    946              
+    947            //  NOW IT'S TIME TO LOOK FOR THE HEART BEAT
+    948            // signal surges up in value every time there is a pulse
+    949          if (Number > 250){                                   // avoid high frequency noise //MHMS increased from 250 to 500 to reduce high freq noise
+    950            if ((Signal > thresh) && (Pulse == false) && (Number > (int)(IBI/5)*3) ){        
+    951              Pulse = true;                               // set the Pulse flag when we think there is a pulse
+    952              
+    953              //MHMS  could define some external LED or just write to LCD screen "Pulse found"
+    954              HalLedSet (HAL_LED_2, HAL_LED_MODE_OFF);    //MHMS beat found
+    955              HalLedSet (HAL_LED_1, HAL_LED_MODE_ON);     //MHMS LED on during upbeat
+    956              
+    957              IBI = sampleCounter - lastBeatTime;         // measure time between beats in mS
+    958              lastBeatTime = sampleCounter;               // keep track of time for next pulse
+    959                   
+    960                   if(firstBeat){                         // if it's the first time we found a beat, if firstBeat == TRUE
+    961                       firstBeat = false;                 // clear firstBeat flag
+    962                       return;                            // IBI value is unreliable so discard it
+    963                      }   
+    964                   if(secondBeat){                        // if this is the second beat, if secondBeat == TRUE
+    965                      secondBeat = false;                 // clear secondBeat flag
+    966                         for(int i=0; i<=9; i++){         // seed the running total to get a realisitic BPM at startup
+    967                              rate[i] = IBI;                      
+    968                              }
+    969                      }
+    970                    
+    971              // keep a running total of the last 10 IBI values
+    972              int16 runningTotal = 0; //word runningTotal = 0;                   // clear the runningTotal variable    
+    973          
+    974              for(int i=0; i<=8; i++){                // shift data in the rate array
+    975                    rate[i] = rate[i+1];              // and drop the oldest IBI value 
+    976                    runningTotal += rate[i];          // add up the 9 oldest IBI values
+    977                  }
+    978                  
+    979              rate[9] = IBI;                          // add the latest IBI to the rate array
+    980              runningTotal += rate[9];                // add the latest IBI to runningTotal
+    981              runningTotal /= 10;                     // average the last 10 IBI values 
+    982              BPM = 60000/runningTotal;               // how many beats can fit into a minute? that's BPM!
+    983              QS = true;                              // set Quantified Self flag //MHMS we will use this to flag other event to transmit data over network
+    984              
+    985              
+    986              HalLcdWriteStringValue("BPM:",BPM, 10, 6); //MHMS display BPM on LCD screen
+    987              }                       
+    988          }
+    989          
+    990            if (Signal < thresh && Pulse == true){     // when the values are going down, the beat is over
+    991                //digitalWrite(blinkPin,LOW);            // turn off pin 13 LED
+    992               //MHMS  could define some external LED or just write to LCD screen "Pulse Not found"
+    993                HalLedSet (HAL_LED_1, HAL_LED_MODE_OFF);
+    994                
+    995                Pulse = false;                         // reset the Pulse flag so we can do it again
+    996                amp = P - T;                           // get amplitude of the pulse wave
+    997                thresh = amp/2 + T + 100;              // set thresh at 50% of the amplitude  //MHMS offset up by 100 to ignore small flucuations due to noise
+    998                P = thresh;                            // reset these for next time
+    999                T = thresh;
+   1000               }
+   1001            
+   1002            if (Number > 2500){                        // if 2.5 seconds go by without a beat
+   1003                HalLedSet (HAL_LED_2, HAL_LED_MODE_ON);//MHMS No beat found
+   1004                thresh = 512 + 100;                    // set thresh default //MHMS offset up by 100 to ignore small flucuations due to noise
+   1005                P = 512;                               // set P default
+   1006                T = 512;                               // set T default
+   1007                lastBeatTime = sampleCounter;          // bring the lastBeatTime up to date        
+   1008                firstBeat = true;                      // set these to avoid noise
+   1009                secondBeat = true;                     // when we get the heartbeat back
+   1010                QS = false;                            // Clears Pulse measurement quantifier flag so no data  is sent over the air
+   1011               }
+   1012          
+   1013          //MHMS Loading 16 bit results into 8 bit blocks for pulsedata array              
+   1014          pulsedata[PULSE_BPM] = (uint8)((BPM & 0x00FF));
+   1015          pulsedata[PULSE_RAW_MSB] = (uint8)((Signal >> 8));
+   1016          pulsedata[PULSE_RAW_LSB] = (uint8)((Signal & 0x00FF));
+   1017          pulsedata[PULSE_IBI] = (uint8)((IBI & 0x00FF));
+   1018          
+   1019          pulsedata[PULSE_BPM_CHAR] = 'B';
+   1020          pulsedata[PULSE_RAW_CHAR] = 'Q';
+   1021          pulsedata[PULSE_IBI_CHAR] = 'S';
+   1022          
+   1023          //HalLcdWriteStringValue("Signal:",Signal, 10, 7); //MHMS  for testing ADC values
+   1024          
+   1025          
+   1026            //sei();                                     // enable interrupts when youre done!
+   1027          }// end isr
+   1028          
+   1029          /**************************************************************************************************
+   1030           * @fn          pulseDataReq
+   1031           *
+   1032           * @brief       This function is called by tvsaAppEvt() to send a PULSE data report. When it is detected that
+   1033           *              a pulse is found (QS flag is set) this function will start to transfer BPM, IBI, and raw Signal
+   1034           *              data over the air to the coordinator at 20ms intervals. When there is no BPM detected
+   1035           *              this function will stop sending information over the air to the coordinator.
+   1036           *
+   1037           * input parameters
+   1038           *
+   1039           * None.
+   1040           *
+   1041           * output parameters
+   1042           *
+   1043           * None.
+   1044           *
+   1045           * @return      None.
+   1046           **************************************************************************************************
+   1047           */
+   1048          static void pulseDataReq(void)
+   1049          {
+   1050            static bool pulseDataReqFlag;
+   1051            pulseDataReqFlag = false;
+   1052            afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
+   1053            
+   1054            addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
+   1055            addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
+   1056            addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+   1057          
+   1058            if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+   1059                                                    PULSE_DAT_LEN, pulseDat, &pulseTSN,
+   1060                                                    AF_DISCV_ROUTE
+   1061          #if TVSA_DATA_CNF
+   1062                                                  | AF_ACK_REQUEST
+   1063          #endif
+   1064                                                   ,AF_DEFAULT_RADIUS))  //MHMS
+   1065            { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
+   1066                  osal_set_event(pulseTaskId, PULSE_EVT_REQ);
+   1067            }
+   1068            else
+   1069            {
+   1070              tvsaCnt++;
+   1071            }
+   1072            if((QS == true) && (pulseDataReqFlag == false)){
+   1073              osal_start_timerEx(pulseTaskId, PULSE_EVT_REQ, PULSE_DLY_DATAREQ);  //send next Pulse data report in 20ms
+   1074              pulseDataReqFlag = true;  //to prevent restarting of timer if existing already running
+   1075              
+   1076            }
+   1077            
+   1078            //testing USB
+   1079            //MHMS USB communication with Pulse sensor Processor application
+   1080          
+   1081            uint8 BPMBuf[7] = {'B',0,0,0,10,13};
+   1082            uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
+   1083            uint8 SignalBuf[7] = {'S',0,0,0,10,13};
+   1084            
+   1085            //conversion Signal Dec to ASCII
+   1086            uint16 temp = (BUILD_UINT16(pulseDat[14], pulseDat[15])) - 400;
+   1087            if(temp > 999){
+   1088              SignalBuf[1] = '9';
+   1089              SignalBuf[2] = '9';
+   1090              SignalBuf[3] = '9';
+   1091            }
+   1092            else { 
+   1093              SignalBuf[1] = (uint8)((temp/100)+ 48);
+   1094              SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+   1095              SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+   1096            }
+   1097            
+   1098            //conversion BPM Dec to ASCII
+   1099            temp = (uint16)pulseDat[12];
+   1100            BPMBuf[1] = (uint8)((temp/100)+ 48);
+   1101            BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+   1102            BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+   1103            
+   1104            //conversion IBI Dec to ASCII
+   1105            temp = (uint16)pulseDat[17];
+   1106            IBIBuf[1] = (uint8)((temp/100)+ 48);
+   1107            IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+   1108            IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+   1109             
+   1110            
+   1111            HalUARTWrite(0, SignalBuf, 6);
+   1112            HalUARTWrite(0, BPMBuf, 6);
+   1113            HalUARTWrite(0, IBIBuf, 6);
+   1114          }
+   1115          #endif //Group 1
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  calcFCS
+       8  pulseAppEvt
+             8 -> tvsaAnnce
+             8 -> tvsaSysEvtMsg
+      40  pulseAppInit
+            40 -> HalUARTOpen
+            40 -> afRegister
+      12  sysPingRsp
+            12 -> HalUARTWrite
+            12 -> calcFCS
+      28  tvsaAnnce
+            28 -> AF_DataRequest
+            20 -> osal_set_event
+            20 -> osal_start_timerEx
+      34  tvsaDataRx
+            34 -> HalUARTWrite
+            34 -> calcFCS
+            34 -> osal_memcpy
+            34 -> osal_set_event
+       6  tvsaSysEvtMsg
+             6 -> osal_msg_deallocate
+             6 -> osal_msg_receive
+             6 -> tvsaDataRx
+             6 -> tvsaZdoStateChange
+      10  tvsaUartRx
+            10 -> HalUARTRead
+            10 -> sysPingRsp
+       4  tvsaZdoStateChange
+             4 -> osal_set_event
+             4 -> osal_start_timerEx
+             4 -> osal_stop_timerEx
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       7  ?<Constant {83, 0, 0, 0, 10, 13}>
+       2  ?<Initializer for IBI>
+       2  ?<Initializer for P>
+       2  ?<Initializer for T>
+       2  ?<Initializer for amp>
+       1  ?<Initializer for firstBeat>
+       1  ?<Initializer for secondBeat>
+       2  ?<Initializer for thresh>
+       8  ?Subroutine0
+      16  ?Subroutine1
+      10  ?Subroutine2
+      10  ?Subroutine3
+      10  ?Subroutine4
+       2  BPM
+       2  IBI
+       2  P
+       2  PULSE_ClusterList
+      14  PULSE_SimpleDesc
+       8  PULSE_epDesc
+       1  Pulse
+       1  QS
+       2  Signal
+       2  T
+       2  TVSA_ClusterList
+      14  TVSA_SimpleDesc
+       8  TVSA_epDesc
+       2  _A_PCDIR_L
+       2  _A_PCOUT_L
+       2  _A_REFCTL0_L
+       2  amp
+      18  calcFCS
+       1  firstBeat
+       4  lastBeatTime
+       2  pulseAddr
+      44  pulseAppEvt
+     110  pulseAppInit
+      26  pulseBuf
+       1  pulseTaskId
+      20  rate
+       4  sampleCounter
+       1  secondBeat
+      60  sysPingRsp
+       2  thresh
+       2  tvsaAddr
+     128  tvsaAnnce
+       1  tvsaCnfErrCnt
+       2  tvsaCnt
+     308  tvsaDataRx
+      86  tvsaSysEvtMsg
+       1  tvsaTSN
+       1  tvsaTaskId
+      36  tvsaUartRx
+      54  tvsaZdoStateChange
+
+ 
+ 898 bytes in segment CODE
+   6 bytes in segment DATA16_AN
+  55 bytes in segment DATA16_C
+  12 bytes in segment DATA16_I
+  12 bytes in segment DATA16_ID
+  70 bytes in segment DATA16_Z
+ 
+ 898 bytes of CODE  memory
+  67 bytes of CONST memory
+  82 bytes of DATA  memory (+ 6 bytes shared)
+
+Errors: none
+Warnings: 5

@@ -4,9 +4,6 @@
   <project>
     <path>$WS_DIR$\TVSA.ewp</path>
   </project>
-  <project>
-    <path>$WS_DIR$\..\..\..\..\..\..\..\..\..\..\..\New_copy\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\TVSA.ewp</path>
-  </project>
   <batchBuild/>
 </workspace>
 

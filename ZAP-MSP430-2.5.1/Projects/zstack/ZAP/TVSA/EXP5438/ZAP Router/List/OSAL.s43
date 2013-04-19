@@ -1,0 +1,2969 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      18/Apr/2013  16:58:47 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    __rt_version  =  3                                                      /
+//    __double_size =  32                                                     /
+//    __reg_r4      =  free                                                   /
+//    __reg_r5      =  free                                                   /
+//    __pic         =  no                                                     /
+//    __core        =  430X                                                   /
+//    __data_model  =  small                                                  /
+//    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Components\osal\common\OSAL.c                        /
+//    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap /
+//                     .cfg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=0                 /
+//                     -DZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER                  /
+//                     -DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1 -DHAL_UART=1   /
+//                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE            /
+//                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE              /
+//                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE              /
+//                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                 /
+//                     -DZAP_AF_DATA_REQ_FRAG=FALSE                           /
+//                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG           /
+//                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC              /
+//                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC         /
+//                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0        /
+//                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                /
+//                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000          /
+//                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)     /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Components\osal\common\OSAL.c -D                     /
+//                     ZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER -D                 /
+//                     TVSA_DEVICE_ID=0x0016 -lC "C:\Users\student\Documents\ /
+//                     GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\ /
+//                     EXP5438\ZAP Router\List\" -lA                          /
+//                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5 /
+//                     .1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\List\"  /
+//                     --remarks --diag_suppress Pe001,Pe193,Pe236,Pe826 -o   /
+//                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5 /
+//                     .1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\Obj\"   /
+//                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\ -I                 /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I       /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\target\MSP5438ZAP\ -I                       /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\include\ -I C:\Users\student\Documents\GitH /
+//                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 /
+//                     438\..\..\..\..\..\Components\mac\include\ -I          /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\Z /
+//                     AP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\.. /
+//                     \..\..\..\Components\osal\include\ -I                  /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\osal\mcu\msp430\ -I                             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\services\saddr\ -I C:\Users\student\Documents\G /
+//                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\E /
+//                     XP5438\..\..\..\..\..\Components\services\sdata\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\af\ -I C:\Users\student\Documents\GitHub\ /
+//                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 /
+//                     \..\..\..\..\..\Components\stack\nwk\ -I               /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sapi\ -I C:\Users\student\Documents\GitHu /
+//                     b\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 /
+//                     38\..\..\..\..\..\Components\stack\sec\ -I             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sys\ -I C:\Users\student\Documents\GitHub /
+//                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP543 /
+//                     8\..\..\..\..\..\Components\stack\zdo\ -I              /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\zmac\ -I C:\Users\student\Documents\GitHub\MHMS /
+//                     \ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\ /
+//                     ..\..\..\..\Components\zmac\f8w\ --core=430X           /
+//                     --data_model=small -Ohz --multiplier=32                /
+//                     --multiplier_location=4C0 --require_prototypes         /
+//                     --hw_workaround=CPU40 --hw_workaround=CPU42            /
+//    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                 /
+//                     Router\List\OSAL.s43                                   /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME OSAL
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__core", "430X"
+        RTMODEL "__data_model", "small"
+        RTMODEL "__double_size", "32"
+        RTMODEL "__pic", "no"
+        RTMODEL "__reg_r4", "free"
+        RTMODEL "__reg_r5", "free"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:SORT:NOROOT(0)
+
+        EXTERN ?IndCallR15
+        EXTERN ?ClearMemoryBytes
+        EXTERN ?DivMod32u
+        EXTERN ?ShiftLeft32_8
+        EXTERN ?cstart_init_copy
+        EXTERN ?cstart_init_zero
+        EXTERN ?longjmp_r4
+        EXTERN ?longjmp_r5
+        EXTERN ?setjmp_r4
+        EXTERN ?setjmp_r5
+
+        PUBWEAK ?setjmp_save_r4
+        PUBWEAK ?setjmp_save_r5
+        PUBLIC _ltoa
+        FUNCTION _ltoa,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 50, STACK
+        PUBLIC osal_buffer_uint24
+        FUNCTION osal_buffer_uint24,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_buffer_uint32
+        FUNCTION osal_buffer_uint32,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_build_uint16
+        FUNCTION osal_build_uint16,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_build_uint32
+        FUNCTION osal_build_uint32,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 8, STACK
+        PUBLIC osal_clear_event
+        FUNCTION osal_clear_event,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_init_system
+        FUNCTION osal_init_system,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_int_disable
+        FUNCTION osal_int_disable,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_int_enable
+        FUNCTION osal_int_enable,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_isbufset
+        FUNCTION osal_isbufset,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC osal_isr_register
+        FUNCTION osal_isr_register,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_memcmp
+        FUNCTION osal_memcmp,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_memcpy
+        FUNCTION osal_memcpy,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_memdup
+        FUNCTION osal_memdup,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC osal_memset
+        FUNCTION osal_memset,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_msg_allocate
+        FUNCTION osal_msg_allocate,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC osal_msg_deallocate
+        FUNCTION osal_msg_deallocate,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_msg_dequeue
+        FUNCTION osal_msg_dequeue,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_msg_enqueue
+        FUNCTION osal_msg_enqueue,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_msg_enqueue_max
+        FUNCTION osal_msg_enqueue_max,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 8, STACK
+        PUBLIC osal_msg_extract
+        FUNCTION osal_msg_extract,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC osal_msg_find
+        FUNCTION osal_msg_find,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_msg_push
+        FUNCTION osal_msg_push,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_msg_receive
+        FUNCTION osal_msg_receive,0a1203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC osal_msg_send
+        FUNCTION osal_msg_send,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC osal_qHead
+        PUBLIC osal_rand
+        FUNCTION osal_rand,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_revmemcpy
+        FUNCTION osal_revmemcpy,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_run_system
+        FUNCTION osal_run_system,0e1203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 8, STACK
+        PUBLIC osal_self
+        FUNCTION osal_self,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_set_event
+        FUNCTION osal_set_event,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_start_system
+        FUNCTION osal_start_system,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC osal_strlen
+        FUNCTION osal_strlen,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA SP DATA
+          CFI Resource PC:20, SP:20, SR:16, R4L:16, R4H:4, R4:20, R5L:16, R5H:4
+          CFI Resource R5:20, R6L:16, R6H:4, R6:20, R7L:16, R7H:4, R7:20, R8L:16
+          CFI Resource R8H:4, R8:20, R9L:16, R9H:4, R9:20, R10L:16, R10H:4
+          CFI Resource R10:20, R11L:16, R11H:4, R11:20, R12L:16, R12H:4, R12:20
+          CFI Resource R13L:16, R13H:4, R13:20, R14L:16, R14H:4, R14:20, R15L:16
+          CFI Resource R15H:4, R15:20
+          CFI ResourceParts R4 R4H, R4L
+          CFI ResourceParts R5 R5H, R5L
+          CFI ResourceParts R6 R6H, R6L
+          CFI ResourceParts R7 R7H, R7L
+          CFI ResourceParts R8 R8H, R8L
+          CFI ResourceParts R9 R9H, R9L
+          CFI ResourceParts R10 R10H, R10L
+          CFI ResourceParts R11 R11H, R11L
+          CFI ResourceParts R12 R12H, R12L
+          CFI ResourceParts R13 R13H, R13L
+          CFI ResourceParts R14 R14H, R14L
+          CFI ResourceParts R15 R15H, R15L
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L Undefined
+          CFI R12H Undefined
+          CFI R12 Undefined
+          CFI R13L Undefined
+          CFI R13H Undefined
+          CFI R13 Undefined
+          CFI R14L Undefined
+          CFI R14H Undefined
+          CFI R14 Undefined
+          CFI R15L Undefined
+          CFI R15H Undefined
+          CFI R15 Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L SameValue
+          CFI R12H 0
+          CFI R12 Concat
+          CFI R13L SameValue
+          CFI R13H 0
+          CFI R13 Concat
+          CFI R14L SameValue
+          CFI R14H 0
+          CFI R14 Concat
+          CFI R15L SameValue
+          CFI R15H 0
+          CFI R15 Concat
+          CFI EndCommon cfiCommon1
+        
+        EXTERN osalTimeUpdate
+        FUNCTION osalTimeUpdate,0202H
+        EXTERN Hal_ProcessPoll
+        FUNCTION Hal_ProcessPoll,0202H
+        EXTERN tasksEvents
+        EXTERN tasksCnt
+        EXTERN tasksArr
+        EXTERN osal_mem_init
+        FUNCTION osal_mem_init,0202H
+        EXTERN osalTimerInit
+        FUNCTION osalTimerInit,0202H
+        EXTERN osal_pwrmgr_init
+        FUNCTION osal_pwrmgr_init,0202H
+        EXTERN osalInitTasks
+        FUNCTION osalInitTasks,0202H
+        EXTERN osal_mem_kick
+        FUNCTION osal_mem_kick,0202H
+        EXTERN osal_mem_free
+        FUNCTION osal_mem_free,0202H
+        EXTERN osal_mem_alloc
+        FUNCTION osal_mem_alloc,0202H
+        EXTERN Onboard_rand
+        FUNCTION Onboard_rand,0202H
+        EXTERN _itoa
+        FUNCTION _itoa,0202H
+        EXTERN strcpy
+        FUNCTION strcpy,010202H
+        EXTERN strcat
+        FUNCTION strcat,010202H
+        EXTERN strlen
+        FUNCTION strlen,010202H
+        EXTERN memset
+        FUNCTION memset,010202H
+
+// C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\osal\common\OSAL.c
+//    1 /**************************************************************************************************
+//    2   Filename:       OSAL.c
+//    3   Revised:        $Date: 2011-05-27 09:03:48 -0700 (Fri, 27 May 2011) $
+//    4   Revision:       $Revision: 26134 $
+//    5 
+//    6   Description:    This API allows the software components in the Z-stack to be written
+//    7                   independently of the specifics of the operating system, kernel or tasking
+//    8                   environment (including control loops or connect-to-interrupt systems).
+//    9 
+//   10 
+//   11   Copyright 2004-2011 Texas Instruments Incorporated. All rights reserved.
+//   12 
+//   13   IMPORTANT: Your use of this Software is limited to those specific rights
+//   14   granted under the terms of a software license agreement between the user
+//   15   who downloaded the software, his/her employer (which must be your employer)
+//   16   and Texas Instruments Incorporated (the "License"). You may not use this
+//   17   Software unless you agree to abide by the terms of the License. The License
+//   18   limits your use, and you acknowledge, that the Software may not be modified,
+//   19   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   20   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   21   frequency transceiver, which is integrated into your product. Other than for
+//   22   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   23   works of, modify, distribute, perform, display or sell this Software and/or
+//   24   its documentation for any purpose.
+//   25 
+//   26   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   27   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   28   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   29   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   30   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   31   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   32   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   33   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   34   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   35   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   36   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   37 
+//   38   Should you have any questions regarding your right to use this Software,
+//   39   contact Texas Instruments Incorporated at www.TI.com.
+//   40 **************************************************************************************************/
+//   41 
+//   42 /*********************************************************************
+//   43  * INCLUDES
+//   44  */
+//   45 
+//   46 #include <string.h>
+//   47 
+//   48 #include "comdef.h"
+//   49 #include "OSAL.h"
+//   50 #include "OSAL_Tasks.h"
+//   51 #include "OSAL_Memory.h"
+//   52 #include "OSAL_PwrMgr.h"
+//   53 #include "OSAL_Clock.h"
+//   54 
+//   55 #include "OnBoard.h"
+//   56 
+//   57 /* HAL */
+//   58 #include "hal_drivers.h"
+//   59 
+//   60 #ifdef IAR_ARMCM3_LM
+//   61   #include "FreeRTOSConfig.h"
+//   62   #include "osal_task.h"
+//   63 #endif
+//   64 
+//   65 /*********************************************************************
+//   66  * MACROS
+//   67  */
+//   68 
+//   69 /*********************************************************************
+//   70  * CONSTANTS
+//   71  */
+//   72 
+//   73 /*********************************************************************
+//   74  * TYPEDEFS
+//   75  */
+//   76 
+//   77 /*********************************************************************
+//   78  * GLOBAL VARIABLES
+//   79  */
+//   80 
+//   81 // Message Pool Definitions
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//   82 osal_msg_q_t osal_qHead;
+osal_qHead:
+        DS8 2
+//   83 
+//   84 /*********************************************************************
+//   85  * EXTERNAL VARIABLES
+//   86  */
+//   87 
+//   88 /*********************************************************************
+//   89  * EXTERNAL FUNCTIONS
+//   90  */
+//   91 
+//   92 /*********************************************************************
+//   93  * LOCAL VARIABLES
+//   94  */
+//   95 
+//   96 // Index of active task
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_copy
+//   97 static uint8 activeTaskID = TASK_NO_TASK;
+activeTaskID:
+        DS8 1
+        REQUIRE `?<Initializer for activeTaskID>`
+//   98 
+//   99 /*********************************************************************
+//  100  * LOCAL FUNCTION PROTOTYPES
+//  101  */
+//  102 
+//  103 /*********************************************************************
+//  104  * HELPER FUNCTIONS
+//  105  */
+//  106 /* very ugly stub so Keil can compile */
+//  107 #ifdef __KEIL__
+//  108 char *  itoa ( int value, char * buffer, int radix )
+//  109 {
+//  110   return(buffer);
+//  111 }
+//  112 #endif
+//  113 
+//  114 /*********************************************************************
+//  115  * @fn      osal_strlen
+//  116  *
+//  117  * @brief
+//  118  *
+//  119  *   Calculates the length of a string.  The string must be null
+//  120  *   terminated.
+//  121  *
+//  122  * @param   char *pString - pointer to text string
+//  123  *
+//  124  * @return  int - number of characters
+//  125  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  126 int osal_strlen( char *pString )
+osal_strlen:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function osal_strlen
+//  127 {
+//  128   return (int)( strlen( pString ) );
+        FUNCALL osal_strlen, strlen
+        LOCFRAME CSTACK, 4, STACK
+        BRA     #strlen
+          CFI EndBlock cfiBlock0
+//  129 }
+//  130 
+//  131 /*********************************************************************
+//  132  * @fn      osal_memcpy
+//  133  *
+//  134  * @brief
+//  135  *
+//  136  *   Generic memory copy.
+//  137  *
+//  138  *   Note: This function differs from the standard memcpy(), since
+//  139  *         it returns the pointer to the next destination uint8. The
+//  140  *         standard memcpy() returns the original destination address.
+//  141  *
+//  142  * @param   dst - destination address
+//  143  * @param   src - source address
+//  144  * @param   len - number of bytes to copy
+//  145  *
+//  146  * @return  pointer to end of destination buffer
+//  147  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  148 void *osal_memcpy( void *dst, const void GENERIC *src, unsigned int len )
+osal_memcpy:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function osal_memcpy
+//  149 {
+//  150   uint8 *pDst;
+//  151   const uint8 GENERIC *pSrc;
+//  152 
+//  153   pSrc = src;
+//  154   pDst = dst;
+        JMP     ??osal_memcpy_1
+//  155 
+//  156   while ( len-- )
+//  157     *pDst++ = *pSrc++;
+??osal_memcpy_0:
+        MOV.B   @R13+, 0(R12)
+        ADD.W   #0x1, R12
+??osal_memcpy_1:
+        MOV.W   R14, R15
+        ADD.W   #0xffff, R14
+        CMP.W   #0x0, R15
+        JNE     ??osal_memcpy_0
+//  158 
+//  159   return ( pDst );
+        RETA
+          CFI EndBlock cfiBlock1
+//  160 }
+//  161 
+//  162 /*********************************************************************
+//  163  * @fn      osal_revmemcpy
+//  164  *
+//  165  * @brief   Generic reverse memory copy.  Starts at the end of the
+//  166  *   source buffer, by taking the source address pointer and moving
+//  167  *   pointer ahead "len" bytes, then decrementing the pointer.
+//  168  *
+//  169  *   Note: This function differs from the standard memcpy(), since
+//  170  *         it returns the pointer to the next destination uint8. The
+//  171  *         standard memcpy() returns the original destination address.
+//  172  *
+//  173  * @param   dst - destination address
+//  174  * @param   src - source address
+//  175  * @param   len - number of bytes to copy
+//  176  *
+//  177  * @return  pointer to end of destination buffer
+//  178  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  179 void *osal_revmemcpy( void *dst, const void GENERIC *src, unsigned int len )
+osal_revmemcpy:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function osal_revmemcpy
+//  180 {
+//  181   uint8 *pDst;
+//  182   const uint8 GENERIC *pSrc;
+//  183 
+//  184   pSrc = src;
+//  185   pSrc += (len-1);
+        ADD.W   R14, R13
+        ADD.W   #0xffff, R13
+//  186   pDst = dst;
+        JMP     ??osal_revmemcpy_1
+//  187 
+//  188   while ( len-- )
+//  189     *pDst++ = *pSrc--;
+??osal_revmemcpy_0:
+        MOV.B   @R13, 0(R12)
+        ADD.W   #0xffff, R13
+        ADD.W   #0x1, R12
+??osal_revmemcpy_1:
+        MOV.W   R14, R15
+        ADD.W   #0xffff, R14
+        CMP.W   #0x0, R15
+        JNE     ??osal_revmemcpy_0
+//  190 
+//  191   return ( pDst );
+        RETA
+          CFI EndBlock cfiBlock2
+//  192 }
+//  193 
+//  194 /*********************************************************************
+//  195  * @fn      osal_memdup
+//  196  *
+//  197  * @brief   Allocates a buffer [with osal_mem_alloc()] and copies
+//  198  *          the src buffer into the newly allocated space.
+//  199  *
+//  200  * @param   src - source address
+//  201  * @param   len - number of bytes to copy
+//  202  *
+//  203  * @return  pointer to the new allocated buffer, or NULL if
+//  204  *          allocation problem.
+//  205  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  206 void *osal_memdup( const void GENERIC *src, unsigned int len )
+osal_memdup:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function osal_memdup
+//  207 {
+        FUNCALL osal_memdup, osal_mem_alloc
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL osal_memdup, osal_memcpy
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.W   R12, R10
+        MOV.W   R13, R11
+//  208   uint8 *pDst;
+//  209 
+//  210   pDst = osal_mem_alloc( len );
+        MOV.W   R13, R12
+        CALLA   #osal_mem_alloc
+        MOV.W   R12, R8
+//  211   if ( pDst )
+        CMP.W   #0x0, R12
+        JEQ     ??osal_memdup_0
+//  212   {
+//  213     VOID osal_memcpy( pDst, src, len );
+        MOV.W   R11, R14
+        MOV.W   R10, R13
+        CALLA   #osal_memcpy
+//  214   }
+//  215 
+//  216   return ( (void *)pDst );
+??osal_memdup_0:
+        MOV.W   R8, R12
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock3
+//  217 }
+//  218 
+//  219 /*********************************************************************
+//  220  * @fn      osal_memcmp
+//  221  *
+//  222  * @brief
+//  223  *
+//  224  *   Generic memory compare.
+//  225  *
+//  226  * @param   src1 - source 1 addrexx
+//  227  * @param   src2 - source 2 address
+//  228  * @param   len - number of bytes to compare
+//  229  *
+//  230  * @return  TRUE - same, FALSE - different
+//  231  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  232 uint8 osal_memcmp( const void GENERIC *src1, const void GENERIC *src2, unsigned int len )
+osal_memcmp:
+??osal_memcmp_0:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function osal_memcmp
+//  233 {
+//  234   const uint8 GENERIC *pSrc1;
+//  235   const uint8 GENERIC *pSrc2;
+//  236 
+//  237   pSrc1 = src1;
+//  238   pSrc2 = src2;
+//  239 
+//  240   while ( len-- )
+        MOV.W   R14, R15
+        ADD.W   #0xffff, R14
+        CMP.W   #0x0, R15
+        JEQ     ??osal_memcmp_1
+//  241   {
+//  242     if( *pSrc1++ != *pSrc2++ )
+        MOV.B   @R12+, R15
+        CMP.B   @R13+, R15
+        JEQ     ??osal_memcmp_0
+//  243       return FALSE;
+        MOV.B   #0x0, R12
+        RETA
+//  244   }
+//  245   return TRUE;
+??osal_memcmp_1:
+        MOV.B   #0x1, R12
+        RETA
+          CFI EndBlock cfiBlock4
+//  246 }
+//  247 
+//  248 
+//  249 /*********************************************************************
+//  250  * @fn      osal_memset
+//  251  *
+//  252  * @brief
+//  253  *
+//  254  *   Set memory buffer to value.
+//  255  *
+//  256  * @param   dest - pointer to buffer
+//  257  * @param   value - what to set each uint8 of the message
+//  258  * @param   size - how big
+//  259  *
+//  260  * @return  pointer to destination buffer
+//  261  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  262 void *osal_memset( void *dest, uint8 value, int len )
+osal_memset:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function osal_memset
+//  263 {
+//  264   return memset( dest, value, len );
+        FUNCALL osal_memset, memset
+        LOCFRAME CSTACK, 4, STACK
+        MOV.B   R13, R13
+        BRA     #memset
+          CFI EndBlock cfiBlock5
+//  265 }
+//  266 
+//  267 /*********************************************************************
+//  268  * @fn      osal_build_uint16
+//  269  *
+//  270  * @brief
+//  271  *
+//  272  *   Build a uint16 out of 2 bytes (0 then 1).
+//  273  *
+//  274  * @param   swapped - 0 then 1
+//  275  *
+//  276  * @return  uint16
+//  277  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  278 uint16 osal_build_uint16( uint8 *swapped )
+osal_build_uint16:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function osal_build_uint16
+//  279 {
+//  280   return ( BUILD_UINT16( swapped[0], swapped[1] ) );
+        MOV.B   @R12, R15
+        MOV.B   0x1(R12), R14
+        RPT     #0x8
+        RLAX.W  R14
+        ADD.W   R14, R15
+        MOV.W   R15, R12
+        RETA
+          CFI EndBlock cfiBlock6
+//  281 }
+//  282 
+//  283 /*********************************************************************
+//  284  * @fn      osal_build_uint32
+//  285  *
+//  286  * @brief
+//  287  *
+//  288  *   Build a uint32 out of sequential bytes.
+//  289  *
+//  290  * @param   swapped - sequential bytes
+//  291  * @param   len - number of bytes in the uint8 array
+//  292  *
+//  293  * @return  uint32
+//  294  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  295 uint32 osal_build_uint32( uint8 *swapped, uint8 len )
+osal_build_uint32:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function osal_build_uint32
+//  296 {
+        PUSHM.W #0x2, R11
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+8
+        MOV.W   R12, R15
+//  297   if ( len == 2 )
+        MOV.B   @R12, R10
+        MOV.W   #0x0, R11
+        CMP.B   #0x2, R13
+        JNE     ??osal_build_uint32_0
+//  298     return ( BUILD_UINT32( swapped[0], swapped[1], 0L, 0L ) );
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_10:
+        MOV.W   R10, R12
+        ADDC.W  #0x0, R13
+        JMP     ??osal_build_uint32_1
+//  299   else if ( len == 3 )
+??osal_build_uint32_0:
+        CMP.B   #0x3, R13
+        JNE     ??osal_build_uint32_2
+//  300     return ( BUILD_UINT32( swapped[0], swapped[1], swapped[2], 0L ) );
+        CALLA   #?Subroutine9
+??CrossCallReturnLabel_8:
+        MOV.B   0x2(R15), R15
+        JMP     ??osal_build_uint32_3
+//  301   else if ( len == 4 )
+??osal_build_uint32_2:
+        CMP.B   #0x4, R13
+        JNE     ??osal_build_uint32_4
+//  302     return ( BUILD_UINT32( swapped[0], swapped[1], swapped[2], swapped[3] ) );
+        CALLA   #?Subroutine9
+??CrossCallReturnLabel_9:
+        MOV.B   0x2(R15), R13
+        ADD.W   R13, R11
+        MOV.B   0x3(R15), R15
+        RPT     #0x8
+        RLAX.W  R15
+??osal_build_uint32_3:
+        ADD.W   R15, R11
+        MOV.W   R10, R12
+        MOV.W   R11, R13
+        JMP     ??osal_build_uint32_1
+//  303   else
+//  304     return ( (uint32)swapped[0] );
+??osal_build_uint32_4:
+        MOV.W   R10, R12
+        MOV.W   #0x0, R13
+??osal_build_uint32_1:
+        POPM.W  #0x2, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock7
+//  305 }
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine9:
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI Function osal_build_uint32
+          CFI Conditional ??CrossCallReturnLabel_8
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI (cfiCond9) Function osal_build_uint32
+          CFI (cfiCond9) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond9) R10L Frame(CFA, -8)
+          CFI (cfiCond9) R11L Frame(CFA, -6)
+          CFI (cfiCond9) CFA SP+12
+          CFI Block cfiPicker10 Using cfiCommon1
+          CFI (cfiPicker10) NoFunction
+          CFI (cfiPicker10) Picker
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_11:
+        ADDC.W  R13, R11
+        RETA
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiPicker10
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine11:
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI Function osal_build_uint32
+          CFI Conditional ??CrossCallReturnLabel_10
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function osal_build_uint32
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_11, ??CrossCallReturnLabel_8
+          CFI (cfiCond12) R10L Frame(CFA, -8)
+          CFI (cfiCond12) R11L Frame(CFA, -6)
+          CFI (cfiCond12) CFA SP+16
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function osal_build_uint32
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_11, ??CrossCallReturnLabel_9
+          CFI (cfiCond13) R10L Frame(CFA, -8)
+          CFI (cfiCond13) R11L Frame(CFA, -6)
+          CFI (cfiCond13) CFA SP+16
+          CFI Block cfiPicker14 Using cfiCommon1
+          CFI (cfiPicker14) NoFunction
+          CFI (cfiPicker14) Picker
+        MOV.B   0x1(R15), R12
+        MOV.W   #0x0, R13
+        CALLA   #?ShiftLeft32_8
+        ADD.W   R12, R10
+        RETA
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiPicker14
+//  306 
+//  307 #if !defined ( ZBIT ) && !defined ( ZBIT2 ) && !defined (UBIT)
+//  308 /*********************************************************************
+//  309  * @fn      _ltoa
+//  310  *
+//  311  * @brief
+//  312  *
+//  313  *   convert a long unsigned int to a string.
+//  314  *
+//  315  * @param  l - long to convert
+//  316  * @param  buf - buffer to convert to
+//  317  * @param  radix - 10 dec, 16 hex
+//  318  *
+//  319  * @return  pointer to buffer
+//  320  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  321 unsigned char * _ltoa(unsigned long l, unsigned char *buf, unsigned char radix)
+_ltoa:
+          CFI Block cfiBlock15 Using cfiCommon0
+          CFI Function _ltoa
+//  322 {
+        FUNCALL _ltoa, _itoa
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, _itoa
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, _itoa
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcpy
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcat
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strlen
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcat
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcat
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strlen
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcat
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, _itoa
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, _itoa
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcpy
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcat
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strlen
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcat
+        LOCFRAME CSTACK, 50, STACK
+        FUNCALL _ltoa, strcpy
+        LOCFRAME CSTACK, 50, STACK
+        PUSHM.W #0x8, R11
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+20
+        SUB.W   #0x1e, SP
+          CFI CFA SP+50
+        MOV.W   R12, R10
+        MOV.W   R13, R11
+        MOV.W   R14, R9
+//  323 #if defined( __GNUC__ )
+//  324   return ( (char*)ltoa( l, buf, radix ) );
+//  325 #else
+//  326   unsigned char tmp1[10] = "", tmp2[10] = "", tmp3[10] = "";
+        MOV.W   SP, R12
+        ADD.W   #0x14, R12
+        CALLA   #?Subroutine7
+??CrossCallReturnLabel_5:
+        MOV.W   SP, R12
+        ADD.W   #0xa, R12
+        CALLA   #?Subroutine7
+??CrossCallReturnLabel_6:
+        MOV.W   SP, R12
+        ADD.W   #0x0, R12
+        CALLA   #?Subroutine7
+//  327   unsigned short num1, num2, num3;
+//  328   unsigned char i;
+//  329 
+//  330   buf[0] = '\0';
+??CrossCallReturnLabel_7:
+        MOV.B   #0x0, 0(R9)
+        MOV.B   #0xa, R5
+        MOV.W   SP, R4
+        ADD.W   #0xa, R4
+        MOV.W   SP, R7
+        ADD.W   #0x14, R7
+        CMP.B   R5, R15
+        JNE     ??_ltoa_5
+//  331 
+//  332   if ( radix == 10 )
+//  333   {
+//  334     num1 = l % 10000;
+        MOV.W   R10, R12
+        CALLA   #?Subroutine6
+??CrossCallReturnLabel_2:
+        MOV.W   R14, R6
+//  335     num2 = (l / 10000) % 10000;
+        MOV.W   R10, R12
+        MOV.W   R11, R13
+        CALLA   #?Subroutine6
+??CrossCallReturnLabel_3:
+        CALLA   #?Subroutine6
+??CrossCallReturnLabel_4:
+        MOV.W   R14, R8
+//  336     num3 = (unsigned short)(l / 100000000);
+        MOV.W   R10, R12
+        MOV.W   R11, R13
+        MOV.W   #0xe100, R14
+        MOV.W   #0x5f5, R15
+        CALLA   #?DivMod32u
+        MOV.W   R12, R11
+//  337 
+//  338     if (num3) _itoa(num3, tmp3, 10);
+        CMP.W   #0x0, R12
+        JEQ     ??_ltoa_6
+        MOV.B   R5, R14
+        MOV.W   SP, R13
+        ADD.W   #0x0, R13
+        CALLA   #_itoa
+//  339     if (num2) _itoa(num2, tmp2, 10);
+??_ltoa_6:
+        CMP.W   #0x0, R8
+        JEQ     ??_ltoa_7
+        MOV.B   R5, R14
+        MOV.W   R4, R13
+        MOV.W   R8, R12
+        CALLA   #_itoa
+//  340     if (num1) _itoa(num1, tmp1, 10);
+??_ltoa_7:
+        CMP.W   #0x0, R6
+        JEQ     ??_ltoa_8
+        MOV.B   R5, R14
+        MOV.W   R7, R13
+        MOV.W   R6, R12
+        CALLA   #_itoa
+//  341 
+//  342     if (num3)
+??_ltoa_8:
+        CMP.W   #0x0, R11
+        JEQ     ??_ltoa_9
+//  343     {
+//  344       strcpy((char*)buf, (char const*)tmp3);
+        MOV.W   SP, R13
+        ADD.W   #0x0, R13
+        MOV.W   R9, R12
+        CALLA   #strcpy
+//  345       for (i = 0; i < 4 - strlen((char const*)tmp2); i++)
+        MOV.B   #0x0, R10
+        JMP     ??_ltoa_10
+//  346         strcat((char*)buf, "0");
+??_ltoa_0:
+        CALLA   #?Subroutine8
+??_ltoa_10:
+        MOV.W   #0x4, R5
+        MOV.W   R4, R12
+        CALLA   #strlen
+        SUB.W   R12, R5
+        CMP.W   R5, R10
+        JNC     ??_ltoa_0
+//  347     }
+//  348     strcat((char*)buf, (char const*)tmp2);
+??_ltoa_9:
+        MOV.W   R4, R13
+        CALLA   #??Subroutine12_0
+//  349     if (num3 || num2)
+??CrossCallReturnLabel_12:
+        CMP.W   #0x0, R11
+        JNE     ??_ltoa_11
+        CMP.W   #0x0, R8
+        JEQ     ??_ltoa_12
+//  350     {
+//  351       for (i = 0; i < 4 - strlen((char const*)tmp1); i++)
+??_ltoa_11:
+        MOV.B   #0x0, R10
+        JMP     ??_ltoa_13
+//  352         strcat((char*)buf, "0");
+??_ltoa_1:
+        CALLA   #?Subroutine8
+??_ltoa_13:
+        MOV.W   #0x4, R4
+        MOV.W   R7, R12
+        CALLA   #strlen
+        SUB.W   R12, R4
+        CMP.W   R4, R10
+        JNC     ??_ltoa_1
+//  353     }
+//  354     strcat((char*)buf, (char const*)tmp1);
+??_ltoa_12:
+        CALLA   #?Subroutine10
+//  355     if (!num3 && !num2 && !num1)
+??CrossCallReturnLabel_14:
+        CMP.W   #0x0, R11
+        JNE     ??_ltoa_3
+        CMP.W   #0x0, R8
+        JEQ     ??_ltoa_14
+//  356       strcpy((char*)buf, "0");
+//  357   }
+//  358   else if ( radix == 16 )
+//  359   {
+//  360     num1 = l & 0x0000FFFF;
+//  361     num2 = l >> 16;
+//  362 
+//  363     if (num2) _itoa(num2, tmp2, 16);
+//  364     if (num1) _itoa(num1, tmp1, 16);
+//  365 
+//  366     if (num2)
+//  367     {
+//  368       strcpy((char*)buf,(char const*)tmp2);
+//  369       for (i = 0; i < 4 - strlen((char const*)tmp1); i++)
+//  370         strcat((char*)buf, "0");
+//  371     }
+//  372     strcat((char*)buf, (char const*)tmp1);
+//  373     if (!num2 && !num1)
+//  374       strcpy((char*)buf, "0");
+//  375   }
+//  376   else
+//  377     return NULL;
+//  378 
+//  379   return buf;
+??_ltoa_3:
+        MOV.W   R9, R12
+??_ltoa_4:
+        ADD.W   #0x1e, SP
+          CFI CFA SP+20
+        POPM.W  #0x8, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R4L SameValue
+          CFI R5L SameValue
+          CFI R6L SameValue
+          CFI R7L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+50
+??_ltoa_5:
+        CMP.B   #0x10, R15
+        JNE     ??_ltoa_15
+        MOV.W   R10, R6
+        MOV.W   R13, R8
+        CMP.W   #0x0, R13
+        JEQ     ??_ltoa_16
+        MOV.B   #0x10, R14
+        MOV.W   R4, R13
+        MOV.W   R8, R12
+        CALLA   #_itoa
+??_ltoa_16:
+        CMP.W   #0x0, R10
+        JEQ     ??_ltoa_17
+        MOV.B   #0x10, R14
+        MOV.W   R7, R13
+        MOV.W   R10, R12
+        CALLA   #_itoa
+??_ltoa_17:
+        CMP.W   #0x0, R8
+        JEQ     ??_ltoa_18
+        MOV.W   R4, R13
+        MOV.W   R9, R12
+        CALLA   #strcpy
+        MOV.B   #0x0, R10
+        JMP     ??_ltoa_19
+??_ltoa_2:
+        CALLA   #?Subroutine8
+??_ltoa_19:
+        MOV.W   #0x4, R11
+        MOV.W   R7, R12
+        CALLA   #strlen
+        SUB.W   R12, R11
+        CMP.W   R11, R10
+        JNC     ??_ltoa_2
+??_ltoa_18:
+        CALLA   #?Subroutine10
+??CrossCallReturnLabel_13:
+        CMP.W   #0x0, R8
+        JNE     ??_ltoa_3
+??_ltoa_14:
+        CMP.W   #0x0, R6
+        JNE     ??_ltoa_3
+        MOV.W   #`?<Constant "0">`, R13
+        MOV.W   R9, R12
+        CALLA   #strcpy
+        JMP     ??_ltoa_3
+??_ltoa_15:
+        MOV.W   #0x0, R12
+        JMP     ??_ltoa_4
+        NOP
+          CFI EndBlock cfiBlock15
+//  380 #endif
+//  381 }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine10:
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI Function _ltoa
+          CFI Conditional ??CrossCallReturnLabel_14
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+54
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI (cfiCond17) Function _ltoa
+          CFI (cfiCond17) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond17) R4L Frame(CFA, -20)
+          CFI (cfiCond17) R5L Frame(CFA, -18)
+          CFI (cfiCond17) R6L Frame(CFA, -16)
+          CFI (cfiCond17) R7L Frame(CFA, -14)
+          CFI (cfiCond17) R8L Frame(CFA, -12)
+          CFI (cfiCond17) R9L Frame(CFA, -10)
+          CFI (cfiCond17) R10L Frame(CFA, -8)
+          CFI (cfiCond17) R11L Frame(CFA, -6)
+          CFI (cfiCond17) CFA SP+54
+          CFI Block cfiPicker18 Using cfiCommon1
+          CFI (cfiPicker18) NoFunction
+          CFI (cfiPicker18) Picker
+        MOV.W   R7, R13
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiPicker18
+        REQUIRE ??Subroutine12_0
+        // Fall through to label ??Subroutine12_0
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+??Subroutine12_0:
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI Function _ltoa
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+54
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI (cfiCond20) Function _ltoa
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond20) R4L Frame(CFA, -20)
+          CFI (cfiCond20) R5L Frame(CFA, -18)
+          CFI (cfiCond20) R6L Frame(CFA, -16)
+          CFI (cfiCond20) R7L Frame(CFA, -14)
+          CFI (cfiCond20) R8L Frame(CFA, -12)
+          CFI (cfiCond20) R9L Frame(CFA, -10)
+          CFI (cfiCond20) R10L Frame(CFA, -8)
+          CFI (cfiCond20) R11L Frame(CFA, -6)
+          CFI (cfiCond20) CFA SP+54
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function _ltoa
+          CFI (cfiCond21) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond21) R4L Frame(CFA, -20)
+          CFI (cfiCond21) R5L Frame(CFA, -18)
+          CFI (cfiCond21) R6L Frame(CFA, -16)
+          CFI (cfiCond21) R7L Frame(CFA, -14)
+          CFI (cfiCond21) R8L Frame(CFA, -12)
+          CFI (cfiCond21) R9L Frame(CFA, -10)
+          CFI (cfiCond21) R10L Frame(CFA, -8)
+          CFI (cfiCond21) R11L Frame(CFA, -6)
+          CFI (cfiCond21) CFA SP+54
+          CFI Block cfiPicker22 Using cfiCommon1
+          CFI (cfiPicker22) NoFunction
+          CFI (cfiPicker22) Picker
+        MOV.W   R9, R12
+        BRA     #strcat
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiPicker22
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine8:
+          CFI Block cfiCond23 Using cfiCommon0
+          CFI Function _ltoa
+          CFI Conditional ??_ltoa_10
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+54
+          CFI Block cfiCond24 Using cfiCommon0
+          CFI (cfiCond24) Function _ltoa
+          CFI (cfiCond24) Conditional ??_ltoa_13
+          CFI (cfiCond24) R4L Frame(CFA, -20)
+          CFI (cfiCond24) R5L Frame(CFA, -18)
+          CFI (cfiCond24) R6L Frame(CFA, -16)
+          CFI (cfiCond24) R7L Frame(CFA, -14)
+          CFI (cfiCond24) R8L Frame(CFA, -12)
+          CFI (cfiCond24) R9L Frame(CFA, -10)
+          CFI (cfiCond24) R10L Frame(CFA, -8)
+          CFI (cfiCond24) R11L Frame(CFA, -6)
+          CFI (cfiCond24) CFA SP+54
+          CFI Block cfiCond25 Using cfiCommon0
+          CFI (cfiCond25) Function _ltoa
+          CFI (cfiCond25) Conditional ??_ltoa_19
+          CFI (cfiCond25) R4L Frame(CFA, -20)
+          CFI (cfiCond25) R5L Frame(CFA, -18)
+          CFI (cfiCond25) R6L Frame(CFA, -16)
+          CFI (cfiCond25) R7L Frame(CFA, -14)
+          CFI (cfiCond25) R8L Frame(CFA, -12)
+          CFI (cfiCond25) R9L Frame(CFA, -10)
+          CFI (cfiCond25) R10L Frame(CFA, -8)
+          CFI (cfiCond25) R11L Frame(CFA, -6)
+          CFI (cfiCond25) CFA SP+54
+          CFI Block cfiPicker26 Using cfiCommon1
+          CFI (cfiPicker26) NoFunction
+          CFI (cfiPicker26) Picker
+        MOV.W   #`?<Constant "0">`, R13
+        MOV.W   R9, R12
+        CALLA   #strcat
+        ADD.B   #0x1, R10
+        RETA
+          CFI EndBlock cfiCond23
+          CFI EndBlock cfiCond24
+          CFI EndBlock cfiCond25
+          CFI EndBlock cfiPicker26
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI Function _ltoa
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+54
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI (cfiCond28) Function _ltoa
+          CFI (cfiCond28) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond28) R4L Frame(CFA, -20)
+          CFI (cfiCond28) R5L Frame(CFA, -18)
+          CFI (cfiCond28) R6L Frame(CFA, -16)
+          CFI (cfiCond28) R7L Frame(CFA, -14)
+          CFI (cfiCond28) R8L Frame(CFA, -12)
+          CFI (cfiCond28) R9L Frame(CFA, -10)
+          CFI (cfiCond28) R10L Frame(CFA, -8)
+          CFI (cfiCond28) R11L Frame(CFA, -6)
+          CFI (cfiCond28) CFA SP+54
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI (cfiCond29) Function _ltoa
+          CFI (cfiCond29) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond29) R4L Frame(CFA, -20)
+          CFI (cfiCond29) R5L Frame(CFA, -18)
+          CFI (cfiCond29) R6L Frame(CFA, -16)
+          CFI (cfiCond29) R7L Frame(CFA, -14)
+          CFI (cfiCond29) R8L Frame(CFA, -12)
+          CFI (cfiCond29) R9L Frame(CFA, -10)
+          CFI (cfiCond29) R10L Frame(CFA, -8)
+          CFI (cfiCond29) R11L Frame(CFA, -6)
+          CFI (cfiCond29) CFA SP+54
+          CFI Block cfiPicker30 Using cfiCommon1
+          CFI (cfiPicker30) NoFunction
+          CFI (cfiPicker30) Picker
+        MOV.W   #0xa, R14
+        BRA     #?ClearMemoryBytes
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiPicker30
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI Function _ltoa
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+54
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function _ltoa
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond32) R4L Frame(CFA, -20)
+          CFI (cfiCond32) R5L Frame(CFA, -18)
+          CFI (cfiCond32) R6L Frame(CFA, -16)
+          CFI (cfiCond32) R7L Frame(CFA, -14)
+          CFI (cfiCond32) R8L Frame(CFA, -12)
+          CFI (cfiCond32) R9L Frame(CFA, -10)
+          CFI (cfiCond32) R10L Frame(CFA, -8)
+          CFI (cfiCond32) R11L Frame(CFA, -6)
+          CFI (cfiCond32) CFA SP+54
+          CFI Block cfiCond33 Using cfiCommon0
+          CFI (cfiCond33) Function _ltoa
+          CFI (cfiCond33) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond33) R4L Frame(CFA, -20)
+          CFI (cfiCond33) R5L Frame(CFA, -18)
+          CFI (cfiCond33) R6L Frame(CFA, -16)
+          CFI (cfiCond33) R7L Frame(CFA, -14)
+          CFI (cfiCond33) R8L Frame(CFA, -12)
+          CFI (cfiCond33) R9L Frame(CFA, -10)
+          CFI (cfiCond33) R10L Frame(CFA, -8)
+          CFI (cfiCond33) R11L Frame(CFA, -6)
+          CFI (cfiCond33) CFA SP+54
+          CFI Block cfiPicker34 Using cfiCommon1
+          CFI (cfiPicker34) NoFunction
+          CFI (cfiPicker34) Picker
+        MOV.W   #0x2710, R14
+        MOV.W   #0x0, R15
+        BRA     #?DivMod32u
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiPicker34
+//  382 #endif // !defined(ZBIT) && !defined(ZBIT2)
+//  383 
+//  384 /*********************************************************************
+//  385  * @fn        osal_rand
+//  386  *
+//  387  * @brief    Random number generator
+//  388  *
+//  389  * @param   none
+//  390  *
+//  391  * @return  uint16 - new random number
+//  392  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  393 uint16 osal_rand( void )
+osal_rand:
+          CFI Block cfiBlock35 Using cfiCommon0
+          CFI Function osal_rand
+//  394 {
+//  395   return ( Onboard_rand() );
+        FUNCALL osal_rand, Onboard_rand
+        LOCFRAME CSTACK, 4, STACK
+        BRA     #Onboard_rand
+          CFI EndBlock cfiBlock35
+//  396 }
+//  397 
+//  398 /*********************************************************************
+//  399  * API FUNCTIONS
+//  400  *********************************************************************/
+//  401 
+//  402 /*********************************************************************
+//  403  * @fn      osal_msg_allocate
+//  404  *
+//  405  * @brief
+//  406  *
+//  407  *    This function is called by a task to allocate a message buffer
+//  408  *    into which the task will encode the particular message it wishes
+//  409  *    to send.  This common buffer scheme is used to strictly limit the
+//  410  *    creation of message buffers within the system due to RAM size
+//  411  *    limitations on the microprocessor.   Note that all message buffers
+//  412  *    are a fixed size (at least initially).  The parameter len is kept
+//  413  *    in case a message pool with varying fixed message sizes is later
+//  414  *    created (for example, a pool of message buffers of size LARGE,
+//  415  *    MEDIUM and SMALL could be maintained and allocated based on request
+//  416  *    from the tasks).
+//  417  *
+//  418  *
+//  419  * @param   uint8 len  - wanted buffer length
+//  420  *
+//  421  *
+//  422  * @return  pointer to allocated buffer or NULL if allocation failed.
+//  423  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  424 uint8 * osal_msg_allocate( uint16 len )
+osal_msg_allocate:
+          CFI Block cfiBlock36 Using cfiCommon0
+          CFI Function osal_msg_allocate
+//  425 {
+        FUNCALL osal_msg_allocate, osal_mem_alloc
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+        MOV.W   R12, R10
+//  426   osal_msg_hdr_t *hdr;
+//  427 
+//  428   if ( len == 0 )
+        CMP.W   #0x0, R12
+        JEQ     ??osal_msg_allocate_0
+//  429     return ( NULL );
+//  430 
+//  431   hdr = (osal_msg_hdr_t *) osal_mem_alloc( (short)(len + sizeof( osal_msg_hdr_t )) );
+        ADD.W   #0x6, R12
+        CALLA   #osal_mem_alloc
+//  432   if ( hdr )
+        CMP.W   #0x0, R12
+        JEQ     ??osal_msg_allocate_0
+//  433   {
+//  434     hdr->next = NULL;
+        MOV.W   #0x0, 0(R12)
+//  435     hdr->len = len;
+        MOV.W   R10, 0x2(R12)
+//  436     hdr->dest_id = TASK_NO_TASK;
+        MOV.B   #0xff, 0x4(R12)
+//  437     return ( (uint8 *) (hdr + 1) );
+        ADD.W   #0x6, R12
+        JMP     ??osal_msg_allocate_1
+//  438   }
+//  439   else
+//  440     return ( NULL );
+??osal_msg_allocate_0:
+        MOV.W   #0x0, R12
+??osal_msg_allocate_1:
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock36
+//  441 }
+//  442 
+//  443 /*********************************************************************
+//  444  * @fn      osal_msg_deallocate
+//  445  *
+//  446  * @brief
+//  447  *
+//  448  *    This function is used to deallocate a message buffer. This function
+//  449  *    is called by a task (or processing element) after it has finished
+//  450  *    processing a received message.
+//  451  *
+//  452  *
+//  453  * @param   uint8 *msg_ptr - pointer to new message buffer
+//  454  *
+//  455  * @return  SUCCESS, INVALID_MSG_POINTER
+//  456  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  457 uint8 osal_msg_deallocate( uint8 *msg_ptr )
+osal_msg_deallocate:
+          CFI Block cfiBlock37 Using cfiCommon0
+          CFI Function osal_msg_deallocate
+//  458 {
+//  459   uint8 *x;
+//  460 
+//  461   if ( msg_ptr == NULL )
+        FUNCALL osal_msg_deallocate, osal_mem_free
+        LOCFRAME CSTACK, 4, STACK
+        CMP.W   #0x0, R12
+        JNE     ??osal_msg_deallocate_0
+//  462     return ( INVALID_MSG_POINTER );
+        MOV.B   #0x5, R12
+        RETA
+//  463 
+//  464   // don't deallocate queued buffer
+//  465   if ( OSAL_MSG_ID( msg_ptr ) != TASK_NO_TASK )
+??osal_msg_deallocate_0:
+        CMP.B   #0xff, 0xfffe(R12)
+        JEQ     ??osal_msg_deallocate_1
+//  466     return ( MSG_BUFFER_NOT_AVAIL );
+        MOV.B   #0x4, R12
+        RETA
+//  467 
+//  468   x = (uint8 *)((uint8 *)msg_ptr - sizeof( osal_msg_hdr_t ));
+//  469 
+//  470   osal_mem_free( (void *)x );
+??osal_msg_deallocate_1:
+        ADD.W   #0xfffa, R12
+        CALLA   #osal_mem_free
+//  471 
+//  472   return ( SUCCESS );
+        MOV.B   #0x0, R12
+        RETA
+          CFI EndBlock cfiBlock37
+//  473 }
+//  474 
+//  475 /*********************************************************************
+//  476  * @fn      osal_msg_send
+//  477  *
+//  478  * @brief
+//  479  *
+//  480  *    This function is called by a task to send a command message to
+//  481  *    another task or processing element.  The sending_task field must
+//  482  *    refer to a valid task, since the task ID will be used
+//  483  *    for the response message.  This function will also set a message
+//  484  *    ready event in the destination tasks event list.
+//  485  *
+//  486  *
+//  487  * @param   uint8 destination task - Send msg to?  Task ID
+//  488  * @param   uint8 *msg_ptr - pointer to new message buffer
+//  489  * @param   uint8 len - length of data in message
+//  490  *
+//  491  * @return  SUCCESS, INVALID_TASK, INVALID_MSG_POINTER
+//  492  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  493 uint8 osal_msg_send( uint8 destination_task, uint8 *msg_ptr )
+osal_msg_send:
+          CFI Block cfiBlock38 Using cfiCommon0
+          CFI Function osal_msg_send
+//  494 {
+        FUNCALL osal_msg_send, osal_msg_deallocate
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL osal_msg_send, osal_msg_deallocate
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL osal_msg_send, osal_msg_enqueue
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL osal_msg_send, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+        MOV.B   R12, R10
+//  495   if ( msg_ptr == NULL )
+        CMP.W   #0x0, R13
+        JEQ     ??osal_msg_send_1
+//  496     return ( INVALID_MSG_POINTER );
+//  497 
+//  498   if ( destination_task >= tasksCnt )
+        CMP.B   &tasksCnt, R12
+        JNC     ??osal_msg_send_2
+//  499   {
+//  500     osal_msg_deallocate( msg_ptr );
+        MOV.W   R13, R12
+        CALLA   #osal_msg_deallocate
+//  501     return ( INVALID_TASK );
+        MOV.B   #0x3, R12
+        JMP     ??osal_msg_send_3
+//  502   }
+//  503 
+//  504   // Check the message header
+//  505   if ( OSAL_MSG_NEXT( msg_ptr ) != NULL ||
+//  506        OSAL_MSG_ID( msg_ptr ) != TASK_NO_TASK )
+??osal_msg_send_2:
+        CMP.W   #0x0, 0xfffa(R13)
+        JNE     ??osal_msg_send_4
+        CMP.B   #0xff, 0xfffe(R13)
+        JEQ     ??osal_msg_send_5
+//  507   {
+//  508     osal_msg_deallocate( msg_ptr );
+??osal_msg_send_4:
+        MOV.W   R13, R12
+        CALLA   #osal_msg_deallocate
+//  509     return ( INVALID_MSG_POINTER );
+??osal_msg_send_1:
+        MOV.B   #0x5, R12
+        JMP     ??osal_msg_send_3
+//  510   }
+//  511 
+//  512   OSAL_MSG_ID( msg_ptr ) = destination_task;
+??osal_msg_send_5:
+        MOV.B   R12, 0xfffe(R13)
+//  513 
+//  514   // queue message
+//  515   osal_msg_enqueue( &osal_qHead, msg_ptr );
+        MOV.W   #osal_qHead, R12
+        CALLA   #osal_msg_enqueue
+//  516 
+//  517   // Signal the task that a message is waiting
+//  518   osal_set_event( destination_task, SYS_EVENT_MSG );
+        MOV.W   #0x8000, R13
+        MOV.B   R10, R12
+        CALLA   #osal_set_event
+//  519 
+//  520   return ( SUCCESS );
+        MOV.B   #0x0, R12
+??osal_msg_send_3:
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock38
+//  521 }
+//  522 
+//  523 /*********************************************************************
+//  524  * @fn      osal_msg_receive
+//  525  *
+//  526  * @brief
+//  527  *
+//  528  *    This function is called by a task to retrieve a received command
+//  529  *    message. The calling task must deallocate the message buffer after
+//  530  *    processing the message using the osal_msg_deallocate() call.
+//  531  *
+//  532  * @param   uint8 task_id - receiving tasks ID
+//  533  *
+//  534  * @return  *uint8 - message information or NULL if no message
+//  535  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  536 uint8 *osal_msg_receive( uint8 task_id )
+osal_msg_receive:
+          CFI Block cfiBlock39 Using cfiCommon0
+          CFI Function osal_msg_receive
+//  537 {
+        FUNCALL osal_msg_receive, osal_set_event
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL osal_msg_receive, osal_clear_event
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL osal_msg_receive, osal_msg_extract
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+//  538   osal_msg_hdr_t *listHdr;
+//  539   osal_msg_hdr_t *prevHdr = NULL;
+        MOV.W   #0x0, R10
+//  540   osal_msg_hdr_t *foundHdr = NULL;
+        MOV.W   #0x0, R11
+//  541   halIntState_t   intState;
+//  542 
+//  543   // Hold off interrupts
+//  544   HAL_ENTER_CRITICAL_SECTION(intState);
+        MOV.W   SR, R8
+        dint
+        nop
+//  545 
+//  546   // Point to the top of the queue
+//  547   listHdr = osal_qHead;
+        MOV.W   &osal_qHead, R15
+        JMP     ??osal_msg_receive_2
+//  548 
+//  549   // Look through the queue for a message that belongs to the asking task
+//  550   while ( listHdr != NULL )
+//  551   {
+//  552     if ( (listHdr - 1)->dest_id == task_id )
+//  553     {
+//  554       if ( foundHdr == NULL )
+//  555       {
+//  556         // Save the first one
+//  557         foundHdr = listHdr;
+//  558       }
+//  559       else
+//  560       {
+//  561         // Second msg found, stop looking
+//  562         break;
+//  563       }
+//  564     }
+//  565     if ( foundHdr == NULL )
+??osal_msg_receive_0:
+        CMP.W   #0x0, R11
+        JNE     ??osal_msg_receive_1
+//  566     {
+//  567       prevHdr = listHdr;
+        MOV.W   R15, R10
+//  568     }
+//  569     listHdr = OSAL_MSG_NEXT( listHdr );
+??osal_msg_receive_1:
+        MOV.W   0xfffa(R15), R15
+??osal_msg_receive_2:
+        CMP.W   #0x0, R15
+        JEQ     ??osal_msg_receive_3
+        CMP.B   R12, 0xfffe(R15)
+        JNE     ??osal_msg_receive_0
+        CMP.W   #0x0, R11
+        JNE     ??osal_msg_receive_4
+        MOV.W   R15, R11
+        JMP     ??osal_msg_receive_1
+//  570   }
+//  571 
+//  572   // Is there more than one?
+//  573   if ( listHdr != NULL )
+//  574   {
+//  575     // Yes, Signal the task that a message is waiting
+//  576     osal_set_event( task_id, SYS_EVENT_MSG );
+??osal_msg_receive_4:
+        MOV.W   #0x8000, R13
+        CALLA   #osal_set_event
+        JMP     ??osal_msg_receive_5
+//  577   }
+//  578   else
+//  579   {
+//  580     // No more
+//  581     osal_clear_event( task_id, SYS_EVENT_MSG );
+??osal_msg_receive_3:
+        MOV.W   #0x8000, R13
+        CALLA   #osal_clear_event
+//  582   }
+//  583 
+//  584   // Did we find a message?
+//  585   if ( foundHdr != NULL )
+        CMP.W   #0x0, R11
+        JEQ     ??osal_msg_receive_6
+//  586   {
+//  587     // Take out of the link list
+//  588     osal_msg_extract( &osal_qHead, foundHdr, prevHdr );
+??osal_msg_receive_5:
+        MOV.W   R10, R14
+        MOV.W   R11, R13
+        MOV.W   #osal_qHead, R12
+        CALLA   #osal_msg_extract
+//  589   }
+//  590 
+//  591   // Release interrupts
+//  592   HAL_EXIT_CRITICAL_SECTION(intState);
+??osal_msg_receive_6:
+        MOV.W   R8, SR
+//  593 
+//  594   return ( (uint8*) foundHdr );
+        MOV.W   R11, R12
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock39
+//  595 }
+
+        RSEG CODE:CODE:NOROOT(1)
+osal_msg_dequeue:
+          CFI Block cfiBlock40 Using cfiCommon0
+          CFI Function osal_msg_dequeue
+        MOV.W   #0x0, R15
+        MOV.W   SR, R14
+        dint
+        nop
+        MOV.W   @R12, R13
+        CMP.W   #0x0, R13
+        JEQ     ??osal_msg_dequeue_0
+        MOV.W   R13, R15
+        MOV.W   0xfffa(R13), 0(R12)
+        MOV.W   #0x0, 0xfffa(R13)
+        MOV.B   #0xff, 0xfffe(R13)
+          CFI EndBlock cfiBlock40
+??osal_msg_dequeue_0:
+        REQUIRE ?Subroutine2
+        // Fall through to label ?Subroutine2
+//  596 
+//  597 /**************************************************************************************************
+//  598  * @fn          osal_msg_find
+//  599  *
+//  600  * @brief       This function finds in place an OSAL message matching the task_id and event
+//  601  *              parameters.
+//  602  *
+//  603  * input parameters
+//  604  *
+//  605  * @param       task_id - The OSAL task id that the enqueued OSAL message must match.
+//  606  * @param       event - The OSAL event id that the enqueued OSAL message must match.
+//  607  *
+//  608  * output parameters
+//  609  *
+//  610  * None.
+//  611  *
+//  612  * @return      NULL if no match, otherwise an in place pointer to the matching OSAL message.
+//  613  **************************************************************************************************
+//  614  */
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiBlock41 Using cfiCommon0
+          CFI NoFunction
+//  615 osal_event_hdr_t *osal_msg_find(uint8 task_id, uint8 event)
+//  616 {
+//  617   osal_msg_hdr_t *pHdr;
+//  618   halIntState_t intState;
+//  619 
+//  620   HAL_ENTER_CRITICAL_SECTION(intState);  // Hold off interrupts.
+//  621 
+//  622   pHdr = osal_qHead;  // Point to the top of the queue.
+//  623 
+//  624   // Look through the queue for a message that matches the task_id and event parameters.
+//  625   while (pHdr != NULL)
+//  626   {
+//  627     if (((pHdr-1)->dest_id == task_id) && (((osal_event_hdr_t *)pHdr)->event == event))
+//  628     {
+//  629       break;
+//  630     }
+//  631 
+//  632     pHdr = OSAL_MSG_NEXT(pHdr);
+//  633   }
+//  634 
+//  635   HAL_EXIT_CRITICAL_SECTION(intState);  // Release interrupts.
+        MOV.W   R14, SR
+//  636 
+//  637   return (osal_event_hdr_t *)pHdr;
+        MOV.W   R15, R12
+        RETA
+          CFI EndBlock cfiBlock41
+
+        RSEG CODE:CODE:NOROOT(1)
+osal_msg_enqueue:
+          CFI Block cfiBlock42 Using cfiCommon0
+          CFI Function osal_msg_enqueue
+        MOV.W   SR, R15
+        dint
+        nop
+        MOV.W   #0x0, 0xfffa(R13)
+        MOV.W   @R12, R14
+        CMP.W   #0x0, R14
+        JNE     ??osal_msg_enqueue_2
+        MOV.W   R13, 0(R12)
+        JMP     ??osal_msg_enqueue_3
+??osal_msg_enqueue_0:
+        MOV.W   R12, R14
+??osal_msg_enqueue_2:
+        MOV.W   0xfffa(R14), R12
+        CMP.W   #0x0, R12
+        JNE     ??osal_msg_enqueue_0
+        MOV.W   R13, 0xfffa(R14)
+??osal_msg_enqueue_3:
+        MOV.W   R15, SR
+        RETA
+          CFI EndBlock cfiBlock42
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+osal_msg_find:
+          CFI Block cfiBlock43 Using cfiCommon0
+          CFI Function osal_msg_find
+        MOV.W   SR, R14
+        dint
+        nop
+        MOV.W   &osal_qHead, R15
+        JMP     ??osal_msg_find_1
+??osal_msg_find_0:
+        MOV.W   0xfffa(R15), R15
+??osal_msg_find_1:
+        CMP.W   #0x0, R15
+        JEQ     ??osal_msg_find_2
+        CMP.B   R12, 0xfffe(R15)
+        JNE     ??osal_msg_find_0
+        CMP.B   R13, 0(R15)
+        JNE     ??osal_msg_find_0
+??osal_msg_find_2:
+        JMP     ?Subroutine2
+        NOP
+          CFI EndBlock cfiBlock43
+//  638 }
+//  639 
+//  640 /*********************************************************************
+//  641  * @fn      osal_msg_enqueue
+//  642  *
+//  643  * @brief
+//  644  *
+//  645  *    This function enqueues an OSAL message into an OSAL queue.
+//  646  *
+//  647  * @param   osal_msg_q_t *q_ptr - OSAL queue
+//  648  * @param   void *msg_ptr  - OSAL message
+//  649  *
+//  650  * @return  none
+//  651  */
+//  652 void osal_msg_enqueue( osal_msg_q_t *q_ptr, void *msg_ptr )
+//  653 {
+//  654   void *list;
+//  655   halIntState_t intState;
+//  656 
+//  657   // Hold off interrupts
+//  658   HAL_ENTER_CRITICAL_SECTION(intState);
+//  659 
+//  660   OSAL_MSG_NEXT( msg_ptr ) = NULL;
+//  661   // If first message in queue
+//  662   if ( *q_ptr == NULL )
+//  663   {
+//  664     *q_ptr = msg_ptr;
+//  665   }
+//  666   else
+//  667   {
+//  668     // Find end of queue
+//  669     for ( list = *q_ptr; OSAL_MSG_NEXT( list ) != NULL; list = OSAL_MSG_NEXT( list ) );
+//  670 
+//  671     // Add message to end of queue
+//  672     OSAL_MSG_NEXT( list ) = msg_ptr;
+//  673   }
+//  674 
+//  675   // Re-enable interrupts
+//  676   HAL_EXIT_CRITICAL_SECTION(intState);
+//  677 }
+//  678 
+//  679 /*********************************************************************
+//  680  * @fn      osal_msg_dequeue
+//  681  *
+//  682  * @brief
+//  683  *
+//  684  *    This function dequeues an OSAL message from an OSAL queue.
+//  685  *
+//  686  * @param   osal_msg_q_t *q_ptr - OSAL queue
+//  687  *
+//  688  * @return  void * - pointer to OSAL message or NULL of queue is empty.
+//  689  */
+//  690 void *osal_msg_dequeue( osal_msg_q_t *q_ptr )
+//  691 {
+//  692   void *msg_ptr = NULL;
+//  693   halIntState_t intState;
+//  694 
+//  695   // Hold off interrupts
+//  696   HAL_ENTER_CRITICAL_SECTION(intState);
+//  697 
+//  698   if ( *q_ptr != NULL )
+//  699   {
+//  700     // Dequeue message
+//  701     msg_ptr = *q_ptr;
+//  702     *q_ptr = OSAL_MSG_NEXT( msg_ptr );
+//  703     OSAL_MSG_NEXT( msg_ptr ) = NULL;
+//  704     OSAL_MSG_ID( msg_ptr ) = TASK_NO_TASK;
+//  705   }
+//  706 
+//  707   // Re-enable interrupts
+//  708   HAL_EXIT_CRITICAL_SECTION(intState);
+//  709 
+//  710   return msg_ptr;
+//  711 }
+//  712 
+//  713 /*********************************************************************
+//  714  * @fn      osal_msg_push
+//  715  *
+//  716  * @brief
+//  717  *
+//  718  *    This function pushes an OSAL message to the head of an OSAL
+//  719  *    queue.
+//  720  *
+//  721  * @param   osal_msg_q_t *q_ptr - OSAL queue
+//  722  * @param   void *msg_ptr  - OSAL message
+//  723  *
+//  724  * @return  none
+//  725  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  726 void osal_msg_push( osal_msg_q_t *q_ptr, void *msg_ptr )
+osal_msg_push:
+          CFI Block cfiBlock44 Using cfiCommon0
+          CFI Function osal_msg_push
+//  727 {
+//  728   halIntState_t intState;
+//  729 
+//  730   // Hold off interrupts
+//  731   HAL_ENTER_CRITICAL_SECTION(intState);
+        MOV.W   SR, R15
+        dint
+        nop
+//  732 
+//  733   // Push message to head of queue
+//  734   OSAL_MSG_NEXT( msg_ptr ) = *q_ptr;
+        MOV.W   @R12, 0xfffa(R13)
+//  735   *q_ptr = msg_ptr;
+        MOV.W   R13, 0(R12)
+//  736 
+//  737   // Re-enable interrupts
+//  738   HAL_EXIT_CRITICAL_SECTION(intState);
+        MOV.W   R15, SR
+//  739 }
+        RETA
+          CFI EndBlock cfiBlock44
+//  740 
+//  741 /*********************************************************************
+//  742  * @fn      osal_msg_extract
+//  743  *
+//  744  * @brief
+//  745  *
+//  746  *    This function extracts and removes an OSAL message from the
+//  747  *    middle of an OSAL queue.
+//  748  *
+//  749  * @param   osal_msg_q_t *q_ptr - OSAL queue
+//  750  * @param   void *msg_ptr  - OSAL message to be extracted
+//  751  * @param   void *prev_ptr  - OSAL message before msg_ptr in queue
+//  752  *
+//  753  * @return  none
+//  754  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  755 void osal_msg_extract( osal_msg_q_t *q_ptr, void *msg_ptr, void *prev_ptr )
+osal_msg_extract:
+          CFI Block cfiBlock45 Using cfiCommon0
+          CFI Function osal_msg_extract
+//  756 {
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+//  757   halIntState_t intState;
+//  758 
+//  759   // Hold off interrupts
+//  760   HAL_ENTER_CRITICAL_SECTION(intState);
+        MOV.W   SR, R15
+        dint
+        nop
+//  761 
+//  762   if ( msg_ptr == *q_ptr )
+        MOV.W   0xfffa(R13), R10
+        CMP.W   @R12, R13
+        JNE     ??osal_msg_extract_0
+//  763   {
+//  764     // remove from first
+//  765     *q_ptr = OSAL_MSG_NEXT( msg_ptr );
+        MOV.W   R10, 0(R12)
+        JMP     ??osal_msg_extract_1
+//  766   }
+//  767   else
+//  768   {
+//  769     // remove from middle
+//  770     OSAL_MSG_NEXT( prev_ptr ) = OSAL_MSG_NEXT( msg_ptr );
+??osal_msg_extract_0:
+        MOV.W   R10, 0xfffa(R14)
+//  771   }
+//  772   OSAL_MSG_NEXT( msg_ptr ) = NULL;
+??osal_msg_extract_1:
+        MOV.W   #0x0, 0xfffa(R13)
+//  773   OSAL_MSG_ID( msg_ptr ) = TASK_NO_TASK;
+        MOV.B   #0xff, 0xfffe(R13)
+//  774 
+//  775   // Re-enable interrupts
+//  776   HAL_EXIT_CRITICAL_SECTION(intState);
+        MOV.W   R15, SR
+//  777 }
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock45
+//  778 
+//  779 /*********************************************************************
+//  780  * @fn      osal_msg_enqueue_max
+//  781  *
+//  782  * @brief
+//  783  *
+//  784  *    This function enqueues an OSAL message into an OSAL queue if
+//  785  *    the length of the queue is less than max.
+//  786  *
+//  787  * @param   osal_msg_q_t *q_ptr - OSAL queue
+//  788  * @param   void *msg_ptr  - OSAL message
+//  789  * @param   uint8 max - maximum length of queue
+//  790  *
+//  791  * @return  TRUE if message was enqueued, FALSE otherwise
+//  792  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  793 uint8 osal_msg_enqueue_max( osal_msg_q_t *q_ptr, void *msg_ptr, uint8 max )
+osal_msg_enqueue_max:
+          CFI Block cfiBlock46 Using cfiCommon0
+          CFI Function osal_msg_enqueue_max
+//  794 {
+        PUSHM.W #0x2, R11
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+8
+//  795   void *list;
+//  796   uint8 ret = FALSE;
+        MOV.B   #0x0, R15
+//  797   halIntState_t intState;
+//  798 
+//  799   // Hold off interrupts
+//  800   HAL_ENTER_CRITICAL_SECTION(intState);
+        MOV.W   SR, R10
+        dint
+        nop
+//  801 
+//  802   // If first message in queue
+//  803   if ( *q_ptr == NULL )
+        MOV.W   @R12, R11
+        CMP.W   #0x0, R11
+        JNE     ??osal_msg_enqueue_max_2
+//  804   {
+//  805     *q_ptr = msg_ptr;
+        MOV.W   R13, 0(R12)
+//  806     ret = TRUE;
+        JMP     ??osal_msg_enqueue_max_3
+//  807   }
+//  808   else
+//  809   {
+//  810     // Find end of queue or max
+//  811     list = *q_ptr;
+//  812     max--;
+//  813     while ( (OSAL_MSG_NEXT( list ) != NULL) && (max > 0) )
+??osal_msg_enqueue_max_0:
+        CMP.B   #0x0, R14
+        JEQ     ??osal_msg_enqueue_max_4
+//  814     {
+//  815       list = OSAL_MSG_NEXT( list );
+        MOV.W   R12, R11
+//  816       max--;
+??osal_msg_enqueue_max_2:
+        ADD.B   #0xff, R14
+//  817     }
+        MOV.W   0xfffa(R11), R12
+        CMP.W   #0x0, R12
+        JNE     ??osal_msg_enqueue_max_0
+//  818 
+//  819     // Add message to end of queue if max not reached
+//  820     if ( max != 0 )
+        CMP.B   #0x0, R14
+        JEQ     ??osal_msg_enqueue_max_4
+//  821     {
+//  822       OSAL_MSG_NEXT( list ) = msg_ptr;
+        MOV.W   R13, 0xfffa(R11)
+//  823       ret = TRUE;
+??osal_msg_enqueue_max_3:
+        MOV.B   #0x1, R15
+//  824     }
+//  825   }
+//  826 
+//  827   // Re-enable interrupts
+//  828   HAL_EXIT_CRITICAL_SECTION(intState);
+??osal_msg_enqueue_max_4:
+        MOV.W   R10, SR
+//  829 
+//  830   return ret;
+        MOV.B   R15, R12
+        POPM.W  #0x2, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock46
+//  831 }
+
+        RSEG CODE:CODE:NOROOT(1)
+osal_clear_event:
+          CFI Block cfiBlock47 Using cfiCommon0
+          CFI Function osal_clear_event
+        CMP.B   &tasksCnt, R12
+        JC      ??osal_clear_event_0
+        MOV.W   SR, R15
+        dint
+        nop
+        MOV.W   &tasksEvents, R14
+        MOV.B   R12, R12
+        RLA.W   R12
+        ADD.W   R12, R14
+        BIC.W   R13, 0(R14)
+        JMP     ?Subroutine1
+          CFI EndBlock cfiBlock47
+??osal_clear_event_0:
+        REQUIRE ?Subroutine4
+        // Fall through to label ?Subroutine4
+//  832 
+//  833 /*********************************************************************
+//  834  * @fn      osal_set_event
+//  835  *
+//  836  * @brief
+//  837  *
+//  838  *    This function is called to set the event flags for a task. The
+//  839  *    event passed in is OR'd into the task's event variable.
+//  840  *
+//  841  * @param   uint8 task_id - receiving tasks ID
+//  842  * @param   uint8 event_flag - what event to set
+//  843  *
+//  844  * @return  SUCCESS, INVALID_TASK
+//  845  */
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiBlock48 Using cfiCommon0
+          CFI NoFunction
+        MOV.B   #0x3, R12
+        RETA
+          CFI EndBlock cfiBlock48
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiBlock49 Using cfiCommon0
+          CFI NoFunction
+        MOV.W   R15, SR
+        MOV.B   #0x0, R12
+        RETA
+          CFI EndBlock cfiBlock49
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  846 uint8 osal_set_event( uint8 task_id, uint16 event_flag )
+osal_set_event:
+          CFI Block cfiBlock50 Using cfiCommon0
+          CFI Function osal_set_event
+//  847 {
+//  848   if ( task_id < tasksCnt )
+        CMP.B   &tasksCnt, R12
+        JC      ??osal_set_event_0
+//  849   {
+//  850     halIntState_t   intState;
+//  851     HAL_ENTER_CRITICAL_SECTION(intState);    // Hold off interrupts
+        MOV.W   SR, R15
+        dint
+        nop
+//  852     tasksEvents[task_id] |= event_flag;  // Stuff the event bit(s)
+        MOV.W   &tasksEvents, R14
+        MOV.B   R12, R12
+        RLA.W   R12
+        ADD.W   R12, R14
+        BIS.W   R13, 0(R14)
+//  853     HAL_EXIT_CRITICAL_SECTION(intState);     // Release interrupts
+        JMP     ?Subroutine1
+//  854     return ( SUCCESS );
+//  855   }
+//  856    else
+//  857   {
+//  858     return ( INVALID_TASK );
+??osal_set_event_0:
+        JMP     ?Subroutine4
+        NOP
+          CFI EndBlock cfiBlock50
+//  859   }
+//  860 }
+//  861 
+//  862 /*********************************************************************
+//  863  * @fn      osal_clear_event
+//  864  *
+//  865  * @brief
+//  866  *
+//  867  *    This function is called to clear the event flags for a task. The
+//  868  *    event passed in is masked out of the task's event variable.
+//  869  *
+//  870  * @param   uint8 task_id - receiving tasks ID
+//  871  * @param   uint8 event_flag - what event to clear
+//  872  *
+//  873  * @return  SUCCESS, INVALID_TASK
+//  874  */
+//  875 uint8 osal_clear_event( uint8 task_id, uint16 event_flag )
+//  876 {
+//  877   if ( task_id < tasksCnt )
+//  878   {
+//  879     halIntState_t   intState;
+//  880     HAL_ENTER_CRITICAL_SECTION(intState);    // Hold off interrupts
+//  881     tasksEvents[task_id] &= ~(event_flag);   // Clear the event bit(s)
+//  882     HAL_EXIT_CRITICAL_SECTION(intState);     // Release interrupts
+//  883     return ( SUCCESS );
+//  884   }
+//  885    else
+//  886   {
+//  887     return ( INVALID_TASK );
+//  888   }
+//  889 }
+//  890 
+//  891 /*********************************************************************
+//  892  * @fn      osal_isr_register
+//  893  *
+//  894  * @brief
+//  895  *
+//  896  *   This function is called to register a service routine with an
+//  897  *   interrupt. When the interrupt occurs, this service routine is called.
+//  898  *
+//  899  * @param   uint8 interrupt_id - Interrupt number
+//  900  * @param   void (*isr_ptr)( uint8* ) - function pointer to ISR
+//  901  *
+//  902  * @return  SUCCESS, INVALID_INTERRUPT_ID,
+//  903  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  904 uint8 osal_isr_register( uint8 interrupt_id, void (*isr_ptr)( uint8* ) )
+osal_isr_register:
+          CFI Block cfiBlock51 Using cfiCommon0
+          CFI Function osal_isr_register
+//  905 {
+//  906   // Remove these statements when functionality is complete
+//  907   (void)interrupt_id;
+//  908   (void)isr_ptr;
+//  909   return ( SUCCESS );
+        MOV.B   #0x0, R12
+        RETA
+          CFI EndBlock cfiBlock51
+//  910 }
+
+        RSEG CODE:CODE:NOROOT(1)
+osal_int_disable:
+          CFI Block cfiBlock52 Using cfiCommon0
+          CFI Function osal_int_disable
+        CMP.B   #0xff, R12
+        JNE     ??osal_int_disable_0
+        dint
+        nop
+        MOV.B   #0x0, R12
+        RETA
+          CFI EndBlock cfiBlock52
+??osal_int_disable_0:
+        REQUIRE ?Subroutine3
+        // Fall through to label ?Subroutine3
+//  911 
+//  912 /*********************************************************************
+//  913  * @fn      osal_int_enable
+//  914  *
+//  915  * @brief
+//  916  *
+//  917  *   This function is called to enable an interrupt. Once enabled,
+//  918  *   occurrence of the interrupt causes the service routine associated
+//  919  *   with that interrupt to be called.
+//  920  *
+//  921  *   If INTS_ALL is the interrupt_id, interrupts (in general) are enabled.
+//  922  *   If a single interrupt is passed in, then interrupts still have
+//  923  *   to be enabled with another call to INTS_ALL.
+//  924  *
+//  925  * @param   uint8 interrupt_id - Interrupt number
+//  926  *
+//  927  * @return  SUCCESS or INVALID_INTERRUPT_ID
+//  928  */
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiBlock53 Using cfiCommon0
+          CFI NoFunction
+        MOV.B   #0x7, R12
+        RETA
+          CFI EndBlock cfiBlock53
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  929 uint8 osal_int_enable( uint8 interrupt_id )
+osal_int_enable:
+          CFI Block cfiBlock54 Using cfiCommon0
+          CFI Function osal_int_enable
+//  930 {
+//  931 
+//  932   if ( interrupt_id == INTS_ALL )
+        CMP.B   #0xff, R12
+        JNE     ??osal_int_enable_0
+//  933   {
+//  934     HAL_ENABLE_INTERRUPTS();
+        eint
+//  935     return ( SUCCESS );
+        MOV.B   #0x0, R12
+        RETA
+//  936   }
+//  937   else
+//  938   {
+//  939     return ( INVALID_INTERRUPT_ID );
+??osal_int_enable_0:
+        JMP     ?Subroutine3
+        NOP
+          CFI EndBlock cfiBlock54
+//  940   }
+//  941 }
+//  942 
+//  943 /*********************************************************************
+//  944  * @fn      osal_int_disable
+//  945  *
+//  946  * @brief
+//  947  *
+//  948  *   This function is called to disable an interrupt. When a disabled
+//  949  *   interrupt occurs, the service routine associated with that
+//  950  *   interrupt is not called.
+//  951  *
+//  952  *   If INTS_ALL is the interrupt_id, interrupts (in general) are disabled.
+//  953  *   If a single interrupt is passed in, then just that interrupt is disabled.
+//  954  *
+//  955  * @param   uint8 interrupt_id - Interrupt number
+//  956  *
+//  957  * @return  SUCCESS or INVALID_INTERRUPT_ID
+//  958  */
+//  959 uint8 osal_int_disable( uint8 interrupt_id )
+//  960 {
+//  961 
+//  962   if ( interrupt_id == INTS_ALL )
+//  963   {
+//  964     HAL_DISABLE_INTERRUPTS();
+//  965     return ( SUCCESS );
+//  966   }
+//  967   else
+//  968   {
+//  969     return ( INVALID_INTERRUPT_ID );
+//  970   }
+//  971 }
+//  972 
+//  973 /*********************************************************************
+//  974  * @fn      osal_init_system
+//  975  *
+//  976  * @brief
+//  977  *
+//  978  *   This function initializes the "task" system by creating the
+//  979  *   tasks defined in the task table (OSAL_Tasks.h).
+//  980  *
+//  981  * @param   void
+//  982  *
+//  983  * @return  SUCCESS
+//  984  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  985 uint8 osal_init_system( void )
+osal_init_system:
+          CFI Block cfiBlock55 Using cfiCommon0
+          CFI Function osal_init_system
+//  986 {
+//  987   // Initialize the Memory Allocation System
+//  988   osal_mem_init();
+        FUNCALL osal_init_system, osal_mem_init
+        LOCFRAME CSTACK, 4, STACK
+        FUNCALL osal_init_system, osalTimerInit
+        LOCFRAME CSTACK, 4, STACK
+        FUNCALL osal_init_system, osal_pwrmgr_init
+        LOCFRAME CSTACK, 4, STACK
+        FUNCALL osal_init_system, osalInitTasks
+        LOCFRAME CSTACK, 4, STACK
+        FUNCALL osal_init_system, osal_mem_kick
+        LOCFRAME CSTACK, 4, STACK
+        CALLA   #osal_mem_init
+//  989 
+//  990   // Initialize the message queue
+//  991   osal_qHead = NULL;
+        MOV.W   #0x0, &osal_qHead
+//  992 
+//  993   // Initialize the timers
+//  994   osalTimerInit();
+        CALLA   #osalTimerInit
+//  995 
+//  996   // Initialize the Power Management System
+//  997   osal_pwrmgr_init();
+        CALLA   #osal_pwrmgr_init
+//  998 
+//  999   // Initialize the system tasks.
+// 1000   osalInitTasks();
+        CALLA   #osalInitTasks
+// 1001 
+// 1002   // Setup efficient search for the first free block of heap.
+// 1003   osal_mem_kick();
+        CALLA   #osal_mem_kick
+// 1004 
+// 1005   return ( SUCCESS );
+        MOV.B   #0x0, R12
+        RETA
+          CFI EndBlock cfiBlock55
+// 1006 }
+// 1007 
+// 1008 /*********************************************************************
+// 1009  * @fn      osal_start_system
+// 1010  *
+// 1011  * @brief
+// 1012  *
+// 1013  *   This function is the main loop function of the task system (if
+// 1014  *   ZBIT and UBIT are not defined). This Function doesn't return.
+// 1015  *
+// 1016  * @param   void
+// 1017  *
+// 1018  * @return  none
+// 1019  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1020 void osal_start_system( void )
+osal_start_system:
+??osal_start_system_0:
+          CFI Block cfiBlock56 Using cfiCommon0
+          CFI Function osal_start_system
+// 1021 {
+// 1022 #if !defined ( ZBIT ) && !defined ( UBIT )
+// 1023   for(;;)  // Forever Loop
+// 1024 #endif
+// 1025   {
+// 1026     osal_run_system();
+        FUNCALL osal_start_system, osal_run_system
+        LOCFRAME CSTACK, 4, STACK
+        CALLA   #osal_run_system
+        JMP     ??osal_start_system_0
+        NOP
+          CFI EndBlock cfiBlock56
+// 1027   }
+// 1028 }
+// 1029 
+// 1030 /*********************************************************************
+// 1031  * @fn      osal_run_system
+// 1032  *
+// 1033  * @brief
+// 1034  *
+// 1035  *   This function will make one pass through the OSAL taskEvents table
+// 1036  *   and call the task_event_processor() function for the first task that
+// 1037  *   is found with at least one event pending. If there are no pending
+// 1038  *   events (all tasks), this function puts the processor into Sleep.
+// 1039  *
+// 1040  * @param   void
+// 1041  *
+// 1042  * @return  none
+// 1043  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1044 void osal_run_system( void )
+osal_run_system:
+          CFI Block cfiBlock57 Using cfiCommon0
+          CFI Function osal_run_system
+// 1045 {
+        FUNCALL osal_run_system, osalTimeUpdate
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL osal_run_system, Hal_ProcessPoll
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL osal_run_system
+        LOCFRAME CSTACK, 8, STACK
+        PUSHM.W #0x2, R11
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+8
+// 1046   uint8 idx = 0;
+        MOV.B   #0x0, R10
+// 1047 
+// 1048   osalTimeUpdate();
+        CALLA   #osalTimeUpdate
+// 1049   Hal_ProcessPoll();
+        CALLA   #Hal_ProcessPoll
+// 1050 
+// 1051   do {
+// 1052     if (tasksEvents[idx])  // Task is highest priority that is ready.
+??osal_run_system_0:
+        MOV.W   &tasksEvents, R15
+        MOV.B   R10, R11
+        RLA.W   R11
+        ADD.W   R11, R15
+        CMP.W   #0x0, 0(R15)
+        JNE     ??osal_run_system_1
+// 1053     {
+// 1054       break;
+// 1055     }
+// 1056   } while (++idx < tasksCnt);
+        ADD.B   #0x1, R10
+        CMP.B   &tasksCnt, R10
+        JNC     ??osal_run_system_0
+// 1057 
+// 1058   if (idx < tasksCnt)
+??osal_run_system_1:
+        CMP.B   &tasksCnt, R10
+        JC      ??osal_run_system_2
+// 1059   {
+// 1060     uint16 events;
+// 1061     halIntState_t intState;
+// 1062 
+// 1063     HAL_ENTER_CRITICAL_SECTION(intState);
+        MOV.W   SR, R15
+        dint
+        nop
+// 1064     events = tasksEvents[idx];
+        MOV.B   R10, R10
+        MOV.W   R10, R11
+        RLA.W   R11
+        MOV.W   &tasksEvents, R14
+        ADD.W   R11, R14
+        MOV.W   @R14, R13
+// 1065     tasksEvents[idx] = 0;  // Clear the Events for this task.
+        MOV.W   #0x0, 0(R14)
+// 1066     HAL_EXIT_CRITICAL_SECTION(intState);
+        MOV.W   R15, SR
+// 1067 
+// 1068     activeTaskID = idx;
+        MOV.B   R10, &activeTaskID
+// 1069     events = (tasksArr[idx])( idx, events );
+        MOV.B   R10, R12
+        RLAM.W  #0x2, R10
+        MOV.W   tasksArr(R10), R14
+        MOV.W   tasksArr + 2(R10), R15
+        CALLA   #?IndCallR15
+// 1070     activeTaskID = TASK_NO_TASK;
+        MOV.B   #0xff, &activeTaskID
+// 1071 
+// 1072     HAL_ENTER_CRITICAL_SECTION(intState);
+        MOV.W   SR, R15
+        dint
+        nop
+// 1073     tasksEvents[idx] |= events;  // Add back unprocessed events to the current task.
+        MOV.W   &tasksEvents, R14
+        ADD.W   R11, R14
+        BIS.W   R12, 0(R14)
+// 1074     HAL_EXIT_CRITICAL_SECTION(intState);
+        MOV.W   R15, SR
+// 1075   }
+// 1076 #if defined( POWER_SAVING )
+// 1077   else  // Complete pass through all task events with no activity?
+// 1078   {
+// 1079     osal_pwrmgr_powerconserve();  // Put the processor/system into sleep
+// 1080   }
+// 1081 #endif
+// 1082 
+// 1083   /* Yield in case cooperative scheduling is being used. */
+// 1084 #if defined (configUSE_PREEMPTION) && (configUSE_PREEMPTION == 0)
+// 1085   {
+// 1086     osal_task_yield();
+// 1087   }
+// 1088 #endif
+// 1089 }
+??osal_run_system_2:
+        POPM.W  #0x2, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock57
+
+        RSEG CODE:CODE:NOROOT(1)
+osal_buffer_uint24:
+          CFI Block cfiBlock58 Using cfiCommon0
+          CFI Function osal_buffer_uint24
+        CALLA   #?Subroutine5
+          CFI EndBlock cfiBlock58
+??CrossCallReturnLabel_0:
+        REQUIRE ?Subroutine0
+        // Fall through to label ?Subroutine0
+// 1090 
+// 1091 /*********************************************************************
+// 1092  * @fn      osal_buffer_uint32
+// 1093  *
+// 1094  * @brief
+// 1095  *
+// 1096  *   Buffer an uint32 value - LSB first.
+// 1097  *
+// 1098  * @param   buf - buffer
+// 1099  * @param   val - uint32 value
+// 1100  *
+// 1101  * @return  pointer to end of destination buffer
+// 1102  */
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiBlock59 Using cfiCommon0
+          CFI NoFunction
+        MOV.B   R15, 0(R12)
+        ADD.W   #0x1, R12
+        RETA
+          CFI EndBlock cfiBlock59
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1103 uint8* osal_buffer_uint32( uint8 *buf, uint32 val )
+osal_buffer_uint32:
+          CFI Block cfiBlock60 Using cfiCommon0
+          CFI Function osal_buffer_uint32
+// 1104 {
+// 1105   *buf++ = BREAK_UINT32( val, 0 );
+        CALLA   #?Subroutine5
+// 1106   *buf++ = BREAK_UINT32( val, 1 );
+// 1107   *buf++ = BREAK_UINT32( val, 2 );
+??CrossCallReturnLabel_1:
+        MOV.B   R15, 0(R12)
+        ADD.W   #0x1, R12
+// 1108   *buf++ = BREAK_UINT32( val, 3 );
+        SWPB    R15
+        JMP     ?Subroutine0
+        NOP
+          CFI EndBlock cfiBlock60
+// 1109 
+// 1110   return buf;
+// 1111 }
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond61 Using cfiCommon0
+          CFI Function osal_buffer_uint24
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI CFA SP+8
+          CFI Block cfiCond62 Using cfiCommon0
+          CFI (cfiCond62) Function osal_buffer_uint32
+          CFI (cfiCond62) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond62) CFA SP+8
+          CFI Block cfiPicker63 Using cfiCommon1
+          CFI (cfiPicker63) NoFunction
+          CFI (cfiPicker63) Picker
+// 1112 
+// 1113 /*********************************************************************
+// 1114  * @fn      osal_buffer_uint24
+// 1115  *
+// 1116  * @brief
+// 1117  *
+// 1118  *   Buffer an uint24 value - LSB first. Note that type uint24 is
+// 1119  *   typedef to uint32 in comdef.h
+// 1120  *
+// 1121  * @param   buf - buffer
+// 1122  * @param   val - uint24 value
+// 1123  *
+// 1124  * @return  pointer to end of destination buffer
+// 1125  */
+// 1126 uint8* osal_buffer_uint24( uint8 *buf, uint24 val )
+// 1127 {
+// 1128   *buf++ = BREAK_UINT32( val, 0 );
+        MOV.B   R14, 0(R12)
+        ADD.W   #0x1, R12
+// 1129   *buf++ = BREAK_UINT32( val, 1 );
+        MOV.W   R14, R13
+        RPT     #0x8
+        RRUX.W  R13
+        MOV.B   R13, 0(R12)
+        ADD.W   #0x1, R12
+        RETA
+          CFI EndBlock cfiCond61
+          CFI EndBlock cfiCond62
+          CFI EndBlock cfiPicker63
+// 1130   *buf++ = BREAK_UINT32( val, 2 );
+// 1131 
+// 1132   return buf;
+// 1133 }
+// 1134 
+// 1135 /*********************************************************************
+// 1136  * @fn      osal_isbufset
+// 1137  *
+// 1138  * @brief
+// 1139  *
+// 1140  *   Is all of the array elements set to a value?
+// 1141  *
+// 1142  * @param   buf - buffer to check
+// 1143  * @param   val - value to check each array element for
+// 1144  * @param   len - length to check
+// 1145  *
+// 1146  * @return  TRUE if all "val"
+// 1147  *          FALSE otherwise
+// 1148  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1149 uint8 osal_isbufset( uint8 *buf, uint8 val, uint8 len )
+osal_isbufset:
+          CFI Block cfiBlock64 Using cfiCommon0
+          CFI Function osal_isbufset
+// 1150 {
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+// 1151   uint8 x;
+// 1152 
+// 1153   if ( buf == NULL )
+        CMP.W   #0x0, R12
+        JEQ     ??osal_isbufset_1
+// 1154   {
+// 1155     return ( FALSE );
+// 1156   }
+// 1157 
+// 1158   for ( x = 0; x < len; x++ )
+        MOV.B   #0x0, R15
+        JMP     ??osal_isbufset_2
+??osal_isbufset_0:
+        ADD.B   #0x1, R15
+??osal_isbufset_2:
+        CMP.B   R14, R15
+        JC      ??osal_isbufset_3
+// 1159   {
+// 1160     // Check for non-initialized value
+// 1161     if ( buf[x] != val )
+        MOV.W   R12, R10
+        ADD.W   R15, R10
+        CMP.B   R13, 0(R10)
+        JEQ     ??osal_isbufset_0
+// 1162     {
+// 1163       return ( FALSE );
+??osal_isbufset_1:
+        MOV.B   #0x0, R12
+        JMP     ??osal_isbufset_4
+// 1164     }
+// 1165   }
+// 1166   return ( TRUE );
+??osal_isbufset_3:
+        MOV.B   #0x1, R12
+??osal_isbufset_4:
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock64
+// 1167 }
+// 1168 
+// 1169 /*********************************************************************
+// 1170  * @fn      osal_self
+// 1171  *
+// 1172  * @brief
+// 1173  *
+// 1174  *   This function returns the task ID of the current (active) task.
+// 1175  *
+// 1176  * @param   void
+// 1177  *
+// 1178  * @return   active task ID or TASK_NO_TASK if no task is active
+// 1179  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1180 uint8 osal_self( void )
+osal_self:
+          CFI Block cfiBlock65 Using cfiCommon0
+          CFI Function osal_self
+// 1181 {
+// 1182   return ( activeTaskID );
+        MOV.B   &activeTaskID, R12
+        RETA
+          CFI EndBlock cfiBlock65
+// 1183 }
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(0)
+`?<Initializer for activeTaskID>`:
+        DC8 255
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r4:
+        REQUIRE ?setjmp_r4
+        REQUIRE ?longjmp_r4
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r5:
+        REQUIRE ?setjmp_r5
+        REQUIRE ?longjmp_r5
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(0)
+        DC8 ""
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(0)
+        DC8 ""
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(0)
+        DC8 ""
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(0)
+`?<Constant "0">`:
+        DC8 "0"
+
+        END
+// 1184 
+// 1185 /*********************************************************************
+// 1186  */
+// 
+// 1 426 bytes in segment CODE
+//     5 bytes in segment DATA16_C
+//     1 byte  in segment DATA16_I
+//     1 byte  in segment DATA16_ID
+//     2 bytes in segment DATA16_Z
+// 
+// 1 426 bytes of CODE  memory
+//     6 bytes of CONST memory
+//     3 bytes of DATA  memory
+//
+//Errors: none
+//Warnings: none

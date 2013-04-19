@@ -874,8 +874,8 @@ static void zapSync(void)
     pBuf[0] = zLogicalType;
     (void)znp_nv_write(ZCD_NV_LOGICAL_TYPE, 0, 1, pBuf);
     //MHMS: CHANGING PANID HERE
-    pBuf[0] = LO_UINT16(znpPanId);
-    pBuf[1] = HI_UINT16(znpPanId);
+    pBuf[0] = LO_UINT16(ZDAPP_CONFIG_PAN_ID);
+    pBuf[1] = HI_UINT16(ZDAPP_CONFIG_PAN_ID);
     (void)znp_nv_write(ZCD_NV_PANID, 0, 2, pBuf);
 
     pBuf[0] = BREAK_UINT32(DEFAULT_CHANLIST, 0);
@@ -883,6 +883,7 @@ static void zapSync(void)
     pBuf[2] = BREAK_UINT32(DEFAULT_CHANLIST, 2);
     pBuf[3] = BREAK_UINT32(DEFAULT_CHANLIST, 3);
     (void)znp_nv_write(ZCD_NV_CHANLIST, 0, 4, pBuf);
+    
   }
 #endif
 #if defined TC_LINKKEY_JOIN
@@ -971,7 +972,6 @@ void MT_BuildAndSendZToolResponse(uint8 cmdType, uint8 cmdId, uint8 dataLen, uin
   }
 }
 #endif
-
 //MHMS: Making function to set logical type
 bool zap_set_logicalType(uint8 newType)
 {
@@ -998,12 +998,23 @@ bool zap_set_logicalType(uint8 newType)
           //Realistically nothing returns from here...
           return 1;       
 }
-
+/**************************************************************************************************
+*/
+//MHMS: Had to make this to handle API commands outside of scope of this demo.
+/*
+void makeRPC(uint8 length, uint8 cmd0,uint8 cmd1,uint8 * args){
+ 
+  uint8 *pBuf = zap_msg_allocate(length, 0x25, 0x34);
+  if (NULL != pBuf)
+  {
+    (void)osal_memcpy(pBuf,args,length);
+    zapPhySend(zapAppPort, pBuf);
+    zap_msg_deallocate(&pBuf);
+  }
+}*/
 //MHMS: skips lostSync in ZapPhyReset
 void quickReset(void){
   HAL_ZNP_RST();
   MicroWait(100);
   HAL_ZNP_RUN();
 }
-/**************************************************************************************************
-*/

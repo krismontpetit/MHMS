@@ -1,0 +1,617 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       18/Apr/2013  16:58:50 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_dco.c             #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=0                    #
+#                     -DZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER                   #
+#                     -DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1 -DHAL_UART=1    #
+#                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE             #
+#                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE               #
+#                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE               #
+#                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                  #
+#                     -DZAP_AF_DATA_REQ_FRAG=FALSE                            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_dco.c -D          #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER -D                  #
+#                     TVSA_DEVICE_ID=0x0016 -lC "C:\Users\student\Documents\G #
+#                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EX #
+#                     P5438\ZAP Router\List\" -lA                             #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\List\"    #
+#                     --remarks --diag_suppress Pe001,Pe193,Pe236,Pe826 -o    #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\Obj\"     #
+#                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I     #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I         #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\List\hal_dco.lst                                 #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\Obj\hal_dco.r43                                  #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\hal\target\MSP5438ZAP\hal_dco.c
+      1          /**************************************************************************************************
+      2          Filename:       hal_dco.c
+      3          Revised:        $Date: 2009-12-22 12:38:28 -0800 (Tue, 22 Dec 2009) $
+      4          Revision:       $Revision: 21387 $
+      5          
+      6          Description:    This file contains the interface to the DCO Service.
+      7          
+      8          Copyright 2008-2009 Texas Instruments Incorporated. All rights reserved.
+      9          
+     10          IMPORTANT: Your use of this Software is limited to those specific rights
+     11          granted under the terms of a software license agreement between the user
+     12          who downloaded the software, his/her employer (which must be your employer)
+     13          and Texas Instruments Incorporated (the "License").  You may not use this
+     14          Software unless you agree to abide by the terms of the License. The License
+     15          limits your use, and you acknowledge, that the Software may not be modified,
+     16          copied or distributed unless embedded on a Texas Instruments microcontroller
+     17          or used solely and exclusively in conjunction with a Texas Instruments radio
+     18          frequency transceiver, which is integrated into your product.  Other than for
+     19          the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     20          works of, modify, distribute, perform, display or sell this Software and/or
+     21          its documentation for any purpose.
+     22          
+     23          YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     24          PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     25          INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     26          NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     27          TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     28          NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     29          LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     30          INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     31          OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     32          OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     33          (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     34          
+     35          Should you have any questions regarding your right to use this Software,
+     36          contact Texas Instruments Incorporated at www.TI.com.
+     37          **************************************************************************************************/
+     38          
+     39          /**************************************************************************************************
+     40          *                                            INCLUDES
+     41          **************************************************************************************************/
+     42          #include "hal_types.h"
+     43          #include "hal_dco.h"
+     44          #include "hal_mcu.h"
+
+   \                                 In  segment DATA16_AN, at 0x120
+   \   union <unnamed> _A_PMMCTL0_L
+   \                     _A_PMMCTL0_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x124
+   \   union <unnamed> _A_SVSMHCTL_L
+   \                     _A_SVSMHCTL_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x126
+   \   union <unnamed> _A_SVSMLCTL_L
+   \                     _A_SVSMLCTL_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x12c
+   \   union <unnamed> _A_PMMIFG_L
+   \                     _A_PMMIFG_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x160
+   \   union <unnamed> _A_UCSCTL0_L
+   \                     _A_UCSCTL0_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x162
+   \   union <unnamed> _A_UCSCTL1_L
+   \                     _A_UCSCTL1_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x164
+   \   union <unnamed> _A_UCSCTL2_L
+   \                     _A_UCSCTL2_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x168
+   \   union <unnamed> _A_UCSCTL4_L
+   \                     _A_UCSCTL4_L:
+   \   000000                DS8 2
+     45          
+     46          /**************************************************************************************************
+     47          *                                            CONSTANTS
+     48          **************************************************************************************************/
+     49          
+     50          
+     51          /**************************************************************************************************
+     52          *                                              MACROS
+     53          **************************************************************************************************/
+     54          
+     55          
+     56          /**************************************************************************************************
+     57          *                                            TYPEDEFS
+     58          **************************************************************************************************/
+     59          #ifndef FLASH28_WORKAROUND
+     60          #define FLASH28_WORKAROUND  FALSE
+     61          #endif
+     62          
+     63          /**************************************************************************************************
+     64          *                                        GLOBAL VARIABLES
+     65          **************************************************************************************************/
+     66          
+     67          
+     68          /**************************************************************************************************
+     69          *                                        EXTERNAL VARIABLES
+     70          **************************************************************************************************/
+     71          
+     72          
+     73          /**************************************************************************************************
+     74           *                                       Local Function Prototypes
+     75           **************************************************************************************************/
+     76          static void halBoardGetSystemClockSettings(uint8  systemClockSpeed,
+     77                                                     uint8  *setDcoRange,
+     78                                                     uint8  *setVCore,
+     79                                                     uint16 *setMultiplier);
+     80          static void halBoardSetVCoreUp   (uint8 VCore);
+     81          static void halBoardSetVCoreDown (uint8 VCore);
+     82          static void halBoardSetVCore     (uint8 VCore);
+     83          
+     84          
+     85          /**************************************************************************************************
+     86          * @fn      halBoardSetSystemClock
+     87          *
+     88          * @brief   Configure DCO for system clock
+     89          *
+     90          * @param   systemClockSpeed
+     91          *
+     92          * @return  None
+     93          **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+     94          void halBoardSetSystemClock(uint8 systemClockSpeed)
+   \                     halBoardSetSystemClock:
+     95          {
+   \   000000   2182         SUB.W   #0x4, SP
+     96            uint8  setDcoRange, setVCore;
+     97            uint16 setMultiplier;
+     98          
+     99            halBoardGetSystemClockSettings( systemClockSpeed, &setDcoRange, &setVCore, &setMultiplier);
+   \   000002   0F41         MOV.W   SP, R15
+   \   000004   2F53         ADD.W   #0x2, R15
+   \   000006   0E41         MOV.W   SP, R14
+   \   000008   0E53         ADD.W   #0x0, R14
+   \   00000A   0D41         MOV.W   SP, R13
+   \   00000C   1D53         ADD.W   #0x1, R13
+   \   00000E   ........     CALLA   #halBoardGetSystemClockSettings
+    100          
+    101            halBoardSetVCore( setVCore );
+   \   000012   6C41         MOV.B   @SP, R12
+   \   000014   ........     CALLA   #halBoardSetVCore
+    102            UCSCTL0 = 0x00;                           /* Set lowest possible DCOx, MODx */
+   \   000018   82436001     MOV.W   #0x0, &0x160
+    103            UCSCTL1 = setDcoRange;                    /* Select suitable range */
+   \   00001C   5F410100     MOV.B   0x1(SP), R15
+   \   000020   824F6201     MOV.W   R15, &0x162
+    104          
+    105            UCSCTL2 = setMultiplier + FLLD_1;         /* Set DCO Multiplier */
+   \   000024   1F410200     MOV.W   0x2(SP), R15
+   \   000028   3F500010     ADD.W   #0x1000, R15
+   \   00002C   824F6401     MOV.W   R15, &0x164
+    106            UCSCTL4 = SELA__XT1CLK | SELS__DCOCLKDIV | SELM__DCOCLKDIV ;
+   \   000030   B24044006801 MOV.W   #0x44, &0x168
+    107          }
+   \   000036   2152         ADD.W   #0x4, SP
+   \   000038   1001         RETA
+   \   00003A                REQUIRE _A_UCSCTL0_L
+   \   00003A                REQUIRE _A_UCSCTL1_L
+   \   00003A                REQUIRE _A_UCSCTL2_L
+   \   00003A                REQUIRE _A_UCSCTL4_L
+    108          
+    109          
+    110          /**************************************************************************************************
+    111          * @fn      halBoardGetSystemClockSettings
+    112          *
+    113          * @brief   Get the DCO configuration parameters
+    114          *
+    115          * @param    systemClockSpeed: range from 1 to 25MHz
+    116          *          *setDcoRange:      DCO select
+    117          *          *setVCore:         VCORE settings
+    118          *          *setMultiplier:    Multiplier settings
+    119          *
+    120          * @return  None
+    121          **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    122          void halBoardGetSystemClockSettings(uint8   systemClockSpeed,
+   \                     halBoardGetSystemClockSettings:
+    123                                              uint8  *setDcoRange,
+    124                                              uint8  *setVCore,
+    125                                              uint16 *setMultiplier)
+    126          {
+    127            switch (systemClockSpeed)
+   \   000000   4C83         SUB.B   #0x0, R12
+   \   000002   0F24         JEQ     ??halBoardGetSystemClockSettings_0
+   \   000004   5C83         SUB.B   #0x1, R12
+   \   000006   1624         JEQ     ??halBoardGetSystemClockSettings_1
+   \   000008   5C83         SUB.B   #0x1, R12
+   \   00000A   1D24         JEQ     ??halBoardGetSystemClockSettings_2
+   \   00000C   5C83         SUB.B   #0x1, R12
+   \   00000E   2424         JEQ     ??halBoardGetSystemClockSettings_3
+   \   000010   5C83         SUB.B   #0x1, R12
+   \   000012   2824         JEQ     ??halBoardGetSystemClockSettings_4
+   \   000014   5C83         SUB.B   #0x1, R12
+   \   000016   2C24         JEQ     ??halBoardGetSystemClockSettings_5
+   \   000018   5C83         SUB.B   #0x1, R12
+   \   00001A   3024         JEQ     ??halBoardGetSystemClockSettings_6
+   \   00001C   5C83         SUB.B   #0x1, R12
+   \   00001E   3724         JEQ     ??halBoardGetSystemClockSettings_7
+   \   000020   1001         RETA
+    128            {
+    129            case SYSCLK_1MHZ:
+    130              *setDcoRange = DCORSEL_1MHZ;
+   \                     ??halBoardGetSystemClockSettings_0:
+   \   000022   FD4020000000 MOV.B   #0x20, 0(R13)
+    131              *setVCore = VCORE_1MHZ;
+   \   000028   EE430000     MOV.B   #0x2, 0(R14)
+    132              *setMultiplier = DCO_MULT_1MHZ;
+   \   00002C   BF401E000000 MOV.W   #0x1e, 0(R15)
+    133              break;
+   \   000032   1001         RETA
+    134            case SYSCLK_4MHZ:
+    135              *setDcoRange = DCORSEL_4MHZ;
+   \                     ??halBoardGetSystemClockSettings_1:
+   \   000034   FD4030000000 MOV.B   #0x30, 0(R13)
+    136              *setVCore = VCORE_4MHZ;
+   \   00003A   EE430000     MOV.B   #0x2, 0(R14)
+    137              *setMultiplier = DCO_MULT_4MHZ;
+   \   00003E   BF407A000000 MOV.W   #0x7a, 0(R15)
+    138              break;
+   \   000044   1001         RETA
+    139            case SYSCLK_8MHZ:
+    140              *setDcoRange = DCORSEL_8MHZ;
+   \                     ??halBoardGetSystemClockSettings_2:
+   \   000046   FD4040000000 MOV.B   #0x40, 0(R13)
+    141              *setVCore = VCORE_8MHZ;
+   \   00004C   EE430000     MOV.B   #0x2, 0(R14)
+    142              *setMultiplier = DCO_MULT_8MHZ;
+   \   000050   BF40F4000000 MOV.W   #0xf4, 0(R15)
+    143              break;
+   \   000056   1001         RETA
+    144            case SYSCLK_12MHZ:
+    145              *setDcoRange = DCORSEL_12MHZ;
+   \                     ??halBoardGetSystemClockSettings_3:
+   \   000058   ........     CALLA   #?Subroutine0
+    146              *setVCore = VCORE_12MHZ;
+    147              *setMultiplier = DCO_MULT_12MHZ;
+   \                     ??CrossCallReturnLabel_0:
+   \   00005C   BF406E010000 MOV.W   #0x16e, 0(R15)
+    148              break;
+   \   000062   1001         RETA
+    149            case SYSCLK_16MHZ:
+    150              *setDcoRange = DCORSEL_16MHZ;
+   \                     ??halBoardGetSystemClockSettings_4:
+   \   000064   ........     CALLA   #?Subroutine0
+    151              *setVCore = VCORE_16MHZ;
+    152              *setMultiplier = DCO_MULT_16MHZ;
+   \                     ??CrossCallReturnLabel_1:
+   \   000068   BF40E8010000 MOV.W   #0x1e8, 0(R15)
+    153              break;
+   \   00006E   1001         RETA
+    154            case SYSCLK_18MHZ:
+    155              *setDcoRange = DCORSEL_18MHZ;
+   \                     ??halBoardGetSystemClockSettings_5:
+   \   000070   ........     CALLA   #?Subroutine0
+    156              *setVCore = VCORE_18MHZ;
+    157              *setMultiplier = DCO_MULT_18MHZ;
+   \                     ??CrossCallReturnLabel_2:
+   \   000074   BF4025020000 MOV.W   #0x225, 0(R15)
+    158              break;
+   \   00007A   1001         RETA
+    159            case SYSCLK_20MHZ:
+    160              *setDcoRange = DCORSEL_20MHZ;
+   \                     ??halBoardGetSystemClockSettings_6:
+   \   00007C   FD4060000000 MOV.B   #0x60, 0(R13)
+    161              *setVCore = VCORE_20MHZ;
+   \   000082   EE430000     MOV.B   #0x2, 0(R14)
+    162              *setMultiplier = DCO_MULT_20MHZ;
+   \   000086   BF4062020000 MOV.W   #0x262, 0(R15)
+    163              break;
+   \   00008C   1001         RETA
+    164            case SYSCLK_25MHZ:
+    165              *setDcoRange = DCORSEL_25MHZ;
+   \                     ??halBoardGetSystemClockSettings_7:
+   \   00008E   FD4070000000 MOV.B   #0x70, 0(R13)
+    166              *setVCore = VCORE_25MHZ;
+   \   000094   FE4003000000 MOV.B   #0x3, 0(R14)
+    167              *setMultiplier = DCO_MULT_25MHZ;
+   \   00009A   BF40FB020000 MOV.W   #0x2fb, 0(R15)
+    168              break;
+    169            }
+    170          }
+   \   0000A0   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine0:
+   \   000000   FD4050000000 MOV.B   #0x50, 0(R13)
+   \   000006   EE430000     MOV.B   #0x2, 0(R14)
+   \   00000A   1001         RETA
+    171          
+    172          
+    173          /**************************************************************************************************
+    174          * @fn      halBoardSetVCoreUp
+    175          *
+    176          * @brief   Tuning Voltage up
+    177          *
+    178          * @param   level: VCORE setting level
+    179          *
+    180          * @return  None
+    181          **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    182          void halBoardSetVCoreUp (uint8 level)
+   \                     halBoardSetVCoreUp:
+    183          {
+    184            PMMCTL0_H = 0xA5;                         /* Open PMM module registers for write access */
+   \   000000   F240A5002101 MOV.B   #0xa5, &0x121
+    185          
+    186            /* Set SVS/M high side to new level */
+    187            SVSMHCTL = (SVSMHCTL & ((SVSHRVL0*3 + SVSMHRRL0) ^ 0xFFFF)) | (SVSHE + SVSHRVL0 * level + SVMHE + SVSMHRRL0 * level);
+   \   000006   4F4C         MOV.B   R12, R15
+   \   000008   0E4F         MOV.W   R15, R14
+   \   00000A                RPT     #0x8
+   \   00000A   47180E5E     RLAX.W  R14
+   \   00000E   0E5F         ADD.W   R15, R14
+   \   000010   3E500044     ADD.W   #0x4400, R14
+   \   000014   1D422401     MOV.W   &0x124, R13
+   \   000018   3DF0FEFC     AND.W   #0xfcfe, R13
+   \   00001C   0DDE         BIS.W   R14, R13
+   \   00001E   824D2401     MOV.W   R13, &0x124
+    188            SVSMLCTL = SVSLE + SVMLE + SVSMLRRL0 * level;  /* Set SVM new Level */
+   \   000022   0D4F         MOV.W   R15, R13
+   \   000024   3D500044     ADD.W   #0x4400, R13
+   \   000028   824D2601     MOV.W   R13, &0x126
+    189            SVSMLCTL = (SVSMLCTL & (SVSMLRRL_3 ^ 0xFFFF)) | (SVMLE + SVSMLRRL0 * level); /* Set SVS/M low side to new level */
+   \   00002C   3F500040     ADD.W   #0x4000, R15
+   \   000030   1D422601     MOV.W   &0x126, R13
+   \   000034   3DF0FCFF     AND.W   #0xfffc, R13
+   \   000038   0DDF         BIS.W   R15, R13
+   \   00003A   824D2601     MOV.W   R13, &0x126
+    190            while ((PMMIFG & SVSMLDLYIFG) == 0);      /* Wait till SVM is settled (Delay) */
+   \                     ??halBoardSetVCoreUp_0:
+   \   00003E   92B32C01     BIT.W   #0x1, &0x12c
+   \   000042   FD2B         JNC     ??halBoardSetVCoreUp_0
+    191            PMMCTL0_L = PMMCOREV0 * level;            /* Set VCore to x */
+   \   000044   C24C2001     MOV.B   R12, &0x120
+    192            PMMIFG &= ((SVMLVLRIFG + SVMLIFG) ^ 0xFFFF);        /* Clear already set flags */
+   \   000048   B2F0F9FF2C01 AND.W   #0xfff9, &0x12c
+    193            if ((PMMIFG & SVMLIFG))
+   \   00004E   A2B32C01     BIT.W   #0x2, &0x12c
+   \   000052   0328         JNC     ??halBoardSetVCoreUp_2
+    194            {
+    195              while ((PMMIFG & SVMLVLRIFG) == 0);     /* Wait till level is reached */
+   \                     ??halBoardSetVCoreUp_1:
+   \   000054   A2B22C01     BIT.W   #0x4, &0x12c
+   \   000058   FD2B         JNC     ??halBoardSetVCoreUp_1
+    196            }
+    197          
+    198            /* Set SVS/M Low side to new level */
+    199            SVSMLCTL = (SVSMLCTL & ~((SVSLRVL0*3 + SVSMLRRL_3) & 0xFFFF)) | (SVSLE + SVSLRVL0 * level + SVMLE + SVSMLRRL0 * level);
+   \                     ??halBoardSetVCoreUp_2:
+   \   00005A   ........     CALLA   #?Subroutine1
+    200            PMMCTL0_H = 0x00;                         /* Lock PMM module registers for write access */
+   \                     ??CrossCallReturnLabel_3:
+   \   00005E   C2432101     MOV.B   #0x0, &0x121
+    201          }
+   \   000062   1001         RETA
+   \   000064                REQUIRE _A_PMMCTL0_L
+   \   000064                REQUIRE _A_SVSMHCTL_L
+   \   000064                REQUIRE _A_SVSMLCTL_L
+   \   000064                REQUIRE _A_PMMIFG_L
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine1:
+   \   000000   1F422601     MOV.W   &0x126, R15
+   \   000004   3FF0FCFC     AND.W   #0xfcfc, R15
+   \   000008   0FDE         BIS.W   R14, R15
+   \   00000A   824F2601     MOV.W   R15, &0x126
+   \   00000E   1001         RETA
+    202          
+    203          
+    204          /**************************************************************************************************
+    205          * @fn      halBoardSetVCoreDown
+    206          *
+    207          * @brief   Tuning Voltage down
+    208          *
+    209          * @param   level: VCORE setting level
+    210          *
+    211          * @return  None
+    212          **************************************************************************************************/
+    213          void halBoardSetVCoreDown (uint8 level)
+    214          {
+    215            PMMCTL0_H = 0xA5;                         /* Open PMM module registers for write access */
+    216            /* Set SVS/M low side to new level */
+    217            SVSMLCTL = (SVSMLCTL & ((SVSLRVL0*3 + SVSMLRRL_3) ^ 0xFFFF)) | (SVSLRVL0 * level + SVMLE + SVSMLRRL0 * level);
+    218            while ((PMMIFG & SVSMLDLYIFG) == 0);      /* Wait till SVM is settled (Delay) */
+    219            PMMCTL0_L = (level * PMMCOREV0);          /* Set VCore to 1.85 V for Max Speed. */
+    220            PMMCTL0_H = 0x00;                         /* Lock PMM module registers for write access */
+    221          }
+    222          
+    223          
+    224          /**************************************************************************************************
+    225          * @fn      halBoardSetVCore
+    226          *
+    227          * @brief   Setting up VCO
+    228          *
+    229          * @param   level: VCORE setting level
+    230          *
+    231          * @return  None
+    232          **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    233          void halBoardSetVCore (uint8 level)
+   \                     halBoardSetVCore:
+    234          {
+   \   000000   1B15         PUSHM.W #0x2, R11
+   \   000002   4B4C         MOV.B   R12, R11
+    235            uint8 actLevel;
+    236          
+    237            do {
+    238              actLevel = PMMCTL0_L & PMMCOREV_3;
+   \                     ??halBoardSetVCore_1:
+   \   000004   5A422001     MOV.B   &0x120, R10
+   \   000008   7AF00300     AND.B   #0x3, R10
+    239              if (actLevel < level)
+   \   00000C   4A9B         CMP.B   R11, R10
+   \   00000E   042C         JC      ??halBoardSetVCore_2
+    240              {
+    241                halBoardSetVCoreUp(++actLevel);       /* Set VCore (step by step) */
+   \   000010   5A53         ADD.B   #0x1, R10
+   \   000012   4C4A         MOV.B   R10, R12
+   \   000014   ........     CALLA   #halBoardSetVCoreUp
+    242              }
+    243              if (actLevel > level)
+   \                     ??halBoardSetVCore_2:
+   \   000018   4B9A         CMP.B   R10, R11
+   \   00001A   142C         JC      ??halBoardSetVCore_3
+    244              {
+    245                halBoardSetVCoreDown(--actLevel);     /* Set VCore (step by step) */
+   \   00001C   7A53         ADD.B   #0xff, R10
+   \   00001E   F240A5002101 MOV.B   #0xa5, &0x121
+   \   000024   4E4A         MOV.B   R10, R14
+   \   000026   0F4E         MOV.W   R14, R15
+   \   000028                RPT     #0x8
+   \   000028   47180F5F     RLAX.W  R15
+   \   00002C   0E5F         ADD.W   R15, R14
+   \   00002E   3E500040     ADD.W   #0x4000, R14
+   \   000032   ........     CALLA   #?Subroutine1
+   \                     ??halBoardSetVCore_0:
+   \   000036   92B32C01     BIT.W   #0x1, &0x12c
+   \   00003A   FD2B         JNC     ??halBoardSetVCore_0
+   \   00003C   C24A2001     MOV.B   R10, &0x120
+   \   000040   C2432101     MOV.B   #0x0, &0x121
+    246              }
+    247            } while (actLevel != level);
+   \                     ??halBoardSetVCore_3:
+   \   000044   4A9B         CMP.B   R11, R10
+   \   000046   DE23         JNE     ??halBoardSetVCore_1
+    248          }
+   \   000048   1A17         POPM.W  #0x2, R11
+   \   00004A   1001         RETA
+   \   00004C                REQUIRE _A_PMMCTL0_L
+   \   00004C                REQUIRE _A_SVSMLCTL_L
+   \   00004C                REQUIRE _A_PMMIFG_L
+    249          
+    250          /**************************************************************************************************
+    251          **************************************************************************************************/
+    252          
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  halBoardGetSystemClockSettings
+       8  halBoardSetSystemClock
+            8 -> halBoardGetSystemClockSettings
+            8 -> halBoardSetVCore
+       8  halBoardSetVCore
+            8 -> halBoardSetVCoreUp
+       4  halBoardSetVCoreUp
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      12  ?Subroutine0
+      16  ?Subroutine1
+       2  _A_PMMCTL0_L
+       2  _A_PMMIFG_L
+       2  _A_SVSMHCTL_L
+       2  _A_SVSMLCTL_L
+       2  _A_UCSCTL0_L
+       2  _A_UCSCTL1_L
+       2  _A_UCSCTL2_L
+       2  _A_UCSCTL4_L
+     162  halBoardGetSystemClockSettings
+      58  halBoardSetSystemClock
+      76  halBoardSetVCore
+     100  halBoardSetVCoreUp
+
+ 
+ 424 bytes in segment CODE
+  16 bytes in segment DATA16_AN
+ 
+ 424 bytes of CODE memory
+   0 bytes of DATA memory (+ 16 bytes shared)
+
+Errors: none
+Warnings: none

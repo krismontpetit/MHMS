@@ -1,0 +1,795 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       18/Apr/2013  16:58:51 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_key.c             #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=0                    #
+#                     -DZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER                   #
+#                     -DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1 -DHAL_UART=1    #
+#                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE             #
+#                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE               #
+#                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE               #
+#                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                  #
+#                     -DZAP_AF_DATA_REQ_FRAG=FALSE                            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_key.c -D          #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER -D                  #
+#                     TVSA_DEVICE_ID=0x0016 -lC "C:\Users\student\Documents\G #
+#                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EX #
+#                     P5438\ZAP Router\List\" -lA                             #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\List\"    #
+#                     --remarks --diag_suppress Pe001,Pe193,Pe236,Pe826 -o    #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP Router\Obj\"     #
+#                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I     #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I         #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\List\hal_key.lst                                 #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Router\Obj\hal_key.r43                                  #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\hal\target\MSP5438ZAP\hal_key.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_key.c
+      3            Revised:        $Date: 2008-06-16 10:34:03 -0700 (Mon, 16 Jun 2008) $
+      4            Revision:       $Revision: 17253 $
+      5          
+      6            Description:    This file contains the interface to the HAL KEY Service.
+      7          
+      8          
+      9            Copyright 2007-2010 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /**************************************************************************************************
+     41           *                                            INCLUDES
+     42           **************************************************************************************************/
+     43          #include "hal_types.h"
+     44          #include "hal_key.h"
+
+   \                                 In  segment DATA16_AN, at 0x200
+   \   union <unnamed> _A_PAIN_L
+   \                     _A_PAIN_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x202
+   \   union <unnamed> _A_PAOUT_L
+   \                     _A_PAOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x204
+   \   union <unnamed> _A_PADIR_L
+   \                     _A_PADIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x206
+   \   union <unnamed> _A_PAREN_L
+   \                     _A_PAREN_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x20a
+   \   union <unnamed> _A_PASEL_L
+   \                     _A_PASEL_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x218
+   \   union <unnamed> _A_PAIES_L
+   \                     _A_PAIES_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x21a
+   \   union <unnamed> _A_PAIE_L
+   \                     _A_PAIE_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x21c
+   \   union <unnamed> _A_PAIFG_L
+   \                     _A_PAIFG_L:
+   \   000000                DS8 2
+     45          #include "osal.h"
+     46          #include "Onboard.h"
+     47          #include "hal_drivers.h"
+     48          #include "hal_mcu.h"
+     49          
+     50          
+     51          /**************************************************************************************************
+     52           *                                            CONSTANTS
+     53           **************************************************************************************************/
+     54          #define HAL_KEY_SW_MASK 0x7F  /* Total of 7 switches - UP, DOWN, LEFT, RIGHT, PUSH, B1, B2 */
+     55          
+     56          
+     57          /**************************************************************************************************
+     58           *                                              MACROS
+     59           **************************************************************************************************/
+     60          
+     61          /* KEYS */
+     62          
+     63          /* Non interrupt key read */
+     64          #define HAL_KEY_KEYS(x)                           \
+     65          {                                                 \
+     66            x  = (HAL_PUSH_BUTTON1() != 0) * HAL_KEY_SW_1;  \
+     67            x |= (HAL_PUSH_BUTTON2() != 0) * HAL_KEY_SW_2;  \
+     68            x |= (HAL_PUSH_BUTTON3() != 0) * HAL_KEY_SW_3;  \
+     69            x |= (HAL_PUSH_BUTTON4() != 0) * HAL_KEY_SW_4;  \
+     70            x |= (HAL_PUSH_BUTTON5() != 0) * HAL_KEY_SW_5;  \
+     71            x |= (HAL_PUSH_BUTTON6() != 0) * HAL_KEY_SW_6;  \
+     72            x |= (HAL_PUSH_BUTTON7() != 0) * HAL_KEY_SW_7;  \
+     73          }
+     74          
+     75          /* Interrupt key read */
+     76          #define HAL_KEY_KEYS_INT       P2IFG
+     77          #define HAL_KEY_KEYS_INT_BIT   0xFE  /* JOY interrupt P2.1:7 */
+     78          
+     79          /* Interrupt key read */
+     80          #define HAL_KEY_INT_KEYS(x)                       \
+     81          {                                                 \
+     82            x  = ((P2IFG & PUSH1_BV) != 0) * HAL_KEY_SW_1;  \
+     83            x |= ((P2IFG & PUSH2_BV) != 0) * HAL_KEY_SW_2;  \
+     84            x |= ((P2IFG & PUSH3_BV) != 0) * HAL_KEY_SW_3;  \
+     85            x |= ((P2IFG & PUSH4_BV) != 0) * HAL_KEY_SW_4;  \
+     86            x |= ((P2IFG & PUSH5_BV) != 0) * HAL_KEY_SW_5;  \
+     87            x |= ((P2IFG & PUSH6_BV) != 0) * HAL_KEY_SW_6;  \
+     88            x |= ((P2IFG & PUSH7_BV) != 0) * HAL_KEY_SW_7;  \
+     89          }
+     90          
+     91          #define HAL_KEY_WAKE_INIT()
+     92          
+     93          /* Rising edge trigger for key */
+     94          #define HAL_KEY_INT_INIT()                       \
+     95          {                                                \
+     96            P2IES &= ~HAL_KEY_KEYS_INT_BIT;                \
+     97            P2SEL &= ~HAL_KEY_KEYS_INT_BIT;                \
+     98            P2DIR &= ~HAL_KEY_KEYS_INT_BIT;                \
+     99            P2REN |= HAL_KEY_KEYS_INT_BIT;                 \
+    100            P2OUT |= HAL_KEY_KEYS_INT_BIT;                 \
+    101          }
+    102          
+    103          // Joystick interrupt on P2.1:7
+    104          #define HAL_ENABLE_KEY_INT()       { P2IE  |= HAL_KEY_KEYS_INT_BIT;     /* Enable Interrupt */           \
+    105                                               P2IES |= HAL_KEY_KEYS_INT_BIT;     /* Interrupt Edge Select H->L */ \
+    106                                               P2IFG &= ~HAL_KEY_KEYS_INT_BIT; }  /* Clear pending interrupt */
+    107          #define HAL_DISABLE_KEY_INT()      { P2IE  &= ~(HAL_KEY_KEYS_INT_BIT);  }  /* Disable int */
+    108          #define HAL_CLEAR_KEY_INT()        { P2IFG &= ~(HAL_KEY_KEYS_INT_BIT);  }  /* Clear pending int */
+    109          
+    110          
+    111          /**************************************************************************************************
+    112           *                                            TYPEDEFS
+    113           **************************************************************************************************/
+    114          
+    115          
+    116          /**************************************************************************************************
+    117           *                                        GLOBAL VARIABLES
+    118           **************************************************************************************************/
+    119          #if (HAL_KEY == TRUE)
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    120          static uint8 halSavedKeys;
+   \                     halSavedKeys:
+   \   000000                DS8 1
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    121          static uint8 halIntKeys;
+   \                     halIntKeys:
+   \   000000                DS8 1
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    122          static halKeyCBack_t pHal_KeyProcessFunction;
+   \                     pHal_KeyProcessFunction:
+   \   000000                DS8 4
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+    123          bool Hal_KeyIntEnable;
+   \                     Hal_KeyIntEnable:
+   \   000000                DS8 1
+    124          #endif /* HAL_KEY */
+    125          
+    126          /**************************************************************************************************
+    127           *                                        EXTERNAL VARIABLES
+    128           **************************************************************************************************/
+    129          
+    130          /**************************************************************************************************
+    131           *                                        FUNCTIONS - API
+    132           **************************************************************************************************/
+    133          
+    134          /**************************************************************************************************
+    135           * @fn      HalKeyInit
+    136           *
+    137           * @brief   Initilize Key Service
+    138           *
+    139           * @param   none
+    140           *
+    141           * @return  None
+    142           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    143          void HalKeyInit( void )
+   \                     HalKeyInit:
+    144          {
+    145          #if (HAL_KEY == TRUE)
+    146            /* Initialize previous key to 0 */
+    147            halSavedKeys = 0;
+   \   000000   C243....     MOV.B   #0x0, &halSavedKeys
+    148          
+    149            /* Initialize callback function */
+    150            pHal_KeyProcessFunction  = NULL;
+   \   000004   8243....     MOV.W   #0x0, &pHal_KeyProcessFunction
+   \   000008   8243....     MOV.W   #0x0, &pHal_KeyProcessFunction + 2
+    151          #endif /* HAL_KEY */
+    152          
+    153          }
+   \   00000C   1001         RETA
+    154          
+    155          /**************************************************************************************************
+    156           * @fn      HalKeyConfig
+    157           *
+    158           * @brief   Configure the Key serivce
+    159           *
+    160           * @param   interruptEnable - TRUE/FALSE, enable/disable interrupt
+    161           *          cback - pointer to the CallBack function
+    162           *
+    163           * @return  None
+    164           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    165          void HalKeyConfig( bool interruptEnable, halKeyCBack_t cback)
+   \                     HalKeyConfig:
+    166          {
+    167          #if (HAL_KEY == TRUE)
+    168            /* Enable/Disable Interrupt or */
+    169            Hal_KeyIntEnable = interruptEnable;
+   \   000000   C24C....     MOV.B   R12, &Hal_KeyIntEnable
+    170          
+    171            /* Register the callback fucntion */
+    172            pHal_KeyProcessFunction = cback;
+   \   000004   824E....     MOV.W   R14, &pHal_KeyProcessFunction
+   \   000008   824F....     MOV.W   R15, &pHal_KeyProcessFunction + 2
+    173          
+    174            /* Initialize GPIO */
+    175            HAL_KEY_INT_INIT();
+   \   00000C   D2F31902     AND.B   #0x1, &0x219
+   \   000010   D2F30B02     AND.B   #0x1, &0x20b
+   \   000014   D2F30502     AND.B   #0x1, &0x205
+   \   000018   7E40FE00     MOV.B   #0xfe, R14
+   \   00001C   C2DE0702     BIS.B   R14, &0x207
+   \   000020   C2DE0302     BIS.B   R14, &0x203
+    176          
+    177            /* Determine if interrupt is enable or not */
+    178            if ( Hal_KeyIntEnable )
+   \   000024   C293....     CMP.B   #0x0, &Hal_KeyIntEnable
+   \   000028   0B24         JEQ     ??HalKeyConfig_0
+    179            {
+    180              /* Enable interrupts */
+    181              HAL_ENABLE_KEY_INT();
+   \   00002A   C2DE1B02     BIS.B   R14, &0x21b
+   \   00002E   C2DE1902     BIS.B   R14, &0x219
+   \   000032   D2F31D02     AND.B   #0x1, &0x21d
+    182          
+    183              /* Cancel polling if there is one active */
+    184              osal_stop_timerEx(Hal_TaskID, HAL_KEY_EVENT);
+   \   000036   1D43         MOV.W   #0x1, R13
+   \   000038   5C42....     MOV.B   &Hal_TaskID, R12
+   \   00003C   ........     BRA     #osal_stop_timerEx
+    185            }
+    186            else
+    187            {
+    188              /* Disable interrupts */
+    189              HAL_DISABLE_KEY_INT();
+   \                     ??HalKeyConfig_0:
+   \   000040   D2F31B02     AND.B   #0x1, &0x21b
+    190          
+    191              /* Start polling */
+    192              osal_set_event(Hal_TaskID, HAL_KEY_EVENT);
+   \   000044   1D43         MOV.W   #0x1, R13
+   \   000046   5C42....     MOV.B   &Hal_TaskID, R12
+   \   00004A   ........     BRA     #osal_set_event
+   \   00004E                REQUIRE _A_PAIES_L
+   \   00004E                REQUIRE _A_PASEL_L
+   \   00004E                REQUIRE _A_PADIR_L
+   \   00004E                REQUIRE _A_PAREN_L
+   \   00004E                REQUIRE _A_PAOUT_L
+   \   00004E                REQUIRE _A_PAIE_L
+   \   00004E                REQUIRE _A_PAIFG_L
+    193            }
+    194          #endif /* HAL_KEY */
+    195          }
+    196          
+    197          /**************************************************************************************************
+    198           * @fn      HalKeyRead
+    199           *
+    200           * @brief   Read the current value of a key
+    201           *
+    202           * @param   None
+    203           *
+    204           * @return  keys - current keys status
+    205           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    206          uint8 HalKeyRead( void )
+   \                     HalKeyRead:
+    207          {
+   \   000000   5B15         PUSHM.W #0x6, R11
+    208            uint8 keys = 0;
+    209          
+    210          #if (HAL_KEY == TRUE)
+    211            if (!Hal_KeyIntEnable)
+   \   000002   C293....     CMP.B   #0x0, &Hal_KeyIntEnable
+   \   000006   0320         JNE     ??HalKeyRead_0
+    212            {
+    213              HAL_KEY_KEYS (keys);
+   \   000008   ........     CALLA   #?Subroutine0
+    214            }
+   \                     ??CrossCallReturnLabel_1:
+   \   00000C   303C         JMP     ??HalKeyRead_1
+    215            else
+    216            {
+    217              HAL_KEY_INT_KEYS (keys);
+   \                     ??HalKeyRead_0:
+   \   00000E   3B401D02     MOV.W   #0x21d, R11
+   \   000012   6D4B         MOV.B   @R11, R13
+   \   000014   6A4B         MOV.B   @R11, R10
+   \   000016   684B         MOV.B   @R11, R8
+   \   000018   694B         MOV.B   @R11, R9
+   \   00001A   664B         MOV.B   @R11, R6
+   \   00001C   6F4B         MOV.B   @R11, R15
+   \   00001E   6E4B         MOV.B   @R11, R14
+   \   000020   7DB01000     BIT.B   #0x10, R13
+   \   000024   4C7C         SUBC.B  R12, R12
+   \   000026   5C53         ADD.B   #0x1, R12
+   \   000028   6AB2         BIT.B   #0x4, R10
+   \   00002A   4777         SUBC.B  R7, R7
+   \   00002C   5753         ADD.B   #0x1, R7
+   \   00002E   78B02000     BIT.B   #0x20, R8
+   \   000032   4D7D         SUBC.B  R13, R13
+   \   000034   5D53         ADD.B   #0x1, R13
+   \   000036   69B3         BIT.B   #0x2, R9
+   \   000038   4A7A         SUBC.B  R10, R10
+   \   00003A   5A53         ADD.B   #0x1, R10
+   \   00003C   76B2         BIT.B   #0x8, R6
+   \   00003E   4B7B         SUBC.B  R11, R11
+   \   000040   5B53         ADD.B   #0x1, R11
+   \   000042   7FB04000     BIT.B   #0x40, R15
+   \   000046   4F7F         SUBC.B  R15, R15
+   \   000048   5F53         ADD.B   #0x1, R15
+   \   00004A   5E03         RRUM.W  #0x1, R14
+   \   00004C   7EF04000     AND.B   #0x40, R14
+   \   000050                RPT     #0x5
+   \   000050   44184F5F     RLAX.B  R15
+   \   000054                RPT     #0x2
+   \   000054   41184B5B     RLAX.B  R11
+   \   000058                RPT     #0x3
+   \   000058   42184A5A     RLAX.B  R10
+   \   00005C                RPT     #0x4
+   \   00005C   43184D5D     RLAX.B  R13
+   \   000060   4757         RLA.B   R7
+   \   000062   4CD7         BIS.B   R7, R12
+   \   000064   4CDD         BIS.B   R13, R12
+   \   000066   4CDA         BIS.B   R10, R12
+   \   000068   4CDB         BIS.B   R11, R12
+   \   00006A   4CDF         BIS.B   R15, R12
+   \   00006C   4CDE         BIS.B   R14, R12
+    218            }
+    219          #endif /* HAL_KEY */
+    220          
+    221            return keys;
+   \                     ??HalKeyRead_1:
+   \   00006E   5617         POPM.W  #0x6, R11
+   \   000070   1001         RETA
+   \   000072                REQUIRE _A_PAIN_L
+   \   000072                REQUIRE _A_PAIFG_L
+    222          }
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine0:
+   \   000000   3F400102     MOV.W   #0x201, R15
+   \   000004   6D4F         MOV.B   @R15, R13
+   \   000006   6A4F         MOV.B   @R15, R10
+   \   000008   6B4F         MOV.B   @R15, R11
+   \   00000A   684F         MOV.B   @R15, R8
+   \   00000C   694F         MOV.B   @R15, R9
+   \   00000E   6E4F         MOV.B   @R15, R14
+   \   000010   6F4F         MOV.B   @R15, R15
+   \   000012   7DB01000     BIT.B   #0x10, R13
+   \   000016   4C7C         SUBC.B  R12, R12
+   \   000018   5CF3         AND.B   #0x1, R12
+   \   00001A   6AB2         BIT.B   #0x4, R10
+   \   00001C   4D7D         SUBC.B  R13, R13
+   \   00001E   5DF3         AND.B   #0x1, R13
+   \   000020   7BB02000     BIT.B   #0x20, R11
+   \   000024   4A7A         SUBC.B  R10, R10
+   \   000026   5AF3         AND.B   #0x1, R10
+   \   000028   68B3         BIT.B   #0x2, R8
+   \   00002A   4B7B         SUBC.B  R11, R11
+   \   00002C   5BF3         AND.B   #0x1, R11
+   \   00002E   79B2         BIT.B   #0x8, R9
+   \   000030   4878         SUBC.B  R8, R8
+   \   000032   58F3         AND.B   #0x1, R8
+   \   000034   7EB04000     BIT.B   #0x40, R14
+   \   000038   4E7E         SUBC.B  R14, R14
+   \   00003A   5EF3         AND.B   #0x1, R14
+   \   00003C   7FB08000     BIT.B   #0x80, R15
+   \   000040   4F7F         SUBC.B  R15, R15
+   \   000042   5FF3         AND.B   #0x1, R15
+   \   000044                RPT     #0x6
+   \   000044   45184F5F     RLAX.B  R15
+   \   000048                RPT     #0x5
+   \   000048   44184E5E     RLAX.B  R14
+   \   00004C                RPT     #0x2
+   \   00004C   41184858     RLAX.B  R8
+   \   000050                RPT     #0x3
+   \   000050   42184B5B     RLAX.B  R11
+   \   000054                RPT     #0x4
+   \   000054   43184A5A     RLAX.B  R10
+   \   000058   4D5D         RLA.B   R13
+   \   00005A   4CDD         BIS.B   R13, R12
+   \   00005C   4CDA         BIS.B   R10, R12
+   \   00005E   4CDB         BIS.B   R11, R12
+   \   000060   4CD8         BIS.B   R8, R12
+   \   000062   4CDE         BIS.B   R14, R12
+   \   000064   4CDF         BIS.B   R15, R12
+   \   000066   1001         RETA
+    223          
+    224          /**************************************************************************************************
+    225           * @fn      HalKeyPoll
+    226           *
+    227           * @brief   Send call back if key(s) is pressed
+    228           *
+    229           * @param   None
+    230           *
+    231           * @return  None
+    232           **************************************************************************************************/
+
+   \                                 In  segment CODE, align 2
+    233          void HalKeyPoll( void )
+   \                     HalKeyPoll:
+    234          {
+   \   000000   3B15         PUSHM.W #0x4, R11
+    235          #if (HAL_KEY == TRUE)
+    236            uint8 keys = 0;
+    237          
+    238            /* if polling is using */
+    239            if (!Hal_KeyIntEnable)
+   \   000002   C293....     CMP.B   #0x0, &Hal_KeyIntEnable
+   \   000006   0820         JNE     ??HalKeyPoll_0
+    240            {
+    241              /* Get keys */
+    242              HAL_KEY_KEYS (keys);
+   \   000008   ........     CALLA   #?Subroutine0
+    243          
+    244              /* If same as before, no keys */
+    245              if ( keys == halSavedKeys )
+   \                     ??CrossCallReturnLabel_0:
+   \   00000C   5C92....     CMP.B   &halSavedKeys, R12
+   \   000010   1424         JEQ     ??HalKeyPoll_1
+    246                return;
+    247          
+    248              /* Store the current keys for comparation next time */
+    249              halSavedKeys = keys;
+   \   000012   C24C....     MOV.B   R12, &halSavedKeys
+   \   000016   023C         JMP     ??HalKeyPoll_2
+    250          
+    251            }
+    252            else
+    253            {
+    254              /* Keys are read in ISR */
+    255              keys = halIntKeys;
+   \                     ??HalKeyPoll_0:
+   \   000018   5C42....     MOV.B   &halIntKeys, R12
+    256            }
+    257          
+    258            /* If it's not SW, return */
+    259            if ( !(keys & HAL_KEY_SW_MASK) )
+   \                     ??HalKeyPoll_2:
+   \   00001C   7CB07F00     BIT.B   #0x7f, R12
+   \   000020   0C24         JEQ     ??HalKeyPoll_1
+    260              return;
+    261          
+    262            /* Callback */
+    263            if (pHal_KeyProcessFunction)
+   \   000022   1F42....     MOV.W   &pHal_KeyProcessFunction, R15
+   \   000026   1FD2....     BIS.W   &pHal_KeyProcessFunction + 2, R15
+   \   00002A   0F93         CMP.W   #0x0, R15
+   \   00002C   0624         JEQ     ??HalKeyPoll_1
+    264              (pHal_KeyProcessFunction) (keys, ((keys & HAL_KEY_SW_6) ? HAL_KEY_STATE_SHIFT : HAL_KEY_STATE_NORMAL));
+   \   00002E   7CB02000     BIT.B   #0x20, R12
+   \   000032   4D7D         SUBC.B  R13, R13
+   \   000034   5D53         ADD.B   #0x1, R13
+   \   000036   ........     CALLA   &pHal_KeyProcessFunction
+   \                     ??HalKeyPoll_1:
+   \   00003A   3817         POPM.W  #0x4, R11
+   \   00003C   1001         RETA
+   \   00003E                REQUIRE _A_PAIN_L
+    265          
+    266          #endif /* HAL_KEY */
+    267          }
+    268          
+    269          #ifdef POWER_SAVING
+    270          /**************************************************************************************************
+    271           * @fn      HalKeyEnterSleep
+    272           *
+    273           * @brief  - Get called to enter sleep mode
+    274           *
+    275           * @param
+    276           *
+    277           * @return
+    278           **************************************************************************************************/
+    279          void HalKeyEnterSleep ( void )
+    280          {
+    281            /* nothing to do */
+    282          }
+    283          
+    284          /**************************************************************************************************
+    285           * @fn      HalKeyExitSleep
+    286           *
+    287           * @brief   - Get called when sleep is over
+    288           *
+    289           * @param
+    290           *
+    291           * @return  - keys
+    292           **************************************************************************************************/
+    293          uint8 HalKeyExitSleep ( void )
+    294          {
+    295            uint8 keys = 0;
+    296          
+    297            /* Get keys */
+    298            if (!Hal_KeyIntEnable)
+    299            {
+    300              HAL_KEY_KEYS (keys);
+    301            }
+    302            else
+    303            {
+    304              HAL_KEY_INT_KEYS (keys);
+    305            }
+    306            return ( keys );
+    307          }
+    308          #endif /* POWER_SAVING */
+    309          /**************************************************************************************************
+    310           * @fn      INTERRUPT_KEYBD
+    311           *
+    312           * @brief   Interrupt Service Routine for keyboard
+    313           *
+    314           * @param   None
+    315           *
+    316           * @return  None
+    317           **************************************************************************************************/
+
+   \                                 In  segment ISR_CODE, align 2
+    318          INTERRUPT_KEYBD()
+   \                     halBoardPort1Isr:
+    319          {
+   \   000000   7F15         PUSHM.W #0x8, R15
+    320          #if (HAL_KEY == TRUE)
+    321          
+    322          #ifdef POWER_SAVING
+    323            /* Must allow key interrupt to cancel sleep */
+    324            __low_power_mode_off_on_exit();
+    325          #endif
+    326          
+    327            /* Read the key before it gone */
+    328            HAL_KEY_INT_KEYS(halIntKeys);
+   \   000002   3F401D02     MOV.W   #0x21d, R15
+   \   000006   6D4F         MOV.B   @R15, R13
+   \   000008   6C4F         MOV.B   @R15, R12
+   \   00000A   6A4F         MOV.B   @R15, R10
+   \   00000C   6B4F         MOV.B   @R15, R11
+   \   00000E   684F         MOV.B   @R15, R8
+   \   000010   6E4F         MOV.B   @R15, R14
+   \   000012   6F4F         MOV.B   @R15, R15
+   \   000014   7DB01000     BIT.B   #0x10, R13
+   \   000018   4D7D         SUBC.B  R13, R13
+   \   00001A   5D53         ADD.B   #0x1, R13
+   \   00001C   6CB2         BIT.B   #0x4, R12
+   \   00001E   4C7C         SUBC.B  R12, R12
+   \   000020   5C53         ADD.B   #0x1, R12
+   \   000022   7AB02000     BIT.B   #0x20, R10
+   \   000026   4A7A         SUBC.B  R10, R10
+   \   000028   5A53         ADD.B   #0x1, R10
+   \   00002A   6BB3         BIT.B   #0x2, R11
+   \   00002C   4B7B         SUBC.B  R11, R11
+   \   00002E   5B53         ADD.B   #0x1, R11
+   \   000030   78B2         BIT.B   #0x8, R8
+   \   000032   4878         SUBC.B  R8, R8
+   \   000034   5853         ADD.B   #0x1, R8
+   \   000036   7EB04000     BIT.B   #0x40, R14
+   \   00003A   4E7E         SUBC.B  R14, R14
+   \   00003C   5E53         ADD.B   #0x1, R14
+   \   00003E   5F03         RRUM.W  #0x1, R15
+   \   000040   7FF04000     AND.B   #0x40, R15
+   \   000044                RPT     #0x5
+   \   000044   44184E5E     RLAX.B  R14
+   \   000048                RPT     #0x2
+   \   000048   41184858     RLAX.B  R8
+   \   00004C                RPT     #0x3
+   \   00004C   42184B5B     RLAX.B  R11
+   \   000050                RPT     #0x4
+   \   000050   43184A5A     RLAX.B  R10
+   \   000054   4C5C         RLA.B   R12
+   \   000056   4DDC         BIS.B   R12, R13
+   \   000058   4DDA         BIS.B   R10, R13
+   \   00005A   4DDB         BIS.B   R11, R13
+   \   00005C   4DD8         BIS.B   R8, R13
+   \   00005E   4DDE         BIS.B   R14, R13
+   \   000060   4DDF         BIS.B   R15, R13
+   \   000062   C24D....     MOV.B   R13, &halIntKeys
+    329          
+    330            /* Clear depending interrupt */
+    331            HAL_CLEAR_KEY_INT();
+   \   000066   D2F31D02     AND.B   #0x1, &0x21d
+    332          
+    333            /* A key is pressed, let HalKeyPoll routing handle the keys at a later time */
+    334            osal_start_timerEx( Hal_TaskID, HAL_KEY_EVENT, 100 );
+   \   00006A   3E406400     MOV.W   #0x64, R14
+   \   00006E   1D43         MOV.W   #0x1, R13
+   \   000070   5C42....     MOV.B   &Hal_TaskID, R12
+   \   000074   ........     CALLA   #osal_start_timerEx
+    335          #endif /* HAL_KEY */
+    336          }
+   \   000078   7817         POPM.W  #0x8, R15
+   \   00007A   0013         RETI
+   \   00007C                REQUIRE _A_PAIFG_L
+
+   \                                 In  segment INTVEC, offset 0x54, root
+   \                     `??halBoardPort1Isr??INTVEC 84`:
+   \   000054   ....         DC16    halBoardPort1Isr
+    337          
+    338          /**************************************************************************************************
+    339          **************************************************************************************************/
+    340          
+    341          
+    342          
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  HalKeyConfig
+             4 -> osal_set_event
+             4 -> osal_stop_timerEx
+       4  HalKeyInit
+      12  HalKeyPoll
+            12 -- Indirect call
+      16  HalKeyRead
+      20  halBoardPort1Isr
+            20 -> osal_start_timerEx
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  ??halBoardPort1Isr??INTVEC 84
+     104  ?Subroutine0
+      78  HalKeyConfig
+      14  HalKeyInit
+      62  HalKeyPoll
+     114  HalKeyRead
+       1  Hal_KeyIntEnable
+       2  _A_PADIR_L
+       2  _A_PAIES_L
+       2  _A_PAIE_L
+       2  _A_PAIFG_L
+       2  _A_PAIN_L
+       2  _A_PAOUT_L
+       2  _A_PAREN_L
+       2  _A_PASEL_L
+     124  halBoardPort1Isr
+       1  halIntKeys
+       1  halSavedKeys
+       4  pHal_KeyProcessFunction
+
+ 
+ 372 bytes in segment CODE
+  16 bytes in segment DATA16_AN
+   7 bytes in segment DATA16_Z
+   2 bytes in segment INTVEC
+ 124 bytes in segment ISR_CODE
+ 
+ 496 bytes of CODE  memory
+   0 bytes of CONST memory (+  2 bytes shared)
+   7 bytes of DATA  memory (+ 16 bytes shared)
+
+Errors: none
+Warnings: none
