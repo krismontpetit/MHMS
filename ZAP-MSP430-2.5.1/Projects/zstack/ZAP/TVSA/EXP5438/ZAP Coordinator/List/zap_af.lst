@@ -1,0 +1,1398 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       19/Apr/2013  11:09:27 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\Source\zap_af.c                    #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DTVSA_DEVICE_ID=0x0016 -DZAP_PHY_SPI=1             #
+#                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE    #
+#                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                  #
+#                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE               #
+#                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE            #
+#                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\Source\zap_af.c -D                 #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_COORDINATOR -D             #
+#                     TVSA_DEVICE_ID=0x0016 -D TVSA_DONGLE=1 -D HAL_UART=1    #
+#                     -lC "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP              #
+#                     Coordinator\List\" -lA "C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\ZAP Coordinator\List\" --remarks --diag_suppress     #
+#                     Pe001,Pe193,Pe236,Pe826 -o                              #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                  #
+#                     Coordinator\Obj\" --debug -D__MSP430F5438A__ -e         #
+#                     --double=32 --clib -I C:\Users\student\Documents\GitHub #
+#                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 #
+#                     \ -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I    #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\List\zap_af.lst                             #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\Obj\zap_af.r43                              #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\Source\zap_af.c
+      1          /**************************************************************************************************
+      2            Filename:       zap_af.c
+      3            Revised:        $Date: 2010-12-08 15:53:16 -0800 (Wed, 08 Dec 2010) $
+      4            Revision:       $Revision: 24583 $
+      5          
+      6            Description:
+      7          
+      8            This file defines the ZNP Application Processor API to the ZNP AF layer.
+      9          
+     10            
+     11            Copyright 2009-2010 Texas Instruments Incorporated. All rights reserved.
+     12          
+     13            IMPORTANT: Your use of this Software is limited to those specific rights
+     14            granted under the terms of a software license agreement between the user
+     15            who downloaded the software, his/her employer (which must be your employer)
+     16            and Texas Instruments Incorporated (the "License").  You may not use this
+     17            Software unless you agree to abide by the terms of the License. The License
+     18            limits your use, and you acknowledge, that the Software may not be modified,
+     19            copied or distributed unless embedded on a Texas Instruments microcontroller
+     20            or used solely and exclusively in conjunction with a Texas Instruments radio
+     21            frequency transceiver, which is integrated into your product.  Other than for
+     22            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     23            works of, modify, distribute, perform, display or sell this Software and/or
+     24            its documentation for any purpose.
+     25          
+     26            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     27            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     28            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     29            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     30            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     31            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     32            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     33            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     34            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     35            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     36            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     37          
+     38            Should you have any questions regarding your right to use this Software,
+     39            contact Texas Instruments Incorporated at www.TI.com.
+     40          
+     41          **************************************************************************************************/
+     42          
+     43          /* ------------------------------------------------------------------------------------------------
+     44           *                                          Includes
+     45           * ------------------------------------------------------------------------------------------------
+     46           */
+     47          
+     48          #include "af.h"
+     49          #include "mt.h"
+     50          #include "mt_rpc.h"
+     51          #include "zap_app.h"
+     52          #include "zap_phy.h"
+     53          #include "zap_znp.h"
+     54          
+     55          #if defined (ZAP_AF_FUNC)
+     56          /* ------------------------------------------------------------------------------------------------
+     57           *                                           Constants
+     58           * ------------------------------------------------------------------------------------------------
+     59           */
+     60          
+     61          /* ------------------------------------------------------------------------------------------------
+     62           *                                           Macros
+     63           * ------------------------------------------------------------------------------------------------
+     64           */
+     65          
+     66          /* ------------------------------------------------------------------------------------------------
+     67           *                                           Global Variables
+     68           * ------------------------------------------------------------------------------------------------
+     69           */
+     70          
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+     71          epList_t *epList;
+   \                     epList:
+   \   000000                DS8 2
+     72          
+     73          /* ------------------------------------------------------------------------------------------------
+     74           *                                           Local Variables
+     75           * ------------------------------------------------------------------------------------------------
+     76           */
+     77          
+     78          /* ------------------------------------------------------------------------------------------------
+     79           *                                           Local Functions
+     80           * ------------------------------------------------------------------------------------------------
+     81           */
+     82          
+     83          #if ZAP_AF_DATA_REQ_FRAG
+     84          static afStatus_t afStore(uint8 *buf, uint16 len);
+     85          #endif
+     86          static void afCnf(uint8 *pBuf);
+     87          static epList_t *afFindEndPointDescList(uint8 EndPoint);
+     88          static void afRecv(uint8 *pBuf);
+     89          static uint8 *afIncMsgPktParse(uint8 cmd1, uint8 *pBuf, afIncomingMSGPacket_t *pMsg);
+     90          #if ZAP_AF_DATA_REQ_FRAG
+     91          static void afRetrieve(uint8 taskId, afIncomingMSGPacket_t *pMsg);
+     92          #endif
+     93          
+     94          /**************************************************************************************************
+     95           * @fn          zapAfProcessIncoming
+     96           *
+     97           * @brief       This function processes the AF sub-system response from the ZNP.
+     98           *
+     99           * input parameters
+    100           *
+    101           * @param       port - Port Id corresponding to the ZNP that sent the message.
+    102           * @param       pBuf - A pointer to the RPC response.
+    103           *
+    104           * output parameters
+    105           *
+    106           * None.
+    107           *
+    108           * @return      None.
+    109           **************************************************************************************************
+    110           */
+
+   \                                 In  segment CODE, align 2
+    111          void zapAfProcessIncoming(uint8 port, uint8 *pBuf)
+   \                     zapAfProcessIncoming:
+    112          {
+    113            switch (pBuf[MT_RPC_POS_CMD1])
+   \   000000   5E4D0200     MOV.B   0x2(R13), R14
+   \   000004   7E808000     SUB.B   #0x80, R14
+   \   000008   0524         JEQ     ??zapAfProcessIncoming_0
+   \   00000A   5E83         SUB.B   #0x1, R14
+   \   00000C   0624         JEQ     ??zapAfProcessIncoming_1
+   \   00000E   5E83         SUB.B   #0x1, R14
+   \   000010   0424         JEQ     ??zapAfProcessIncoming_1
+   \   000012   1001         RETA
+    114            {
+    115            case MT_AF_DATA_CONFIRM:
+    116              afCnf(pBuf);
+   \                     ??zapAfProcessIncoming_0:
+   \   000014   0C4D         MOV.W   R13, R12
+   \   000016   ........     BRA     #afCnf
+    117              break;
+    118          
+    119            case MT_AF_INCOMING_MSG:
+    120            case MT_AF_INCOMING_MSG_EXT:
+    121              afRecv(pBuf);
+   \                     ??zapAfProcessIncoming_1:
+   \   00001A   0C4D         MOV.W   R13, R12
+   \   00001C   ........     BRA     #afRecv
+    122              break;
+    123          
+    124            default:
+    125              break;
+    126            }
+    127          }
+    128          
+    129          /**************************************************************************************************
+    130           * @fn          zapAfSync
+    131           *
+    132           * @brief       This function syncs the AF registered endpoints (which are not NV restored on ZNP.)
+    133           *
+    134           * input parameters
+    135           *
+    136           * None.
+    137           *
+    138           * output parameters
+    139           *
+    140           * None.
+    141           *
+    142           * @return      None.
+    143           **************************************************************************************************
+    144           */
+
+   \                                 In  segment CODE, align 2
+    145          void zapAfSync(void)
+   \                     zapAfSync:
+    146          {
+   \   000000   0A12         PUSH.W  R10
+    147            epList_t *epSync = epList;
+   \   000002   1A42....     MOV.W   &epList, R10
+   \   000006   1A3C         JMP     ??zapAfSync_1
+    148          
+    149            while (epSync)
+    150            {
+    151              if ((epSync->epDesc->simpleDesc != NULL) && !znp_afRegisterExtended(epSync->epDesc))
+   \                     ??zapAfSync_0:
+   \   000008   1C4A0200     MOV.W   0x2(R10), R12
+   \   00000C   8C930400     CMP.W   #0x0, 0x4(R12)
+   \   000010   1424         JEQ     ??zapAfSync_2
+   \   000012   ........     CALLA   #znp_afRegisterExtended
+   \   000016   4C93         CMP.B   #0x0, R12
+   \   000018   1020         JNE     ??zapAfSync_2
+    152              {
+    153                // Especially for UART transport, allow time for multiple got syncs before acting on it.
+    154                if (ZSuccess != osal_start_timerEx(zapTaskId, ZAP_APP_SYNC_EVT, ZAP_APP_SYNC_DLY))
+   \   00001A   3E406400     MOV.W   #0x64, R14
+   \   00001E   3D400008     MOV.W   #0x800, R13
+   \   000022   5C42....     MOV.B   &zapTaskId, R12
+   \   000026   ........     CALLA   #osal_start_timerEx
+   \   00002A   4C93         CMP.B   #0x0, R12
+   \   00002C   0624         JEQ     ??zapAfSync_2
+    155                {
+    156                  (void)osal_set_event(zapTaskId, ZAP_APP_SYNC_EVT);
+   \   00002E   3D400008     MOV.W   #0x800, R13
+   \   000032   5C42....     MOV.B   &zapTaskId, R12
+   \   000036   ........     CALLA   #osal_set_event
+    157                }
+    158              }
+    159              epSync = epSync->nextDesc;
+   \                     ??zapAfSync_2:
+   \   00003A   2A4A         MOV.W   @R10, R10
+    160            }
+   \                     ??zapAfSync_1:
+   \   00003C   0A93         CMP.W   #0x0, R10
+   \   00003E   E423         JNE     ??zapAfSync_0
+    161          #if defined INTER_PAN
+    162            zapStubAPS_Sync();
+    163          #endif
+    164          }
+   \   000040   3A41         POP.W   R10
+   \   000042   1001         RETA
+    165          
+    166          /**************************************************************************************************
+    167           * @fn      afRegisterExtended
+    168           *
+    169           * @brief   Register an Application's EndPoint description.
+    170           *
+    171           * input parameters
+    172           *
+    173           * @param   epDesc - pointer to the Application's endpoint descriptor.
+    174           *                   NOTE: The memory that epDesc is pointing to must persist after this call.
+    175           * @param   descFn - pointer to descriptor callback function - only NULL supported on ZAP.
+    176           *
+    177           * output parameters
+    178           *
+    179           * None.
+    180           *
+    181           * @return  Pointer to epList_t on success, NULL otherwise.
+    182           **************************************************************************************************
+    183           */
+
+   \                                 In  segment CODE, align 2
+    184          epList_t *afRegisterExtended( endPointDesc_t *epDesc, pDescCB descFn )
+   \                     afRegisterExtended:
+    185          {
+   \   000000   3B15         PUSHM.W #0x4, R11
+   \   000002   084C         MOV.W   R12, R8
+   \   000004   0A4E         MOV.W   R14, R10
+   \   000006   0B4F         MOV.W   R15, R11
+    186            epList_t *ep;
+    187            epList_t *epSearch;
+    188          
+    189            ep = osal_mem_alloc( sizeof ( epList_t ) );
+   \   000008   3C400C00     MOV.W   #0xc, R12
+   \   00000C   ........     CALLA   #osal_mem_alloc
+   \   000010   094C         MOV.W   R12, R9
+    190            if ( ep )
+   \   000012   0C93         CMP.W   #0x0, R12
+   \   000014   2124         JEQ     ??afRegisterExtended_3
+    191            {
+    192              // Fill in the new list entry
+    193              ep->epDesc = epDesc;
+   \   000016   8C480200     MOV.W   R8, 0x2(R12)
+    194          
+    195              // Default to allow Match Descriptor.
+    196              ep->flags = eEP_AllowMatch;
+   \   00001A   DC430A00     MOV.B   #0x1, 0xa(R12)
+    197              ep->pfnDescCB = descFn;
+   \   00001E   8C4A0400     MOV.W   R10, 0x4(R12)
+   \   000022   8C4B0600     MOV.W   R11, 0x6(R12)
+    198              ep->nextDesc = NULL;
+   \   000026   8C430000     MOV.W   #0x0, 0(R12)
+    199          
+    200              // Does a list exist?
+    201              if ( epList == NULL )
+   \   00002A   1F42....     MOV.W   &epList, R15
+   \   00002E   0F93         CMP.W   #0x0, R15
+   \   000030   0420         JNE     ??afRegisterExtended_2
+    202                epList = ep;  // Make this the first entry
+   \   000032   824C....     MOV.W   R12, &epList
+   \   000036   063C         JMP     ??afRegisterExtended_4
+    203              else
+    204              {
+    205                // Look for the end of the list
+    206                epSearch = epList;
+    207                while( epSearch->nextDesc != NULL )
+    208                  epSearch = epSearch->nextDesc;
+   \                     ??afRegisterExtended_0:
+   \   000038   0F4B         MOV.W   R11, R15
+   \                     ??afRegisterExtended_2:
+   \   00003A   2B4F         MOV.W   @R15, R11
+   \   00003C   0B93         CMP.W   #0x0, R11
+   \   00003E   FC23         JNE     ??afRegisterExtended_0
+    209          
+    210                // Add new entry to end of list
+    211                epSearch->nextDesc = ep;
+   \   000040   8F4C0000     MOV.W   R12, 0(R15)
+    212              }
+    213          
+    214              if ((epDesc->simpleDesc != NULL) && !znp_afRegisterExtended(epDesc))
+   \                     ??afRegisterExtended_4:
+   \   000044   88930400     CMP.W   #0x0, 0x4(R8)
+   \   000048   0724         JEQ     ??afRegisterExtended_3
+   \   00004A   0C48         MOV.W   R8, R12
+   \   00004C   ........     CALLA   #znp_afRegisterExtended
+   \   000050   4C93         CMP.B   #0x0, R12
+   \   000052   0220         JNE     ??afRegisterExtended_3
+    215              {
+    216                return NULL;
+   \   000054   0C43         MOV.W   #0x0, R12
+   \   000056   013C         JMP     ??afRegisterExtended_5
+    217              }
+    218            }
+    219          
+    220            return ep;
+   \                     ??afRegisterExtended_3:
+   \   000058   0C49         MOV.W   R9, R12
+   \                     ??afRegisterExtended_5:
+   \   00005A   3817         POPM.W  #0x4, R11
+   \   00005C   1001         RETA
+    221          }
+    222          
+    223          /**************************************************************************************************
+    224           * @fn      afRegister
+    225           *
+    226           * @brief   Register an Application's EndPoint description.
+    227           *
+    228           * input parameters
+    229           *
+    230           * @param   epDesc - pointer to the Application's endpoint descriptor.
+    231           *
+    232           * output parameters
+    233           *
+    234           * None.
+    235           *
+    236           * @return  afStatus_SUCCESS - Registered
+    237           *          afStatus_MEM_FAIL - not enough memory to add descriptor
+    238           *          afStatus_INVALID_PARAMETER - duplicate endpoint
+    239           **************************************************************************************************
+    240           */
+
+   \                                 In  segment CODE, align 2
+    241          afStatus_t afRegister(endPointDesc_t *epDesc)
+   \                     afRegister:
+    242          {
+   \   000000   0D4C         MOV.W   R12, R13
+    243            epList_t *ep;
+    244            
+    245            // Look for duplicate endpoint
+    246            if ( afFindEndPointDescList( epDesc->endPoint ) )
+   \   000002   6C4D         MOV.B   @R13, R12
+   \   000004   ........     CALLA   #afFindEndPointDescList
+   \   000008   0C93         CMP.W   #0x0, R12
+   \   00000A   0224         JEQ     ??afRegister_1
+    247              return ( afStatus_INVALID_PARAMETER );
+   \   00000C   6C43         MOV.B   #0x2, R12
+   \   00000E   1001         RETA
+    248            
+    249            ep = afRegisterExtended( epDesc, NULL );
+    250          
+    251            return ((ep == NULL) ? afStatus_MEM_FAIL : afStatus_SUCCESS);
+   \                     ??afRegister_1:
+   \   000010   0E43         MOV.W   #0x0, R14
+   \   000012   0F43         MOV.W   #0x0, R15
+   \   000014   0C4D         MOV.W   R13, R12
+   \   000016   ........     CALLA   #afRegisterExtended
+   \   00001A   0C93         CMP.W   #0x0, R12
+   \   00001C   0224         JEQ     ??afRegister_2
+   \   00001E   4C43         MOV.B   #0x0, R12
+   \   000020   1001         RETA
+   \                     ??afRegister_2:
+   \   000022   7C401000     MOV.B   #0x10, R12
+   \   000026   1001         RETA
+    252          }
+    253          
+    254          /**************************************************************************************************
+    255           * @fn      AF_DataRequest
+    256           *
+    257           * @brief   API definition to invoke AF_DataRequest on the ZNP.
+    258           *
+    259           * input parameters
+    260           *
+    261           * @param  *dstAddr - Full ZB destination address: Nwk Addr + End Point.
+    262           * @param  *srcEP - Origination (i.e. respond to or ack to) End Point Descr.
+    263           * @param   cID - A valid cluster ID as specified by the Profile.
+    264           * @param   len - Number of bytes of data pointed to by next param.
+    265           * @param  *buf - A pointer to the data bytes to send.
+    266           * @param  *transID - A pointer to a byte which can be modified and which will
+    267           *                    be used as the transaction sequence number of the msg.
+    268           * @param   options - Valid bit mask of Tx options.
+    269           * @param   radius - Normally set to AF_DEFAULT_RADIUS.
+    270           *
+    271           * output parameters
+    272           *
+    273           * @param  *transID - Incremented by one if the return value is success.
+    274           *
+    275           * @return  afStatus_t per declaration.
+    276           **************************************************************************************************
+    277           */
+
+   \                                 In  segment CODE, align 2
+    278          afStatus_t AF_DataRequest(afAddrType_t *dstAddr, endPointDesc_t *srcEP,
+   \                     AF_DataRequest:
+    279                                    uint16 cID, uint16 len, uint8 *buf, uint8 *transID,
+    280                                    uint8 options, uint8 radius)
+    281          {
+   \   000000   7B15         PUSHM.W #0x8, R11
+   \   000002   2183         SUB.W   #0x2, SP
+   \   000004   0B4C         MOV.W   R12, R11
+   \   000006   084D         MOV.W   R13, R8
+   \   000008   094E         MOV.W   R14, R9
+   \   00000A   0A4F         MOV.W   R15, R10
+   \   00000C   14411600     MOV.W   0x16(SP), R4
+   \   000010   57411A00     MOV.B   0x1a(SP), R7
+   \   000014   56411C00     MOV.B   0x1c(SP), R6
+    282            #define ZAP_AF_REQ_MSG_HDR  20
+    283            #define ZAP_AF_REQ_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_REQ_MSG_HDR)
+    284            uint8 *pBuf;
+    285          
+    286          #if !ZAP_AF_DATA_REQ_AREQ
+    287            afStatus_t rtrn;
+    288          
+    289          #if ZAP_AF_DATA_REQ_FRAG
+    290            if (len > ZAP_AF_REQ_DAT_MAX)
+    291            {
+    292              pBuf = zap_msg_allocate(ZAP_AF_REQ_MSG_HDR, (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_SREQ,
+    293                                                          (uint8)MT_AF_DATA_REQUEST_EXT);
+    294            }
+    295            else
+    296          #endif
+    297            {
+    298              pBuf = zap_msg_allocate((uint8)(len + ZAP_AF_REQ_MSG_HDR),
+    299                                      (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_SREQ,
+    300                                      (uint8)MT_AF_DATA_REQUEST_EXT);
+    301            }
+    302          #else
+    303            pBuf = zap_msg_allocate((uint8)(len + ZAP_AF_REQ_MSG_HDR),
+    304                                    (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_AREQ,
+    305                                    (uint8)MT_AF_DATA_REQUEST_EXT);
+   \   000018   6E43         MOV.B   #0x2, R14
+   \   00001A   7D404400     MOV.B   #0x44, R13
+   \   00001E   4C4F         MOV.B   R15, R12
+   \   000020   7C501400     ADD.B   #0x14, R12
+   \   000024   ........     CALLA   #zap_msg_allocate
+   \   000028   814C0000     MOV.W   R12, 0(SP)
+    306          #endif
+    307          
+    308            if (NULL == pBuf)
+   \   00002C   0C93         CMP.W   #0x0, R12
+   \   00002E   0320         JNE     ??AF_DataRequest_0
+    309            {
+    310              return afStatus_MEM_FAIL;
+   \   000030   7C401000     MOV.B   #0x10, R12
+   \   000034   613C         JMP     ??AF_DataRequest_1
+    311            }
+    312          
+    313            *pBuf++ = dstAddr->addrMode;
+   \                     ??AF_DataRequest_0:
+   \   000036   5E4B0800     MOV.B   0x8(R11), R14
+   \   00003A   CC4E0000     MOV.B   R14, 0(R12)
+   \   00003E   2C41         MOV.W   @SP, R12
+   \   000040   1C53         ADD.W   #0x1, R12
+   \   000042   814C0000     MOV.W   R12, 0(SP)
+    314          
+    315            if (dstAddr->addrMode == afAddr64Bit)
+   \   000046   7E900300     CMP.B   #0x3, R14
+   \   00004A   0520         JNE     ??AF_DataRequest_2
+    316            {
+    317              (void)osal_memcpy(pBuf, dstAddr->addr.extAddr, Z_EXTADDR_LEN);
+   \   00004C   3E42         MOV.W   #0x8, R14
+   \   00004E   0D4B         MOV.W   R11, R13
+   \   000050   ........     CALLA   #osal_memcpy
+   \   000054   063C         JMP     ??AF_DataRequest_3
+    318            }
+    319            else
+    320            {
+    321              pBuf[0] = LO_UINT16(dstAddr->addr.shortAddr);
+   \                     ??AF_DataRequest_2:
+   \   000056   EC4B0000     MOV.B   @R11, 0(R12)
+    322              pBuf[1] = HI_UINT16(dstAddr->addr.shortAddr);
+   \   00005A   2F41         MOV.W   @SP, R15
+   \   00005C   DF4B01000100 MOV.B   0x1(R11), 0x1(R15)
+    323            }
+    324            pBuf += Z_EXTADDR_LEN;
+   \                     ??AF_DataRequest_3:
+   \   000062   2F41         MOV.W   @SP, R15
+   \   000064   3F52         ADD.W   #0x8, R15
+   \   000066   814F0000     MOV.W   R15, 0(SP)
+    325          
+    326            *pBuf++ = dstAddr->endPoint;
+   \   00006A   DF4B09000000 MOV.B   0x9(R11), 0(R15)
+   \   000070   ........     CALLA   #?Subroutine3
+    327          #if defined INTER_PAN
+    328            *pBuf++ = LO_UINT16(dstAddr->panId);
+    329            *pBuf++ = HI_UINT16(dstAddr->panId);
+    330          #else
+    331            *pBuf++ = 0;
+   \                     ??CrossCallReturnLabel_2:
+   \   000074   ........     CALLA   #?Subroutine3
+    332            *pBuf++ = 0;
+   \                     ??CrossCallReturnLabel_3:
+   \   000078   ........     CALLA   #??Subroutine4_0
+    333          #endif
+    334            *pBuf++ = srcEP->endPoint;
+   \                     ??CrossCallReturnLabel_7:
+   \   00007C   EF480000     MOV.B   @R8, 0(R15)
+   \   000080   ........     CALLA   #??Subroutine4_0
+    335            *pBuf++ = LO_UINT16(cID);
+   \                     ??CrossCallReturnLabel_8:
+   \   000084   ........     CALLA   #?Subroutine4
+    336            *pBuf++ = HI_UINT16(cID);
+   \                     ??CrossCallReturnLabel_12:
+   \   000088                RPT     #0x8
+   \   000088   47190910     RRUX.W  R9
+   \   00008C   ........     CALLA   #?Subroutine4
+   \                     ??CrossCallReturnLabel_13:
+   \   000090   1F411800     MOV.W   0x18(SP), R15
+    337            *pBuf++ = *transID;
+   \   000094   2B41         MOV.W   @SP, R11
+   \   000096   EB4F0000     MOV.B   @R15, 0(R11)
+   \   00009A   2B41         MOV.W   @SP, R11
+   \   00009C   1B53         ADD.W   #0x1, R11
+   \   00009E   814B0000     MOV.W   R11, 0(SP)
+    338            (*transID)++;
+   \   0000A2   DF530000     ADD.B   #0x1, 0(R15)
+    339            *pBuf++ = options;
+   \   0000A6   2F41         MOV.W   @SP, R15
+   \   0000A8   CF470000     MOV.B   R7, 0(R15)
+   \   0000AC   ........     CALLA   #??Subroutine4_0
+    340            *pBuf++ = radius;
+   \                     ??CrossCallReturnLabel_9:
+   \   0000B0   CF460000     MOV.B   R6, 0(R15)
+   \   0000B4   ........     CALLA   #??Subroutine4_0
+    341            *pBuf++ = LO_UINT16(len);
+   \                     ??CrossCallReturnLabel_10:
+   \   0000B8   CF4A0000     MOV.B   R10, 0(R15)
+   \   0000BC   ........     CALLA   #??Subroutine4_0
+    342            *pBuf++ = HI_UINT16(len);
+   \                     ??CrossCallReturnLabel_11:
+   \   0000C0   0F4A         MOV.W   R10, R15
+   \   0000C2                RPT     #0x8
+   \   0000C2   47190F10     RRUX.W  R15
+   \   0000C6   2B41         MOV.W   @SP, R11
+   \   0000C8   CB4F0000     MOV.B   R15, 0(R11)
+   \   0000CC   2C41         MOV.W   @SP, R12
+   \   0000CE   1C53         ADD.W   #0x1, R12
+   \   0000D0   814C0000     MOV.W   R12, 0(SP)
+    343          
+    344          #if ZAP_AF_DATA_REQ_FRAG
+    345            if (len <= ZAP_AF_REQ_DAT_MAX)
+    346          #endif
+    347            {
+    348              (void)osal_memcpy(pBuf, buf, len);
+   \   0000D4   0E4A         MOV.W   R10, R14
+   \   0000D6   0D44         MOV.W   R4, R13
+   \   0000D8   ........     CALLA   #osal_memcpy
+    349            }
+    350          
+    351            pBuf -= ZAP_AF_REQ_MSG_HDR;
+   \   0000DC   2D41         MOV.W   @SP, R13
+   \   0000DE   3D50ECFF     ADD.W   #0xffec, R13
+   \   0000E2   814D0000     MOV.W   R13, 0(SP)
+    352            zapPhySend(zapAppPort, pBuf);
+   \   0000E6   5C42....     MOV.B   &zapAppPort, R12
+   \   0000EA   ........     CALLA   #zapPhySend
+    353          #if !ZAP_AF_DATA_REQ_AREQ
+    354            rtrn = (afStatus_t)ZAP_SRSP_STATUS(pBuf);
+    355          #endif
+    356            zap_msg_deallocate(&pBuf);
+   \   0000EE   0C41         MOV.W   SP, R12
+   \   0000F0   0C53         ADD.W   #0x0, R12
+   \   0000F2   ........     CALLA   #zap_msg_deallocate
+    357          
+    358          #if ZAP_AF_DATA_REQ_FRAG
+    359            if ((len > ZAP_AF_REQ_DAT_MAX) && (rtrn == afStatus_SUCCESS))
+    360            {
+    361              rtrn = afStore(buf, len);
+    362            }
+    363          #endif
+    364          
+    365          #if ZAP_AF_DATA_REQ_AREQ
+    366            return SUCCESS;
+   \   0000F6   4C43         MOV.B   #0x0, R12
+   \                     ??AF_DataRequest_1:
+   \   0000F8   2153         ADD.W   #0x2, SP
+   \   0000FA   7417         POPM.W  #0x8, R11
+   \   0000FC   1001         RETA
+    367          #else
+    368            return rtrn;
+    369          #endif
+    370          }
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   CF490000     MOV.B   R9, 0(R15)
+   \   000004                REQUIRE ??Subroutine4_0
+   \   000004                // Fall through to label ??Subroutine4_0
+
+   \                                 In  segment CODE, align 2
+   \                     ??Subroutine4_0:
+   \   000000   1F410400     MOV.W   0x4(SP), R15
+   \   000004   1F53         ADD.W   #0x1, R15
+   \   000006   814F0400     MOV.W   R15, 0x4(SP)
+   \   00000A   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine3:
+   \   000000   1F410400     MOV.W   0x4(SP), R15
+   \   000004   1F53         ADD.W   #0x1, R15
+   \   000006   814F0400     MOV.W   R15, 0x4(SP)
+   \   00000A   CF430000     MOV.B   #0x0, 0(R15)
+   \   00000E   1001         RETA
+    371          
+    372          #if ZAP_AF_DATA_REQ_FRAG
+    373          /**************************************************************************************************
+    374           * @fn          afStore
+    375           *
+    376           * @brief       This function stores a huge outgoing message data buffer on the ZNP.
+    377           *
+    378           * input parameters
+    379           *
+    380           * @param       buf - Pointer to the message data buffer.
+    381           * @param       len - The length of the message data buffer 'buf'.
+    382           *
+    383           * output parameters
+    384           *
+    385           * None.
+    386           *
+    387           * @return      The AF-Status of storing the message data on the ZNP.
+    388           **************************************************************************************************
+    389           */
+    390          static afStatus_t afStore(uint8 *buf, uint16 len)
+    391          {
+    392            #define ZAP_AF_STO_MSG_HDR  3
+    393            #define ZAP_AF_STO_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_STO_MSG_HDR)
+    394            uint8 *pBuf;
+    395            uint16 idx = 0;
+    396            uint8 tmpLen = 0;
+    397            afStatus_t rtrn;
+    398          
+    399            do {
+    400              /* This trick to pre-decrement (with zero on the first pass) allows the while() test to
+    401               * succeed and loop to send a zero data length message which will trigger the ZNP to send the
+    402               * accumulated data OTA in an AF_DataRequest().
+    403               */
+    404              len -= tmpLen;
+    405              idx += tmpLen;
+    406          
+    407              if (len > ZAP_AF_STO_DAT_MAX)
+    408              {
+    409                tmpLen = ZAP_AF_STO_DAT_MAX;
+    410              }
+    411              else
+    412              {
+    413                tmpLen = len;
+    414              }
+    415          
+    416              if ((pBuf = zap_msg_allocate((uint8)(tmpLen + ZAP_AF_STO_MSG_HDR),
+    417                                           (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_SREQ,
+    418                                           (uint8)MT_AF_DATA_STORE)) == NULL)
+    419              {
+    420                rtrn = afStatus_MEM_FAIL;
+    421                break;
+    422              }
+    423          
+    424              pBuf[0] = LO_UINT16(idx);
+    425              pBuf[1] = HI_UINT16(idx);
+    426              pBuf[2] = tmpLen;
+    427              (void)osal_memcpy(pBuf+3, buf+idx, tmpLen);
+    428              zapPhySend(zapAppPort, pBuf);
+    429              rtrn = (afStatus_t)ZAP_SRSP_STATUS(pBuf);
+    430              zap_msg_deallocate(&pBuf);
+    431            } while ((rtrn == afStatus_SUCCESS) && len);
+    432          
+    433            return rtrn;
+    434          }
+    435          #endif
+    436          
+    437          /**************************************************************************************************
+    438           * @fn          afCnf
+    439           *
+    440           * @brief       This function de-muxes an incoming AF data confirm message.
+    441           *
+    442           * input parameters
+    443           *
+    444           * @param       pBuf - Pointer to the RPC message buffer.
+    445           *
+    446           * output parameters
+    447           *
+    448           * None.
+    449           *
+    450           * @return      None.
+    451           **************************************************************************************************
+    452           */
+
+   \                                 In  segment CODE, align 2
+    453          static void afCnf(uint8 *pBuf)
+   \                     afCnf:
+    454          {
+   \   000000   1B15         PUSHM.W #0x2, R11
+   \   000002   0A4C         MOV.W   R12, R10
+    455            pBuf += MT_RPC_FRAME_HDR_SZ;
+   \   000004   3A500300     ADD.W   #0x3, R10
+    456            epList_t *pEP = afFindEndPointDescList(pBuf[1]);
+   \   000008   5C4A0100     MOV.B   0x1(R10), R12
+   \   00000C   ........     CALLA   #afFindEndPointDescList
+   \   000010   0B4C         MOV.W   R12, R11
+    457          
+    458            if (NULL != pEP)
+   \   000012   0C93         CMP.W   #0x0, R12
+   \   000014   1424         JEQ     ??afCnf_0
+    459            {
+    460              afDataConfirm_t *pMsg = (afDataConfirm_t *)osal_msg_allocate(sizeof(afDataConfirm_t));
+   \   000016   2C42         MOV.W   #0x4, R12
+   \   000018   ........     CALLA   #osal_msg_allocate
+    461          
+    462              if (NULL != pMsg)
+   \   00001C   0C93         CMP.W   #0x0, R12
+   \   00001E   0F24         JEQ     ??afCnf_0
+    463              {
+    464                pMsg->hdr.event = AF_DATA_CONFIRM_CMD;
+   \   000020   FC40FD000000 MOV.B   #0xfd, 0(R12)
+    465                pMsg->hdr.status = *pBuf++;
+   \   000026   EC4A0100     MOV.B   @R10, 0x1(R12)
+   \   00002A   1A53         ADD.W   #0x1, R10
+    466                pMsg->endpoint = *pBuf++;
+   \   00002C   FC4A0200     MOV.B   @R10+, 0x2(R12)
+    467                pMsg->transID = *pBuf;
+   \   000030   EC4A0300     MOV.B   @R10, 0x3(R12)
+    468                osal_msg_send(*(pEP->epDesc->task_id), (uint8 *)pMsg);
+   \   000034   0D4C         MOV.W   R12, R13
+   \   000036   1F4B0200     MOV.W   0x2(R11), R15
+   \   00003A   ........     CALLA   #?Subroutine2
+    469              }
+    470            }
+    471          }
+   \                     ??afCnf_0:
+   \   00003E   1A17         POPM.W  #0x2, R11
+   \   000040   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine2:
+   \   000000   1F4F0200     MOV.W   0x2(R15), R15
+   \   000004   6C4F         MOV.B   @R15, R12
+   \   000006   ........     BRA     #osal_msg_send
+    472          
+    473          /**************************************************************************************************
+    474           * @fn      afFindEndPointDescList
+    475           *
+    476           * @brief   Find the endpoint description entry from the endpoint number.
+    477           *
+    478           * input parameters
+    479           *
+    480           * @param   EndPoint - Application Endpoint to look for
+    481           *
+    482           * output parameters
+    483           *
+    484           * None.
+    485           *
+    486           * @return  the address to the endpoint/interface description entry
+    487           **************************************************************************************************
+    488           */
+
+   \                                 In  segment CODE, align 2
+    489          static epList_t *afFindEndPointDescList( uint8 EndPoint )
+   \                     afFindEndPointDescList:
+    490          {
+    491            epList_t *epSearch;
+    492          
+    493            // Start at the beginning
+    494            epSearch = epList;
+   \   000000   1F42....     MOV.W   &epList, R15
+   \   000004   013C         JMP     ??afFindEndPointDescList_1
+    495          
+    496            // Look through the list until the end
+    497            while ( epSearch )
+    498            {
+    499              // Is there a match?
+    500              if ( epSearch->epDesc->endPoint == EndPoint )
+    501              {
+    502                return ( epSearch );
+    503              }
+    504              else
+    505                epSearch = epSearch->nextDesc;  // Next entry
+   \                     ??afFindEndPointDescList_0:
+   \   000006   2F4F         MOV.W   @R15, R15
+   \                     ??afFindEndPointDescList_1:
+   \   000008   0F93         CMP.W   #0x0, R15
+   \   00000A   0724         JEQ     ??afFindEndPointDescList_2
+   \   00000C   1E4F0200     MOV.W   0x2(R15), R14
+   \   000010   CE9C0000     CMP.B   R12, 0(R14)
+   \   000014   F823         JNE     ??afFindEndPointDescList_0
+   \   000016   0C4F         MOV.W   R15, R12
+   \   000018   1001         RETA
+    506            }
+    507          
+    508            return ( (epList_t *)NULL );
+   \                     ??afFindEndPointDescList_2:
+   \   00001A   0C43         MOV.W   #0x0, R12
+   \   00001C   1001         RETA
+    509          }
+    510          
+    511          /**************************************************************************************************
+    512           * @fn      afFindEndPointDesc
+    513           *
+    514           * @brief   Find the endpoint description entry from the endpoint number.
+    515           *
+    516           * input parameters
+    517           *
+    518           * @param   EndPoint - Application Endpoint to look for
+    519           *
+    520           * output parameters
+    521           *
+    522           * None.
+    523           *
+    524           * @return  the address to the endpoint/interface description entry
+    525           **************************************************************************************************
+    526           */
+
+   \                                 In  segment CODE, align 2
+    527          endPointDesc_t *afFindEndPointDesc(uint8 EndPoint)
+   \                     afFindEndPointDesc:
+    528          {
+    529            epList_t *epSearch;
+    530          
+    531            // Look for the endpoint
+    532            epSearch = afFindEndPointDescList( EndPoint );
+   \   000000   ........     CALLA   #afFindEndPointDescList
+    533          
+    534            if ( epSearch )
+   \   000004   0C93         CMP.W   #0x0, R12
+   \   000006   0324         JEQ     ??afFindEndPointDesc_0
+    535              return ( epSearch->epDesc );
+   \   000008   1C4C0200     MOV.W   0x2(R12), R12
+   \   00000C   1001         RETA
+    536            else
+    537              return ( (endPointDesc_t *)NULL );
+   \                     ??afFindEndPointDesc_0:
+   \   00000E   0C43         MOV.W   #0x0, R12
+   \   000010   1001         RETA
+    538          }
+    539          
+    540          /**************************************************************************************************
+    541           * @fn          afRecv
+    542           *
+    543           * @brief       This function de-muxes an incoming AF data message.
+    544           *
+    545           * input parameters
+    546           *
+    547           * @param       pBuf - Pointer to the RPC message buffer.
+    548           *
+    549           * output parameters
+    550           *
+    551           * None.
+    552           *
+    553           * @return      None.
+    554           **************************************************************************************************
+    555           */
+
+   \                                 In  segment CODE, align 2
+    556          static void afRecv(uint8 *pBuf)
+   \                     afRecv:
+    557          {
+   \   000000   3B15         PUSHM.W #0x4, R11
+   \   000002   0B4C         MOV.W   R12, R11
+    558            #define ZAP_AF_INC_MSG_HDR  27
+    559            #define ZAP_AF_INC_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_INC_MSG_HDR)
+    560          
+    561            afIncomingMSGPacket_t *pMsg;
+    562            epList_t *pEP;
+    563            uint16 tmp;
+    564            uint8 cmd1 = pBuf[MT_RPC_POS_CMD1];
+   \   000004   5A4C0200     MOV.B   0x2(R12), R10
+    565          
+    566            pBuf += MT_RPC_FRAME_HDR_SZ;
+   \   000008   3B500300     ADD.W   #0x3, R11
+    567            if (cmd1 == MT_AF_INCOMING_MSG)
+   \   00000C   7A908100     CMP.B   #0x81, R10
+   \   000010   0820         JNE     ??afRecv_0
+    568            {
+    569              pEP = afFindEndPointDescList(pBuf[7]);
+   \   000012   5C4B0700     MOV.B   0x7(R11), R12
+   \   000016   ........     CALLA   #afFindEndPointDescList
+   \   00001A   084C         MOV.W   R12, R8
+    570              tmp = pBuf[16];
+   \   00001C   5C4B1000     MOV.B   0x10(R11), R12
+   \   000020   0C3C         JMP     ??afRecv_1
+    571            }
+    572            else
+    573            {
+    574              pEP = afFindEndPointDescList(pBuf[16]);
+   \                     ??afRecv_0:
+   \   000022   5C4B1000     MOV.B   0x10(R11), R12
+   \   000026   ........     CALLA   #afFindEndPointDescList
+   \   00002A   084C         MOV.W   R12, R8
+    575              tmp = BUILD_UINT16(pBuf[25], pBuf[26]);
+   \   00002C   5C4B1900     MOV.B   0x19(R11), R12
+   \   000030   5F4B1A00     MOV.B   0x1a(R11), R15
+   \   000034                RPT     #0x8
+   \   000034   47180F5F     RLAX.W  R15
+   \   000038   0C5F         ADD.W   R15, R12
+    576            }
+    577          
+    578            if ((pEP == NULL) || (NULL ==
+    579                (pMsg = (afIncomingMSGPacket_t *)osal_msg_allocate(sizeof(afIncomingMSGPacket_t) + tmp))))
+   \                     ??afRecv_1:
+   \   00003A   0893         CMP.W   #0x0, R8
+   \   00003C   2024         JEQ     ??afRecv_2
+   \   00003E   3C502600     ADD.W   #0x26, R12
+   \   000042   ........     CALLA   #osal_msg_allocate
+   \   000046   094C         MOV.W   R12, R9
+   \   000048   0C93         CMP.W   #0x0, R12
+   \   00004A   1924         JEQ     ??afRecv_2
+    580            {
+    581              return;
+    582            }
+    583          
+    584            pMsg->hdr.event = AF_INCOMING_MSG_CMD;
+   \   00004C   FC401A000000 MOV.B   #0x1a, 0(R12)
+    585            pBuf = afIncMsgPktParse(cmd1, pBuf, pMsg);
+   \   000052   0E4C         MOV.W   R12, R14
+   \   000054   0D4B         MOV.W   R11, R13
+   \   000056   4C4A         MOV.B   R10, R12
+   \   000058   ........     CALLA   #afIncMsgPktParse
+   \   00005C   0D4C         MOV.W   R12, R13
+    586          
+    587          #if ZAP_AF_DATA_REQ_FRAG
+    588            if (pMsg->cmd.DataLength > ZAP_AF_INC_DAT_MAX)
+    589            {
+    590              afRetrieve(*(pEP->epDesc->task_id), pMsg);
+    591            }
+    592            else
+    593          #endif
+    594            {
+    595              if (pMsg->cmd.DataLength)
+   \   00005E   1E492200     MOV.W   0x22(R9), R14
+   \   000062   0E93         CMP.W   #0x0, R14
+   \   000064   0524         JEQ     ??afRecv_3
+    596              {
+    597                (void)osal_memcpy(pMsg->cmd.Data, pBuf, pMsg->cmd.DataLength);
+   \   000066   1C492400     MOV.W   0x24(R9), R12
+   \   00006A   ........     CALLA   #osal_memcpy
+   \   00006E   023C         JMP     ??afRecv_4
+    598              }
+    599              else
+    600              {
+    601                pMsg->cmd.Data = NULL;
+   \                     ??afRecv_3:
+   \   000070   89432400     MOV.W   #0x0, 0x24(R9)
+    602              }
+    603              
+    604              (void)osal_msg_send(*(pEP->epDesc->task_id), (uint8 *)pMsg);
+   \                     ??afRecv_4:
+   \   000074   0D49         MOV.W   R9, R13
+   \   000076   1F480200     MOV.W   0x2(R8), R15
+   \   00007A   ........     CALLA   #?Subroutine2
+    605            }
+    606          }
+   \                     ??afRecv_2:
+   \   00007E   3817         POPM.W  #0x4, R11
+   \   000080   1001         RETA
+    607          
+    608          /**************************************************************************************************
+    609           * @fn          afIncMsgPktParse
+    610           *
+    611           * @brief       This function parses an incoming AF data buffer into an afIncomingMSGPacket_t
+    612           *              structure.
+    613           *
+    614           * input parameters
+    615           *
+    616           * @param       cmd1 - The RPC command type: MT_AF_INCOMING_MSG or MT_AF_INCOMING_MSG_EXT.
+    617           * @param       pMsg - Pointer to the afIncomingMSGPacket_t structure.
+    618           * @param       pMsg - Pointer to the afIncomingMSGPacket_t structure.
+    619           *
+    620           * output parameters
+    621           *
+    622           * None.
+    623           *
+    624           * @return      None.
+    625           **************************************************************************************************
+    626           */
+
+   \                                 In  segment CODE, align 2
+    627          static uint8 *afIncMsgPktParse(uint8 cmd1, uint8 *pBuf, afIncomingMSGPacket_t *pMsg)
+   \                     afIncMsgPktParse:
+    628          {
+   \   000000   3B15         PUSHM.W #0x4, R11
+   \   000002   4A4C         MOV.B   R12, R10
+   \   000004   084D         MOV.W   R13, R8
+   \   000006   0B4E         MOV.W   R14, R11
+    629            pMsg->groupId = BUILD_UINT16(pBuf[0], pBuf[1]);
+   \   000008   6E4D         MOV.B   @R13, R14
+   \   00000A   5F4D0100     MOV.B   0x1(R13), R15
+   \   00000E                RPT     #0x8
+   \   00000E   47180F5F     RLAX.W  R15
+   \   000012   0E5F         ADD.W   R15, R14
+   \   000014   8B4E0200     MOV.W   R14, 0x2(R11)
+    630            pBuf += 2;
+   \   000018   2853         ADD.W   #0x2, R8
+    631            pMsg->clusterId = BUILD_UINT16(pBuf[0], pBuf[1]);
+   \   00001A   ........     CALLA   #?Subroutine5
+   \                     ??CrossCallReturnLabel_4:
+   \   00001E   8B4E0400     MOV.W   R14, 0x4(R11)
+    632            pBuf += 2;
+   \   000022   2853         ADD.W   #0x2, R8
+    633          
+    634            if (cmd1 == MT_AF_INCOMING_MSG)
+   \   000024   7C908100     CMP.B   #0x81, R12
+   \   000028   0C20         JNE     ??afIncMsgPktParse_0
+    635            {
+    636              pMsg->srcAddr.addrMode = afAddr16Bit;
+   \   00002A   EB430E00     MOV.B   #0x2, 0xe(R11)
+    637              pMsg->srcAddr.addr.shortAddr = BUILD_UINT16(pBuf[0], pBuf[1]);
+   \   00002E   ........     CALLA   #?Subroutine0
+    638              pMsg->macDestAddr = pMsg->srcAddr.addr.shortAddr;
+   \                     ??CrossCallReturnLabel_0:
+   \   000032   8B4E1200     MOV.W   R14, 0x12(R11)
+    639              pBuf += 2;
+   \   000036   2853         ADD.W   #0x2, R8
+    640              pMsg->srcAddr.endPoint = *pBuf++;
+   \   000038   FB480F00     MOV.B   @R8+, 0xf(R11)
+    641              pMsg->srcAddr.panId = znpPanId;
+   \   00003C   1E42....     MOV.W   &znpPanId, R14
+   \   000040   193C         JMP     ??afIncMsgPktParse_1
+    642            }
+    643            else
+    644            {
+    645              pMsg->srcAddr.addrMode = (afAddrMode_t)*pBuf++;
+   \                     ??afIncMsgPktParse_0:
+   \   000042   FB480E00     MOV.B   @R8+, 0xe(R11)
+    646          
+    647              if (pMsg->srcAddr.addrMode == afAddr64Bit)
+   \   000046   FB9003000E00 CMP.B   #0x3, 0xe(R11)
+   \   00004C   0920         JNE     ??afIncMsgPktParse_2
+    648              {
+    649                (void)osal_memcpy(pMsg->srcAddr.addr.extAddr, pBuf, Z_EXTADDR_LEN);
+   \   00004E   3E42         MOV.W   #0x8, R14
+   \   000050   0D48         MOV.W   R8, R13
+   \   000052   0C4B         MOV.W   R11, R12
+   \   000054   3C500600     ADD.W   #0x6, R12
+   \   000058   ........     CALLA   #osal_memcpy
+    650                pMsg->macDestAddr = 0xFFFF;
+   \   00005C   3F43         MOV.W   #0xffff, R15
+   \   00005E   033C         JMP     ??afIncMsgPktParse_3
+    651              }
+    652              else
+    653              {
+    654                pMsg->srcAddr.addr.shortAddr = BUILD_UINT16(pBuf[0], pBuf[1]);
+   \                     ??afIncMsgPktParse_2:
+   \   000060   ........     CALLA   #?Subroutine0
+    655                pMsg->macDestAddr = pMsg->srcAddr.addr.shortAddr;
+   \                     ??CrossCallReturnLabel_1:
+   \   000064   0F4E         MOV.W   R14, R15
+   \                     ??afIncMsgPktParse_3:
+   \   000066   8B4F1200     MOV.W   R15, 0x12(R11)
+    656              }
+    657              pBuf += Z_EXTADDR_LEN;
+   \   00006A   3852         ADD.W   #0x8, R8
+    658          
+    659              pMsg->srcAddr.endPoint = *pBuf++;
+   \   00006C   FB480F00     MOV.B   @R8+, 0xf(R11)
+    660              pMsg->srcAddr.panId = BUILD_UINT16(pBuf[0], pBuf[1]);
+   \   000070   ........     CALLA   #?Subroutine1
+    661              pBuf += 2;
+    662            }
+   \                     ??afIncMsgPktParse_1:
+   \   000074   8B4E1000     MOV.W   R14, 0x10(R11)
+    663            pMsg->endPoint = *pBuf++;
+   \   000078   FB481400     MOV.B   @R8+, 0x14(R11)
+    664            pMsg->wasBroadcast = *pBuf++;
+   \   00007C   FB481500     MOV.B   @R8+, 0x15(R11)
+    665            pMsg->LinkQuality = *pBuf++;
+   \   000080   FB481600     MOV.B   @R8+, 0x16(R11)
+    666            pMsg->correlation = pMsg->rssi = 0;
+   \   000084   CB431800     MOV.B   #0x0, 0x18(R11)
+   \   000088   CB431700     MOV.B   #0x0, 0x17(R11)
+    667            pMsg->SecurityUse = *pBuf++;
+   \   00008C   FB481900     MOV.B   @R8+, 0x19(R11)
+    668            pMsg->timestamp = BUILD_UINT32(pBuf[0], pBuf[1], pBuf[2], pBuf[3]);
+   \   000090   6E48         MOV.B   @R8, R14
+   \   000092   0F43         MOV.W   #0x0, R15
+   \   000094   5C480100     MOV.B   0x1(R8), R12
+   \   000098   0D43         MOV.W   #0x0, R13
+   \   00009A   ........     CALLA   #?ShiftLeft32_8
+   \   00009E   0E5C         ADD.W   R12, R14
+   \   0000A0   0F6D         ADDC.W  R13, R15
+   \   0000A2   5D480200     MOV.B   0x2(R8), R13
+   \   0000A6   0F5D         ADD.W   R13, R15
+   \   0000A8   5D480300     MOV.B   0x3(R8), R13
+   \   0000AC                RPT     #0x8
+   \   0000AC   47180D5D     RLAX.W  R13
+   \   0000B0   0F5D         ADD.W   R13, R15
+   \   0000B2   8B4E1A00     MOV.W   R14, 0x1a(R11)
+   \   0000B6   8B4F1C00     MOV.W   R15, 0x1c(R11)
+    669            pBuf += 4;
+   \   0000BA   2852         ADD.W   #0x4, R8
+    670            pMsg->cmd.TransSeqNumber = *pBuf++;
+   \   0000BC   FB482000     MOV.B   @R8+, 0x20(R11)
+    671          
+    672            if (cmd1 == MT_AF_INCOMING_MSG)
+   \   0000C0   7A908100     CMP.B   #0x81, R10
+   \   0000C4   0220         JNE     ??afIncMsgPktParse_4
+    673            {
+    674              pMsg->cmd.DataLength = *pBuf++;
+   \   0000C6   7E48         MOV.B   @R8+, R14
+   \   0000C8   023C         JMP     ??afIncMsgPktParse_5
+    675            }
+    676            else
+    677            {
+    678              pMsg->cmd.DataLength = BUILD_UINT16(pBuf[0], pBuf[1]);
+   \                     ??afIncMsgPktParse_4:
+   \   0000CA   ........     CALLA   #?Subroutine1
+    679              pBuf += 2;
+    680            }
+   \                     ??afIncMsgPktParse_5:
+   \   0000CE   8B4E2200     MOV.W   R14, 0x22(R11)
+    681            pMsg->cmd.Data = (uint8 *)(pMsg+1);
+   \   0000D2   0F4B         MOV.W   R11, R15
+   \   0000D4   3F502600     ADD.W   #0x26, R15
+   \   0000D8   8B4F2400     MOV.W   R15, 0x24(R11)
+    682            return pBuf;
+   \   0000DC   0C48         MOV.W   R8, R12
+   \   0000DE   3817         POPM.W  #0x4, R11
+   \   0000E0   1001         RETA
+    683          }
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine1:
+   \   000000   ........     CALLA   #?Subroutine5
+   \                     ??CrossCallReturnLabel_6:
+   \   000004   2853         ADD.W   #0x2, R8
+   \   000006   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine5:
+   \   000000   6E48         MOV.B   @R8, R14
+   \   000002   5F480100     MOV.B   0x1(R8), R15
+   \   000006                RPT     #0x8
+   \   000006   47180F5F     RLAX.W  R15
+   \   00000A   0E5F         ADD.W   R15, R14
+   \   00000C   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine0:
+   \   000000   ........     CALLA   #?Subroutine5
+   \                     ??CrossCallReturnLabel_5:
+   \   000004   8B4E0600     MOV.W   R14, 0x6(R11)
+   \   000008   1001         RETA
+    684          
+    685          #if ZAP_AF_DATA_REQ_FRAG
+    686          /**************************************************************************************************
+    687           * @fn          afRetrieve
+    688           *
+    689           * @brief       This function retrieves the data of a huge incoming message. On an failure during
+    690           *              the retrieval, the incoming message is freed. Otherwise, the incoming message is
+    691           *              forwarded to the corresponding task.
+    692           *
+    693           * input parameters
+    694           *
+    695           * @param       pMsg - Pointer to the incoming AF message.
+    696           * @param       taskId - The task ID corresponding to the destination endpoint of the message.
+    697           *
+    698           * output parameters
+    699           *
+    700           * @param       pMsg->cmd.Data - The incoming message data buffer member is filled.
+    701           *
+    702           * @return      None.
+    703           **************************************************************************************************
+    704           */
+    705          static void afRetrieve(uint8 taskId, afIncomingMSGPacket_t *pMsg)
+    706          {
+    707            #define ZAP_AF_RTV_MSG_HDR  7  // Retrieve message header length.
+    708            #define ZAP_AF_RTV_RPY_HDR  2  // Retrieve-reply message header length.
+    709            #define ZAP_AF_RTV_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_RTV_RPY_HDR)
+    710          
+    711            uint16 idx = 0, len = pMsg->cmd.DataLength;
+    712            uint8 *pBuf, rtrn, tmpLen = 0;
+    713          
+    714            do {
+    715              /* This trick to pre-decrement (with zero on the first pass) allows the while() test to
+    716               * succeed and loop to send a zero data length message which will trigger the ZNP to
+    717               * de-allocate the huge incoming message being held.
+    718               */
+    719              len -= tmpLen;
+    720              idx += tmpLen;
+    721          
+    722              if (len > ZAP_AF_RTV_DAT_MAX)
+    723              {
+    724                tmpLen = ZAP_AF_RTV_DAT_MAX;
+    725              }
+    726              else
+    727              {
+    728                tmpLen = len;
+    729              }
+    730          
+    731              if ((pBuf = zap_msg_allocate(ZAP_AF_RTV_MSG_HDR, ((uint8)MT_RPC_SYS_AF | MT_RPC_CMD_SREQ),
+    732                                                                       MT_AF_DATA_RETRIEVE)) == NULL)
+    733              {
+    734                rtrn = afStatus_MEM_FAIL;
+    735                break;
+    736              }
+    737          
+    738              pBuf[0] = BREAK_UINT32(pMsg->timestamp, 0);
+    739              pBuf[1] = BREAK_UINT32(pMsg->timestamp, 1);
+    740              pBuf[2] = BREAK_UINT32(pMsg->timestamp, 2);
+    741              pBuf[3] = BREAK_UINT32(pMsg->timestamp, 3);
+    742              pBuf[4] = LO_UINT16(idx);
+    743              pBuf[5] = HI_UINT16(idx);
+    744              pBuf[6] = tmpLen;
+    745              zapPhySend(zapAppPort, pBuf);
+    746              rtrn = (afStatus_t)ZAP_SRSP_STATUS(pBuf);
+    747              (void)osal_memcpy(pMsg->cmd.Data+idx, pBuf+ZAP_AF_RTV_RPY_HDR, tmpLen);
+    748              zap_msg_deallocate(&pBuf);
+    749            } while ((rtrn == afStatus_SUCCESS) && len);
+    750          
+    751            if (rtrn == afStatus_SUCCESS)
+    752            {
+    753              (void)osal_msg_send(taskId, (uint8 *)pMsg);
+    754            }
+    755            else
+    756            {
+    757              (void)osal_msg_deallocate((uint8 *)pMsg);
+    758            }
+    759          }
+    760          #endif
+    761          
+    762          #endif
+    763          /**************************************************************************************************
+    764          */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      22  AF_DataRequest
+            22 -> osal_memcpy
+            22 -> zapPhySend
+            22 -> zap_msg_allocate
+            22 -> zap_msg_deallocate
+       8  afCnf
+             8 -> afFindEndPointDescList
+             8 -> osal_msg_allocate
+             8 -> osal_msg_send
+       4  afFindEndPointDesc
+             4 -> afFindEndPointDescList
+       4  afFindEndPointDescList
+      12  afIncMsgPktParse
+            12 -> osal_memcpy
+      12  afRecv
+            12 -> afFindEndPointDescList
+            12 -> afIncMsgPktParse
+            12 -> osal_memcpy
+            12 -> osal_msg_allocate
+            12 -> osal_msg_send
+       4  afRegister
+             4 -> afFindEndPointDescList
+             4 -> afRegisterExtended
+      12  afRegisterExtended
+            12 -> osal_mem_alloc
+            12 -> znp_afRegisterExtended
+       4  zapAfProcessIncoming
+             4 -> afCnf
+             4 -> afRecv
+       6  zapAfSync
+             6 -> osal_set_event
+             6 -> osal_start_timerEx
+             6 -> znp_afRegisterExtended
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      12  ??Subroutine4_0
+      10  ?Subroutine0
+       8  ?Subroutine1
+      10  ?Subroutine2
+      16  ?Subroutine3
+       4  ?Subroutine4
+      14  ?Subroutine5
+     254  AF_DataRequest
+      66  afCnf
+      18  afFindEndPointDesc
+      30  afFindEndPointDescList
+     226  afIncMsgPktParse
+     130  afRecv
+      40  afRegister
+      94  afRegisterExtended
+       2  epList
+      32  zapAfProcessIncoming
+      68  zapAfSync
+
+ 
+ 1 032 bytes in segment CODE
+     2 bytes in segment DATA16_Z
+ 
+ 1 032 bytes of CODE memory
+     2 bytes of DATA memory
+
+Errors: none
+Warnings: none

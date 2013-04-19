@@ -1,0 +1,254 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       19/Apr/2013  11:09:21 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\Source\OSAL_TVSA.c            #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DTVSA_DEVICE_ID=0x0016 -DZAP_PHY_SPI=1             #
+#                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE    #
+#                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                  #
+#                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE               #
+#                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE            #
+#                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\Source\OSAL_TVSA.c -D         #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_COORDINATOR -D             #
+#                     TVSA_DEVICE_ID=0x0016 -D TVSA_DONGLE=1 -D HAL_UART=1    #
+#                     -lC "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP              #
+#                     Coordinator\List\" -lA "C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\ZAP Coordinator\List\" --remarks --diag_suppress     #
+#                     Pe001,Pe193,Pe236,Pe826 -o                              #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                  #
+#                     Coordinator\Obj\" --debug -D__MSP430F5438A__ -e         #
+#                     --double=32 --clib -I C:\Users\student\Documents\GitHub #
+#                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 #
+#                     \ -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I    #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\List\OSAL_TVSA.lst                          #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\Obj\OSAL_TVSA.r43                           #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\Source\OSAL_TVSA.c
+      1          /**************************************************************************************************
+      2            Filename:       OSAL_TVSA.c
+      3            Revised:        $Date: 2011-07-25 20:23:05 -0700 (Mon, 25 Jul 2011) $
+      4            Revision:       $Revision: 26899 $
+      5          
+      6            Description:
+      7          
+      8            This file defines the functionality of the Temperature & Voltage Sensor/Dongle Sample Application.
+      9          
+     10          
+     11            Copyright 2009 Texas Instruments Incorporated. All rights reserved.
+     12          
+     13            IMPORTANT: Your use of this Software is limited to those specific rights
+     14            granted under the terms of a software license agreement between the user
+     15            who downloaded the software, his/her employer (which must be your employer)
+     16            and Texas Instruments Incorporated (the "License").  You may not use this
+     17            Software unless you agree to abide by the terms of the License. The License
+     18            limits your use, and you acknowledge, that the Software may not be modified,
+     19            copied or distributed unless embedded on a Texas Instruments microcontroller
+     20            or used solely and exclusively in conjunction with a Texas Instruments radio
+     21            frequency transceiver, which is integrated into your product.  Other than for
+     22            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     23            works of, modify, distribute, perform, display or sell this Software and/or
+     24            its documentation for any purpose.
+     25          
+     26            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     27            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     28            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     29            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     30            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     31            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     32            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     33            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     34            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     35            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     36            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     37          
+     38            Should you have any questions regarding your right to use this Software,
+     39            contact Texas Instruments Incorporated at www.TI.com.
+     40          **************************************************************************************************/
+     41          
+     42          /*********************************************************************
+     43           * INCLUDES
+     44           */
+     45          
+     46          #include "ZComDef.h"
+     47          #include "hal_drivers.h"
+     48          #include "OSAL_Tasks.h"
+     49          #include "tvsa.h"
+     50          #include "zap_app.h"
+     51          
+     52          /*********************************************************************
+     53           * GLOBAL VARIABLES
+     54           */
+     55          
+     56          // The order in this table must be identical to the task initialization calls below in osalInitTask.
+
+   \                                 In  segment DATA16_C, align 2, align-sorted
+     57          const pTaskEventHandlerFn tasksArr[] = {
+   \                     tasksArr:
+   \   000000   ............ DC32 Hal_ProcessEvent, zapEvt, pulseAppEvt
+   \            ............
+     58            Hal_ProcessEvent,  // HAL should be a higher priority than any ZNP task.
+     59            zapEvt,            // ZAP APP should be the highest priority ZNP task.
+     60            pulseAppEvt
+     61            
+     62          };
+     63          
+
+   \                                 In  segment DATA16_C, align 1, align-sorted
+     64          const uint8 tasksCnt = sizeof( tasksArr ) / sizeof( tasksArr[0] );
+   \                     tasksCnt:
+   \   000000   03           DC8 3
+
+   \                                 In  segment DATA16_Z, align 2, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+     65          uint16 *tasksEvents;
+   \                     tasksEvents:
+   \   000000                DS8 2
+     66          
+     67          /*********************************************************************
+     68           * @fn      osalInitTasks
+     69           *
+     70           * @brief   This function invokes the initialization function for each task.
+     71           *
+     72           * @param   void
+     73           *
+     74           * @return  none
+     75           */
+
+   \                                 In  segment CODE, align 2
+     76          void osalInitTasks( void )
+   \                     osalInitTasks:
+     77          {
+     78            uint8 taskID = 0;
+     79          
+     80            tasksEvents = (uint16 *)osal_mem_alloc( sizeof( uint16 ) * tasksCnt);
+   \   000000   3C400600     MOV.W   #0x6, R12
+   \   000004   ........     CALLA   #osal_mem_alloc
+   \   000008   824C....     MOV.W   R12, &tasksEvents
+     81            osal_memset( tasksEvents, 0, (sizeof( uint16 ) * tasksCnt));
+   \   00000C   3E400600     MOV.W   #0x6, R14
+   \   000010   4D43         MOV.B   #0x0, R13
+   \   000012   ........     CALLA   #osal_memset
+     82          
+     83            Hal_Init(taskID++);  // HAL should be a higher priority than any ZNP task.
+   \   000016   4C43         MOV.B   #0x0, R12
+   \   000018   ........     CALLA   #Hal_Init
+     84            zapInit(taskID++);   // ZAP APP should be the highest priority ZNP task.
+   \   00001C   5C43         MOV.B   #0x1, R12
+   \   00001E   ........     CALLA   #zapInit
+     85            pulseAppInit(taskID);  //MHMS registers endpoint and other initialization stuff
+   \   000022   6C43         MOV.B   #0x2, R12
+   \   000024   ........     BRA     #pulseAppInit
+     86          }
+     87          
+     88          /**************************************************************************************************
+     89          */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  osalInitTasks
+            4 -> Hal_Init
+            4 -> osal_mem_alloc
+            4 -> osal_memset
+            4 -> pulseAppInit
+            4 -> zapInit
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      40  osalInitTasks
+      12  tasksArr
+       1  tasksCnt
+       2  tasksEvents
+
+ 
+ 40 bytes in segment CODE
+ 13 bytes in segment DATA16_C
+  2 bytes in segment DATA16_Z
+ 
+ 40 bytes of CODE  memory
+ 13 bytes of CONST memory
+  2 bytes of DATA  memory
+
+Errors: none
+Warnings: none

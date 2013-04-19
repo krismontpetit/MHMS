@@ -1,0 +1,311 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       19/Apr/2013  11:09:23 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_main.c            #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DTVSA_DEVICE_ID=0x0016 -DZAP_PHY_SPI=1             #
+#                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE    #
+#                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                  #
+#                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE               #
+#                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE            #
+#                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Components\hal\target\MSP5438ZAP\hal_main.c -D         #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_COORDINATOR -D             #
+#                     TVSA_DEVICE_ID=0x0016 -D TVSA_DONGLE=1 -D HAL_UART=1    #
+#                     -lC "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP              #
+#                     Coordinator\List\" -lA "C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\ZAP Coordinator\List\" --remarks --diag_suppress     #
+#                     Pe001,Pe193,Pe236,Pe826 -o                              #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                  #
+#                     Coordinator\Obj\" --debug -D__MSP430F5438A__ -e         #
+#                     --double=32 --clib -I C:\Users\student\Documents\GitHub #
+#                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 #
+#                     \ -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I    #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\List\hal_main.lst                           #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\Obj\hal_main.r43                            #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\hal\target\MSP5438ZAP\hal_main.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_main.c
+      3            Revised:        $Date:$
+      4            Revision:       $Revision:$
+      5          
+      6            Description:    Startup and shutdown code for the ZNP Application Processor.
+      7            Notes:          This version targets the Texas Instruments EXP5438
+      8          
+      9          
+     10            Copyright 2009 Texas Instruments Incorporated. All rights reserved.
+     11          
+     12            IMPORTANT: Your use of this Software is limited to those specific rights
+     13            granted under the terms of a software license agreement between the user
+     14            who downloaded the software, his/her employer (which must be your employer)
+     15            and Texas Instruments Incorporated (the "License").  You may not use this
+     16            Software unless you agree to abide by the terms of the License. The License
+     17            limits your use, and you acknowledge, that the Software may not be modified,
+     18            copied or distributed unless embedded on a Texas Instruments microcontroller
+     19            or used solely and exclusively in conjunction with a Texas Instruments radio
+     20            frequency transceiver, which is integrated into your product.  Other than for
+     21            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     22            works of, modify, distribute, perform, display or sell this Software and/or
+     23            its documentation for any purpose.
+     24          
+     25            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     26            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     27            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     28            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     29            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     30            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     31            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     32            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     33            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     34            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     35            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     36          
+     37            Should you have any questions regarding your right to use this Software,
+     38            contact Texas Instruments Incorporated at www.TI.com.
+     39          **************************************************************************************************/
+     40          
+     41          /*********************************************************************
+     42           * INCLUDES
+     43           */
+     44          
+     45          #include "hal_board.h"
+
+   \                                 In  segment DATA16_AN, at 0x202
+   \   union <unnamed> _A_PAOUT_L
+   \                     _A_PAOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x204
+   \   union <unnamed> _A_PADIR_L
+   \                     _A_PADIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x262
+   \   union <unnamed> _A_PDOUT_L
+   \                     _A_PDOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x264
+   \   union <unnamed> _A_PDDIR_L
+   \                     _A_PDDIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x266
+   \   union <unnamed> _A_PDREN_L
+   \                     _A_PDREN_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x15c
+   \   union <unnamed> _A_WDTCTL_L
+   \                     _A_WDTCTL_L:
+   \   000000                DS8 2
+     46          #include "hal_drivers.h"
+     47          #include "OSAL.h"
+     48          #include "OSAL_Nv.h"
+     49          #include "ZComDef.h"
+     50          
+     51          /*********************************************************************
+     52           * MACROS
+     53           */
+     54          
+     55          /*********************************************************************
+     56           * CONSTANTS
+     57           */
+     58          
+     59          /*********************************************************************
+     60           * TYPEDEFS
+     61           */
+     62          
+     63          /*********************************************************************
+     64           * GLOBAL VARIABLES
+     65           */
+     66          
+     67          /*********************************************************************
+     68           * EXTERNAL VARIABLES
+     69           */
+     70          
+     71          /*********************************************************************
+     72           * EXTERNAL FUNCTIONS
+     73           */
+     74          
+     75          /*********************************************************************
+     76           * LOCAL VARIABLES
+     77           */
+     78          
+     79          /*********************************************************************
+     80           * LOCAL FUNCTIONS
+     81           */
+     82          
+     83          /*********************************************************************
+     84           * @fn      main
+     85           * @brief   First function called after startup.
+     86           * @return  don't care
+     87           */
+
+   \                                 In  segment CODE, align 2
+     88          int main( void )
+   \                     main:
+     89          {
+     90            osal_int_disable(INTS_ALL);
+   \   000000   7C43         MOV.B   #0xff, R12
+   \   000002   ........     CALLA   #osal_int_disable
+     91            HAL_BOARD_INIT();  // Initialization for board related stuff such as DCO & LEDs.
+   \   000006   B240805A5C01 MOV.W   #0x5a80, &0x15c
+   \   00000C   7C400300     MOV.B   #0x3, R12
+   \   000010   ........     CALLA   #halBoardSetSystemClock
+   \   000014   32C04000     BIC.W   #0x40, SR
+   \   000018   D2C30202     BIC.B   #0x1, &0x202
+   \   00001C   E2C30202     BIC.B   #0x2, &0x202
+   \   000020   D2C30202     BIC.B   #0x1, &0x202
+   \   000024   E2C30202     BIC.B   #0x2, &0x202
+   \   000028   D2D30402     BIS.B   #0x1, &0x204
+   \   00002C   E2D30402     BIS.B   #0x2, &0x204
+   \   000030   D2D30402     BIS.B   #0x1, &0x204
+   \   000034   E2D30402     BIS.B   #0x2, &0x204
+   \   000038   F2C080006502 BIC.B   #0x80, &0x265
+   \   00003E   F2D080006702 BIS.B   #0x80, &0x267
+   \   000044   F2D080006302 BIS.B   #0x80, &0x263
+     92            HalDriverInit();
+   \   00004A   ........     CALLA   #HalDriverInit
+     93            osal_nv_init( NULL );
+   \   00004E   0C43         MOV.W   #0x0, R12
+   \   000050   ........     CALLA   #osal_nv_init
+     94            InitClock();
+   \   000054   ........     CALLA   #InitClock
+     95            osal_init_system();
+   \   000058   ........     CALLA   #osal_init_system
+     96            InitBoard();
+   \   00005C   ........     CALLA   #InitBoard
+     97            osal_int_enable(INTS_ALL);
+   \   000060   7C43         MOV.B   #0xff, R12
+   \   000062   ........     CALLA   #osal_int_enable
+     98            osal_start_system();  // No Return from here
+   \   000066   ........     CALLA   #osal_start_system
+     99            return 0;             // Shouldn't get here.
+   \   00006A   0C43         MOV.W   #0x0, R12
+   \   00006C   1001         RETA
+   \   00006E                REQUIRE _A_WDTCTL_L
+   \   00006E                REQUIRE _A_PAOUT_L
+   \   00006E                REQUIRE _A_PADIR_L
+   \   00006E                REQUIRE _A_PDDIR_L
+   \   00006E                REQUIRE _A_PDREN_L
+   \   00006E                REQUIRE _A_PDOUT_L
+    100          }
+    101          
+    102          /*********************************************************************
+    103          *********************************************************************/
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  main
+            4 -> HalDriverInit
+            4 -> InitBoard
+            4 -> InitClock
+            4 -> halBoardSetSystemClock
+            4 -> osal_init_system
+            4 -> osal_int_disable
+            4 -> osal_int_enable
+            4 -> osal_nv_init
+            4 -> osal_start_system
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  _A_PADIR_L
+       2  _A_PAOUT_L
+       2  _A_PDDIR_L
+       2  _A_PDOUT_L
+       2  _A_PDREN_L
+       2  _A_WDTCTL_L
+     110  main
+
+ 
+ 110 bytes in segment CODE
+  12 bytes in segment DATA16_AN
+ 
+ 110 bytes of CODE memory
+   0 bytes of DATA memory (+ 12 bytes shared)
+
+Errors: none
+Warnings: none

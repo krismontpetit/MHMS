@@ -1,0 +1,543 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      19/Apr/2013  11:09:23 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    __rt_version  =  3                                                      /
+//    __double_size =  32                                                     /
+//    __reg_r4      =  free                                                   /
+//    __reg_r5      =  free                                                   /
+//    __pic         =  no                                                     /
+//    __core        =  430X                                                   /
+//    __data_model  =  small                                                  /
+//    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Components\osal\mcu\msp430\MSP430FlashUtil.c         /
+//    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap /
+//                     .cfg (-DTVSA_DEVICE_ID=0x0016 -DZAP_PHY_SPI=1          /
+//                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE   /
+//                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                 /
+//                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE              /
+//                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE           /
+//                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE           /
+//                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG           /
+//                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC              /
+//                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC         /
+//                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0        /
+//                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                /
+//                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000          /
+//                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)     /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Components\osal\mcu\msp430\MSP430FlashUtil.c -D      /
+//                     ZAP_DEVICETYPE=ZG_DEVICETYPE_COORDINATOR -D            /
+//                     TVSA_DEVICE_ID=0x0016 -D TVSA_DONGLE=1 -D HAL_UART=1   /
+//                     -lC "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP            /
+//                     Coordinator\List\" -lA "C:\Users\student\Documents\Git /
+//                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP /
+//                     5438\ZAP Coordinator\List\" --remarks --diag_suppress  /
+//                     Pe001,Pe193,Pe236,Pe826 -o                             /
+//                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5 /
+//                     .1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                /
+//                     Coordinator\Obj\" --debug -D__MSP430F5438A__ -e        /
+//                     --double=32 --clib -I C:\Users\student\Documents\GitHu /
+//                     b\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 /
+//                     38\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP4 /
+//                     30-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\   /
+//                     -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\    /
+//                     -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C /
+//                     omponents\hal\target\MSP5438ZAP\ -I                    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\include\ -I C:\Users\student\Documents\GitH /
+//                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 /
+//                     438\..\..\..\..\..\Components\mac\include\ -I          /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\Z /
+//                     AP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\.. /
+//                     \..\..\..\Components\osal\include\ -I                  /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\osal\mcu\msp430\ -I                             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\services\saddr\ -I C:\Users\student\Documents\G /
+//                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\E /
+//                     XP5438\..\..\..\..\..\Components\services\sdata\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\af\ -I C:\Users\student\Documents\GitHub\ /
+//                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 /
+//                     \..\..\..\..\..\Components\stack\nwk\ -I               /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sapi\ -I C:\Users\student\Documents\GitHu /
+//                     b\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 /
+//                     38\..\..\..\..\..\Components\stack\sec\ -I             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sys\ -I C:\Users\student\Documents\GitHub /
+//                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP543 /
+//                     8\..\..\..\..\..\Components\stack\zdo\ -I              /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\zmac\ -I C:\Users\student\Documents\GitHub\MHMS /
+//                     \ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\ /
+//                     ..\..\..\..\Components\zmac\f8w\ --core=430X           /
+//                     --data_model=small -Ohz --multiplier=32                /
+//                     --multiplier_location=4C0 --require_prototypes         /
+//                     --hw_workaround=CPU40 --hw_workaround=CPU42            /
+//    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                 /
+//                     Coordinator\List\MSP430FlashUtil.s43                   /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME MSP430FlashUtil
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__core", "430X"
+        RTMODEL "__data_model", "small"
+        RTMODEL "__double_size", "32"
+        RTMODEL "__pic", "no"
+        RTMODEL "__reg_r4", "free"
+        RTMODEL "__reg_r5", "free"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:SORT:NOROOT(0)
+
+        EXTERN ?cstart_init_zero
+        EXTERN ?longjmp_r4
+        EXTERN ?longjmp_r5
+        EXTERN ?setjmp_r4
+        EXTERN ?setjmp_r5
+
+        PUBWEAK ?setjmp_save_r4
+        PUBWEAK ?setjmp_save_r5
+        PUBWEAK _A_FCTL1_L
+        PUBWEAK _A_FCTL3_L
+        PUBWEAK _A_WDTCTL_L
+        FUNCTION doneFlash,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC flashErasePage
+        FUNCTION flashErasePage,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC flashWrite
+        FUNCTION flashWrite,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        FUNCTION initFlash,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA SP DATA
+          CFI Resource PC:20, SP:20, SR:16, R4L:16, R4H:4, R4:20, R5L:16, R5H:4
+          CFI Resource R5:20, R6L:16, R6H:4, R6:20, R7L:16, R7H:4, R7:20, R8L:16
+          CFI Resource R8H:4, R8:20, R9L:16, R9H:4, R9:20, R10L:16, R10H:4
+          CFI Resource R10:20, R11L:16, R11H:4, R11:20, R12L:16, R12H:4, R12:20
+          CFI Resource R13L:16, R13H:4, R13:20, R14L:16, R14H:4, R14:20, R15L:16
+          CFI Resource R15H:4, R15:20
+          CFI ResourceParts R4 R4H, R4L
+          CFI ResourceParts R5 R5H, R5L
+          CFI ResourceParts R6 R6H, R6L
+          CFI ResourceParts R7 R7H, R7L
+          CFI ResourceParts R8 R8H, R8L
+          CFI ResourceParts R9 R9H, R9L
+          CFI ResourceParts R10 R10H, R10L
+          CFI ResourceParts R11 R11H, R11L
+          CFI ResourceParts R12 R12H, R12L
+          CFI ResourceParts R13 R13H, R13L
+          CFI ResourceParts R14 R14H, R14L
+          CFI ResourceParts R15 R15H, R15L
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L Undefined
+          CFI R12H Undefined
+          CFI R12 Undefined
+          CFI R13L Undefined
+          CFI R13H Undefined
+          CFI R13 Undefined
+          CFI R14L Undefined
+          CFI R14H Undefined
+          CFI R14 Undefined
+          CFI R15L Undefined
+          CFI R15H Undefined
+          CFI R15 Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L SameValue
+          CFI R12H 0
+          CFI R12 Concat
+          CFI R13L SameValue
+          CFI R13H 0
+          CFI R13 Concat
+          CFI R14L SameValue
+          CFI R14H 0
+          CFI R14 Concat
+          CFI R15L SameValue
+          CFI R15H 0
+          CFI R15 Concat
+          CFI EndCommon cfiCommon1
+        
+// C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\osal\mcu\msp430\MSP430FlashUtil.c
+//    1 /**************************************************************************************************
+//    2   Filename:       MSP430FlashUtil.c
+//    3   Revised:        $Date: 2008-07-14 13:59:17 -0700 (Mon, 14 Jul 2008) $
+//    4   Revision:       $Revision: 17524 $
+//    5 
+//    6   Description:    Describe the purpose and contents of the file.
+//    7 
+//    8 
+//    9   Copyright 2006-2007 Texas Instruments Incorporated. All rights reserved.
+//   10 
+//   11   IMPORTANT: Your use of this Software is limited to those specific rights
+//   12   granted under the terms of a software license agreement between the user
+//   13   who downloaded the software, his/her employer (which must be your employer)
+//   14   and Texas Instruments Incorporated (the "License").  You may not use this
+//   15   Software unless you agree to abide by the terms of the License. The License
+//   16   limits your use, and you acknowledge, that the Software may not be modified,
+//   17   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   18   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   19   frequency transceiver, which is integrated into your product.  Other than for
+//   20   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   21   works of, modify, distribute, perform, display or sell this Software and/or
+//   22   its documentation for any purpose.
+//   23 
+//   24   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   25   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, 
+//   26   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE, 
+//   27   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   28   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   29   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   30   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   31   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   32   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   33   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   34   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   35 
+//   36   Should you have any questions regarding your right to use this Software,
+//   37   contact Texas Instruments Incorporated at www.TI.com. 
+//   38 **************************************************************************************************/
+//   39 
+//   40 //****************************************************************************
+//   41 //  MSP-FET430P140 Demo - Flash In-System Programming, Copy SegA to SegB
+//   42 //
+//   43 //  Description: This program first erases flash seg A, then it increments all
+//   44 //  values in seg A, then it erases seg B, then  copies seg A to seg B.
+//   45 //  Assumed MCLK 550kHz - 900kHz.
+//   46 //  //* Set Breakpoint on NOP in the Mainloop to avoid Stressing Flash *//
+//   47 //
+//   48 //               MSP430F149
+//   49 //            -----------------
+//   50 //        /|\|              XIN|-
+//   51 //         | |                 |
+//   52 //         --|RST          XOUT|-
+//   53 //           |                 |
+//   54 //
+//   55 //  Texas Instruments Inc.
+//   56 //  Feb 2005
+//   57 //  Built with IAR Embedded Workbench Version: 3.21A
+//   58 //******************************************************************************
+//   59 
+//   60 #include "hal_board_cfg.h"
+
+        ASEGN DATA16_AN:DATA:NOROOT,0140H
+// union <unnamed> _A_FCTL1_L
+_A_FCTL1_L:
+        DS8 2
+
+        ASEGN DATA16_AN:DATA:NOROOT,0144H
+// union <unnamed> _A_FCTL3_L
+_A_FCTL3_L:
+        DS8 2
+
+        ASEGN DATA16_AN:DATA:NOROOT,015cH
+// union <unnamed> _A_WDTCTL_L
+_A_WDTCTL_L:
+        DS8 2
+//   61 #include "hal_types.h"
+//   62 #include "MSP430FlashUtil.h"
+//   63 
+//   64 #define STATIC  static
+//   65 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//   66 STATIC uint8 s_savWDT;
+s_savWDT:
+        DS8 1
+//   67 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//   68 STATIC halIntState_t fuIntState;
+fuIntState:
+        DS8 2
+//   69 
+//   70 // Function prototypes
+//   71 STATIC void initFlash(void);
+//   72 STATIC void doneFlash(void);
+//   73 
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//   74 STATIC void initFlash(void)
+initFlash:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function initFlash
+//   75 {
+//   76   HAL_ENTER_CRITICAL_SECTION( fuIntState );  // Hold off interrupts.
+        MOV.W   SR, R15
+        MOV.W   R15, &fuIntState
+        dint
+        nop
+//   77 
+//   78   s_savWDT = WDTCTL & 0xFF;
+        MOV.W   &0x15c, R14
+        MOV.B   R14, &s_savWDT
+//   79 
+//   80   WDTCTL = WDTPW + WDTHOLD;                 // Stop watchdog timer
+        MOV.W   #0x5a80, &0x15c
+//   81 
+//   82 #if defined FCTL2
+//   83   FCTL2 = FWKEY + FSSEL_1 + FN4 + FN3;  // Flash Timing Generator as MCLK/24 -> 333 kHz.
+//   84 #endif
+//   85 
+//   86 #if defined HAL_BOARD_F5438
+//   87   if (FCTL3 & LOCKA)
+        BIT.W   #0x40, &0x144
+        JNC     ??initFlash_0
+//   88   {
+//   89     FCTL3 = FWKEY + LOCKA;  // Clear the user info pages lock for writing the IEEE.
+        MOV.W   #0xa540, &0x144
+//   90   }
+//   91 #endif
+//   92 }
+??initFlash_0:
+        RETA
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_WDTCTL_L
+        REQUIRE _A_FCTL3_L
+//   93 
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//   94 STATIC void doneFlash()
+doneFlash:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function doneFlash
+//   95 {
+//   96   // restore WDT
+//   97   WDTCTL = WDTPW + s_savWDT;
+        MOV.B   &s_savWDT, R15
+        ADD.W   #0x5a00, R15
+        MOV.W   R15, &0x15c
+//   98 
+//   99   HAL_EXIT_CRITICAL_SECTION( fuIntState );   // Re-enable interrupts.
+        MOV.W   &fuIntState, SR
+//  100 
+//  101   return;
+        RETA
+          CFI EndBlock cfiBlock1
+        REQUIRE _A_WDTCTL_L
+//  102 }
+//  103 
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  104 void flashErasePage(uint8 *addr)
+flashErasePage:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function flashErasePage
+//  105 {
+//  106   initFlash();
+        FUNCALL flashErasePage, initFlash
+        LOCFRAME CSTACK, 4, STACK
+        FUNCALL flashErasePage, doneFlash
+        LOCFRAME CSTACK, 4, STACK
+        CALLA   #initFlash
+//  107 
+//  108   FCTL1 = FWKEY + ERASE;               // Set Erase bit
+        MOV.W   #0xa502, &0x140
+//  109   FCTL3 = FWKEY;                       // Clear Lock bit
+        MOV.W   #0xa500, &0x144
+//  110   *addr = 0;                           // Dummy write to erase Flash segment
+        MOV.B   #0x0, 0(R12)
+//  111   FCTL1 = FWKEY;                       // Clear ERASE bit
+        CALLA   #?Subroutine0
+//  112   FCTL3 = FWKEY + LOCK;                // Set LOCK bit
+//  113 
+//  114   doneFlash();
+??CrossCallReturnLabel_1:
+        BRA     #doneFlash
+          CFI EndBlock cfiBlock2
+        REQUIRE _A_FCTL1_L
+        REQUIRE _A_FCTL3_L
+//  115   return;
+//  116 }
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI Function flashWrite
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+10
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI (cfiCond4) Function flashErasePage
+          CFI (cfiCond4) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond4) CFA SP+8
+          CFI Block cfiPicker5 Using cfiCommon1
+          CFI (cfiPicker5) NoFunction
+          CFI (cfiPicker5) Picker
+        MOV.W   #0xa500, &0x140
+        MOV.W   #0xa510, &0x144
+        RETA
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiPicker5
+//  117 
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  118 void flashWrite( uint8 *addr, uint16 len, uint8 *buf )
+flashWrite:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function flashWrite
+//  119 {
+        FUNCALL flashWrite, initFlash
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL flashWrite, doneFlash
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+        MOV.W   R14, R10
+//  120   initFlash();
+        CALLA   #initFlash
+//  121 
+//  122   FCTL3 = FWKEY;                // Clear Lock bit
+        MOV.W   #0xa500, &0x144
+//  123   FCTL1 = FWKEY + WRT;          // Set WRT bit for write operation
+        MOV.W   #0xa540, &0x140
+        JMP     ??flashWrite_1
+//  124 
+//  125   while ( len-- )
+//  126   {
+//  127     *addr++ = *buf++;            // Write value to flash
+??flashWrite_0:
+        MOV.B   @R10+, 0(R12)
+        ADD.W   #0x1, R12
+//  128   }
+??flashWrite_1:
+        MOV.W   R13, R15
+        ADD.W   #0xffff, R13
+        CMP.W   #0x0, R15
+        JNE     ??flashWrite_0
+//  129 
+//  130   FCTL1 = FWKEY;                // Clear WRT bit
+        CALLA   #?Subroutine0
+//  131   FCTL3 = FWKEY + LOCK;         // Set LOCK bit
+//  132 
+//  133   doneFlash();
+??CrossCallReturnLabel_0:
+        CALLA   #doneFlash
+//  134 }
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock6
+        REQUIRE _A_FCTL3_L
+        REQUIRE _A_FCTL1_L
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r4:
+        REQUIRE ?setjmp_r4
+        REQUIRE ?longjmp_r4
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r5:
+        REQUIRE ?setjmp_r5
+        REQUIRE ?longjmp_r5
+
+        END
+//  135 
+//  136 /*********************************************************************
+//  137 *********************************************************************/
+// 
+// 148 bytes in segment CODE
+//   6 bytes in segment DATA16_AN
+//   3 bytes in segment DATA16_Z
+// 
+// 148 bytes of CODE memory
+//   3 bytes of DATA memory (+ 6 bytes shared)
+//
+//Errors: none
+//Warnings: none
