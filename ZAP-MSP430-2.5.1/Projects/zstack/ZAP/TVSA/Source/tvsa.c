@@ -182,6 +182,60 @@ static void sysPingRsp(void);
 
 
 
+
+
+/**************************************************************************************************
+ * @fn          pulseSysEvtMsg
+ *
+ * @brief       This function is called by pulseAppEvt() to process all of the pending OSAL messages.
+ *
+ * input parameters
+ *
+ * None.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+static void pulseSysEvtMsg(void)
+{
+  uint8 *msg;
+
+  while ((msg = osal_msg_receive(pulseTaskId)))
+  {
+    switch (*msg)
+    {
+#if TVSA_DATA_CNF  //MHMS Question what is this for?
+    case AF_DATA_CONFIRM_CMD:
+      if (ZSuccess != ((afDataConfirm_t *)msg)->hdr.status)
+      {
+        if (0 == ++pulseCnfErrCnt)
+        {
+          pulseCnfErrCnt = 255;
+        }
+      }
+      break;
+#endif
+
+    case AF_INCOMING_MSG_CMD:  //MHMS this a router processing the incomming command from the coordinator
+      pulseAfMsgRx((afIncomingMSGPacket_t *)msg);
+      break;
+
+    case ZDO_STATE_CHANGE:
+      pulseZdoStateChange();
+      break;
+
+    default:
+      break;
+    }
+
+    (void)osal_msg_deallocate(msg);  // Receiving task is responsible for releasing the memory.
+  }
+}
+
 /**************************************************************************************************
  * @fn          pulseAfMsgRx
  *
@@ -230,61 +284,7 @@ static void pulseAfMsgRx(afIncomingMSGPacket_t *msg)
 }
 
 /**************************************************************************************************
- * @fn          pulseSysEvtMsg
- *
- * @brief       This function is called by pulseAppEvt() to process all of the pending OSAL messages.
- *
- * input parameters
- *
- * None.
- *
- * output parameters
- *
- * None.
- *
- * @return      None.
- **************************************************************************************************
- */
-static void pulseSysEvtMsg(void)
-{
-  uint8 *msg;
-
-  while ((msg = osal_msg_receive(pulseTaskId)))
-  {
-    switch (*msg)
-    {
-#if TVSA_DATA_CNF  //MHMS Question what is this for?
-    case AF_DATA_CONFIRM_CMD:
-      if (ZSuccess != ((afDataConfirm_t *)msg)->hdr.status)
-      {
-        if (0 == ++pulseCnfErrCnt)
-        {
-          pulseCnfErrCnt = 255;
-        }
-      }
-      break;
-#endif
-
-    case AF_INCOMING_MSG_CMD:
-      pulseAfMsgRx((afIncomingMSGPacket_t *)msg);
-      break;
-
-    case ZDO_STATE_CHANGE:
-      pulseZdoStateChange();
-      break;
-
-    default:
-      break;
-    }
-
-    (void)osal_msg_deallocate(msg);  // Receiving task is responsible for releasing the memory.
-  }
-}
-
-
-
-/**************************************************************************************************
- * @fn          pulseZdoStateChange  //MHMS this is really for router or end  devices
+ * @fn          pulseZdoStateChange 
  *
  * @brief       This function is called by pulseSysEvtMsg() for a ZDO_STATE_CHANGE message.
  *
@@ -307,13 +307,12 @@ static void pulseZdoStateChange(void)
 
     if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
     {
-  #if TVSA_DONGLE_IS_ZC
+
       if (INVALID_NODE_ADDR == pulseAddr)
       {
-        // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
-        pulseAddr = NWK_PAN_COORD_ADDR;
+      pulseAddr = NWK_PAN_COORD_ADDR;
       }
-  #endif
+
 
       if (INVALID_NODE_ADDR != pulseAddr)
       {
@@ -324,7 +323,7 @@ static void pulseZdoStateChange(void)
       }
     }
   }
-  else
+  else if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
   {
     (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
 
@@ -1047,7 +1046,7 @@ static void pulseDataReq(void)
   if((QS == true) && (pulseDataReqFlag == false)){
     osal_start_timerEx(pulseTaskId, PULSE_EVT_REQ, PULSE_DLY_DATAREQ);  //send next Pulse data report in 20ms
     pulseDataReqFlag = true;  //to prevent restarting of timer if existing already running
-    
+     
   }
   
   //testing USB
