@@ -1,0 +1,626 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       19/Apr/2013  11:30:17 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Components\hal\common\hal_assert.c                #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP4 #
+#                     30-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ #
+#                     zap.cfg (-DTVSA_DEVICE_ID=0x0016 -DZAP_PHY_SPI=1        #
+#                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE    #
+#                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                  #
+#                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE               #
+#                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE            #
+#                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Components\hal\common\hal_assert.c -lC            #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List\ #
+#                      -lA C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MS #
+#                     P430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\ #
+#                     List\ --remarks --diag_suppress                         #
+#                     Pe001,Pe193,Pe236,Pe826 -o                              #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\Obj\  #
+#                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I     #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ -I              #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I    #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\    #
+#                     -I C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP4 #
+#                     30-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\. #
+#                     .\Components\hal\target\MSP5438ZAP\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\hal\include\ -I C:\Users\student\Documents\Gi #
+#                     tHub\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVS #
+#                     A\EXP5438\..\..\..\..\..\Components\mac\include\ -I     #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\mt\ -I C:\Users\student\Documents\GitHub\MHMS #
+#                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 #
+#                     \..\..\..\..\..\Components\osal\include\ -I             #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\osal\mcu\msp430\ -I                           #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\services\saddr\ -I                            #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\services\sdata\ -I                            #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\stack\af\ -I C:\Users\student\Documents\GitHu #
+#                     b\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\E #
+#                     XP5438\..\..\..\..\..\Components\stack\nwk\ -I          #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\stack\sapi\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA #
+#                     \EXP5438\..\..\..\..\..\Components\stack\sec\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\stack\sys\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\ #
+#                     EXP5438\..\..\..\..\..\Components\stack\zdo\ -I         #
+#                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\C #
+#                     omponents\zmac\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\zmac\f8w\ --core=430X      #
+#                     --data_model=small -Ohz --multiplier=32                 #
+#                     --multiplier_location=4C0 --require_prototypes          #
+#                     --hw_workaround=CPU40 --hw_workaround=CPU42             #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List\ #
+#                     hal_assert.lst                                          #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\Obj\h #
+#                     al_assert.r43                                           #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430-2.5.1\Components\hal\common\hal_assert.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_assert.c
+      3            Revised:        $Date: 2010-11-22 08:13:43 -0800 (Mon, 22 Nov 2010) $
+      4            Revision:       $Revision: 24480 $
+      5          
+      6            Description:    Describe the purpose and contents of the file.
+      7          
+      8          
+      9            Copyright 2006-2010 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          
+     41          /* ------------------------------------------------------------------------------------------------
+     42           *                                          Includes
+     43           * ------------------------------------------------------------------------------------------------
+     44           */
+     45          #include "hal_assert.h"
+     46          #include "hal_types.h"
+     47          #include "hal_board.h"
+
+   \                                 In  segment DATA16_AN, at 0x200
+   \   union <unnamed> _A_PAIN_L
+   \                     _A_PAIN_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x202
+   \   union <unnamed> _A_PAOUT_L
+   \                     _A_PAOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x204
+   \   union <unnamed> _A_PADIR_L
+   \                     _A_PADIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x262
+   \   union <unnamed> _A_PDOUT_L
+   \                     _A_PDOUT_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x264
+   \   union <unnamed> _A_PDDIR_L
+   \                     _A_PDDIR_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x266
+   \   union <unnamed> _A_PDREN_L
+   \                     _A_PDREN_L:
+   \   000000                DS8 2
+
+   \                                 In  segment DATA16_AN, at 0x15c
+   \   union <unnamed> _A_WDTCTL_L
+   \                     _A_WDTCTL_L:
+   \   000000                DS8 2
+     48          #include "hal_defs.h"
+     49          #include "hal_mcu.h"
+     50          
+     51          #if (defined HAL_MCU_AVR) || (defined HAL_MCU_CC2430) || (defined HAL_MCU_CC2530) || \
+     52              (defined HAL_MCU_CC2533) || (defined HAL_MCU_MSP430)
+     53            /* for access to debug data */
+     54          #include "mac_rx.h"
+     55          #include "mac_tx.h"
+     56          #endif
+     57          
+     58          /* ------------------------------------------------------------------------------------------------
+     59           *                                       Local Prototypes
+     60           * ------------------------------------------------------------------------------------------------
+     61           */
+     62          void halAssertHazardLights(void);
+     63          
+     64          
+     65          /**************************************************************************************************
+     66           * @fn          halAssertHandler
+     67           *
+     68           * @brief       Logic to handle an assert.
+     69           *
+     70           * @param       none
+     71           *
+     72           * @return      none
+     73           **************************************************************************************************
+     74           */
+
+   \                                 In  segment CODE, align 2
+     75          void halAssertHandler(void)
+   \                     halAssertHandler:
+     76          {
+     77            /* execute code that handles asserts */
+     78          #ifdef ASSERT_RESET
+     79            HAL_SYSTEM_RESET();
+     80          #elif !defined ASSERT_WHILE
+     81            halAssertHazardLights();
+   \   000000   ........     BRA     #halAssertHazardLights
+     82          #else
+     83            while(1);
+     84          #endif
+     85          }
+     86          
+     87          #if !defined ASSERT_WHILE
+     88          /**************************************************************************************************
+     89           * @fn          halAssertHazardLights
+     90           *
+     91           * @brief       Blink LEDs to indicate an error.
+     92           *
+     93           * @param       none
+     94           *
+     95           * @return      none
+     96           **************************************************************************************************
+     97           */
+
+   \                                 In  segment CODE, align 2
+     98          void halAssertHazardLights(void)
+   \                     halAssertHazardLights:
+     99          {
+   \   000000   0A12         PUSH.W  R10
+   \   000002   3182         SUB.W   #0x8, SP
+    100            enum
+    101            {
+    102              DEBUG_DATA_RSTACK_HIGH_OFS,
+    103              DEBUG_DATA_RSTACK_LOW_OFS,
+    104              DEBUG_DATA_TX_ACTIVE_OFS,
+    105              DEBUG_DATA_RX_ACTIVE_OFS,
+    106          
+    107          #if (defined HAL_MCU_AVR) || (defined HAL_MCU_CC2430)
+    108              DEBUG_DATA_INT_MASK_OFS,
+    109          #elif (defined HAL_MCU_CC2530) || (defined HAL_MCU_CC2533)
+    110              DEBUG_DATA_INT_MASK0_OFS,
+    111              DEBUG_DATA_INT_MASK1_OFS,
+    112          #endif
+    113          
+    114              DEBUG_DATA_SIZE
+    115            };
+    116          
+    117            uint8 buttonHeld;
+    118            uint8 debugData[DEBUG_DATA_SIZE];
+    119          
+    120            /* disable all interrupts before anything else */
+    121            HAL_DISABLE_INTERRUPTS();
+   \   000004   32C2         dint
+   \   000006   0343         nop
+    122          
+    123            /*-------------------------------------------------------------------------------
+    124             *  Initialize LEDs and turn them off.
+    125             */
+    126            HAL_BOARD_INIT();
+   \   000008   B240805A5C01 MOV.W   #0x5a80, &0x15c
+   \   00000E   7C400300     MOV.B   #0x3, R12
+   \   000012   ........     CALLA   #halBoardSetSystemClock
+   \   000016   32C04000     BIC.W   #0x40, SR
+   \   00001A   ........     CALLA   #?Subroutine0
+   \                     ??CrossCallReturnLabel_0:
+   \   00001E   D2D30402     BIS.B   #0x1, &0x204
+   \   000022   E2D30402     BIS.B   #0x2, &0x204
+   \   000026   D2D30402     BIS.B   #0x1, &0x204
+   \   00002A   E2D30402     BIS.B   #0x2, &0x204
+   \   00002E   F2C080006502 BIC.B   #0x80, &0x265
+   \   000034   F2D080006702 BIS.B   #0x80, &0x267
+   \   00003A   F2D080006302 BIS.B   #0x80, &0x263
+    127          
+    128            HAL_TURN_OFF_LED1();
+   \   000040   ........     CALLA   #?Subroutine0
+    129            HAL_TURN_OFF_LED2();
+    130            HAL_TURN_OFF_LED3();
+    131            HAL_TURN_OFF_LED4();
+   \                     ??CrossCallReturnLabel_1:
+   \   000044   0B3C         JMP     ??halAssertHazardLights_8
+    132          
+    133            /*-------------------------------------------------------------------------------
+    134             *  Master infinite loop.
+    135             */
+    136            for (;;)
+    137            {
+    138              buttonHeld = 0;
+    139          
+    140              /*-------------------------------------------------------------------------------
+    141               *  "Hazard lights" loop.  A held keypress will exit this loop.
+    142               */
+    143              do
+    144              {
+    145                HAL_LED_BLINK_DELAY();
+    146          
+    147                /* toggle LEDS, the #ifdefs are in case HAL has logically remapped non-existent LEDs */
+    148          #if (HAL_NUM_LEDS >= 1)
+    149                HAL_TOGGLE_LED1();
+    150          #if (HAL_NUM_LEDS >= 2)
+    151                HAL_TOGGLE_LED2();
+    152          #if (HAL_NUM_LEDS >= 3)
+    153                HAL_TOGGLE_LED3();
+    154          #if (HAL_NUM_LEDS >= 4)
+    155                HAL_TOGGLE_LED4();
+    156          #endif
+    157          #endif
+    158          #endif
+    159          #endif
+    160          
+    161                /* escape hatch to continue execution, set escape to '1' to continue execution */
+    162                {
+    163                  static uint8 escape = 0;
+    164                  if (escape)
+    165                  {
+    166                    escape = 0;
+    167                    return;
+    168                  }
+    169                }
+    170          
+    171                /* break out of loop if button is held long enough */
+    172                if (HAL_PUSH_BUTTON1())
+    173                {
+    174                  buttonHeld++;
+    175                }
+    176                else
+    177                {
+    178                  buttonHeld = 0;
+    179                }
+    180              }
+    181              while (buttonHeld != 10);  /* loop until button is held specified number of loops */
+    182          
+    183              /*-------------------------------------------------------------------------------
+    184               *  Just exited from "hazard lights" loop.
+    185               */
+    186          
+    187              /* turn off all LEDs */
+    188              HAL_TURN_OFF_LED1();
+    189              HAL_TURN_OFF_LED2();
+    190              HAL_TURN_OFF_LED3();
+    191              HAL_TURN_OFF_LED4();
+    192          
+    193              /* wait for button release */
+    194              HAL_DEBOUNCE(!HAL_PUSH_BUTTON1());
+    195          
+    196              /*-------------------------------------------------------------------------------
+    197               *  Load debug data into memory.
+    198               */
+    199          #ifdef HAL_MCU_AVR
+    200              {
+    201                uint8 * pStack;
+    202                pStack = (uint8 *) SP;
+    203                pStack++; /* point to return address on stack */
+    204                debugData[DEBUG_DATA_RSTACK_HIGH_OFS] = *pStack;
+    205                pStack++;
+    206                debugData[DEBUG_DATA_RSTACK_LOW_OFS] = *pStack;
+    207              }
+    208              debugData[DEBUG_DATA_INT_MASK_OFS] = EIMSK;
+    209          #endif
+    210          
+    211          #if (defined HAL_MCU_CC2430)
+    212              debugData[DEBUG_DATA_INT_MASK_OFS] = RFIM;
+    213          #elif (defined HAL_MCU_CC2530) || (defined HAL_MCU_CC2533)
+    214              debugData[DEBUG_DATA_INT_MASK0_OFS] = RFIRQM0;
+    215              debugData[DEBUG_DATA_INT_MASK1_OFS] = RFIRQM1;
+    216          #endif
+    217          
+    218          
+    219          #if (defined HAL_MCU_AVR) || (defined HAL_MCU_CC2430) || (defined HAL_MCU_CC2530) || \
+    220              (defined HAL_MCU_CC2533) || (defined HAL_MCU_MSP430)
+    221              debugData[DEBUG_DATA_TX_ACTIVE_OFS] = macTxActive;
+    222              debugData[DEBUG_DATA_RX_ACTIVE_OFS] = macRxActive;
+    223          #endif
+    224          
+    225             /* initialize for data dump loop */
+    226              {
+    227                uint8 iBit;
+    228                uint8 iByte;
+    229          
+    230                iBit  = 0;
+    231                iByte = 0;
+    232          
+    233                /*-------------------------------------------------------------------------------
+    234                 *  Data dump loop.  A button press cycles data bits to an LED.
+    235                 */
+    236                while (iByte < DEBUG_DATA_SIZE)
+    237                {
+    238                  /* wait for key press */
+    239                  while(!HAL_PUSH_BUTTON1());
+    240          
+    241                  /* turn on all LEDs for first bit of byte, turn on three LEDs if not first bit */
+    242                  HAL_TURN_ON_LED1();
+    243                  HAL_TURN_ON_LED2();
+    244                  HAL_TURN_ON_LED3();
+    245                  if (iBit == 0)
+    246                  {
+    247                    HAL_TURN_ON_LED4();
+    248                  }
+    249                  else
+    250                  {
+    251                    HAL_TURN_OFF_LED4();
+    252                  }
+    253          
+    254                  /* wait for debounced key release */
+    255                  HAL_DEBOUNCE(!HAL_PUSH_BUTTON1());
+    256          
+    257                  /* turn off all LEDs */
+    258                  HAL_TURN_OFF_LED1();
+    259                  HAL_TURN_OFF_LED2();
+    260                  HAL_TURN_OFF_LED3();
+    261                  HAL_TURN_OFF_LED4();
+    262          
+    263                  /* output value of data bit to LED1 */
+    264                  if (debugData[iByte] & (1 << (7 - iBit)))
+    265                  {
+    266                    HAL_TURN_ON_LED1();
+    267                  }
+    268                  else
+    269                  {
+    270                    HAL_TURN_OFF_LED1();
+   \                     ??halAssertHazardLights_6:
+   \   000046   D2C30202     BIC.B   #0x1, &0x202
+    271                  }
+    272          
+    273                  /* advance to next bit */
+    274                  iBit++;
+   \                     ??halAssertHazardLights_7:
+   \   00004A   5F53         ADD.B   #0x1, R15
+    275                  if (iBit == 8)
+   \   00004C   7F92         CMP.B   #0x8, R15
+   \   00004E   4020         JNE     ??halAssertHazardLights_4
+    276                  {
+    277                    iBit = 0;
+   \   000050   4F43         MOV.B   #0x0, R15
+    278                    iByte++;
+   \   000052   5D53         ADD.B   #0x1, R13
+    279                  }
+   \   000054   6D92         CMP.B   #0x4, R13
+   \   000056   3C28         JNC     ??halAssertHazardLights_4
+    280                }
+    281              }
+    282          
+    283              /*
+    284               *  About to enter "hazard lights" loop again.  Turn off LED1 in case the last bit
+    285               *  displayed happened to be one.  This guarantees all LEDs are off at the start of
+    286               *  the flashing loop which uses a toggle operation to change LED states.
+    287               */
+    288              HAL_TURN_OFF_LED1();
+   \   000058   D2C30202     BIC.B   #0x1, &0x202
+   \                     ??halAssertHazardLights_8:
+   \   00005C   4E43         MOV.B   #0x0, R14
+   \                     ??halAssertHazardLights_2:
+   \   00005E   81430000     MOV.W   #0x0, 0(SP)
+   \   000062   81430200     MOV.W   #0x0, 0x2(SP)
+   \   000066   093C         JMP     ??halAssertHazardLights_9
+   \                     ??halAssertHazardLights_0:
+   \   000068   2C41         MOV.W   @SP, R12
+   \   00006A   1D410200     MOV.W   0x2(SP), R13
+   \   00006E   1C53         ADD.W   #0x1, R12
+   \   000070   0D63         ADDC.W  #0x0, R13
+   \   000072   814C0000     MOV.W   R12, 0(SP)
+   \   000076   814D0200     MOV.W   R13, 0x2(SP)
+   \                     ??halAssertHazardLights_9:
+   \   00007A   B19003000200 CMP.W   #0x3, 0x2(SP)
+   \   000080   F32B         JNC     ??halAssertHazardLights_0
+   \   000082   0420         JNE     ??halAssertHazardLights_10
+   \   000084   B19000400000 CMP.W   #0x4000, 0(SP)
+   \   00008A   EE2B         JNC     ??halAssertHazardLights_0
+   \                     ??halAssertHazardLights_10:
+   \   00008C   D2E30202     XOR.B   #0x1, &0x202
+   \   000090   E2E30202     XOR.B   #0x2, &0x202
+   \   000094   C293....     CMP.B   #0x0, &??escape
+   \   000098   0524         JEQ     ??halAssertHazardLights_11
+   \   00009A   C243....     MOV.B   #0x0, &??escape
+   \   00009E   3152         ADD.W   #0x8, SP
+   \   0000A0   3A41         POP.W   R10
+   \   0000A2   1001         RETA
+   \                     ??halAssertHazardLights_11:
+   \   0000A4   F2B010000102 BIT.B   #0x10, &0x201
+   \   0000AA   D82F         JC      ??halAssertHazardLights_8
+   \   0000AC   5E53         ADD.B   #0x1, R14
+   \   0000AE   7E900A00     CMP.B   #0xa, R14
+   \   0000B2   D523         JNE     ??halAssertHazardLights_2
+   \   0000B4   ........     CALLA   #?Subroutine0
+   \                     ??CrossCallReturnLabel_2:
+   \   0000B8   0F43         MOV.W   #0x0, R15
+   \                     ??halAssertHazardLights_3:
+   \   0000BA   F2B010000102 BIT.B   #0x10, &0x201
+   \   0000C0   012C         JC      ??halAssertHazardLights_12
+   \   0000C2   0F43         MOV.W   #0x0, R15
+   \                     ??halAssertHazardLights_12:
+   \   0000C4   1F53         ADD.W   #0x1, R15
+   \   0000C6   3F90F401     CMP.W   #0x1f4, R15
+   \   0000CA   F73B         JL      ??halAssertHazardLights_3
+   \   0000CC   4F43         MOV.B   #0x0, R15
+   \   0000CE   4D43         MOV.B   #0x0, R13
+   \                     ??halAssertHazardLights_4:
+   \   0000D0   F2B010000102 BIT.B   #0x10, &0x201
+   \   0000D6   FC2F         JC      ??halAssertHazardLights_4
+   \   0000D8   D2D30202     BIS.B   #0x1, &0x202
+   \   0000DC   E2D30202     BIS.B   #0x2, &0x202
+   \   0000E0   D2D30202     BIS.B   #0x1, &0x202
+   \   0000E4   4F93         CMP.B   #0x0, R15
+   \   0000E6   0320         JNE     ??halAssertHazardLights_13
+   \   0000E8   E2D30202     BIS.B   #0x2, &0x202
+   \   0000EC   023C         JMP     ??halAssertHazardLights_14
+   \                     ??halAssertHazardLights_13:
+   \   0000EE   E2C30202     BIC.B   #0x2, &0x202
+   \                     ??halAssertHazardLights_14:
+   \   0000F2   0E43         MOV.W   #0x0, R14
+   \                     ??halAssertHazardLights_5:
+   \   0000F4   F2B010000102 BIT.B   #0x10, &0x201
+   \   0000FA   012C         JC      ??halAssertHazardLights_15
+   \   0000FC   0E43         MOV.W   #0x0, R14
+   \                     ??halAssertHazardLights_15:
+   \   0000FE   1E53         ADD.W   #0x1, R14
+   \   000100   3E90F401     CMP.W   #0x1f4, R14
+   \   000104   F73B         JL      ??halAssertHazardLights_5
+   \   000106   ........     CALLA   #?Subroutine0
+   \                     ??CrossCallReturnLabel_3:
+   \   00010A   4C4D         MOV.B   R13, R12
+   \   00010C   0C51         ADD.W   SP, R12
+   \   00010E   1E43         MOV.W   #0x1, R14
+   \   000110   7A400700     MOV.B   #0x7, R10
+   \   000114   4A8F         SUB.B   R15, R10
+   \   000116   5A83         SUB.B   #0x1, R10
+   \   000118   0230         JN      ??halAssertHazardLights_16
+   \   00011A                RPT     R10
+   \   00011A   CA180E5E     RLAX.W  R14
+   \                     ??halAssertHazardLights_16:
+   \   00011E   CCBE0400     BIT.B   R14, 0x4(R12)
+   \   000122   9127         JEQ     ??halAssertHazardLights_6
+   \   000124   D2D30202     BIS.B   #0x1, &0x202
+   \   000128   903F         JMP     ??halAssertHazardLights_7
+   \   00012A   0343         NOP
+   \   00012C                REQUIRE _A_WDTCTL_L
+   \   00012C                REQUIRE _A_PAOUT_L
+   \   00012C                REQUIRE _A_PADIR_L
+   \   00012C                REQUIRE _A_PDDIR_L
+   \   00012C                REQUIRE _A_PDREN_L
+   \   00012C                REQUIRE _A_PDOUT_L
+   \   00012C                REQUIRE _A_PAIN_L
+    289            }
+    290          }
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine0:
+   \   000000   D2C30202     BIC.B   #0x1, &0x202
+   \   000004   E2C30202     BIC.B   #0x2, &0x202
+   \   000008   D2C30202     BIC.B   #0x1, &0x202
+   \   00000C   E2C30202     BIC.B   #0x2, &0x202
+   \   000010   1001         RETA
+
+   \                                 In  segment DATA16_Z, align 1, align-sorted
+   \   000000                REQUIRE ?cstart_init_zero
+   \                     ??escape:
+   \   000000                DS8 1
+    291          #endif
+    292          
+    293          /* ------------------------------------------------------------------------------------------------
+    294           *                                    Compile Time Assertions
+    295           * ------------------------------------------------------------------------------------------------
+    296           */
+    297          
+    298          /* integrity check of type sizes */
+    299          HAL_ASSERT_SIZE(  int8, 1);
+    300          HAL_ASSERT_SIZE( uint8, 1);
+    301          HAL_ASSERT_SIZE( int16, 2);
+    302          HAL_ASSERT_SIZE(uint16, 2);
+    303          HAL_ASSERT_SIZE( int32, 4);
+    304          HAL_ASSERT_SIZE(uint32, 4);
+    305          
+    306          
+    307          /**************************************************************************************************
+    308          */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  halAssertHandler
+             4 -> halAssertHazardLights
+      14  halAssertHazardLights
+            14 -> halBoardSetSystemClock
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      18  ?Subroutine0
+       2  _A_PADIR_L
+       2  _A_PAIN_L
+       2  _A_PAOUT_L
+       2  _A_PDDIR_L
+       2  _A_PDOUT_L
+       2  _A_PDREN_L
+       2  _A_WDTCTL_L
+       1  escape
+       4  halAssertHandler
+     300  halAssertHazardLights
+
+ 
+ 322 bytes in segment CODE
+  14 bytes in segment DATA16_AN
+   1 byte  in segment DATA16_Z
+ 
+ 322 bytes of CODE memory
+   1 byte  of DATA memory (+ 14 bytes shared)
+
+Errors: none
+Warnings: none

@@ -130,7 +130,7 @@
 #define TVSA_EVT_REQ               0x2000
 #define TVSA_EVT_DAT               0x1000
 
-#define TVSA_DLY_ANN               60000
+#define TVSA_DLY_ANN               100
 #define TVSA_DLY_DAT               TVSA_DLY_ANN
 // Attempt to randomly stagger reports within the reporting window.
 #define TVSA_STG_DAT               ((uint16)(((uint32)TVSA_DLY_DAT * Onboard_rand()) / 65536))

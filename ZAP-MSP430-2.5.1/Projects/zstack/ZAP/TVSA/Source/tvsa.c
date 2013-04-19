@@ -301,67 +301,76 @@ static void pulseSysEvtMsg(void)
  */
 static void pulseZdoStateChange(void)
 {
-  (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
-
-  if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
+  if(DEV_ZB_COORD == devState) 
   {
-    uint16 tmp = NLME_GetCoordShortAddr();
-    uint8 dly = TVSA_STG_DAT;
+    (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_ANN);
 
-    pulseDat[TVSA_PAR_LSB] = LO_UINT16(tmp);
-    pulseDat[TVSA_PAR_MSB] = HI_UINT16(tmp);
-    if ((DEV_ROUTER == devState) || (DEV_ZB_COORD == devState))
+    if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
     {
-      pulseDat[TVSA_TYP_IDX] |= 0x80;
-    }
-    else
-    {
-      pulseDat[TVSA_TYP_IDX] &= (0xFF ^ 0x80);
-    }
-
-#if TVSA_DONGLE_IS_ZC  //MHMS do we need this?
-    if (INVALID_NODE_ADDR == pulseAddr)
-    {
-      // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
-      pulseAddr = NWK_PAN_COORD_ADDR;
-    }
-#endif
-
-    if (INVALID_NODE_ADDR != pulseAddr)
-    {
-      if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, (dly + TVSA_DLY_MIN)))
+  #if TVSA_DONGLE_IS_ZC
+      if (INVALID_NODE_ADDR == pulseAddr)
       {
-        (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+        // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+        pulseAddr = NWK_PAN_COORD_ADDR;
+      }
+  #endif
+
+      if (INVALID_NODE_ADDR != pulseAddr)
+      {
+        if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, TVSA_DLY_ANN))
+        {
+          (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+        }
       }
     }
-
-
-    if (0 == 0)//voltageAtTemp22)
-    {
-     // HalInitTV();
-      (void)osal_cpyExtAddr(pulseDat+PULSE_IEE_IDX, &aExtendedAddress);
-    }
-
   }
-  else  //(DEV_ZB_COORD == devState)
+  else
   {
-#if TVSA_DONGLE_IS_ZC
-    if (INVALID_NODE_ADDR == pulseAddr)
-    {
-      // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
-      pulseAddr = NWK_PAN_COORD_ADDR;
-    }
-#endif
+    (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
 
-    if (INVALID_NODE_ADDR != pulseAddr)
-    {
-      if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
-      {
-        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
-      }
-    }
+        if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState)) //
+        {
+          uint16 tmp = NLME_GetCoordShortAddr();
+          uint8 dly = TVSA_STG_DAT;
+
+          pulseDat[TVSA_PAR_LSB] = LO_UINT16(tmp);
+          pulseDat[TVSA_PAR_MSB] = HI_UINT16(tmp);
+          if ((DEV_ROUTER == devState) || (DEV_ZB_COORD == devState))
+          {
+            pulseDat[TVSA_TYP_IDX] |= 0x80;
+          }
+          else
+          {
+            pulseDat[TVSA_TYP_IDX] &= (0xFF ^ 0x80);
+          }
+
+      #if TVSA_DONGLE_IS_ZC  //MHMS do we need this?
+          if (INVALID_NODE_ADDR == pulseAddr)
+          {
+            // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+            pulseAddr = NWK_PAN_COORD_ADDR;
+          }
+      #endif
+
+          if (INVALID_NODE_ADDR != pulseAddr)
+          {
+            if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, (dly + TVSA_DLY_MIN)))
+            {
+              (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+            }
+          }
+
+
+          if (0 == 0)//voltageAtTemp22)
+          {
+           // HalInitTV();
+            (void)osal_cpyExtAddr(pulseDat+PULSE_IEE_IDX, &aExtendedAddress);
+          }
+        }
+  }
+     
     
-  }
+
 #if defined LCD_SUPPORTED
   HalLcdWriteValue(devState, 10, HAL_LCD_LINE_5);
 #endif
@@ -386,7 +395,7 @@ static void pulseZdoStateChange(void)
 /*  //MHMS Question there are 2 ZDOstatechanges,  is one for coord and one for rout?
 static void pulseZdoStateChange(void)
 {
-  (void)osal_stop_timerEx(pulseTaskId, TVSA_EVT_ANN);
+  (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_ANN);
 
   if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
   {
@@ -400,9 +409,9 @@ static void pulseZdoStateChange(void)
 
     if (INVALID_NODE_ADDR != pulseAddr)
     {
-      if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+      if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, TVSA_DLY_ANN))
       {
-        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+        (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
       }
     }
   }
@@ -437,9 +446,9 @@ static void pulseAnnce(void)
   if (INVALID_NODE_ADDR != pulseAddr)
   {
     msg[TVSA_CMD_IDX] = TVSA_CMD_BEG;
-    if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+    if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, TVSA_DLY_ANN))
     {
-      (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+      (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
     }
   }
   else
@@ -633,7 +642,7 @@ static void pulseUartRx(uint8 port, uint8 event)
         {
           pulseAddr = INVALID_NODE_ADDR;
         }
-        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+        (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
       }
 
       pulseState = SOP_STATE;

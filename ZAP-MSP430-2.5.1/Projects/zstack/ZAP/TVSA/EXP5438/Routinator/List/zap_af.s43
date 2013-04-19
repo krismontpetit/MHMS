@@ -1,0 +1,1950 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      19/Apr/2013  11:30:21 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    __rt_version  =  3                                                      /
+//    __double_size =  32                                                     /
+//    __reg_r4      =  free                                                   /
+//    __reg_r5      =  free                                                   /
+//    __pic         =  no                                                     /
+//    __core        =  430X                                                   /
+//    __data_model  =  small                                                  /
+//    Source file   =  C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\Source\zap_af.c             /
+//    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP /
+//                     430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Sourc /
+//                     e\zap.cfg (-DTVSA_DEVICE_ID=0x0016 -DZAP_PHY_SPI=1     /
+//                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE   /
+//                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                 /
+//                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE              /
+//                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE           /
+//                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE           /
+//                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG           /
+//                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC              /
+//                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC         /
+//                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0        /
+//                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                /
+//                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000          /
+//                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)     /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\Source\zap_af.c -lC         /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\Lis /
+//                     t\ -lA C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP /
+//                     -MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routina /
+//                     tor\List\ --remarks --diag_suppress                    /
+//                     Pe001,Pe193,Pe236,Pe826 -o                             /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\Obj /
+//                     \ --debug -D__MSP430F5438A__ -e --double=32 --clib -I  /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ -I            /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I  /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\  /
+//                     -I C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP /
+//                     430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\.. /
+//                     \..\Components\hal\target\MSP5438ZAP\ -I               /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\hal\include\ -I                            /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\mac\include\ -I                            /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\mt\ -I C:\Users\student\Documents\GitHub\M /
+//                     HMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP /
+//                     5438\..\..\..\..\..\Components\osal\include\ -I        /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\osal\mcu\msp430\ -I                        /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\services\saddr\ -I                         /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\services\sdata\ -I                         /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\stack\af\ -I C:\Users\student\Documents\Gi /
+//                     tHub\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TV /
+//                     SA\EXP5438\..\..\..\..\..\Components\stack\nwk\ -I     /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\stack\sapi\ -I                             /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\stack\sec\ -I C:\Users\student\Documents\G /
+//                     itHub\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\T /
+//                     VSA\EXP5438\..\..\..\..\..\Components\stack\sys\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\stack\zdo\ -I C:\Users\student\Documents\G /
+//                     itHub\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\T /
+//                     VSA\EXP5438\..\..\..\..\..\Components\zmac\ -I         /
+//                     C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\.. /
+//                     \Components\zmac\f8w\ --core=430X --data_model=small   /
+//                     -Ohz --multiplier=32 --multiplier_location=4C0         /
+//                     --require_prototypes --hw_workaround=CPU40             /
+//                     --hw_workaround=CPU42                                  /
+//    List file     =  C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430 /
+//                     -2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\Lis /
+//                     t\zap_af.s43                                           /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME zap_af
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__core", "430X"
+        RTMODEL "__data_model", "small"
+        RTMODEL "__double_size", "32"
+        RTMODEL "__pic", "no"
+        RTMODEL "__reg_r4", "free"
+        RTMODEL "__reg_r5", "free"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:SORT:NOROOT(0)
+
+        EXTERN ?ShiftLeft32_8
+        EXTERN ?cstart_init_zero
+        EXTERN ?longjmp_r4
+        EXTERN ?longjmp_r5
+        EXTERN ?setjmp_r4
+        EXTERN ?setjmp_r5
+
+        PUBWEAK ?setjmp_save_r4
+        PUBWEAK ?setjmp_save_r5
+        PUBLIC AF_DataRequest
+        FUNCTION AF_DataRequest,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 22, STACK
+        FUNCTION afCnf,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 8, STACK
+        PUBLIC afFindEndPointDesc
+        FUNCTION afFindEndPointDesc,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        FUNCTION afFindEndPointDescList,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        FUNCTION afIncMsgPktParse,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        FUNCTION afRecv,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC afRegister
+        FUNCTION afRegister,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC afRegisterExtended
+        FUNCTION afRegisterExtended,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC epList
+        PUBLIC zapAfProcessIncoming
+        FUNCTION zapAfProcessIncoming,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC zapAfSync
+        FUNCTION zapAfSync,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA SP DATA
+          CFI Resource PC:20, SP:20, SR:16, R4L:16, R4H:4, R4:20, R5L:16, R5H:4
+          CFI Resource R5:20, R6L:16, R6H:4, R6:20, R7L:16, R7H:4, R7:20, R8L:16
+          CFI Resource R8H:4, R8:20, R9L:16, R9H:4, R9:20, R10L:16, R10H:4
+          CFI Resource R10:20, R11L:16, R11H:4, R11:20, R12L:16, R12H:4, R12:20
+          CFI Resource R13L:16, R13H:4, R13:20, R14L:16, R14H:4, R14:20, R15L:16
+          CFI Resource R15H:4, R15:20
+          CFI ResourceParts R4 R4H, R4L
+          CFI ResourceParts R5 R5H, R5L
+          CFI ResourceParts R6 R6H, R6L
+          CFI ResourceParts R7 R7H, R7L
+          CFI ResourceParts R8 R8H, R8L
+          CFI ResourceParts R9 R9H, R9L
+          CFI ResourceParts R10 R10H, R10L
+          CFI ResourceParts R11 R11H, R11L
+          CFI ResourceParts R12 R12H, R12L
+          CFI ResourceParts R13 R13H, R13L
+          CFI ResourceParts R14 R14H, R14L
+          CFI ResourceParts R15 R15H, R15L
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L Undefined
+          CFI R12H Undefined
+          CFI R12 Undefined
+          CFI R13L Undefined
+          CFI R13H Undefined
+          CFI R13 Undefined
+          CFI R14L Undefined
+          CFI R14H Undefined
+          CFI R14 Undefined
+          CFI R15L Undefined
+          CFI R15H Undefined
+          CFI R15 Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L SameValue
+          CFI R12H 0
+          CFI R12 Concat
+          CFI R13L SameValue
+          CFI R13H 0
+          CFI R13 Concat
+          CFI R14L SameValue
+          CFI R14H 0
+          CFI R14 Concat
+          CFI R15L SameValue
+          CFI R15H 0
+          CFI R15 Concat
+          CFI EndCommon cfiCommon1
+        
+        EXTERN znpPanId
+        EXTERN osal_memcpy
+        FUNCTION osal_memcpy,0202H
+        EXTERN osal_msg_allocate
+        FUNCTION osal_msg_allocate,0202H
+        EXTERN osal_msg_send
+        FUNCTION osal_msg_send,0202H
+        EXTERN zap_msg_allocate
+        FUNCTION zap_msg_allocate,0202H
+        EXTERN zapAppPort
+        EXTERN zapPhySend
+        FUNCTION zapPhySend,0202H
+        EXTERN zap_msg_deallocate
+        FUNCTION zap_msg_deallocate,0202H
+        EXTERN osal_mem_alloc
+        FUNCTION osal_mem_alloc,0202H
+        EXTERN znp_afRegisterExtended
+        FUNCTION znp_afRegisterExtended,0202H
+        EXTERN zapTaskId
+        EXTERN osal_start_timerEx
+        FUNCTION osal_start_timerEx,0202H
+        EXTERN osal_set_event
+        FUNCTION osal_set_event,0202H
+
+// C:\Users\student\Documents\GitHub\MHMS\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\Source\zap_af.c
+//    1 /**************************************************************************************************
+//    2   Filename:       zap_af.c
+//    3   Revised:        $Date: 2010-12-08 15:53:16 -0800 (Wed, 08 Dec 2010) $
+//    4   Revision:       $Revision: 24583 $
+//    5 
+//    6   Description:
+//    7 
+//    8   This file defines the ZNP Application Processor API to the ZNP AF layer.
+//    9 
+//   10   
+//   11   Copyright 2009-2010 Texas Instruments Incorporated. All rights reserved.
+//   12 
+//   13   IMPORTANT: Your use of this Software is limited to those specific rights
+//   14   granted under the terms of a software license agreement between the user
+//   15   who downloaded the software, his/her employer (which must be your employer)
+//   16   and Texas Instruments Incorporated (the "License").  You may not use this
+//   17   Software unless you agree to abide by the terms of the License. The License
+//   18   limits your use, and you acknowledge, that the Software may not be modified,
+//   19   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   20   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   21   frequency transceiver, which is integrated into your product.  Other than for
+//   22   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   23   works of, modify, distribute, perform, display or sell this Software and/or
+//   24   its documentation for any purpose.
+//   25 
+//   26   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   27   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   28   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   29   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   30   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   31   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   32   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   33   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   34   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   35   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   36   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   37 
+//   38   Should you have any questions regarding your right to use this Software,
+//   39   contact Texas Instruments Incorporated at www.TI.com.
+//   40 
+//   41 **************************************************************************************************/
+//   42 
+//   43 /* ------------------------------------------------------------------------------------------------
+//   44  *                                          Includes
+//   45  * ------------------------------------------------------------------------------------------------
+//   46  */
+//   47 
+//   48 #include "af.h"
+//   49 #include "mt.h"
+//   50 #include "mt_rpc.h"
+//   51 #include "zap_app.h"
+//   52 #include "zap_phy.h"
+//   53 #include "zap_znp.h"
+//   54 
+//   55 #if defined (ZAP_AF_FUNC)
+//   56 /* ------------------------------------------------------------------------------------------------
+//   57  *                                           Constants
+//   58  * ------------------------------------------------------------------------------------------------
+//   59  */
+//   60 
+//   61 /* ------------------------------------------------------------------------------------------------
+//   62  *                                           Macros
+//   63  * ------------------------------------------------------------------------------------------------
+//   64  */
+//   65 
+//   66 /* ------------------------------------------------------------------------------------------------
+//   67  *                                           Global Variables
+//   68  * ------------------------------------------------------------------------------------------------
+//   69  */
+//   70 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//   71 epList_t *epList;
+epList:
+        DS8 2
+//   72 
+//   73 /* ------------------------------------------------------------------------------------------------
+//   74  *                                           Local Variables
+//   75  * ------------------------------------------------------------------------------------------------
+//   76  */
+//   77 
+//   78 /* ------------------------------------------------------------------------------------------------
+//   79  *                                           Local Functions
+//   80  * ------------------------------------------------------------------------------------------------
+//   81  */
+//   82 
+//   83 #if ZAP_AF_DATA_REQ_FRAG
+//   84 static afStatus_t afStore(uint8 *buf, uint16 len);
+//   85 #endif
+//   86 static void afCnf(uint8 *pBuf);
+//   87 static epList_t *afFindEndPointDescList(uint8 EndPoint);
+//   88 static void afRecv(uint8 *pBuf);
+//   89 static uint8 *afIncMsgPktParse(uint8 cmd1, uint8 *pBuf, afIncomingMSGPacket_t *pMsg);
+//   90 #if ZAP_AF_DATA_REQ_FRAG
+//   91 static void afRetrieve(uint8 taskId, afIncomingMSGPacket_t *pMsg);
+//   92 #endif
+//   93 
+//   94 /**************************************************************************************************
+//   95  * @fn          zapAfProcessIncoming
+//   96  *
+//   97  * @brief       This function processes the AF sub-system response from the ZNP.
+//   98  *
+//   99  * input parameters
+//  100  *
+//  101  * @param       port - Port Id corresponding to the ZNP that sent the message.
+//  102  * @param       pBuf - A pointer to the RPC response.
+//  103  *
+//  104  * output parameters
+//  105  *
+//  106  * None.
+//  107  *
+//  108  * @return      None.
+//  109  **************************************************************************************************
+//  110  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  111 void zapAfProcessIncoming(uint8 port, uint8 *pBuf)
+zapAfProcessIncoming:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function zapAfProcessIncoming
+//  112 {
+//  113   switch (pBuf[MT_RPC_POS_CMD1])
+        FUNCALL zapAfProcessIncoming, afCnf
+        LOCFRAME CSTACK, 4, STACK
+        FUNCALL zapAfProcessIncoming, afRecv
+        LOCFRAME CSTACK, 4, STACK
+        MOV.B   0x2(R13), R14
+        SUB.B   #0x80, R14
+        JEQ     ??zapAfProcessIncoming_0
+        SUB.B   #0x1, R14
+        JEQ     ??zapAfProcessIncoming_1
+        SUB.B   #0x1, R14
+        JEQ     ??zapAfProcessIncoming_1
+        RETA
+//  114   {
+//  115   case MT_AF_DATA_CONFIRM:
+//  116     afCnf(pBuf);
+??zapAfProcessIncoming_0:
+        MOV.W   R13, R12
+        BRA     #afCnf
+//  117     break;
+//  118 
+//  119   case MT_AF_INCOMING_MSG:
+//  120   case MT_AF_INCOMING_MSG_EXT:
+//  121     afRecv(pBuf);
+??zapAfProcessIncoming_1:
+        MOV.W   R13, R12
+        BRA     #afRecv
+          CFI EndBlock cfiBlock0
+//  122     break;
+//  123 
+//  124   default:
+//  125     break;
+//  126   }
+//  127 }
+//  128 
+//  129 /**************************************************************************************************
+//  130  * @fn          zapAfSync
+//  131  *
+//  132  * @brief       This function syncs the AF registered endpoints (which are not NV restored on ZNP.)
+//  133  *
+//  134  * input parameters
+//  135  *
+//  136  * None.
+//  137  *
+//  138  * output parameters
+//  139  *
+//  140  * None.
+//  141  *
+//  142  * @return      None.
+//  143  **************************************************************************************************
+//  144  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  145 void zapAfSync(void)
+zapAfSync:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function zapAfSync
+//  146 {
+        FUNCALL zapAfSync, znp_afRegisterExtended
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL zapAfSync, osal_start_timerEx
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL zapAfSync, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+//  147   epList_t *epSync = epList;
+        MOV.W   &epList, R10
+        JMP     ??zapAfSync_1
+//  148 
+//  149   while (epSync)
+//  150   {
+//  151     if ((epSync->epDesc->simpleDesc != NULL) && !znp_afRegisterExtended(epSync->epDesc))
+??zapAfSync_0:
+        MOV.W   0x2(R10), R12
+        CMP.W   #0x0, 0x4(R12)
+        JEQ     ??zapAfSync_2
+        CALLA   #znp_afRegisterExtended
+        CMP.B   #0x0, R12
+        JNE     ??zapAfSync_2
+//  152     {
+//  153       // Especially for UART transport, allow time for multiple got syncs before acting on it.
+//  154       if (ZSuccess != osal_start_timerEx(zapTaskId, ZAP_APP_SYNC_EVT, ZAP_APP_SYNC_DLY))
+        MOV.W   #0x64, R14
+        MOV.W   #0x800, R13
+        MOV.B   &zapTaskId, R12
+        CALLA   #osal_start_timerEx
+        CMP.B   #0x0, R12
+        JEQ     ??zapAfSync_2
+//  155       {
+//  156         (void)osal_set_event(zapTaskId, ZAP_APP_SYNC_EVT);
+        MOV.W   #0x800, R13
+        MOV.B   &zapTaskId, R12
+        CALLA   #osal_set_event
+//  157       }
+//  158     }
+//  159     epSync = epSync->nextDesc;
+??zapAfSync_2:
+        MOV.W   @R10, R10
+//  160   }
+??zapAfSync_1:
+        CMP.W   #0x0, R10
+        JNE     ??zapAfSync_0
+//  161 #if defined INTER_PAN
+//  162   zapStubAPS_Sync();
+//  163 #endif
+//  164 }
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock1
+//  165 
+//  166 /**************************************************************************************************
+//  167  * @fn      afRegisterExtended
+//  168  *
+//  169  * @brief   Register an Application's EndPoint description.
+//  170  *
+//  171  * input parameters
+//  172  *
+//  173  * @param   epDesc - pointer to the Application's endpoint descriptor.
+//  174  *                   NOTE: The memory that epDesc is pointing to must persist after this call.
+//  175  * @param   descFn - pointer to descriptor callback function - only NULL supported on ZAP.
+//  176  *
+//  177  * output parameters
+//  178  *
+//  179  * None.
+//  180  *
+//  181  * @return  Pointer to epList_t on success, NULL otherwise.
+//  182  **************************************************************************************************
+//  183  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  184 epList_t *afRegisterExtended( endPointDesc_t *epDesc, pDescCB descFn )
+afRegisterExtended:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function afRegisterExtended
+//  185 {
+        FUNCALL afRegisterExtended, osal_mem_alloc
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL afRegisterExtended, znp_afRegisterExtended
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.W   R12, R8
+        MOV.W   R14, R10
+        MOV.W   R15, R11
+//  186   epList_t *ep;
+//  187   epList_t *epSearch;
+//  188 
+//  189   ep = osal_mem_alloc( sizeof ( epList_t ) );
+        MOV.W   #0xc, R12
+        CALLA   #osal_mem_alloc
+        MOV.W   R12, R9
+//  190   if ( ep )
+        CMP.W   #0x0, R12
+        JEQ     ??afRegisterExtended_3
+//  191   {
+//  192     // Fill in the new list entry
+//  193     ep->epDesc = epDesc;
+        MOV.W   R8, 0x2(R12)
+//  194 
+//  195     // Default to allow Match Descriptor.
+//  196     ep->flags = eEP_AllowMatch;
+        MOV.B   #0x1, 0xa(R12)
+//  197     ep->pfnDescCB = descFn;
+        MOV.W   R10, 0x4(R12)
+        MOV.W   R11, 0x6(R12)
+//  198     ep->nextDesc = NULL;
+        MOV.W   #0x0, 0(R12)
+//  199 
+//  200     // Does a list exist?
+//  201     if ( epList == NULL )
+        MOV.W   &epList, R15
+        CMP.W   #0x0, R15
+        JNE     ??afRegisterExtended_2
+//  202       epList = ep;  // Make this the first entry
+        MOV.W   R12, &epList
+        JMP     ??afRegisterExtended_4
+//  203     else
+//  204     {
+//  205       // Look for the end of the list
+//  206       epSearch = epList;
+//  207       while( epSearch->nextDesc != NULL )
+//  208         epSearch = epSearch->nextDesc;
+??afRegisterExtended_0:
+        MOV.W   R11, R15
+??afRegisterExtended_2:
+        MOV.W   @R15, R11
+        CMP.W   #0x0, R11
+        JNE     ??afRegisterExtended_0
+//  209 
+//  210       // Add new entry to end of list
+//  211       epSearch->nextDesc = ep;
+        MOV.W   R12, 0(R15)
+//  212     }
+//  213 
+//  214     if ((epDesc->simpleDesc != NULL) && !znp_afRegisterExtended(epDesc))
+??afRegisterExtended_4:
+        CMP.W   #0x0, 0x4(R8)
+        JEQ     ??afRegisterExtended_3
+        MOV.W   R8, R12
+        CALLA   #znp_afRegisterExtended
+        CMP.B   #0x0, R12
+        JNE     ??afRegisterExtended_3
+//  215     {
+//  216       return NULL;
+        MOV.W   #0x0, R12
+        JMP     ??afRegisterExtended_5
+//  217     }
+//  218   }
+//  219 
+//  220   return ep;
+??afRegisterExtended_3:
+        MOV.W   R9, R12
+??afRegisterExtended_5:
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock2
+//  221 }
+//  222 
+//  223 /**************************************************************************************************
+//  224  * @fn      afRegister
+//  225  *
+//  226  * @brief   Register an Application's EndPoint description.
+//  227  *
+//  228  * input parameters
+//  229  *
+//  230  * @param   epDesc - pointer to the Application's endpoint descriptor.
+//  231  *
+//  232  * output parameters
+//  233  *
+//  234  * None.
+//  235  *
+//  236  * @return  afStatus_SUCCESS - Registered
+//  237  *          afStatus_MEM_FAIL - not enough memory to add descriptor
+//  238  *          afStatus_INVALID_PARAMETER - duplicate endpoint
+//  239  **************************************************************************************************
+//  240  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  241 afStatus_t afRegister(endPointDesc_t *epDesc)
+afRegister:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function afRegister
+//  242 {
+        FUNCALL afRegister, afFindEndPointDescList
+        LOCFRAME CSTACK, 4, STACK
+        FUNCALL afRegister, afRegisterExtended
+        LOCFRAME CSTACK, 4, STACK
+        MOV.W   R12, R13
+//  243   epList_t *ep;
+//  244   
+//  245   // Look for duplicate endpoint
+//  246   if ( afFindEndPointDescList( epDesc->endPoint ) )
+        MOV.B   @R13, R12
+        CALLA   #afFindEndPointDescList
+        CMP.W   #0x0, R12
+        JEQ     ??afRegister_1
+//  247     return ( afStatus_INVALID_PARAMETER );
+        MOV.B   #0x2, R12
+        RETA
+//  248   
+//  249   ep = afRegisterExtended( epDesc, NULL );
+//  250 
+//  251   return ((ep == NULL) ? afStatus_MEM_FAIL : afStatus_SUCCESS);
+??afRegister_1:
+        MOV.W   #0x0, R14
+        MOV.W   #0x0, R15
+        MOV.W   R13, R12
+        CALLA   #afRegisterExtended
+        CMP.W   #0x0, R12
+        JEQ     ??afRegister_2
+        MOV.B   #0x0, R12
+        RETA
+??afRegister_2:
+        MOV.B   #0x10, R12
+        RETA
+          CFI EndBlock cfiBlock3
+//  252 }
+//  253 
+//  254 /**************************************************************************************************
+//  255  * @fn      AF_DataRequest
+//  256  *
+//  257  * @brief   API definition to invoke AF_DataRequest on the ZNP.
+//  258  *
+//  259  * input parameters
+//  260  *
+//  261  * @param  *dstAddr - Full ZB destination address: Nwk Addr + End Point.
+//  262  * @param  *srcEP - Origination (i.e. respond to or ack to) End Point Descr.
+//  263  * @param   cID - A valid cluster ID as specified by the Profile.
+//  264  * @param   len - Number of bytes of data pointed to by next param.
+//  265  * @param  *buf - A pointer to the data bytes to send.
+//  266  * @param  *transID - A pointer to a byte which can be modified and which will
+//  267  *                    be used as the transaction sequence number of the msg.
+//  268  * @param   options - Valid bit mask of Tx options.
+//  269  * @param   radius - Normally set to AF_DEFAULT_RADIUS.
+//  270  *
+//  271  * output parameters
+//  272  *
+//  273  * @param  *transID - Incremented by one if the return value is success.
+//  274  *
+//  275  * @return  afStatus_t per declaration.
+//  276  **************************************************************************************************
+//  277  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  278 afStatus_t AF_DataRequest(afAddrType_t *dstAddr, endPointDesc_t *srcEP,
+AF_DataRequest:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function AF_DataRequest
+//  279                           uint16 cID, uint16 len, uint8 *buf, uint8 *transID,
+//  280                           uint8 options, uint8 radius)
+//  281 {
+        FUNCALL AF_DataRequest, zap_msg_allocate
+        LOCFRAME CSTACK, 22, STACK
+        FUNCALL AF_DataRequest, osal_memcpy
+        LOCFRAME CSTACK, 22, STACK
+        FUNCALL AF_DataRequest, osal_memcpy
+        LOCFRAME CSTACK, 22, STACK
+        FUNCALL AF_DataRequest, zapPhySend
+        LOCFRAME CSTACK, 22, STACK
+        FUNCALL AF_DataRequest, zap_msg_deallocate
+        LOCFRAME CSTACK, 22, STACK
+        PUSHM.W #0x8, R11
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+20
+        SUB.W   #0x2, SP
+          CFI CFA SP+22
+        MOV.W   R12, R11
+        MOV.W   R13, R8
+        MOV.W   R14, R9
+        MOV.W   R15, R10
+        MOV.W   0x16(SP), R4
+        MOV.B   0x1a(SP), R7
+        MOV.B   0x1c(SP), R6
+//  282   #define ZAP_AF_REQ_MSG_HDR  20
+//  283   #define ZAP_AF_REQ_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_REQ_MSG_HDR)
+//  284   uint8 *pBuf;
+//  285 
+//  286 #if !ZAP_AF_DATA_REQ_AREQ
+//  287   afStatus_t rtrn;
+//  288 
+//  289 #if ZAP_AF_DATA_REQ_FRAG
+//  290   if (len > ZAP_AF_REQ_DAT_MAX)
+//  291   {
+//  292     pBuf = zap_msg_allocate(ZAP_AF_REQ_MSG_HDR, (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_SREQ,
+//  293                                                 (uint8)MT_AF_DATA_REQUEST_EXT);
+//  294   }
+//  295   else
+//  296 #endif
+//  297   {
+//  298     pBuf = zap_msg_allocate((uint8)(len + ZAP_AF_REQ_MSG_HDR),
+//  299                             (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_SREQ,
+//  300                             (uint8)MT_AF_DATA_REQUEST_EXT);
+//  301   }
+//  302 #else
+//  303   pBuf = zap_msg_allocate((uint8)(len + ZAP_AF_REQ_MSG_HDR),
+//  304                           (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_AREQ,
+//  305                           (uint8)MT_AF_DATA_REQUEST_EXT);
+        MOV.B   #0x2, R14
+        MOV.B   #0x44, R13
+        MOV.B   R15, R12
+        ADD.B   #0x14, R12
+        CALLA   #zap_msg_allocate
+        MOV.W   R12, 0(SP)
+//  306 #endif
+//  307 
+//  308   if (NULL == pBuf)
+        CMP.W   #0x0, R12
+        JNE     ??AF_DataRequest_0
+//  309   {
+//  310     return afStatus_MEM_FAIL;
+        MOV.B   #0x10, R12
+        JMP     ??AF_DataRequest_1
+//  311   }
+//  312 
+//  313   *pBuf++ = dstAddr->addrMode;
+??AF_DataRequest_0:
+        MOV.B   0x8(R11), R14
+        MOV.B   R14, 0(R12)
+        MOV.W   @SP, R12
+        ADD.W   #0x1, R12
+        MOV.W   R12, 0(SP)
+//  314 
+//  315   if (dstAddr->addrMode == afAddr64Bit)
+        CMP.B   #0x3, R14
+        JNE     ??AF_DataRequest_2
+//  316   {
+//  317     (void)osal_memcpy(pBuf, dstAddr->addr.extAddr, Z_EXTADDR_LEN);
+        MOV.W   #0x8, R14
+        MOV.W   R11, R13
+        CALLA   #osal_memcpy
+        JMP     ??AF_DataRequest_3
+//  318   }
+//  319   else
+//  320   {
+//  321     pBuf[0] = LO_UINT16(dstAddr->addr.shortAddr);
+??AF_DataRequest_2:
+        MOV.B   @R11, 0(R12)
+//  322     pBuf[1] = HI_UINT16(dstAddr->addr.shortAddr);
+        MOV.W   @SP, R15
+        MOV.B   0x1(R11), 0x1(R15)
+//  323   }
+//  324   pBuf += Z_EXTADDR_LEN;
+??AF_DataRequest_3:
+        MOV.W   @SP, R15
+        ADD.W   #0x8, R15
+        MOV.W   R15, 0(SP)
+//  325 
+//  326   *pBuf++ = dstAddr->endPoint;
+        MOV.B   0x9(R11), 0(R15)
+        CALLA   #?Subroutine3
+//  327 #if defined INTER_PAN
+//  328   *pBuf++ = LO_UINT16(dstAddr->panId);
+//  329   *pBuf++ = HI_UINT16(dstAddr->panId);
+//  330 #else
+//  331   *pBuf++ = 0;
+??CrossCallReturnLabel_2:
+        CALLA   #?Subroutine3
+//  332   *pBuf++ = 0;
+??CrossCallReturnLabel_3:
+        CALLA   #??Subroutine4_0
+//  333 #endif
+//  334   *pBuf++ = srcEP->endPoint;
+??CrossCallReturnLabel_7:
+        MOV.B   @R8, 0(R15)
+        CALLA   #??Subroutine4_0
+//  335   *pBuf++ = LO_UINT16(cID);
+??CrossCallReturnLabel_8:
+        CALLA   #?Subroutine4
+//  336   *pBuf++ = HI_UINT16(cID);
+??CrossCallReturnLabel_12:
+        RPT     #0x8
+        RRUX.W  R9
+        CALLA   #?Subroutine4
+??CrossCallReturnLabel_13:
+        MOV.W   0x18(SP), R15
+//  337   *pBuf++ = *transID;
+        MOV.W   @SP, R11
+        MOV.B   @R15, 0(R11)
+        MOV.W   @SP, R11
+        ADD.W   #0x1, R11
+        MOV.W   R11, 0(SP)
+//  338   (*transID)++;
+        ADD.B   #0x1, 0(R15)
+//  339   *pBuf++ = options;
+        MOV.W   @SP, R15
+        MOV.B   R7, 0(R15)
+        CALLA   #??Subroutine4_0
+//  340   *pBuf++ = radius;
+??CrossCallReturnLabel_9:
+        MOV.B   R6, 0(R15)
+        CALLA   #??Subroutine4_0
+//  341   *pBuf++ = LO_UINT16(len);
+??CrossCallReturnLabel_10:
+        MOV.B   R10, 0(R15)
+        CALLA   #??Subroutine4_0
+//  342   *pBuf++ = HI_UINT16(len);
+??CrossCallReturnLabel_11:
+        MOV.W   R10, R15
+        RPT     #0x8
+        RRUX.W  R15
+        MOV.W   @SP, R11
+        MOV.B   R15, 0(R11)
+        MOV.W   @SP, R12
+        ADD.W   #0x1, R12
+        MOV.W   R12, 0(SP)
+//  343 
+//  344 #if ZAP_AF_DATA_REQ_FRAG
+//  345   if (len <= ZAP_AF_REQ_DAT_MAX)
+//  346 #endif
+//  347   {
+//  348     (void)osal_memcpy(pBuf, buf, len);
+        MOV.W   R10, R14
+        MOV.W   R4, R13
+        CALLA   #osal_memcpy
+//  349   }
+//  350 
+//  351   pBuf -= ZAP_AF_REQ_MSG_HDR;
+        MOV.W   @SP, R13
+        ADD.W   #0xffec, R13
+        MOV.W   R13, 0(SP)
+//  352   zapPhySend(zapAppPort, pBuf);
+        MOV.B   &zapAppPort, R12
+        CALLA   #zapPhySend
+//  353 #if !ZAP_AF_DATA_REQ_AREQ
+//  354   rtrn = (afStatus_t)ZAP_SRSP_STATUS(pBuf);
+//  355 #endif
+//  356   zap_msg_deallocate(&pBuf);
+        MOV.W   SP, R12
+        ADD.W   #0x0, R12
+        CALLA   #zap_msg_deallocate
+//  357 
+//  358 #if ZAP_AF_DATA_REQ_FRAG
+//  359   if ((len > ZAP_AF_REQ_DAT_MAX) && (rtrn == afStatus_SUCCESS))
+//  360   {
+//  361     rtrn = afStore(buf, len);
+//  362   }
+//  363 #endif
+//  364 
+//  365 #if ZAP_AF_DATA_REQ_AREQ
+//  366   return SUCCESS;
+        MOV.B   #0x0, R12
+??AF_DataRequest_1:
+        ADD.W   #0x2, SP
+          CFI CFA SP+20
+        POPM.W  #0x8, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R4L SameValue
+          CFI R5L SameValue
+          CFI R6L SameValue
+          CFI R7L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock4
+//  367 #else
+//  368   return rtrn;
+//  369 #endif
+//  370 }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI Function AF_DataRequest
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+26
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI (cfiCond6) Function AF_DataRequest
+          CFI (cfiCond6) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond6) R4L Frame(CFA, -20)
+          CFI (cfiCond6) R5L Frame(CFA, -18)
+          CFI (cfiCond6) R6L Frame(CFA, -16)
+          CFI (cfiCond6) R7L Frame(CFA, -14)
+          CFI (cfiCond6) R8L Frame(CFA, -12)
+          CFI (cfiCond6) R9L Frame(CFA, -10)
+          CFI (cfiCond6) R10L Frame(CFA, -8)
+          CFI (cfiCond6) R11L Frame(CFA, -6)
+          CFI (cfiCond6) CFA SP+26
+          CFI Block cfiPicker7 Using cfiCommon1
+          CFI (cfiPicker7) NoFunction
+          CFI (cfiPicker7) Picker
+        MOV.B   R9, 0(R15)
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiPicker7
+        REQUIRE ??Subroutine4_0
+        // Fall through to label ??Subroutine4_0
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+??Subroutine4_0:
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI Function AF_DataRequest
+          CFI Conditional ??CrossCallReturnLabel_7
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+26
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI (cfiCond9) Function AF_DataRequest
+          CFI (cfiCond9) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond9) R4L Frame(CFA, -20)
+          CFI (cfiCond9) R5L Frame(CFA, -18)
+          CFI (cfiCond9) R6L Frame(CFA, -16)
+          CFI (cfiCond9) R7L Frame(CFA, -14)
+          CFI (cfiCond9) R8L Frame(CFA, -12)
+          CFI (cfiCond9) R9L Frame(CFA, -10)
+          CFI (cfiCond9) R10L Frame(CFA, -8)
+          CFI (cfiCond9) R11L Frame(CFA, -6)
+          CFI (cfiCond9) CFA SP+26
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function AF_DataRequest
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond10) R4L Frame(CFA, -20)
+          CFI (cfiCond10) R5L Frame(CFA, -18)
+          CFI (cfiCond10) R6L Frame(CFA, -16)
+          CFI (cfiCond10) R7L Frame(CFA, -14)
+          CFI (cfiCond10) R8L Frame(CFA, -12)
+          CFI (cfiCond10) R9L Frame(CFA, -10)
+          CFI (cfiCond10) R10L Frame(CFA, -8)
+          CFI (cfiCond10) R11L Frame(CFA, -6)
+          CFI (cfiCond10) CFA SP+26
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function AF_DataRequest
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond11) R4L Frame(CFA, -20)
+          CFI (cfiCond11) R5L Frame(CFA, -18)
+          CFI (cfiCond11) R6L Frame(CFA, -16)
+          CFI (cfiCond11) R7L Frame(CFA, -14)
+          CFI (cfiCond11) R8L Frame(CFA, -12)
+          CFI (cfiCond11) R9L Frame(CFA, -10)
+          CFI (cfiCond11) R10L Frame(CFA, -8)
+          CFI (cfiCond11) R11L Frame(CFA, -6)
+          CFI (cfiCond11) CFA SP+26
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function AF_DataRequest
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond12) R4L Frame(CFA, -20)
+          CFI (cfiCond12) R5L Frame(CFA, -18)
+          CFI (cfiCond12) R6L Frame(CFA, -16)
+          CFI (cfiCond12) R7L Frame(CFA, -14)
+          CFI (cfiCond12) R8L Frame(CFA, -12)
+          CFI (cfiCond12) R9L Frame(CFA, -10)
+          CFI (cfiCond12) R10L Frame(CFA, -8)
+          CFI (cfiCond12) R11L Frame(CFA, -6)
+          CFI (cfiCond12) CFA SP+26
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function AF_DataRequest
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond13) R4L Frame(CFA, -20)
+          CFI (cfiCond13) R5L Frame(CFA, -18)
+          CFI (cfiCond13) R6L Frame(CFA, -16)
+          CFI (cfiCond13) R7L Frame(CFA, -14)
+          CFI (cfiCond13) R8L Frame(CFA, -12)
+          CFI (cfiCond13) R9L Frame(CFA, -10)
+          CFI (cfiCond13) R10L Frame(CFA, -8)
+          CFI (cfiCond13) R11L Frame(CFA, -6)
+          CFI (cfiCond13) CFA SP+26
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI (cfiCond14) Function AF_DataRequest
+          CFI (cfiCond14) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond14) R4L Frame(CFA, -20)
+          CFI (cfiCond14) R5L Frame(CFA, -18)
+          CFI (cfiCond14) R6L Frame(CFA, -16)
+          CFI (cfiCond14) R7L Frame(CFA, -14)
+          CFI (cfiCond14) R8L Frame(CFA, -12)
+          CFI (cfiCond14) R9L Frame(CFA, -10)
+          CFI (cfiCond14) R10L Frame(CFA, -8)
+          CFI (cfiCond14) R11L Frame(CFA, -6)
+          CFI (cfiCond14) CFA SP+26
+          CFI Block cfiPicker15 Using cfiCommon1
+          CFI (cfiPicker15) NoFunction
+          CFI (cfiPicker15) Picker
+        MOV.W   0x4(SP), R15
+        ADD.W   #0x1, R15
+        MOV.W   R15, 0x4(SP)
+        RETA
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiPicker15
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI Function AF_DataRequest
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+26
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI (cfiCond17) Function AF_DataRequest
+          CFI (cfiCond17) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond17) R4L Frame(CFA, -20)
+          CFI (cfiCond17) R5L Frame(CFA, -18)
+          CFI (cfiCond17) R6L Frame(CFA, -16)
+          CFI (cfiCond17) R7L Frame(CFA, -14)
+          CFI (cfiCond17) R8L Frame(CFA, -12)
+          CFI (cfiCond17) R9L Frame(CFA, -10)
+          CFI (cfiCond17) R10L Frame(CFA, -8)
+          CFI (cfiCond17) R11L Frame(CFA, -6)
+          CFI (cfiCond17) CFA SP+26
+          CFI Block cfiPicker18 Using cfiCommon1
+          CFI (cfiPicker18) NoFunction
+          CFI (cfiPicker18) Picker
+        MOV.W   0x4(SP), R15
+        ADD.W   #0x1, R15
+        MOV.W   R15, 0x4(SP)
+        MOV.B   #0x0, 0(R15)
+        RETA
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiPicker18
+//  371 
+//  372 #if ZAP_AF_DATA_REQ_FRAG
+//  373 /**************************************************************************************************
+//  374  * @fn          afStore
+//  375  *
+//  376  * @brief       This function stores a huge outgoing message data buffer on the ZNP.
+//  377  *
+//  378  * input parameters
+//  379  *
+//  380  * @param       buf - Pointer to the message data buffer.
+//  381  * @param       len - The length of the message data buffer 'buf'.
+//  382  *
+//  383  * output parameters
+//  384  *
+//  385  * None.
+//  386  *
+//  387  * @return      The AF-Status of storing the message data on the ZNP.
+//  388  **************************************************************************************************
+//  389  */
+//  390 static afStatus_t afStore(uint8 *buf, uint16 len)
+//  391 {
+//  392   #define ZAP_AF_STO_MSG_HDR  3
+//  393   #define ZAP_AF_STO_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_STO_MSG_HDR)
+//  394   uint8 *pBuf;
+//  395   uint16 idx = 0;
+//  396   uint8 tmpLen = 0;
+//  397   afStatus_t rtrn;
+//  398 
+//  399   do {
+//  400     /* This trick to pre-decrement (with zero on the first pass) allows the while() test to
+//  401      * succeed and loop to send a zero data length message which will trigger the ZNP to send the
+//  402      * accumulated data OTA in an AF_DataRequest().
+//  403      */
+//  404     len -= tmpLen;
+//  405     idx += tmpLen;
+//  406 
+//  407     if (len > ZAP_AF_STO_DAT_MAX)
+//  408     {
+//  409       tmpLen = ZAP_AF_STO_DAT_MAX;
+//  410     }
+//  411     else
+//  412     {
+//  413       tmpLen = len;
+//  414     }
+//  415 
+//  416     if ((pBuf = zap_msg_allocate((uint8)(tmpLen + ZAP_AF_STO_MSG_HDR),
+//  417                                  (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_SREQ,
+//  418                                  (uint8)MT_AF_DATA_STORE)) == NULL)
+//  419     {
+//  420       rtrn = afStatus_MEM_FAIL;
+//  421       break;
+//  422     }
+//  423 
+//  424     pBuf[0] = LO_UINT16(idx);
+//  425     pBuf[1] = HI_UINT16(idx);
+//  426     pBuf[2] = tmpLen;
+//  427     (void)osal_memcpy(pBuf+3, buf+idx, tmpLen);
+//  428     zapPhySend(zapAppPort, pBuf);
+//  429     rtrn = (afStatus_t)ZAP_SRSP_STATUS(pBuf);
+//  430     zap_msg_deallocate(&pBuf);
+//  431   } while ((rtrn == afStatus_SUCCESS) && len);
+//  432 
+//  433   return rtrn;
+//  434 }
+//  435 #endif
+//  436 
+//  437 /**************************************************************************************************
+//  438  * @fn          afCnf
+//  439  *
+//  440  * @brief       This function de-muxes an incoming AF data confirm message.
+//  441  *
+//  442  * input parameters
+//  443  *
+//  444  * @param       pBuf - Pointer to the RPC message buffer.
+//  445  *
+//  446  * output parameters
+//  447  *
+//  448  * None.
+//  449  *
+//  450  * @return      None.
+//  451  **************************************************************************************************
+//  452  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  453 static void afCnf(uint8 *pBuf)
+afCnf:
+          CFI Block cfiBlock19 Using cfiCommon0
+          CFI Function afCnf
+//  454 {
+        FUNCALL afCnf, afFindEndPointDescList
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL afCnf, osal_msg_allocate
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL afCnf, osal_msg_send
+        LOCFRAME CSTACK, 8, STACK
+        PUSHM.W #0x2, R11
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+8
+        MOV.W   R12, R10
+//  455   pBuf += MT_RPC_FRAME_HDR_SZ;
+        ADD.W   #0x3, R10
+//  456   epList_t *pEP = afFindEndPointDescList(pBuf[1]);
+        MOV.B   0x1(R10), R12
+        CALLA   #afFindEndPointDescList
+        MOV.W   R12, R11
+//  457 
+//  458   if (NULL != pEP)
+        CMP.W   #0x0, R12
+        JEQ     ??afCnf_0
+//  459   {
+//  460     afDataConfirm_t *pMsg = (afDataConfirm_t *)osal_msg_allocate(sizeof(afDataConfirm_t));
+        MOV.W   #0x4, R12
+        CALLA   #osal_msg_allocate
+//  461 
+//  462     if (NULL != pMsg)
+        CMP.W   #0x0, R12
+        JEQ     ??afCnf_0
+//  463     {
+//  464       pMsg->hdr.event = AF_DATA_CONFIRM_CMD;
+        MOV.B   #0xfd, 0(R12)
+//  465       pMsg->hdr.status = *pBuf++;
+        MOV.B   @R10, 0x1(R12)
+        ADD.W   #0x1, R10
+//  466       pMsg->endpoint = *pBuf++;
+        MOV.B   @R10+, 0x2(R12)
+//  467       pMsg->transID = *pBuf;
+        MOV.B   @R10, 0x3(R12)
+//  468       osal_msg_send(*(pEP->epDesc->task_id), (uint8 *)pMsg);
+        MOV.W   R12, R13
+        MOV.W   0x2(R11), R15
+        CALLA   #?Subroutine2
+//  469     }
+//  470   }
+//  471 }
+??afCnf_0:
+        POPM.W  #0x2, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock19
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI Function afRecv
+          CFI Conditional ??afRecv_2
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function afCnf
+          CFI (cfiCond21) Conditional ??afCnf_0
+          CFI (cfiCond21) R10L Frame(CFA, -8)
+          CFI (cfiCond21) R11L Frame(CFA, -6)
+          CFI (cfiCond21) CFA SP+12
+          CFI Block cfiPicker22 Using cfiCommon1
+          CFI (cfiPicker22) NoFunction
+          CFI (cfiPicker22) Picker
+        MOV.W   0x2(R15), R15
+        MOV.B   @R15, R12
+        BRA     #osal_msg_send
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiPicker22
+//  472 
+//  473 /**************************************************************************************************
+//  474  * @fn      afFindEndPointDescList
+//  475  *
+//  476  * @brief   Find the endpoint description entry from the endpoint number.
+//  477  *
+//  478  * input parameters
+//  479  *
+//  480  * @param   EndPoint - Application Endpoint to look for
+//  481  *
+//  482  * output parameters
+//  483  *
+//  484  * None.
+//  485  *
+//  486  * @return  the address to the endpoint/interface description entry
+//  487  **************************************************************************************************
+//  488  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  489 static epList_t *afFindEndPointDescList( uint8 EndPoint )
+afFindEndPointDescList:
+          CFI Block cfiBlock23 Using cfiCommon0
+          CFI Function afFindEndPointDescList
+//  490 {
+//  491   epList_t *epSearch;
+//  492 
+//  493   // Start at the beginning
+//  494   epSearch = epList;
+        MOV.W   &epList, R15
+        JMP     ??afFindEndPointDescList_1
+//  495 
+//  496   // Look through the list until the end
+//  497   while ( epSearch )
+//  498   {
+//  499     // Is there a match?
+//  500     if ( epSearch->epDesc->endPoint == EndPoint )
+//  501     {
+//  502       return ( epSearch );
+//  503     }
+//  504     else
+//  505       epSearch = epSearch->nextDesc;  // Next entry
+??afFindEndPointDescList_0:
+        MOV.W   @R15, R15
+??afFindEndPointDescList_1:
+        CMP.W   #0x0, R15
+        JEQ     ??afFindEndPointDescList_2
+        MOV.W   0x2(R15), R14
+        CMP.B   R12, 0(R14)
+        JNE     ??afFindEndPointDescList_0
+        MOV.W   R15, R12
+        RETA
+//  506   }
+//  507 
+//  508   return ( (epList_t *)NULL );
+??afFindEndPointDescList_2:
+        MOV.W   #0x0, R12
+        RETA
+          CFI EndBlock cfiBlock23
+//  509 }
+//  510 
+//  511 /**************************************************************************************************
+//  512  * @fn      afFindEndPointDesc
+//  513  *
+//  514  * @brief   Find the endpoint description entry from the endpoint number.
+//  515  *
+//  516  * input parameters
+//  517  *
+//  518  * @param   EndPoint - Application Endpoint to look for
+//  519  *
+//  520  * output parameters
+//  521  *
+//  522  * None.
+//  523  *
+//  524  * @return  the address to the endpoint/interface description entry
+//  525  **************************************************************************************************
+//  526  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  527 endPointDesc_t *afFindEndPointDesc(uint8 EndPoint)
+afFindEndPointDesc:
+          CFI Block cfiBlock24 Using cfiCommon0
+          CFI Function afFindEndPointDesc
+//  528 {
+//  529   epList_t *epSearch;
+//  530 
+//  531   // Look for the endpoint
+//  532   epSearch = afFindEndPointDescList( EndPoint );
+        FUNCALL afFindEndPointDesc, afFindEndPointDescList
+        LOCFRAME CSTACK, 4, STACK
+        CALLA   #afFindEndPointDescList
+//  533 
+//  534   if ( epSearch )
+        CMP.W   #0x0, R12
+        JEQ     ??afFindEndPointDesc_0
+//  535     return ( epSearch->epDesc );
+        MOV.W   0x2(R12), R12
+        RETA
+//  536   else
+//  537     return ( (endPointDesc_t *)NULL );
+??afFindEndPointDesc_0:
+        MOV.W   #0x0, R12
+        RETA
+          CFI EndBlock cfiBlock24
+//  538 }
+//  539 
+//  540 /**************************************************************************************************
+//  541  * @fn          afRecv
+//  542  *
+//  543  * @brief       This function de-muxes an incoming AF data message.
+//  544  *
+//  545  * input parameters
+//  546  *
+//  547  * @param       pBuf - Pointer to the RPC message buffer.
+//  548  *
+//  549  * output parameters
+//  550  *
+//  551  * None.
+//  552  *
+//  553  * @return      None.
+//  554  **************************************************************************************************
+//  555  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  556 static void afRecv(uint8 *pBuf)
+afRecv:
+          CFI Block cfiBlock25 Using cfiCommon0
+          CFI Function afRecv
+//  557 {
+        FUNCALL afRecv, afFindEndPointDescList
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL afRecv, afFindEndPointDescList
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL afRecv, osal_msg_allocate
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL afRecv, afIncMsgPktParse
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL afRecv, osal_memcpy
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL afRecv, osal_msg_send
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.W   R12, R11
+//  558   #define ZAP_AF_INC_MSG_HDR  27
+//  559   #define ZAP_AF_INC_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_INC_MSG_HDR)
+//  560 
+//  561   afIncomingMSGPacket_t *pMsg;
+//  562   epList_t *pEP;
+//  563   uint16 tmp;
+//  564   uint8 cmd1 = pBuf[MT_RPC_POS_CMD1];
+        MOV.B   0x2(R12), R10
+//  565 
+//  566   pBuf += MT_RPC_FRAME_HDR_SZ;
+        ADD.W   #0x3, R11
+//  567   if (cmd1 == MT_AF_INCOMING_MSG)
+        CMP.B   #0x81, R10
+        JNE     ??afRecv_0
+//  568   {
+//  569     pEP = afFindEndPointDescList(pBuf[7]);
+        MOV.B   0x7(R11), R12
+        CALLA   #afFindEndPointDescList
+        MOV.W   R12, R8
+//  570     tmp = pBuf[16];
+        MOV.B   0x10(R11), R12
+        JMP     ??afRecv_1
+//  571   }
+//  572   else
+//  573   {
+//  574     pEP = afFindEndPointDescList(pBuf[16]);
+??afRecv_0:
+        MOV.B   0x10(R11), R12
+        CALLA   #afFindEndPointDescList
+        MOV.W   R12, R8
+//  575     tmp = BUILD_UINT16(pBuf[25], pBuf[26]);
+        MOV.B   0x19(R11), R12
+        MOV.B   0x1a(R11), R15
+        RPT     #0x8
+        RLAX.W  R15
+        ADD.W   R15, R12
+//  576   }
+//  577 
+//  578   if ((pEP == NULL) || (NULL ==
+//  579       (pMsg = (afIncomingMSGPacket_t *)osal_msg_allocate(sizeof(afIncomingMSGPacket_t) + tmp))))
+??afRecv_1:
+        CMP.W   #0x0, R8
+        JEQ     ??afRecv_2
+        ADD.W   #0x26, R12
+        CALLA   #osal_msg_allocate
+        MOV.W   R12, R9
+        CMP.W   #0x0, R12
+        JEQ     ??afRecv_2
+//  580   {
+//  581     return;
+//  582   }
+//  583 
+//  584   pMsg->hdr.event = AF_INCOMING_MSG_CMD;
+        MOV.B   #0x1a, 0(R12)
+//  585   pBuf = afIncMsgPktParse(cmd1, pBuf, pMsg);
+        MOV.W   R12, R14
+        MOV.W   R11, R13
+        MOV.B   R10, R12
+        CALLA   #afIncMsgPktParse
+        MOV.W   R12, R13
+//  586 
+//  587 #if ZAP_AF_DATA_REQ_FRAG
+//  588   if (pMsg->cmd.DataLength > ZAP_AF_INC_DAT_MAX)
+//  589   {
+//  590     afRetrieve(*(pEP->epDesc->task_id), pMsg);
+//  591   }
+//  592   else
+//  593 #endif
+//  594   {
+//  595     if (pMsg->cmd.DataLength)
+        MOV.W   0x22(R9), R14
+        CMP.W   #0x0, R14
+        JEQ     ??afRecv_3
+//  596     {
+//  597       (void)osal_memcpy(pMsg->cmd.Data, pBuf, pMsg->cmd.DataLength);
+        MOV.W   0x24(R9), R12
+        CALLA   #osal_memcpy
+        JMP     ??afRecv_4
+//  598     }
+//  599     else
+//  600     {
+//  601       pMsg->cmd.Data = NULL;
+??afRecv_3:
+        MOV.W   #0x0, 0x24(R9)
+//  602     }
+//  603     
+//  604     (void)osal_msg_send(*(pEP->epDesc->task_id), (uint8 *)pMsg);
+??afRecv_4:
+        MOV.W   R9, R13
+        MOV.W   0x2(R8), R15
+        CALLA   #?Subroutine2
+//  605   }
+//  606 }
+??afRecv_2:
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock25
+//  607 
+//  608 /**************************************************************************************************
+//  609  * @fn          afIncMsgPktParse
+//  610  *
+//  611  * @brief       This function parses an incoming AF data buffer into an afIncomingMSGPacket_t
+//  612  *              structure.
+//  613  *
+//  614  * input parameters
+//  615  *
+//  616  * @param       cmd1 - The RPC command type: MT_AF_INCOMING_MSG or MT_AF_INCOMING_MSG_EXT.
+//  617  * @param       pMsg - Pointer to the afIncomingMSGPacket_t structure.
+//  618  * @param       pMsg - Pointer to the afIncomingMSGPacket_t structure.
+//  619  *
+//  620  * output parameters
+//  621  *
+//  622  * None.
+//  623  *
+//  624  * @return      None.
+//  625  **************************************************************************************************
+//  626  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  627 static uint8 *afIncMsgPktParse(uint8 cmd1, uint8 *pBuf, afIncomingMSGPacket_t *pMsg)
+afIncMsgPktParse:
+          CFI Block cfiBlock26 Using cfiCommon0
+          CFI Function afIncMsgPktParse
+//  628 {
+        FUNCALL afIncMsgPktParse, osal_memcpy
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.B   R12, R10
+        MOV.W   R13, R8
+        MOV.W   R14, R11
+//  629   pMsg->groupId = BUILD_UINT16(pBuf[0], pBuf[1]);
+        MOV.B   @R13, R14
+        MOV.B   0x1(R13), R15
+        RPT     #0x8
+        RLAX.W  R15
+        ADD.W   R15, R14
+        MOV.W   R14, 0x2(R11)
+//  630   pBuf += 2;
+        ADD.W   #0x2, R8
+//  631   pMsg->clusterId = BUILD_UINT16(pBuf[0], pBuf[1]);
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_4:
+        MOV.W   R14, 0x4(R11)
+//  632   pBuf += 2;
+        ADD.W   #0x2, R8
+//  633 
+//  634   if (cmd1 == MT_AF_INCOMING_MSG)
+        CMP.B   #0x81, R12
+        JNE     ??afIncMsgPktParse_0
+//  635   {
+//  636     pMsg->srcAddr.addrMode = afAddr16Bit;
+        MOV.B   #0x2, 0xe(R11)
+//  637     pMsg->srcAddr.addr.shortAddr = BUILD_UINT16(pBuf[0], pBuf[1]);
+        CALLA   #?Subroutine0
+//  638     pMsg->macDestAddr = pMsg->srcAddr.addr.shortAddr;
+??CrossCallReturnLabel_0:
+        MOV.W   R14, 0x12(R11)
+//  639     pBuf += 2;
+        ADD.W   #0x2, R8
+//  640     pMsg->srcAddr.endPoint = *pBuf++;
+        MOV.B   @R8+, 0xf(R11)
+//  641     pMsg->srcAddr.panId = znpPanId;
+        MOV.W   &znpPanId, R14
+        JMP     ??afIncMsgPktParse_1
+//  642   }
+//  643   else
+//  644   {
+//  645     pMsg->srcAddr.addrMode = (afAddrMode_t)*pBuf++;
+??afIncMsgPktParse_0:
+        MOV.B   @R8+, 0xe(R11)
+//  646 
+//  647     if (pMsg->srcAddr.addrMode == afAddr64Bit)
+        CMP.B   #0x3, 0xe(R11)
+        JNE     ??afIncMsgPktParse_2
+//  648     {
+//  649       (void)osal_memcpy(pMsg->srcAddr.addr.extAddr, pBuf, Z_EXTADDR_LEN);
+        MOV.W   #0x8, R14
+        MOV.W   R8, R13
+        MOV.W   R11, R12
+        ADD.W   #0x6, R12
+        CALLA   #osal_memcpy
+//  650       pMsg->macDestAddr = 0xFFFF;
+        MOV.W   #0xffff, R15
+        JMP     ??afIncMsgPktParse_3
+//  651     }
+//  652     else
+//  653     {
+//  654       pMsg->srcAddr.addr.shortAddr = BUILD_UINT16(pBuf[0], pBuf[1]);
+??afIncMsgPktParse_2:
+        CALLA   #?Subroutine0
+//  655       pMsg->macDestAddr = pMsg->srcAddr.addr.shortAddr;
+??CrossCallReturnLabel_1:
+        MOV.W   R14, R15
+??afIncMsgPktParse_3:
+        MOV.W   R15, 0x12(R11)
+//  656     }
+//  657     pBuf += Z_EXTADDR_LEN;
+        ADD.W   #0x8, R8
+//  658 
+//  659     pMsg->srcAddr.endPoint = *pBuf++;
+        MOV.B   @R8+, 0xf(R11)
+//  660     pMsg->srcAddr.panId = BUILD_UINT16(pBuf[0], pBuf[1]);
+        CALLA   #?Subroutine1
+//  661     pBuf += 2;
+//  662   }
+??afIncMsgPktParse_1:
+        MOV.W   R14, 0x10(R11)
+//  663   pMsg->endPoint = *pBuf++;
+        MOV.B   @R8+, 0x14(R11)
+//  664   pMsg->wasBroadcast = *pBuf++;
+        MOV.B   @R8+, 0x15(R11)
+//  665   pMsg->LinkQuality = *pBuf++;
+        MOV.B   @R8+, 0x16(R11)
+//  666   pMsg->correlation = pMsg->rssi = 0;
+        MOV.B   #0x0, 0x18(R11)
+        MOV.B   #0x0, 0x17(R11)
+//  667   pMsg->SecurityUse = *pBuf++;
+        MOV.B   @R8+, 0x19(R11)
+//  668   pMsg->timestamp = BUILD_UINT32(pBuf[0], pBuf[1], pBuf[2], pBuf[3]);
+        MOV.B   @R8, R14
+        MOV.W   #0x0, R15
+        MOV.B   0x1(R8), R12
+        MOV.W   #0x0, R13
+        CALLA   #?ShiftLeft32_8
+        ADD.W   R12, R14
+        ADDC.W  R13, R15
+        MOV.B   0x2(R8), R13
+        ADD.W   R13, R15
+        MOV.B   0x3(R8), R13
+        RPT     #0x8
+        RLAX.W  R13
+        ADD.W   R13, R15
+        MOV.W   R14, 0x1a(R11)
+        MOV.W   R15, 0x1c(R11)
+//  669   pBuf += 4;
+        ADD.W   #0x4, R8
+//  670   pMsg->cmd.TransSeqNumber = *pBuf++;
+        MOV.B   @R8+, 0x20(R11)
+//  671 
+//  672   if (cmd1 == MT_AF_INCOMING_MSG)
+        CMP.B   #0x81, R10
+        JNE     ??afIncMsgPktParse_4
+//  673   {
+//  674     pMsg->cmd.DataLength = *pBuf++;
+        MOV.B   @R8+, R14
+        JMP     ??afIncMsgPktParse_5
+//  675   }
+//  676   else
+//  677   {
+//  678     pMsg->cmd.DataLength = BUILD_UINT16(pBuf[0], pBuf[1]);
+??afIncMsgPktParse_4:
+        CALLA   #?Subroutine1
+//  679     pBuf += 2;
+//  680   }
+??afIncMsgPktParse_5:
+        MOV.W   R14, 0x22(R11)
+//  681   pMsg->cmd.Data = (uint8 *)(pMsg+1);
+        MOV.W   R11, R15
+        ADD.W   #0x26, R15
+        MOV.W   R15, 0x24(R11)
+//  682   return pBuf;
+        MOV.W   R8, R12
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock26
+//  683 }
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI Function afIncMsgPktParse
+          CFI Conditional ??afIncMsgPktParse_1
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI (cfiCond28) Function afIncMsgPktParse
+          CFI (cfiCond28) Conditional ??afIncMsgPktParse_5
+          CFI (cfiCond28) R8L Frame(CFA, -12)
+          CFI (cfiCond28) R9L Frame(CFA, -10)
+          CFI (cfiCond28) R10L Frame(CFA, -8)
+          CFI (cfiCond28) R11L Frame(CFA, -6)
+          CFI (cfiCond28) CFA SP+16
+          CFI Block cfiPicker29 Using cfiCommon1
+          CFI (cfiPicker29) NoFunction
+          CFI (cfiPicker29) Picker
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_6:
+        ADD.W   #0x2, R8
+        RETA
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiPicker29
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI Function afIncMsgPktParse
+          CFI Conditional ??CrossCallReturnLabel_4
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function afIncMsgPktParse
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_6, ??afIncMsgPktParse_1
+          CFI (cfiCond31) R8L Frame(CFA, -12)
+          CFI (cfiCond31) R9L Frame(CFA, -10)
+          CFI (cfiCond31) R10L Frame(CFA, -8)
+          CFI (cfiCond31) R11L Frame(CFA, -6)
+          CFI (cfiCond31) CFA SP+20
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function afIncMsgPktParse
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_6, ??afIncMsgPktParse_5
+          CFI (cfiCond32) R8L Frame(CFA, -12)
+          CFI (cfiCond32) R9L Frame(CFA, -10)
+          CFI (cfiCond32) R10L Frame(CFA, -8)
+          CFI (cfiCond32) R11L Frame(CFA, -6)
+          CFI (cfiCond32) CFA SP+20
+          CFI Block cfiCond33 Using cfiCommon0
+          CFI (cfiCond33) Function afIncMsgPktParse
+          CFI (cfiCond33) Conditional ??CrossCallReturnLabel_5, ??CrossCallReturnLabel_0
+          CFI (cfiCond33) R8L Frame(CFA, -12)
+          CFI (cfiCond33) R9L Frame(CFA, -10)
+          CFI (cfiCond33) R10L Frame(CFA, -8)
+          CFI (cfiCond33) R11L Frame(CFA, -6)
+          CFI (cfiCond33) CFA SP+20
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI (cfiCond34) Function afIncMsgPktParse
+          CFI (cfiCond34) Conditional ??CrossCallReturnLabel_5, ??CrossCallReturnLabel_1
+          CFI (cfiCond34) R8L Frame(CFA, -12)
+          CFI (cfiCond34) R9L Frame(CFA, -10)
+          CFI (cfiCond34) R10L Frame(CFA, -8)
+          CFI (cfiCond34) R11L Frame(CFA, -6)
+          CFI (cfiCond34) CFA SP+20
+          CFI Block cfiPicker35 Using cfiCommon1
+          CFI (cfiPicker35) NoFunction
+          CFI (cfiPicker35) Picker
+        MOV.B   @R8, R14
+        MOV.B   0x1(R8), R15
+        RPT     #0x8
+        RLAX.W  R15
+        ADD.W   R15, R14
+        RETA
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiCond33
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiPicker35
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond36 Using cfiCommon0
+          CFI Function afIncMsgPktParse
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+          CFI Block cfiCond37 Using cfiCommon0
+          CFI (cfiCond37) Function afIncMsgPktParse
+          CFI (cfiCond37) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond37) R8L Frame(CFA, -12)
+          CFI (cfiCond37) R9L Frame(CFA, -10)
+          CFI (cfiCond37) R10L Frame(CFA, -8)
+          CFI (cfiCond37) R11L Frame(CFA, -6)
+          CFI (cfiCond37) CFA SP+16
+          CFI Block cfiPicker38 Using cfiCommon1
+          CFI (cfiPicker38) NoFunction
+          CFI (cfiPicker38) Picker
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_5:
+        MOV.W   R14, 0x6(R11)
+        RETA
+          CFI EndBlock cfiCond36
+          CFI EndBlock cfiCond37
+          CFI EndBlock cfiPicker38
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r4:
+        REQUIRE ?setjmp_r4
+        REQUIRE ?longjmp_r4
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r5:
+        REQUIRE ?setjmp_r5
+        REQUIRE ?longjmp_r5
+
+        END
+//  684 
+//  685 #if ZAP_AF_DATA_REQ_FRAG
+//  686 /**************************************************************************************************
+//  687  * @fn          afRetrieve
+//  688  *
+//  689  * @brief       This function retrieves the data of a huge incoming message. On an failure during
+//  690  *              the retrieval, the incoming message is freed. Otherwise, the incoming message is
+//  691  *              forwarded to the corresponding task.
+//  692  *
+//  693  * input parameters
+//  694  *
+//  695  * @param       pMsg - Pointer to the incoming AF message.
+//  696  * @param       taskId - The task ID corresponding to the destination endpoint of the message.
+//  697  *
+//  698  * output parameters
+//  699  *
+//  700  * @param       pMsg->cmd.Data - The incoming message data buffer member is filled.
+//  701  *
+//  702  * @return      None.
+//  703  **************************************************************************************************
+//  704  */
+//  705 static void afRetrieve(uint8 taskId, afIncomingMSGPacket_t *pMsg)
+//  706 {
+//  707   #define ZAP_AF_RTV_MSG_HDR  7  // Retrieve message header length.
+//  708   #define ZAP_AF_RTV_RPY_HDR  2  // Retrieve-reply message header length.
+//  709   #define ZAP_AF_RTV_DAT_MAX (MT_RPC_DATA_MAX - ZAP_AF_RTV_RPY_HDR)
+//  710 
+//  711   uint16 idx = 0, len = pMsg->cmd.DataLength;
+//  712   uint8 *pBuf, rtrn, tmpLen = 0;
+//  713 
+//  714   do {
+//  715     /* This trick to pre-decrement (with zero on the first pass) allows the while() test to
+//  716      * succeed and loop to send a zero data length message which will trigger the ZNP to
+//  717      * de-allocate the huge incoming message being held.
+//  718      */
+//  719     len -= tmpLen;
+//  720     idx += tmpLen;
+//  721 
+//  722     if (len > ZAP_AF_RTV_DAT_MAX)
+//  723     {
+//  724       tmpLen = ZAP_AF_RTV_DAT_MAX;
+//  725     }
+//  726     else
+//  727     {
+//  728       tmpLen = len;
+//  729     }
+//  730 
+//  731     if ((pBuf = zap_msg_allocate(ZAP_AF_RTV_MSG_HDR, ((uint8)MT_RPC_SYS_AF | MT_RPC_CMD_SREQ),
+//  732                                                              MT_AF_DATA_RETRIEVE)) == NULL)
+//  733     {
+//  734       rtrn = afStatus_MEM_FAIL;
+//  735       break;
+//  736     }
+//  737 
+//  738     pBuf[0] = BREAK_UINT32(pMsg->timestamp, 0);
+//  739     pBuf[1] = BREAK_UINT32(pMsg->timestamp, 1);
+//  740     pBuf[2] = BREAK_UINT32(pMsg->timestamp, 2);
+//  741     pBuf[3] = BREAK_UINT32(pMsg->timestamp, 3);
+//  742     pBuf[4] = LO_UINT16(idx);
+//  743     pBuf[5] = HI_UINT16(idx);
+//  744     pBuf[6] = tmpLen;
+//  745     zapPhySend(zapAppPort, pBuf);
+//  746     rtrn = (afStatus_t)ZAP_SRSP_STATUS(pBuf);
+//  747     (void)osal_memcpy(pMsg->cmd.Data+idx, pBuf+ZAP_AF_RTV_RPY_HDR, tmpLen);
+//  748     zap_msg_deallocate(&pBuf);
+//  749   } while ((rtrn == afStatus_SUCCESS) && len);
+//  750 
+//  751   if (rtrn == afStatus_SUCCESS)
+//  752   {
+//  753     (void)osal_msg_send(taskId, (uint8 *)pMsg);
+//  754   }
+//  755   else
+//  756   {
+//  757     (void)osal_msg_deallocate((uint8 *)pMsg);
+//  758   }
+//  759 }
+//  760 #endif
+//  761 
+//  762 #endif
+//  763 /**************************************************************************************************
+//  764 */
+// 
+// 1 032 bytes in segment CODE
+//     2 bytes in segment DATA16_Z
+// 
+// 1 032 bytes of CODE memory
+//     2 bytes of DATA memory
+//
+//Errors: none
+//Warnings: none
