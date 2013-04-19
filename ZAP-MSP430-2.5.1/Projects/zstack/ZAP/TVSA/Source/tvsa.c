@@ -59,43 +59,10 @@
 #include "hal_led.h"  //MHMS for indicating if pulse is found
 #include "hal_adc.h"  //MHMS used for capturing signal from pulse sensor
 
-/*#if !TVSA_DONGLE  //MHMS dont' need this
-#include "tvsa_cc2530znp.c"
-#endif
-*/
-
 /* ------------------------------------------------------------------------------------------------
  *                                           Constants
  * ------------------------------------------------------------------------------------------------
  */
-
-
-
-static const cId_t TVSA_ClusterList[TVSA_CLUSTER_CNT] =
-{
-  TVSA_CLUSTER_ID
-};
-
-static const SimpleDescriptionFormat_t TVSA_SimpleDesc =
-{
-  TVSA_ENDPOINT,
-  TVSA_PROFILE_ID,
-  TVSA_DEVICE_ID,
-  TVSA_DEVICE_VERSION,
-  TVSA_FLAGS,
-  TVSA_CLUSTER_CNT,
-  (cId_t *)TVSA_ClusterList,
-  TVSA_CLUSTER_CNT,
-  (cId_t *)TVSA_ClusterList
-};
-
-static const endPointDesc_t TVSA_epDesc=
-{
-  TVSA_ENDPOINT,
-  &tvsaTaskId,
-  (SimpleDescriptionFormat_t *)&TVSA_SimpleDesc,
-  noLatencyReqs,
-};
 
 // Constants for Pulse Sensor
 
@@ -140,9 +107,8 @@ static const endPointDesc_t PULSE_epDesc=
  */
 
 #if TVSA_DATA_CNF
-uint8 tvsaCnfErrCnt;
+uint8 pulseCnfErrCnt;
 #endif
-uint8 tvsaTaskId;
 
 //MHMS  Global Variables
 uint8 pulseTaskId;
@@ -154,23 +120,17 @@ uint8 pulseTaskId;
  */
 
 // Network address of the TVSA Dongle.
-static uint16 tvsaAddr;
+
 static uint16 pulseAddr;
 // Report counter.
-static uint16 tvsaCnt;
+static uint16 pulseCnt;  //MHMS Question what is this for?
 // ZigBee-required packet transaction sequence number in calls to AF_DataRequest().
-static uint8 tvsaTSN;
-static uint8 pulseTSN;           //MHMS
 
-#if TVSA_DONGLE
+static uint8 pulseTSN;           //MHMS Question what is thi?
+
 static uint8 pulseBuf[PULSE_BUF_LEN];
-#if defined TVSA_DEMO
-static uint8 tvsaCmd, tvsaState;
-#endif
-#else
-static uint8 tvsaDat[TVSA_DAT_LEN];
 static uint8 pulseDat[PULSE_DAT_LEN];  //MHMS define data array length for Pulse sensor
-#endif
+
 
 //MHMS From arduino interrupt
 volatile int rate[10];                    // used to hold last ten IBI values
@@ -198,33 +158,34 @@ volatile bool QS = false;        // becomes true when Arduoino finds a beat.
  * ------------------------------------------------------------------------------------------------
  */
 
-static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg);
-static void tvsaSysEvtMsg(void);
+static void pulseAfMsgRx(afIncomingMSGPacket_t *msg);
+static void pulseSysEvtMsg(void);
 
-#if !TVSA_DONGLE
+
 static void pulseBPM(uint8 *pulsedata);  //MHMS Pulse calculation function
 static void pulseDataCalc(void);
 static void pulseDataReq(void);
 
-static void tvsaZdoStateChange(void);
-#else //if TVSA_DONGLE
-static void tvsaAnnce(void);
-static void tvsaDataRx(afIncomingMSGPacket_t *msg);
-static void tvsaUartRx(uint8 port, uint8 event);
-static void tvsaZdoStateChange(void);
-#ifndef TVSA_DEMO
+static void pulseZdoStateChange(void);
+
+static void pulseAnnce(void);
+static void pulseDataRx(afIncomingMSGPacket_t *msg);
+static void pulseUartRx(uint8 port, uint8 event);
+static void pulseZdoStateChange(void);
+
+#ifndef TVSA_DEMO  //MHMS Question do we need this?
 static uint8 calcFCS(uint8 *pBuf, uint8 len);
 static void sysPingRsp(void);
 #endif
 
-#endif
+
 
 
 
 /**************************************************************************************************
- * @fn          tvsaAfMsgRx
+ * @fn          pulseAfMsgRx
  *
- * @brief       This function is called by tvsaSysEvtMsg() to process an incoming AF message.
+ * @brief       This function is called by pulseSysEvtMsg() to process an incoming AF message.
  *
  * input parameters
  *
@@ -237,17 +198,16 @@ static void sysPingRsp(void);
  * @return      None.
  **************************************************************************************************
  */
-static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg)
+static void pulseAfMsgRx(afIncomingMSGPacket_t *msg)
 {
   uint8 *buf = msg->cmd.Data;
 
   switch (buf[PULSE_CMD_IDX])
   {
-#if TVSA_DONGLE
+
   case PULSE_CMD_DAT:
-    tvsaDataRx(msg);
+    pulseDataRx(msg);
     break;
-#else
 
   case PULSE_CMD_BEG:
     if (INVALID_NODE_ADDR == pulseAddr)
@@ -262,7 +222,7 @@ static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg)
     NLME_SetPollRate(POLL_RATE);
     pulseAddr = INVALID_NODE_ADDR;
     break;
-#endif
+
 
   default:
     break;
@@ -270,9 +230,9 @@ static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg)
 }
 
 /**************************************************************************************************
- * @fn          tvsaSysEvtMsg
+ * @fn          pulseSysEvtMsg
  *
- * @brief       This function is called by tvsaAppEvt() to process all of the pending OSAL messages.
+ * @brief       This function is called by pulseAppEvt() to process all of the pending OSAL messages.
  *
  * input parameters
  *
@@ -285,7 +245,7 @@ static void tvsaAfMsgRx(afIncomingMSGPacket_t *msg)
  * @return      None.
  **************************************************************************************************
  */
-static void tvsaSysEvtMsg(void)
+static void pulseSysEvtMsg(void)
 {
   uint8 *msg;
 
@@ -293,24 +253,24 @@ static void tvsaSysEvtMsg(void)
   {
     switch (*msg)
     {
-#if TVSA_DATA_CNF
+#if TVSA_DATA_CNF  //MHMS Question what is this for?
     case AF_DATA_CONFIRM_CMD:
       if (ZSuccess != ((afDataConfirm_t *)msg)->hdr.status)
       {
-        if (0 == ++tvsaCnfErrCnt)
+        if (0 == ++pulseCnfErrCnt)
         {
-          tvsaCnfErrCnt = 255;
+          pulseCnfErrCnt = 255;
         }
       }
       break;
 #endif
 
     case AF_INCOMING_MSG_CMD:
-      tvsaAfMsgRx((afIncomingMSGPacket_t *)msg);
+      pulseAfMsgRx((afIncomingMSGPacket_t *)msg);
       break;
 
     case ZDO_STATE_CHANGE:
-      tvsaZdoStateChange();
+      pulseZdoStateChange();
       break;
 
     default:
@@ -321,12 +281,12 @@ static void tvsaSysEvtMsg(void)
   }
 }
 
-#if !TVSA_DONGLE
+
 
 /**************************************************************************************************
- * @fn          tvsaZdoStateChange
+ * @fn          pulseZdoStateChange  //MHMS this is really for router or end  devices
  *
- * @brief       This function is called by tvsaSysEvtMsg() for a ZDO_STATE_CHANGE message.
+ * @brief       This function is called by pulseSysEvtMsg() for a ZDO_STATE_CHANGE message.
  *
  * input parameters
  *
@@ -339,7 +299,7 @@ static void tvsaSysEvtMsg(void)
  * @return      None.
  **************************************************************************************************
  */
-static void tvsaZdoStateChange(void)
+static void pulseZdoStateChange(void)
 {
   (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
 
@@ -360,14 +320,14 @@ static void tvsaZdoStateChange(void)
     }
 
 #if TVSA_DONGLE_IS_ZC  //MHMS do we need this?
-    if (INVALID_NODE_ADDR == tvsaAddr)
+    if (INVALID_NODE_ADDR == pulseAddr)
     {
       // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
       pulseAddr = NWK_PAN_COORD_ADDR;
     }
 #endif
 
-    if (INVALID_NODE_ADDR != tvsaAddr)
+    if (INVALID_NODE_ADDR != pulseAddr)
     {
       if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, (dly + TVSA_DLY_MIN)))
       {
@@ -375,24 +335,42 @@ static void tvsaZdoStateChange(void)
       }
     }
 
-#if !TVSA_DONGLE
+
     if (0 == 0)//voltageAtTemp22)
     {
      // HalInitTV();
       (void)osal_cpyExtAddr(pulseDat+PULSE_IEE_IDX, &aExtendedAddress);
     }
+
+  }
+  else  //(DEV_ZB_COORD == devState)
+  {
+#if TVSA_DONGLE_IS_ZC
+    if (INVALID_NODE_ADDR == pulseAddr)
+    {
+      // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+      pulseAddr = NWK_PAN_COORD_ADDR;
+    }
 #endif
+
+    if (INVALID_NODE_ADDR != pulseAddr)
+    {
+      if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+      {
+        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+      }
+    }
+    
   }
 #if defined LCD_SUPPORTED
   HalLcdWriteValue(devState, 10, HAL_LCD_LINE_5);
 #endif
 }
 
-#else // if TVSA_DONGLE
 /**************************************************************************************************
- * @fn          tvsaAnnce
+ * @fn          pulseZdoStateChange  //MHMS This one is for the coordinator
  *
- * @brief       This function is called by tvsaAppEvt() to send a TVSA announce to start or stop.
+ * @brief       This function is called by pulseSysEvtMsg() for a ZDO_STATE_CHANGE message.
  *
  * input parameters
  *
@@ -405,7 +383,49 @@ static void tvsaZdoStateChange(void)
  * @return      None.
  **************************************************************************************************
  */
-static void tvsaAnnce(void)
+/*  //MHMS Question there are 2 ZDOstatechanges,  is one for coord and one for rout?
+static void pulseZdoStateChange(void)
+{
+  (void)osal_stop_timerEx(pulseTaskId, TVSA_EVT_ANN);
+
+  if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
+  {
+#if TVSA_DONGLE_IS_ZC
+    if (INVALID_NODE_ADDR == pulseAddr)
+    {
+      // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+      pulseAddr = NWK_PAN_COORD_ADDR;
+    }
+#endif
+
+    if (INVALID_NODE_ADDR != pulseAddr)
+    {
+      if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
+      {
+        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+      }
+    }
+  }
+}
+*/
+
+/**************************************************************************************************
+ * @fn          pulseAnnce
+ *
+ * @brief       This function is called by pulseAppEvt() to send a TVSA announce to start or stop.
+ *
+ * input parameters
+ *
+ * None.
+ *
+ * output parameters
+ *
+ * None.
+ *
+ * @return      None.
+ **************************************************************************************************
+ */
+static void pulseAnnce(void)
 {
   uint8 msg[3];
   afAddrType_t addr;
@@ -414,7 +434,7 @@ static void tvsaAnnce(void)
   addr.addrMode = afAddrBroadcast;
   addr.endPoint = TVSA_ENDPOINT;
 
-  if (INVALID_NODE_ADDR != tvsaAddr)
+  if (INVALID_NODE_ADDR != pulseAddr)
   {
     msg[TVSA_CMD_IDX] = TVSA_CMD_BEG;
     if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
@@ -427,24 +447,24 @@ static void tvsaAnnce(void)
     msg[TVSA_CMD_IDX] = TVSA_CMD_END;
   }
 
-  msg[TVSA_ADR_LSB] = LO_UINT16(tvsaAddr);
-  msg[TVSA_ADR_MSB] = HI_UINT16(tvsaAddr);
+  msg[TVSA_ADR_LSB] = LO_UINT16(pulseAddr);
+  msg[TVSA_ADR_MSB] = HI_UINT16(pulseAddr);
 
-  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&TVSA_epDesc, TVSA_CLUSTER_ID,
-                                          3, msg, &tvsaTSN, AF_TX_OPTIONS_NONE, AF_DEFAULT_RADIUS))
+  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+                                          3, msg, &pulseTSN, AF_TX_OPTIONS_NONE, AF_DEFAULT_RADIUS))
   {
-    osal_set_event(tvsaTaskId, TVSA_EVT_REQ);
+    osal_set_event(pulseTaskId, PULSE_EVT_REQ);
   }
   else
   {
-    tvsaCnt++;
+    pulseCnt++;
   }
 }
 
 /**************************************************************************************************
- * @fn          tvsaDataRx
+ * @fn          pulseDataRx
  *
- * @brief       This function is called by tvsaAfMsgRx() to process incoming TVSA data.
+ * @brief       This function is called by pulseAfMsgRx() to process incoming PULSE data.
  *
  * input parameters
  *
@@ -457,14 +477,14 @@ static void tvsaAnnce(void)
  * @return      None.
  **************************************************************************************************
  */
-static void tvsaDataRx(afIncomingMSGPacket_t *msg)
+static void pulseDataRx(afIncomingMSGPacket_t *msg)
 {
   uint8 fcs = 0, idx;
 
   // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
-  if (INVALID_NODE_ADDR == tvsaAddr)
+  if (INVALID_NODE_ADDR == pulseAddr)
   {
-    (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
+    (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
   }
 
   pulseBuf[PULSE_SOP_IDX] = PULSE_SOP_VAL;
@@ -480,15 +500,7 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
   }
   pulseBuf[idx] = fcs;
   
-#ifdef TVSA_DEMO
-
-  HalUARTWrite(TVSA_PORT, pulseBuf, TVSA_BUF_LEN);
-
-#else
-  
-  
   uint8 deviceBPM;
-  uint8 deviceVolt;
   uint8 parentAddrLSB;
   uint8 parentAddrMSB;
   uint8 zsensorBuf[15];
@@ -496,7 +508,7 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
   parentAddrLSB= pulseBuf[11];
   parentAddrMSB= pulseBuf[12];  
   deviceBPM = pulseBuf[14];
-  deviceVolt = 0xFF;
+  //deviceVolt = 0xFF;
   
   //Start of Frame Delimiter
   zsensorBuf[0]=0xFE;
@@ -562,16 +574,15 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
   IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
    
   
-  HalUARTWrite(TVSA_PORT, SignalBuf, 6);
+  HalUARTWrite(PULSE_PORT, SignalBuf, 6);
  // HalUARTWrite(TVSA_PORT, BPMBuf, 6);
  // HalUARTWrite(TVSA_PORT, IBIBuf, 6);
 
-  
-
-#endif  
 //pulseAddr = BUILD_UINT16(buf[TVSA_ADR_LSB], buf[TVSA_ADR_MSB]);
 }
 
+
+//MHMS Question do we need this ? tvsaUartRx  this is for recieving command messages from UART
 /**************************************************************************************************
  * @fn          tvsaUartRx
  *
@@ -589,42 +600,43 @@ static void tvsaDataRx(afIncomingMSGPacket_t *msg)
  * @return      None.
  **************************************************************************************************
  */
-static void tvsaUartRx(uint8 port, uint8 event)
+
+static void pulseUartRx(uint8 port, uint8 event)
 {
 #ifdef TVSA_DEMO
   uint8 ch;
 
   while (HalUARTRead(TVSA_PORT, &ch, 1))
   {
-    switch (tvsaState)
+    switch (pulseState)
     {
     case SOP_STATE:
       if (TVSA_SOP_VAL == ch)
       {
-        tvsaState = CMD_STATE;
+        pulseState = CMD_STATE;
       }
       break;
 
     case CMD_STATE:
-      tvsaCmd = ch;
-      tvsaState = FCS_STATE;
+      pulseCmd = ch;
+      pulseState = FCS_STATE;
       break;
 
     case FCS_STATE:
-      if (tvsaCmd == ch)
+      if (pulseCmd == ch)
       {
-        if (tvsaCmd == TVSA_CMD_BEG)
+        if (pulseCmd == TVSA_CMD_BEG)
         {
-          tvsaAddr = NLME_GetShortAddr();
+          pulseAddr = NLME_GetShortAddr();
         }
-        else if (tvsaCmd == TVSA_CMD_END)
+        else if (pulseCmd == TVSA_CMD_END)
         {
-          tvsaAddr = INVALID_NODE_ADDR;
+          pulseAddr = INVALID_NODE_ADDR;
         }
         (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
       }
 
-      tvsaState = SOP_STATE;
+      pulseState = SOP_STATE;
       break;
 
     default:
@@ -634,52 +646,12 @@ static void tvsaUartRx(uint8 port, uint8 event)
 #else
   uint8 ch[5];
   
-  HalUARTRead(TVSA_PORT, ch, 5);
+  HalUARTRead(PULSE_PORT, ch, 5);
   if (ch[2]==0x21)   //if statement to check for command from Z-Sensor Monitor
   {
     sysPingRsp();
   }
 #endif
-}
-
-/**************************************************************************************************
- * @fn          tvsaZdoStateChange
- *
- * @brief       This function is called by tvsaSysEvtMsg() for a ZDO_STATE_CHANGE message.
- *
- * input parameters
- *
- * None.
- *
- * output parameters
- *
- * None.
- *
- * @return      None.
- **************************************************************************************************
- */
-static void tvsaZdoStateChange(void)
-{
-  (void)osal_stop_timerEx(pulseTaskId, TVSA_EVT_ANN);
-
-  if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
-  {
-#if TVSA_DONGLE_IS_ZC
-    if (INVALID_NODE_ADDR == tvsaAddr)
-    {
-      // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
-      tvsaAddr = NWK_PAN_COORD_ADDR;
-    }
-#endif
-
-    if (INVALID_NODE_ADDR != tvsaAddr)
-    {
-      if (ZSuccess != osal_start_timerEx(pulseTaskId, TVSA_EVT_ANN, TVSA_DLY_ANN))
-      {
-        (void)osal_set_event(pulseTaskId, TVSA_EVT_ANN);
-      }
-    }
-  }
 }
 
 #ifndef TVSA_DEMO
@@ -738,7 +710,7 @@ static void sysPingRsp(void)
   pingBuff[6] = calcFCS(&pingBuff[1], 5);
   
   
-  HalUARTWrite(TVSA_PORT,pingBuff, 7);
+  HalUARTWrite(PULSE_PORT,pingBuff, 7);
 
 }
 
@@ -746,10 +718,6 @@ static void sysPingRsp(void)
 #endif
 
 
-
-
-
-#endif
 
 /**************************************************************************************************
 */
@@ -776,7 +744,7 @@ static void sysPingRsp(void)
  */
 void pulseAppInit(uint8 id)
 {
-#if TVSA_DONGLE
+
   halUARTCfg_t uartConfig;
 
   uartConfig.configured           = TRUE;              // 2x30 don't care - see uart driver.
@@ -794,15 +762,14 @@ void pulseAppInit(uint8 id)
   uartConfig.tx.maxBufSize        = 254;               // 2x30 don't care - see uart driver.
   uartConfig.idleTimeout          = 6;                 // 2x30 don't care - see uart driver.
   uartConfig.intEnable            = TRUE;              // 2x30 don't care - see uart driver.
-  uartConfig.callBackFunc         = tvsaUartRx;
+  uartConfig.callBackFunc         = pulseUartRx;
   HalUARTOpen(TVSA_PORT, &uartConfig);
-#else
+
 //  tvsaDat[TVSA_TYP_IDX] = (uint8)TVSA_DEVICE_ID;
     pulseDat[PULSE_TYP_IDX] = (uint8)PULSE_DEVICE_ID;
 #if defined PULSE_SRC_RTG
 //  tvsaDat[TVSA_OPT_IDX] = TVSA_OPT_SRC_RTG;
     pulseDat[PULSE_OPT_IDX] = PULSE_OPT_SRC_RTG;
-#endif
 #endif
 
   pulseTaskId = id;                                    
@@ -842,15 +809,15 @@ uint16 pulseAppEvt(uint8 id, uint16 evts)
   if (evts & SYS_EVENT_MSG)
   {
     mask = SYS_EVENT_MSG;
-    tvsaSysEvtMsg();
+    pulseSysEvtMsg();
   }
-#if TVSA_DONGLE
-  else if (evts & TVSA_EVT_ANN)
+
+  else if (evts & PULSE_EVT_ANN)
   {
-    mask = TVSA_EVT_ANN;
-   tvsaAnnce();
+    mask = PULSE_EVT_ANN;
+   pulseAnnce();
   }
-#else
+
   else if (evts & PULSE_EVT_DAT)
   {
     mask = PULSE_EVT_DAT;
@@ -861,7 +828,7 @@ uint16 pulseAppEvt(uint8 id, uint16 evts)
     mask = PULSE_EVT_REQ;
     pulseDataReq();
   }
-#endif
+
   else
   {
     mask = evts;  // Discard unknown events - should never happen.
@@ -874,11 +841,10 @@ uint16 pulseAppEvt(uint8 id, uint16 evts)
 //MHMS put coord stuff here, recieve func and sys
 
 
-#if !TVSA_DONGLE  //Group 1
 /**************************************************************************************************
  * @fn          pulseDataCalc
  *
- * @brief       This function is called by tvsaAppEvt() to calculate the data for a PULSE report.
+ * @brief       This function is called by pulseAppEvt() to calculate the data for a PULSE report.
  *              The function will called on a 2ms interval and detect whether a pulse is being measured.
  *              If a pulse is determined it will invoke the PulsedataReq interrupt timer (20ms intervals)
  *
@@ -905,11 +871,11 @@ static void pulseDataCalc(void)
     (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
   }
   pulseBPM(pulseDat);
-  //  HalCalcTV(tvsaDat);
+
 #if TVSA_DATA_CNF
-  tvsaDat[TVSA_RTG_IDX] = tvsaCnfErrCnt;
+  pulseDat[TVSA_RTG_IDX] = pulseCnfErrCnt;
 #else
-  tvsaDat[TVSA_RTG_IDX] = 0;
+  pulseDat[TVSA_RTG_IDX] = 0;
 #endif
   //osal_set_event(tvsaTaskId, TVSA_EVT_REQ);
   if(QS == true && SUCCESS == osal_set_event(pulseTaskId, PULSE_EVT_REQ)){}  //If pulse is being measured synchronize pulsedatareq event
@@ -1029,7 +995,7 @@ pulsedata[PULSE_IBI_CHAR] = 'S';
 /**************************************************************************************************
  * @fn          pulseDataReq
  *
- * @brief       This function is called by tvsaAppEvt() to send a PULSE data report. When it is detected that
+ * @brief       This function is called by pulseAppEvt() to send a PULSE data report. When it is detected that
  *              a pulse is found (QS flag is set) this function will start to transfer BPM, IBI, and raw Signal
  *              data over the air to the coordinator at 20ms intervals. When there is no BPM detected
  *              this function will stop sending information over the air to the coordinator.
@@ -1067,7 +1033,7 @@ static void pulseDataReq(void)
   }
   else
   {
-    tvsaCnt++;
+    pulseCnt++;
   }
   if((QS == true) && (pulseDataReqFlag == false)){
     osal_start_timerEx(pulseTaskId, PULSE_EVT_REQ, PULSE_DLY_DATAREQ);  //send next Pulse data report in 20ms
@@ -1112,4 +1078,3 @@ static void pulseDataReq(void)
   HalUARTWrite(0, BPMBuf, 6);
   HalUARTWrite(0, IBIBuf, 6);
 }
-#endif //Group 1

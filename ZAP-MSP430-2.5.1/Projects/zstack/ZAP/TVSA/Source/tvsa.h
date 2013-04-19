@@ -88,13 +88,6 @@
 #endif
 #endif
 
-#if !defined TVSA_DONGLE
-#define TVSA_DONGLE                FALSE
-#endif
-
-#if !defined TVSA_DONGLE_IS_ZC
-#define TVSA_DONGLE_IS_ZC          TRUE
-#endif
 
 // Bit values for the TVSA_OPT_IDX.
 #define TVSA_OPT_SRC_RTG           0x01
@@ -114,7 +107,7 @@
 #define TVSA_ADR_LSB               1
 #define TVSA_ADR_MSB               2
 
-#if TVSA_DONGLE
+
 #define TVSA_SOP_VAL               0xFE
 #define TVSA_PORT                  0
 #define SOP_STATE                  0
@@ -126,16 +119,16 @@
 // Not adding +1 for FCS because 1st byte of message is skipped - CMD is always 0 for data.
 #define TVSA_BUF_LEN               TVSA_DAT_LEN+TVSA_DAT_OFF
 #define TVSA_FCS_IDX               TVSA_BUF_LEN-1
-#endif
 
 // TVSA Command set.
 #define TVSA_CMD_DAT               0  // TVSA data message.
 #define TVSA_CMD_BEG               1  // Start reporting TVSA data.
 #define TVSA_CMD_END               2  // Stop reporting TVSA data.
 
+//#define SYS_EVENT_MSG            0x8000   //already defined in comdef.h  used for other tasks
 #define TVSA_EVT_ANN               0x4000
-#define TVSA_EVT_DAT               TVSA_EVT_ANN  /* Mutually exclusive use by TVSA_DONGLE. */
 #define TVSA_EVT_REQ               0x2000
+#define TVSA_EVT_DAT               0x1000
 
 #define TVSA_DLY_ANN               60000
 #define TVSA_DLY_DAT               TVSA_DLY_ANN
@@ -143,11 +136,11 @@
 #define TVSA_STG_DAT               ((uint16)(((uint32)TVSA_DLY_DAT * Onboard_rand()) / 65536))
 #define TVSA_DLY_MIN               5000  // Minimum delay (also in case TVSA_STG_DAT returns 0).
 
-#if !defined TVSA_SRC_RTG
+#if !defined TVSA_SRC_RTG  //MHMS Question what is this for?
 #define TVSA_SRC_RTG               FALSE
 #endif
 
-#if TVSA_SRC_RTG
+#if TVSA_SRC_RTG //MHMS Question what is this for?
 // Source routing requires special builds of the ZNP with the following settings:
 // #define ZIGBEE_SOURCE_ROUTING
 // #define ZIGBEE_MANY_TO_ONE
@@ -163,9 +156,10 @@
 //MHMS  Defined constants for the Pulse Sensor
 
 //PULSE task event flags defines
+//#define SYS_EVENT_MSG            0x8000   //already defined in comdef.h  used for other tasks
 #define PULSE_EVT_ANN               0x4000
-#define PULSE_EVT_DAT               PULSE_EVT_ANN  /* Mutually exclusive use by PULSE_DONGLE. */
-#define PULSE_EVT_REQ               0x2000   
+#define PULSE_EVT_REQ               0x2000
+#define PULSE_EVT_DAT               0x1000
    
 // Expanding on a TI proprietary Profile Id used for Z-Accel / ZASA / CC2480.
 //MHMS the following defines are used for SimpleDescriptionFormat_t PULSE_SimpleDesc
@@ -229,7 +223,7 @@
 #define PULSE_ADR_LSB               1
 #define PULSE_ADR_MSB               2
 
-#if TVSA_DONGLE
+
 #define PULSE_SOP_VAL               0xFE
 #define PULSE_PORT                  0
 #define SOP_STATE                  0
@@ -241,11 +235,11 @@
 // Not adding +1 for FCS because 1st byte of message is skipped - CMD is always 0 for data.
 #define PULSE_BUF_LEN               PULSE_DAT_LEN+PULSE_DAT_OFF
 #define PULSE_FCS_IDX               PULSE_BUF_LEN-1
-#endif
 
 // Defined constants for Pulse capture and calculations
 #define PULSE_DLY_DAT               2  //MHMS every 2ms PULSE calc interrupt
 #define PULSE_DLY_DATAREQ           20  //MHMS every 20ms PULSE datareq interrupt 
+
 
 /* ------------------------------------------------------------------------------------------------
  *                                          Macros
@@ -257,66 +251,15 @@
  * ------------------------------------------------------------------------------------------------
  */
 
-#if TVSA_DATA_CNF
-extern uint8 tvsaCnfErrCnt;
-#endif
-extern uint8 tvsaTaskId;
-
 //MHMS Pulse Sensor Global Variables   
 
-#if PULSE_DATA_CNF
 extern uint8 pulseCnfErrCnt;
-#endif
 extern uint8 pulseTaskId;
-
-
-
 
 /* ------------------------------------------------------------------------------------------------
  *                                          Functions
  * ------------------------------------------------------------------------------------------------
  */
-
-/**************************************************************************************************
- * @fn          tvsaAppInit
- *
- * @brief       This function is the application's task initialization.
- *
- * input parameters
- *
- * None.
- *
- * output parameters
- *
- * None.
- *
- * @return      None.
- **************************************************************************************************
- */
-void tvsaAppInit(uint8 id);
-
-/**************************************************************************************************
- * @fn          tvsaAppEvt
- *
- * @brief       This function is called to process the OSAL events for the task.
- *
- * input parameters
- *
- * @param       id - OSAL task Id.
- * @param       evts - OSAL events bit mask of pending events.
- *
- * output parameters
- *
- * None.
- *
- * @return      evts - OSAL events bit mask of unprocessed events.
- **************************************************************************************************
- */
-uint16 tvsaAppEvt(uint8 id, uint16 evts);
-
-#endif
-/**************************************************************************************************
-*/
 
 /**************************************************************************************************
  * @fn          pulseAppInit
@@ -354,3 +297,5 @@ void pulseAppInit(uint8 id);
  **************************************************************************************************
  */
 uint16 pulseAppEvt(uint8 id, uint16 evts);
+
+#endif
