@@ -2,6 +2,9 @@
 
 <workspace>
   <project>
+    <path>$WS_DIR$\..\..\..\..\..\..\..\..\..\..\..\Texas Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\ZNP\CC253x\CC2530.ewp</path>
+  </project>
+  <project>
     <path>$WS_DIR$\TVSA.ewp</path>
   </project>
   <batchBuild/>

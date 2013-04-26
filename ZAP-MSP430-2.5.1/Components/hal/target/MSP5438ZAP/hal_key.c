@@ -260,8 +260,9 @@ void HalKeyPoll( void )
     return;
 
   /* Callback */
-  if (pHal_KeyProcessFunction)
+  if (pHal_KeyProcessFunction){
     (pHal_KeyProcessFunction) (keys, ((keys & HAL_KEY_SW_6) ? HAL_KEY_STATE_SHIFT : HAL_KEY_STATE_NORMAL));
+  }
 
 #endif /* HAL_KEY */
 }

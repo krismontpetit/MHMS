@@ -3,43 +3,56 @@
 <Workspace>
   <ConfigDictionary>
     <CurrentConfigs>
+      <Project>CC2530/Debug</Project>
       <Project>TVSA/ZAP Coordinator</Project>
     </CurrentConfigs>
+    <CurrentProj>TVSA</CurrentProj>
+    <OverviewSelected>0</OverviewSelected>
   </ConfigDictionary>
   <Desktop>
     <Static>
       <Workspace>
         <ColumnWidths>
-          <Column0>273</Column0>
-          <Column1>6</Column1>
+          <Column0>223</Column0>
+          <Column1>27</Column1>
           <Column2>27</Column2>
-          <Column3>0</Column3>
+          <Column3>27</Column3>
         </ColumnWidths>
       </Workspace>
-      <Build>
-        <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>1077</ColumnWidth1>
-        <ColumnWidth2>287</ColumnWidth2>
-        <ColumnWidth3>71</ColumnWidth3>
-      </Build>
-      <TerminalIO/>
       <Find-in-Files>
         <ColumnWidth0>580</ColumnWidth0>
         <ColumnWidth1>82</ColumnWidth1>
         <ColumnWidth2>994</ColumnWidth2>
       </Find-in-Files>
+      <Build>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>1216</ColumnWidth1>
+        <ColumnWidth2>324</ColumnWidth2>
+        <ColumnWidth3>81</ColumnWidth3>
+      </Build>
+      <TerminalIO/>
     </Static>
     <Windows>
       <Wnd0>
         <Tabs>
           <Tab>
-            <Identity>TabID-27511-2368</Identity>
+            <Identity>TabID-3794-14148</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
               <NodeDict>
+                <ExpandedNode>CC2530</ExpandedNode>
+                <ExpandedNode>CC2530/App</ExpandedNode>
+                <ExpandedNode>CC2530/HAL</ExpandedNode>
+                <ExpandedNode>CC2530/MAC</ExpandedNode>
+                <ExpandedNode>CC2530/MT</ExpandedNode>
+                <ExpandedNode>CC2530/ZMain</ExpandedNode>
                 <ExpandedNode>TVSA</ExpandedNode>
                 <ExpandedNode>TVSA/App</ExpandedNode>
+                <ExpandedNode>TVSA/HAL</ExpandedNode>
+                <ExpandedNode>TVSA/HAL/Target</ExpandedNode>
+                <ExpandedNode>TVSA/HAL/Target/Drivers</ExpandedNode>
+                <ExpandedNode>TVSA/MT</ExpandedNode>
                 <ExpandedNode>TVSA/ZAP</ExpandedNode>
               </NodeDict>
             </Session>
@@ -50,19 +63,19 @@
       <Wnd1>
         <Tabs>
           <Tab>
-            <Identity>TabID-6893-2959</Identity>
-            <TabName>Build</TabName>
-            <Factory>Build</Factory>
-            <Session/>
-          </Tab>
-          <Tab>
-            <Identity>TabID-16931-6864</Identity>
+            <Identity>TabID-1787-16437</Identity>
             <TabName>Find in Files</TabName>
             <Factory>Find-in-Files</Factory>
             <Session/>
           </Tab>
+          <Tab>
+            <Identity>TabID-14167-16819</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
         </Tabs>
-        <SelectedTab>0</SelectedTab>
+        <SelectedTab>1</SelectedTab>
       </Wnd1>
     </Windows>
     <Editor>
@@ -77,39 +90,51 @@
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\Source\tvsa.c</Filename>
+          <Filename>$WS_DIR$\..\..\..\..\..\..\..\..\..\..\..\Texas Instruments\ZStack-CC2530-2.5.1a\Components\mt\DebugTrace.c</Filename>
           <XPos>0</XPos>
           <YPos>0</YPos>
           <SelStart>0</SelStart>
           <SelEnd>0</SelEnd>
           <XPos2>0</XPos2>
-          <YPos2>18</YPos2>
+          <YPos2>66</YPos2>
           <SelStart2>0</SelStart2>
           <SelEnd2>0</SelEnd2>
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\Source\tvsa.h</Filename>
+          <Filename>$WS_DIR$\..\..\..\..\..\..\..\..\..\..\..\Texas Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\ZNP\Source\znp_app.c</Filename>
           <XPos>0</XPos>
           <YPos>0</YPos>
           <SelStart>0</SelStart>
           <SelEnd>0</SelEnd>
           <XPos2>0</XPos2>
-          <YPos2>216</YPos2>
-          <SelStart2>5860</SelStart2>
-          <SelEnd2>5860</SelEnd2>
+          <YPos2>201</YPos2>
+          <SelStart2>0</SelStart2>
+          <SelEnd2>0</SelEnd2>
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\Source\zap_sapi.c</Filename>
+          <Filename>$WS_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_key.c</Filename>
           <XPos>0</XPos>
           <YPos>0</YPos>
           <SelStart>0</SelStart>
           <SelEnd>0</SelEnd>
           <XPos2>0</XPos2>
-          <YPos2>147</YPos2>
-          <SelStart2>7070</SelStart2>
-          <SelEnd2>7080</SelEnd2>
+          <YPos2>252</YPos2>
+          <SelStart2>9906</SelStart2>
+          <SelEnd2>9906</SelEnd2>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_board.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>159</YPos2>
+          <SelStart2>0</SelStart2>
+          <SelEnd2>0</SelEnd2>
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
@@ -119,81 +144,9 @@
           <SelStart>0</SelStart>
           <SelEnd>0</SelEnd>
           <XPos2>0</XPos2>
-          <YPos2>736</YPos2>
-          <SelStart2>21819</SelStart2>
-          <SelEnd2>21819</SelEnd2>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\..\..\..\Components\stack\sapi\sapi.h</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>0</SelStart>
-          <SelEnd>0</SelEnd>
-          <XPos2>0</XPos2>
-          <YPos2>60</YPos2>
-          <SelStart2>3620</SelStart2>
-          <SelEnd2>3620</SelEnd2>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\..\..\..\Components\stack\nwk\NLMEDE.h</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>0</SelStart>
-          <SelEnd>0</SelEnd>
-          <XPos2>0</XPos2>
-          <YPos2>792</YPos2>
-          <SelStart2>24462</SelStart2>
-          <SelEnd2>24462</SelEnd2>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\Source\zap_util.c</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>0</SelStart>
-          <SelEnd>0</SelEnd>
-          <XPos2>0</XPos2>
-          <YPos2>442</YPos2>
-          <SelStart2>15333</SelStart2>
-          <SelEnd2>15333</SelEnd2>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\Source\zap_zdo.c</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>0</SelStart>
-          <SelEnd>0</SelEnd>
-          <XPos2>0</XPos2>
-          <YPos2>897</YPos2>
-          <SelStart2>30270</SelStart2>
-          <SelEnd2>30270</SelEnd2>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\ZAP Coordinator\List\hal_board.s43</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>0</SelStart>
-          <SelEnd>0</SelEnd>
-          <XPos2>0</XPos2>
-          <YPos2>682</YPos2>
-          <SelStart2>0</SelStart2>
-          <SelEnd2>0</SelEnd2>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\..\..\..\Components\osal\include\ZComDef.h</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>0</SelStart>
-          <SelEnd>0</SelEnd>
-          <XPos2>0</XPos2>
-          <YPos2>252</YPos2>
-          <SelStart2>10550</SelStart2>
-          <SelEnd2>10557</SelEnd2>
+          <YPos2>705</YPos2>
+          <SelStart2>20854</SelStart2>
+          <SelEnd2>20854</SelEnd2>
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
@@ -203,11 +156,23 @@
           <SelStart>0</SelStart>
           <SelEnd>0</SelEnd>
           <XPos2>0</XPos2>
-          <YPos2>69</YPos2>
+          <YPos2>53</YPos2>
           <SelStart2>3571</SelStart2>
           <SelEnd2>3571</SelEnd2>
         </Tab>
-        <ActiveTab>12</ActiveTab>
+        <ActiveTab>7</ActiveTab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\..\Source\tvsa.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>649</YPos2>
+          <SelStart2>20818</SelStart2>
+          <SelEnd2>20818</SelEnd2>
+        </Tab>
       </Pane>
       <ActivePane>0</ActivePane>
       <Sizes>
@@ -222,9 +187,9 @@
       <Top>
         <Row0>
           <Sizes>
-            <Toolbar-00f24698>
+            <Toolbar-01034698>
               <key>iaridepm.enu1</key>
-            </Toolbar-00f24698>
+            </Toolbar-01034698>
           </Sizes>
         </Row0>
         <Row1>
@@ -305,30 +270,6 @@
         <Row26>
           <Sizes/>
         </Row26>
-        <Row27>
-          <Sizes/>
-        </Row27>
-        <Row28>
-          <Sizes/>
-        </Row28>
-        <Row29>
-          <Sizes/>
-        </Row29>
-        <Row30>
-          <Sizes/>
-        </Row30>
-        <Row31>
-          <Sizes/>
-        </Row31>
-        <Row32>
-          <Sizes/>
-        </Row32>
-        <Row33>
-          <Sizes/>
-        </Row33>
-        <Row34>
-          <Sizes/>
-        </Row34>
       </Top>
       <Left>
         <Row0>
@@ -337,16 +278,16 @@
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>251</Bottom>
-                <Right>342</Right>
+                <Bottom>726</Bottom>
+                <Right>313</Right>
                 <x>-2</x>
                 <y>-2</y>
                 <xscreen>200</xscreen>
                 <yscreen>200</yscreen>
-                <sizeHorzCX>133869</sizeHorzCX>
-                <sizeHorzCY>281690</sizeHorzCY>
-                <sizeVertCX>230254</sizeVertCX>
-                <sizeVertCY>356338</sizeVertCY>
+                <sizeHorzCX>119048</sizeHorzCX>
+                <sizeHorzCY>206398</sizeHorzCY>
+                <sizeVertCX>187500</sizeVertCX>
+                <sizeVertCY>751290</sizeVertCY>
               </Rect>
             </Wnd0>
           </Sizes>
@@ -364,16 +305,16 @@
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>414</Bottom>
-                <Right>1496</Right>
+                <Bottom>198</Bottom>
+                <Right>1682</Right>
                 <x>-2</x>
                 <y>-2</y>
-                <xscreen>1498</xscreen>
-                <yscreen>416</yscreen>
-                <sizeHorzCX>1002677</sizeHorzCX>
-                <sizeHorzCY>585915</sizeHorzCY>
-                <sizeVertCX>133869</sizeVertCX>
-                <sizeVertCY>281690</sizeVertCY>
+                <xscreen>1684</xscreen>
+                <yscreen>200</yscreen>
+                <sizeHorzCX>1002381</sizeHorzCX>
+                <sizeHorzCY>206398</sizeHorzCY>
+                <sizeVertCX>119048</sizeVertCX>
+                <sizeVertCY>206398</sizeVertCY>
               </Rect>
             </Wnd1>
           </Sizes>

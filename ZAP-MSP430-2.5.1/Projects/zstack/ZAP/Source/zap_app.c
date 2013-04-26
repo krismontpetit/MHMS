@@ -701,7 +701,7 @@ static void zapMonInfo(void)
  *
  * @return      None.
 * MHMS:SW1 and SW2 here are currently set to change the logical type of the Zigbee node.
-*
+*MHMS: SW3 and SW4 currently permit and deny joining
  **************************************************************************************************
  */
 static void zapKeys(keyChange_t *msg)
@@ -711,6 +711,8 @@ static void zapKeys(keyChange_t *msg)
   if (msg->state)  // Shift key.
   {
     if (keys & HAL_KEY_SW_1)
+      //MHMS:
+      HalLcdWriteString("HELLO AGAIN WORLD",HAL_LCD_LINE_7);
     {
     }
     if (keys & HAL_KEY_SW_2)
@@ -721,6 +723,10 @@ static void zapKeys(keyChange_t *msg)
     }
     if (keys & HAL_KEY_SW_4)
     {
+    }
+    if (keys &HAL_KEY_SW_7){
+      //MHMS:
+      HalLcdWriteString("HELLO SHIFT WORLD",HAL_LCD_LINE_7);
     }
   }
   else
@@ -729,40 +735,46 @@ static void zapKeys(keyChange_t *msg)
     {
       //MHMS:SW1 type change to coordinator
       if(zap_set_logicalType(ZG_DEVICETYPE_COORDINATOR)){
-      HalLcdWriteStringValue("Should be Coord.",0, 16, HAL_LCD_LINE_7);
+      HalLcdWriteString("Should be Coord.",HAL_LCD_LINE_7);
       }
       else{
-      HalLcdWriteStringValue("Problem Writing",0, 16, HAL_LCD_LINE_7);
+      HalLcdWriteString("Problem Writing",HAL_LCD_LINE_7);
       }
     }
     if (keys & HAL_KEY_SW_2)
     {
      //MHMS: Try and implement ZdoStateChange to Router
      if(zap_set_logicalType(ZG_DEVICETYPE_ROUTER)){
-      HalLcdWriteStringValue("Should be Router",0, 16, HAL_LCD_LINE_7);
+      HalLcdWriteString("Should be Router",HAL_LCD_LINE_7);
       }
       else{
-      HalLcdWriteStringValue("Problem Writing",0, 16, HAL_LCD_LINE_7);
+      HalLcdWriteString("Problem Writing", HAL_LCD_LINE_7);
       }
     }
     if (keys & HAL_KEY_SW_3)
     {
       if(zb_PermitJoiningRequest(znpAddr,0x00)){
-        HalLcdWriteStringValue("Permissions Problem",0, 16, HAL_LCD_LINE_7);
+        HalLcdWriteString("Permissions Problem",HAL_LCD_LINE_7);
       }
       else{
-        HalLcdWriteStringValue("No more Joining",0, 16, HAL_LCD_LINE_7);
+        HalLcdWriteString("No more Joining", HAL_LCD_LINE_7);
       }
     }
     if (keys & HAL_KEY_SW_4)
     {
       if(zb_PermitJoiningRequest(znpAddr,0xFF)){
-        HalLcdWriteStringValue("Permissions Problem",0, 16, HAL_LCD_LINE_7);
+        HalLcdWriteString("Permissions Problem", HAL_LCD_LINE_7);
       }
       else{
-        HalLcdWriteStringValue("Should Join Now",0, 16, HAL_LCD_LINE_7);
+        HalLcdWriteString("Should Join Now",HAL_LCD_LINE_7);
       }
     }
+    if (keys &HAL_KEY_SW_7){
+      //MHMS:
+      HalLcdWriteString("HELLO WORLD",HAL_LCD_LINE_7);
+    
+    }
+        
   }
 }
 #endif

@@ -4022,9 +4022,6 @@
     <file>
       <name>$PROJ_DIR$\..\Source\tvsa.h</name>
     </file>
-    <file>
-      <name>$PROJ_DIR$\..\Source\tvsa_cc2530znp.c</name>
-    </file>
   </group>
   <group>
     <name>HAL</name>
