@@ -669,6 +669,8 @@ static void zapMonInfo(void)
     break;
   case 3:
     zb_GetDeviceInfo(ZB_INFO_PARENT_SHORT_ADDR, &znpParent);
+    //MHMS: Write parent address to screen 
+    HalLcdWriteStringValue("Parent:",znpParent, 16, 6);
     break;
   case 4:
     zb_GetDeviceInfo(ZB_INFO_PAN_ID, &znpPanId);
@@ -745,9 +747,21 @@ static void zapKeys(keyChange_t *msg)
     }
     if (keys & HAL_KEY_SW_3)
     {
+      if(zb_PermitJoiningRequest(znpAddr,0x00)){
+        HalLcdWriteStringValue("Permissions Problem",0, 16, HAL_LCD_LINE_7);
+      }
+      else{
+        HalLcdWriteStringValue("No more Joining",0, 16, HAL_LCD_LINE_7);
+      }
     }
     if (keys & HAL_KEY_SW_4)
     {
+      if(zb_PermitJoiningRequest(znpAddr,0xFF)){
+        HalLcdWriteStringValue("Permissions Problem",0, 16, HAL_LCD_LINE_7);
+      }
+      else{
+        HalLcdWriteStringValue("Should Join Now",0, 16, HAL_LCD_LINE_7);
+      }
     }
   }
 }

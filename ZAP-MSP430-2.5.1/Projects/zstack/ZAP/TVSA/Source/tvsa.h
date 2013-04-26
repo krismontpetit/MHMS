@@ -129,7 +129,7 @@
 #define TVSA_EVT_ANN               0x4000
 #define TVSA_EVT_REQ               0x2000
 #define TVSA_EVT_DAT               0x1000
-
+//MHMS: testing what these delays do..
 #define TVSA_DLY_ANN               5000
 #define TVSA_DLY_DAT               TVSA_DLY_ANN
 // Attempt to randomly stagger reports within the reporting window.

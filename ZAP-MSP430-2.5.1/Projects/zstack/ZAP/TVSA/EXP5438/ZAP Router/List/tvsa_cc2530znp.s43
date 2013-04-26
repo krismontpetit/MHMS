@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                            /
-// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      18/Apr/2013  16:58:53 /
+// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      24/Apr/2013  12:06:19 /
 // Copyright 1996-2012 IAR Systems AB.                                        /
 //                                                                            /
 //    __rt_version  =  3                                                      /
@@ -14,14 +14,13 @@
 //                     1\Projects\zstack\ZAP\TVSA\Source\tvsa_cc2530znp.c     /
 //    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
 //                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap /
-//                     .cfg (-DZAP_PHY_SPI=1 -DZAP_PHY_UART=0                 /
-//                     -DZAP_DEVICETYPE=ZG_DEVICETYPE_ROUTER                  /
-//                     -DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1 -DHAL_UART=1   /
-//                     -DZAP_PHY_RESET_ZNP=TRUE -DZAP_ZNP_MT=FALSE            /
-//                     -DZAP_APP_MSG=FALSE -DZAP_SBL_PROXY=FALSE              /
-//                     -DZAP_AUTO_CFG=TRUE -DZAP_AUTO_START=TRUE              /
-//                     -DZAP_NV_RESTORE=FALSE -DLCD_SUPPORTED                 /
-//                     -DZAP_AF_DATA_REQ_FRAG=FALSE                           /
+//                     .cfg (-DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1          /
+//                     -DHAL_UART=1 -DZAP_PHY_SPI=1                           /
+//                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE   /
+//                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                 /
+//                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE              /
+//                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE           /
+//                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE           /
 //                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG           /
 //                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC              /
 //                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC         /

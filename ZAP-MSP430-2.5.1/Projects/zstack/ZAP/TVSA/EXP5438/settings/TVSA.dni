@@ -20,19 +20,17 @@ NextState1=0
 Break=0
 State Storage=0
 [DebugChecksum]
-Checksum=-39897868
+Checksum=-2058021413
 [CallStack]
 ShowArgs=0
 [Disassembly]
 MixedMode=1
 [Breakpoints]
 Bp0=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.836.5" 1 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.658.3" 1 0 0 0 "" 0 ""
-Bp2=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.321.11" 1 0 0 0 "" 0 ""
-Bp3=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.304.3" 1 0 0 0 "" 0 ""
-Bp4=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.455.5" 1 0 0 0 "" 0 ""
-Bp5=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.758.3" 1 0 0 0 "" 0 ""
-Count=6
+Bp1=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.661.3" 1 0 0 0 "" 0 ""
+Bp2=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.458.5" 1 0 0 0 "" 0 ""
+Bp3=_ "STD_CODE" "{$PROJ_DIR$\..\Source\tvsa.c}.524.3" 1 0 0 0 "" 0 ""
+Count=4
 [FET]
 Clock mode=14
 Extended Clock mode=-1

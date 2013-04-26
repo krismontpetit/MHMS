@@ -113,6 +113,9 @@ uint8 pulseCnfErrCnt;
 //MHMS  Global Variables
 uint8 pulseTaskId;
 
+//MHMS: variable for storing parent address
+  uint16 parentAddr;
+
 
 /* ------------------------------------------------------------------------------------------------
  *                                           Local Variables
@@ -513,8 +516,11 @@ static void pulseDataRx(afIncomingMSGPacket_t *msg)
   uint8 parentAddrMSB;
   uint8 zsensorBuf[15];
   
+  
   parentAddrLSB= pulseBuf[11];
-  parentAddrMSB= pulseBuf[12];  
+  parentAddrMSB= pulseBuf[12];
+  //MHMS:For printing address to screen
+  parentAddr=(uint16)((parentAddrMSB<<8)+parentAddrLSB);
   deviceBPM = pulseBuf[14];
   //deviceVolt = 0xFF;
   
@@ -548,7 +554,7 @@ static void pulseDataRx(afIncomingMSGPacket_t *msg)
   zsensorBuf[14] = calcFCS(&zsensorBuf[1], 13 );
 
 
-  //HalUARTWrite(TVSA_PORT, zsensorBuf, 15);
+  HalUARTWrite(TVSA_PORT, zsensorBuf, 15);
   
   //MHMS USB communication with Pulse sensor Processor application
 
@@ -580,9 +586,7 @@ static void pulseDataRx(afIncomingMSGPacket_t *msg)
   IBIBuf[1] = (uint8)((temp/100)+ 48);
   IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
   IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
-   
-  
-  HalUARTWrite(PULSE_PORT, SignalBuf, 6);
+  //HalUARTWrite(PULSE_PORT, SignalBuf, 6);
  // HalUARTWrite(TVSA_PORT, BPMBuf, 6);
  // HalUARTWrite(TVSA_PORT, IBIBuf, 6);
 
@@ -760,8 +764,8 @@ void pulseAppInit(uint8 id)
 #ifdef TVSA_DEMO
   uartConfig.baudRate             = HAL_UART_BR_115200;
 #else
-  //uartConfig.baudRate             = HAL_UART_BR_38400;        //MHMS This baud rate is required to communicate with Zigbee Sensor Monitor
-  uartConfig.baudRate             = HAL_UART_BR_115200;         //MHMS This baud rate is required to communicate with the Pulse processing program on PC
+  uartConfig.baudRate             = HAL_UART_BR_38400;        //MHMS This baud rate is required to communicate with Zigbee Sensor Monitor
+  //uartConfig.baudRate             = HAL_UART_BR_115200;         //MHMS This baud rate is required to communicate with the Pulse processing program on PC
 #endif
   
   uartConfig.flowControl          = FALSE;
