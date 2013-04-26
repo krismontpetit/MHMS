@@ -132,7 +132,9 @@ static uint8 pulseTSN;           //MHMS Question what is thi?
 static uint8 pulseBuf[PULSE_BUF_LEN];  //MHMS buffer used for recived over the air data
 static uint8 pulseDat[PULSE_DAT_LEN];  //MHMS define data array length for Pulse sensor
 static uint8 TestDatTx[MHMS_TEST_PAYLOAD_LEN];
-   
+
+//Syncronization Flags
+static bool PulseEvtDat_sync = FALSE;  
 static bool PulseEvtReq_sync;
 static bool PulseEvtCheckin_sync;  
    
@@ -385,8 +387,10 @@ static void pulseAfMsgRx(afIncomingMSGPacket_t *msg)
     if (INVALID_NODE_ADDR == pulseAddr)
     {
       NLME_SetPollRate(0);
-      (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+      if(PulseEvtDat_sync == FALSE){
+      (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);           //Sync Pulsedat event operation
       //(void)osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);   //For testing payload TX
+      }
     }
     pulseAddr = BUILD_UINT16(buf[PULSE_ADR_LSB], buf[PULSE_ADR_MSB]);
     break;
@@ -659,6 +663,7 @@ static void pulseZdoStateChange(void)
   else if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
   {
     (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
+    PulseEvtDat_sync = FALSE; //allow node to respond to Anounce commands to begin pulse collection
 
         if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState)) //
         {
@@ -789,11 +794,13 @@ static void pulseAnnce(void)
  */
 static void pulseDataCalc(void)
 {
+  PulseEvtDat_sync = TRUE;      //Pulse Data collection has been synced, no need to respond to annc commands to set EVT
+  
   if (INVALID_NODE_ADDR == pulseAddr)
   {
     return;
   }
-
+  
   if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, PULSE_DLY_DAT))  //If the timer can't be started set event flag again for it to be service again
   {
     (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
