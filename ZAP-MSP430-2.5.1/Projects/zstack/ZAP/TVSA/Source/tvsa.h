@@ -54,104 +54,18 @@
  * ------------------------------------------------------------------------------------------------
  */
 
-// Expanding on a TI proprietary Profile Id used for Z-Accel / ZASA / CC2480.
-#define TVSA_PROFILE_ID            0x0F10
-#define TVSA_CLUSTER_ID            0x0002
-#define TVSA_CLUSTER_CNT           1
-#define TVSA_DEVICE_VERSION        0
-#define TVSA_FLAGS                 0
- 
-#define TVSA_ENDPOINT              3
-
-#if !defined TVSA_DEVICE_ID
-// Master for CC2480 ZASA reports sets to zero.
-#if defined HAL_BOARD_CC2430BB
-#define TVSA_DEVICE_ID             0x0001
-#elif defined HAL_BOARD_CC2430DB
-#define TVSA_DEVICE_ID             0x0002
-#elif defined HAL_BOARD_CC2430EB
-#define TVSA_DEVICE_ID             0x0003
-#elif defined HAL_BOARD_CC2530EB_REV13
-#define TVSA_DEVICE_ID             0x0004
-#elif defined HAL_BOARD_CC2530EB_REV17
-#define TVSA_DEVICE_ID             0x0005
-#elif defined HAL_BOARD_F5438
-#define TVSA_DEVICE_ID             0x0006
-#elif defined HAL_BOARD_F2618
-#define TVSA_DEVICE_ID             0x0007
-#else
-
-//efine TVSA_DEVICE_ID             0x0016  // ZAP pre-defined for MSP5438-CC2530EM
-//efine TVSA_DEVICE_ID             0x0017  // ZAP pre-defined for MSP2618-CC2530EM
-
-#error Unexpected HAL_BOARD - need specific Temp/Volt conversion from specific A2D channel.
-#endif
-#endif
-
-
-// Bit values for the TVSA_OPT_IDX.
-#define TVSA_OPT_SRC_RTG           0x01
-
-#define TVSA_DAT_LEN               16
-
-#define TVSA_CMD_IDX               0
-#define TVSA_IEE_IDX               1
-#define TVSA_PAR_LSB               9
-#define TVSA_PAR_MSB               10
-#define TVSA_TEM_IDX               11
-#define TVSA_BUS_IDX               12
-#define TVSA_TYP_IDX               13
-#define TVSA_OPT_IDX               14
-#define TVSA_RTG_IDX               15
-
-#define TVSA_ADR_LSB               1
-#define TVSA_ADR_MSB               2
-
-
-#define TVSA_SOP_VAL               0xFE
-#define TVSA_PORT                  0
-#define SOP_STATE                  0
-#define CMD_STATE                  1
-#define FCS_STATE                  2
-
-#define TVSA_SOP_IDX               0
-#define TVSA_DAT_OFF               TVSA_ADR_MSB+1
-// Not adding +1 for FCS because 1st byte of message is skipped - CMD is always 0 for data.
-#define TVSA_BUF_LEN               TVSA_DAT_LEN+TVSA_DAT_OFF
-#define TVSA_FCS_IDX               TVSA_BUF_LEN-1
-
-// TVSA Command set.
-#define TVSA_CMD_DAT               0  // TVSA data message.
-#define TVSA_CMD_BEG               1  // Start reporting TVSA data.
-#define TVSA_CMD_END               2  // Stop reporting TVSA data.
-
-//#define SYS_EVENT_MSG            0x8000   //already defined in comdef.h  used for other tasks
-#define TVSA_EVT_ANN               0x4000
-#define TVSA_EVT_REQ               0x2000
-#define TVSA_EVT_DAT               0x1000
-//MHMS: testing what these delays do..
-#define TVSA_DLY_ANN               5000
-#define TVSA_DLY_DAT               TVSA_DLY_ANN
-// Attempt to randomly stagger reports within the reporting window.
-#define TVSA_STG_DAT               ((uint16)(((uint32)TVSA_DLY_DAT * Onboard_rand()) / 65536))
-#define TVSA_DLY_MIN               5000  // Minimum delay (also in case TVSA_STG_DAT returns 0).
-
-#if !defined TVSA_SRC_RTG  //MHMS Question what is this for?
-#define TVSA_SRC_RTG               FALSE
-#endif
-
-#if TVSA_SRC_RTG //MHMS Question what is this for?
+#if PULSE_SRC_RTG //MHMS Question what is this for?
 // Source routing requires special builds of the ZNP with the following settings:
 // #define ZIGBEE_SOURCE_ROUTING
 // #define ZIGBEE_MANY_TO_ONE
-// SRC_RTG_EXPIRY_TIME must be greater than TVSA_DLY_DAT.
-// #if TVSA_DONGLE
+// SRC_RTG_EXPIRY_TIME must be greater than PULSE_DLY_DAT.
+// #if PULSE_DONGLE
 // #define CONCENTRATOR_ENABLE  TRUE
-// CONCENTRATOR_DISCOVERY_TIME must be globally defined to be less than or equal to TVSA_DLY_DAT.
+// CONCENTRATOR_DISCOVERY_TIME must be globally defined to be less than or equal to PULSE_DLY_DAT.
 // #endif
 #endif
 
-#define TVSA_DATA_CNF              TRUE
+#define PULSE_DATA_CNF              TRUE
    
 //MHMS  Defined constants for the Pulse Sensor
 
@@ -160,6 +74,7 @@
 #define PULSE_EVT_ANN               0x4000
 #define PULSE_EVT_REQ               0x2000
 #define PULSE_EVT_DAT               0x1000
+#define PULSE_EVT_CHECKIN           0x0800
    
 // Expanding on a TI proprietary Profile Id used for Z-Accel / ZASA / CC2480.
 //MHMS the following defines are used for SimpleDescriptionFormat_t PULSE_SimpleDesc
@@ -197,32 +112,48 @@
  
 #define PULSE_ENDPOINT              3
 
-//pulseDat (uint8) array defines 
-#define PULSE_DAT_LEN                   23
-
-  // PULSE Command set.
+// PULSE Command set.
 #define PULSE_CMD_DAT 0                  // PULSE data message.
 #define PULSE_CMD_BEG 1                  // Start reporting Pulse data.
 #define PULSE_CMD_END 2                  // Stop reporting Pulse data.   
+#define PULSE_CMD_DAT_TEST 3             // Used for testing different payload sizes
+
+//pulseDat (uint8) array defines 
+#define PULSE_DAT_LEN                   22
+#define MHMS_TEST_PAYLOAD_LEN                50
    
-#define PULSE_CMD_IDX                   0
-#define PULSE_IEE_IDX                   1
-#define PULSE_PAR_LSB                   9
-#define PULSE_PAR_MSB                   10
-#define PULSE_BPM_CHAR                  11
-#define PULSE_BPM                       12
-#define PULSE_RAW_CHAR                  13
-#define PULSE_RAW_LSB                   14
-#define PULSE_RAW_MSB                   15
-#define PULSE_IBI_CHAR                  16
-#define PULSE_IBI                       17
-#define PULSE_TYP_IDX                   18
-#define PULSE_OPT_IDX                   19
-#define PULSE_RTG_IDX                   20
+#define MHMS_TEST_BUFF_LEN          MHMS_TEST_PAYLOAD_LEN+PULSE_DAT_OFF
+#define MHMS_FCS_IDX               MHMS_TEST_BUFF_LEN-1
+   
+   
+// Defines for over the air data buffer   
+#define	 PULSE_CMD_IDX	0
+#define	 PULSE_IEE_IDX	1
+#define	 PULSE_PAR_LSB	9
+#define	 PULSE_PAR_MSB	10
+#define	 PULSE_CHECK_IN	11
+#define	 PULSE_BPM_CHAR	12
+#define	 PULSE_BPM	13
+#define	 PULSE_RAW_CHAR	14
+#define	 PULSE_RAW_LSB	15
+#define	 PULSE_RAW_MSB	16
+#define	 PULSE_IBI_CHAR	17
+#define	 PULSE_IBI	18
+#define	 PULSE_TYP_IDX 	19
+#define	 PULSE_OPT_IDX	20
+#define	 PULSE_RTG_IDX	21
+
+   
 
 #define PULSE_ADR_LSB               1
 #define PULSE_ADR_MSB               2
 
+// Bit values for the PULSE_OPT_IDX.
+#define PULSE_OPT_SRC_RTG           0x01  
+  
+// Bit value for PULSE_CHECK_IN
+#define CHECK_IN_ACTIVE                 1
+#define CHECK_IN_INACTIVE               2
 
 #define PULSE_SOP_VAL               0xFE
 #define PULSE_PORT                  0
@@ -236,9 +167,28 @@
 #define PULSE_BUF_LEN               PULSE_DAT_LEN+PULSE_DAT_OFF
 #define PULSE_FCS_IDX               PULSE_BUF_LEN-1
 
-// Defined constants for Pulse capture and calculations
-#define PULSE_DLY_DAT               2  //MHMS every 2ms PULSE calc interrupt
-#define PULSE_DLY_DATAREQ           20  //MHMS every 20ms PULSE datareq interrupt 
+// Defined constants for Pulse task event timers
+#define PULSE_DLY_DAT               2           //MHMS every 2ms PULSE calc interrupt
+#define PULSE_DLY_DATAREQ           20          //MHMS every 20ms PULSE datareq interrupt 
+#define PULSE_DLY_ANN               5000        //MHMS announce event from coordinator
+#define PULSE_DLY_CHECKIN           10000       //MHMS send checkin packet to coordinator at 10s intervals
+#define TEST_DLY_PAYLOAD_TX         10000
+
+ // Defined Flag bits for Pulse Event handler  
+//#define SYS_EVENT_MSG            0x8000       //already defined in comdef.h  used for other tasks
+#define PULSE_EVT_ANN               0x4000      //Announce event
+#define PULSE_EVT_REQ               0x2000      //Data request event (transmitting data)
+#define PULSE_EVT_DAT               0x1000      //Collect data and generate report event
+#define PULSE_EVT_CHECKIN           0x0800      //Node sends dummy packet to coordinator
+#define TEST_EVT_PAYLOAD_TX         0x0400      //Starts sending the Test payload to coordinator
+   
+// Attempt to randomly stagger reports within the reporting window.
+#define PULSE_STG_DAT               ((uint16)(((uint32)PULSE_DLY_DAT * Onboard_rand()) / 65536))
+#define PULSE_DLY_MIN               5000  // Minimum delay (also in case PULSE_STG_DAT returns 0).
+
+#if !defined PULSE_SRC_RTG  //MHMS Question what is this for?
+#define PULSE_SRC_RTG               FALSE
+#endif
  
 
 /* ------------------------------------------------------------------------------------------------
