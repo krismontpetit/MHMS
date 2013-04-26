@@ -1,0 +1,3374 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      26/Apr/2013  16:24:40 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    __rt_version  =  3                                                      /
+//    __double_size =  32                                                     /
+//    __reg_r4      =  free                                                   /
+//    __reg_r5      =  free                                                   /
+//    __pic         =  no                                                     /
+//    __core        =  430X                                                   /
+//    __data_model  =  small                                                  /
+//    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\Source\tvsa.c               /
+//    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap /
+//                     .cfg (-DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1          /
+//                     -DHAL_UART=1 -DZAP_PHY_SPI=1                           /
+//                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE   /
+//                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                 /
+//                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE              /
+//                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE           /
+//                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE           /
+//                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG           /
+//                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC              /
+//                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC         /
+//                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0        /
+//                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                /
+//                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000          /
+//                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)     /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\Source\tvsa.c -lC           /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List\    /
+//                     -lA C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- /
+//                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List /
+//                     \ --remarks --diag_suppress Pe001,Pe193,Pe236,Pe826    /
+//                     -o C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\Obj\  /
+//                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\ -I                 /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I       /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\target\MSP5438ZAP\ -I                       /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\include\ -I C:\Users\student\Documents\GitH /
+//                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 /
+//                     438\..\..\..\..\..\Components\mac\include\ -I          /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\Z /
+//                     AP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\.. /
+//                     \..\..\..\Components\osal\include\ -I                  /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\osal\mcu\msp430\ -I                             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\services\saddr\ -I C:\Users\student\Documents\G /
+//                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\E /
+//                     XP5438\..\..\..\..\..\Components\services\sdata\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\af\ -I C:\Users\student\Documents\GitHub\ /
+//                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 /
+//                     \..\..\..\..\..\Components\stack\nwk\ -I               /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sapi\ -I C:\Users\student\Documents\GitHu /
+//                     b\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 /
+//                     38\..\..\..\..\..\Components\stack\sec\ -I             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sys\ -I C:\Users\student\Documents\GitHub /
+//                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP543 /
+//                     8\..\..\..\..\..\Components\stack\zdo\ -I              /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\zmac\ -I C:\Users\student\Documents\GitHub\MHMS /
+//                     \ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\ /
+//                     ..\..\..\..\Components\zmac\f8w\ --core=430X           /
+//                     --data_model=small -Ohz --multiplier=32                /
+//                     --multiplier_location=4C0 --require_prototypes         /
+//                     --hw_workaround=CPU40 --hw_workaround=CPU42            /
+//    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List\tvs /
+//                     a.s43                                                  /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME tvsa
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__core", "430X"
+        RTMODEL "__data_model", "small"
+        RTMODEL "__double_size", "32"
+        RTMODEL "__pic", "no"
+        RTMODEL "__reg_r4", "free"
+        RTMODEL "__reg_r5", "free"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:SORT:NOROOT(0)
+
+        EXTERN ?DivMod8u
+        EXTERN ?DivMod16s
+        EXTERN ?DivMod32s
+        EXTERN ?cstart_init_copy
+        EXTERN ?cstart_init_zero
+        EXTERN ?longjmp_r4
+        EXTERN ?longjmp_r5
+        EXTERN ?setjmp_r4
+        EXTERN ?setjmp_r5
+
+        PUBWEAK ?setjmp_save_r4
+        PUBWEAK ?setjmp_save_r5
+        PUBLIC BPM
+        PUBLIC IBI
+        PUBLIC Pulse
+        PUBLIC QS
+        PUBLIC Signal
+        FUNCTION TestPayloadTx,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 26, STACK
+        PUBWEAK _A_PCDIR_L
+        PUBWEAK _A_PCOUT_L
+        PUBWEAK _A_REFCTL0_L
+        FUNCTION calcFCS,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        FUNCTION pulseAfMsgRx,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        FUNCTION pulseAnnce,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 28, STACK
+        PUBLIC pulseAppEvt
+        FUNCTION pulseAppEvt,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        PUBLIC pulseAppInit
+        FUNCTION pulseAppInit,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 40, STACK
+        FUNCTION pulseBPM,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 24, STACK
+        FUNCTION pulseDataCalc,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        FUNCTION pulseDataReq,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 24, STACK
+        FUNCTION pulseDataRx,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 28, STACK
+        FUNCTION pulseNodeCheckIn,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 24, STACK
+        PUBLIC pulseTaskId
+        FUNCTION pulseTestingDataRx,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 28, STACK
+        FUNCTION pulseUartRx,021603H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 10, STACK
+        FUNCTION pulseZdoStateChange,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        FUNCTION sysPingRsp,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 12, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA SP DATA
+          CFI Resource PC:20, SP:20, SR:16, R4L:16, R4H:4, R4:20, R5L:16, R5H:4
+          CFI Resource R5:20, R6L:16, R6H:4, R6:20, R7L:16, R7H:4, R7:20, R8L:16
+          CFI Resource R8H:4, R8:20, R9L:16, R9H:4, R9:20, R10L:16, R10H:4
+          CFI Resource R10:20, R11L:16, R11H:4, R11:20, R12L:16, R12H:4, R12:20
+          CFI Resource R13L:16, R13H:4, R13:20, R14L:16, R14H:4, R14:20, R15L:16
+          CFI Resource R15H:4, R15:20
+          CFI ResourceParts R4 R4H, R4L
+          CFI ResourceParts R5 R5H, R5L
+          CFI ResourceParts R6 R6H, R6L
+          CFI ResourceParts R7 R7H, R7L
+          CFI ResourceParts R8 R8H, R8L
+          CFI ResourceParts R9 R9H, R9L
+          CFI ResourceParts R10 R10H, R10L
+          CFI ResourceParts R11 R11H, R11L
+          CFI ResourceParts R12 R12H, R12L
+          CFI ResourceParts R13 R13H, R13L
+          CFI ResourceParts R14 R14H, R14L
+          CFI ResourceParts R15 R15H, R15L
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L Undefined
+          CFI R12H Undefined
+          CFI R12 Undefined
+          CFI R13L Undefined
+          CFI R13H Undefined
+          CFI R13 Undefined
+          CFI R14L Undefined
+          CFI R14H Undefined
+          CFI R14 Undefined
+          CFI R15L Undefined
+          CFI R15H Undefined
+          CFI R15 Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L SameValue
+          CFI R12H 0
+          CFI R12 Concat
+          CFI R13L SameValue
+          CFI R13H 0
+          CFI R13 Concat
+          CFI R14L SameValue
+          CFI R14H 0
+          CFI R14 Concat
+          CFI R15L SameValue
+          CFI R15H 0
+          CFI R15 Concat
+          CFI EndCommon cfiCommon1
+        
+        EXTERN HalUARTWrite
+        FUNCTION HalUARTWrite,0202H
+        EXTERN HalUARTRead
+        FUNCTION HalUARTRead,0202H
+        EXTERN osal_stop_timerEx
+        FUNCTION osal_stop_timerEx,0202H
+        EXTERN HalLcdWriteString
+        FUNCTION HalLcdWriteString,0202H
+        EXTERN AF_DataRequest
+        FUNCTION AF_DataRequest,0202H
+        EXTERN osal_set_event
+        FUNCTION osal_set_event,0202H
+        EXTERN osal_start_timerEx
+        FUNCTION osal_start_timerEx,0202H
+        EXTERN HalAdcRead
+        FUNCTION HalAdcRead,0202H
+        EXTERN HalLedSet
+        FUNCTION HalLedSet,0202H
+        EXTERN HalLcdWriteStringValue
+        FUNCTION HalLcdWriteStringValue,0202H
+        EXTERN devState
+        EXTERN NLME_GetCoordShortAddr
+        FUNCTION NLME_GetCoordShortAddr,0202H
+        EXTERN Onboard_rand
+        FUNCTION Onboard_rand,0202H
+        EXTERN znpIEEE
+        EXTERN sAddrExtCpy
+        FUNCTION sAddrExtCpy,0202H
+        EXTERN HalLcdWriteValue
+        FUNCTION HalLcdWriteValue,0202H
+        EXTERN osal_memcpy
+        FUNCTION osal_memcpy,0202H
+        EXTERN NLME_SetPollRate
+        FUNCTION NLME_SetPollRate,0202H
+        EXTERN osal_msg_deallocate
+        FUNCTION osal_msg_deallocate,0202H
+        EXTERN osal_msg_receive
+        FUNCTION osal_msg_receive,0202H
+        EXTERN HalUARTOpen
+        FUNCTION HalUARTOpen,0202H
+        EXTERN afRegister
+        FUNCTION afRegister,0202H
+
+// C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\Source\tvsa.c
+//    1 /**************************************************************************************************
+//    2     Filename:       tvsa.c
+//    3     Revised:        $Date: 2011-07-25 20:23:05 -0700 (Mon, 25 Jul 2011) $
+//    4     Revision:       $Revision: 26899 $
+//    5 
+//    6     Description:
+//    7 
+//    8     This file implements the Temperature/Voltage Sample Application.
+//    9 
+//   10 
+//   11 
+//   12 
+//   13     Copyright 2009 Texas Instruments Incorporated. All rights reserved.
+//   14 
+//   15     IMPORTANT: Your use of this Software is limited to those specific rights
+//   16     granted under the terms of a software license agreement between the user
+//   17     who downloaded the software, his/her employer (which must be your employer)
+//   18     and Texas Instruments Incorporated (the "License").  You may not use this
+//   19     Software unless you agree to abide by the terms of the License. The License
+//   20     limits your use, and you acknowledge, that the Software may not be modified,
+//   21     copied or distributed unless embedded on a Texas Instruments microcontroller
+//   22     or used solely and exclusively in conjunction with a Texas Instruments radio
+//   23     frequency transceiver, which is integrated into your product.  Other than for
+//   24     the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   25     works of, modify, distribute, perform, display or sell this Software and/or
+//   26     its documentation for any purpose.
+//   27 
+//   28     YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   29     PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   30     INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   31     NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   32     TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   33     NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   34     LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   35     INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   36     OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   37     OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   38     (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   39 
+//   40     Should you have any questions regarding your right to use this Software,
+//   41     contact Texas Instruments Incorporated at www.TI.com.
+//   42 **************************************************************************************************/
+//   43 
+//   44 /* ------------------------------------------------------------------------------------------------
+//   45  *                                          Includes
+//   46  * ------------------------------------------------------------------------------------------------
+//   47  */
+//   48 
+//   49 #include "af.h"
+//   50 #if defined LCD_SUPPORTED
+//   51 #include "hal_lcd.h"
+
+        ASEGN DATA16_AN:DATA:NOROOT,0242H
+// union <unnamed> _A_PCOUT_L
+_A_PCOUT_L:
+        DS8 2
+
+        ASEGN DATA16_AN:DATA:NOROOT,0244H
+// union <unnamed> _A_PCDIR_L
+_A_PCDIR_L:
+        DS8 2
+
+        ASEGN DATA16_AN:DATA:NOROOT,01b0H
+// union <unnamed> _A_REFCTL0_L
+_A_REFCTL0_L:
+        DS8 2
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(0)
+`?<Constant "BPM:">`:
+        DC8 "BPM:"
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(0)
+`?<Constant "BPMsensor Inacti">`:
+        DC8 "BPMsensor Inacti"
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(0)
+`?<Constant "TestPayload TX">`:
+        DC8 "TestPayload TX"
+//   52 #endif
+//   53 #include "hal_uart.h"
+//   54 #include "OnBoard.h"
+//   55 #include "OSAL.h"
+//   56 #include "tvsa.h"
+//   57 #include "ZComDef.h"
+//   58 #include "ZDApp.h"
+//   59 #include "hal_led.h"  //MHMS for indicating if pulse is found
+//   60 #include "hal_adc.h"  //MHMS used for capturing signal from pulse sensor
+//   61 
+//   62 /* ------------------------------------------------------------------------------------------------
+//   63  *                                           Constants
+//   64  * ------------------------------------------------------------------------------------------------
+//   65  */
+//   66 
+//   67 // Constants for Pulse Sensor
+//   68 
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(1)
+//   69 static const cId_t PULSE_ClusterList[PULSE_CLUSTER_CNT] =
+PULSE_ClusterList:
+        DC16 2
+//   70 {
+//   71   PULSE_CLUSTER_ID
+//   72 };
+//   73 
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(1)
+//   74 static const SimpleDescriptionFormat_t PULSE_SimpleDesc =
+PULSE_SimpleDesc:
+        DC8 3, 0
+        DC16 3856, 6
+        DC8 0, 1
+        DC16 PULSE_ClusterList
+        DC8 1, 0
+        DC16 PULSE_ClusterList
+//   75 {
+//   76   PULSE_ENDPOINT,
+//   77   PULSE_PROFILE_ID,
+//   78   PULSE_DEVICE_ID,
+//   79   PULSE_DEVICE_VERSION,
+//   80   PULSE_FLAGS,
+//   81   PULSE_CLUSTER_CNT,
+//   82   (cId_t *)PULSE_ClusterList,
+//   83   PULSE_CLUSTER_CNT,
+//   84   (cId_t *)PULSE_ClusterList
+//   85 };
+//   86 
+
+        RSEG DATA16_C:CONST:SORT:NOROOT(1)
+//   87 static const endPointDesc_t PULSE_epDesc=
+PULSE_epDesc:
+        DC8 3, 0
+        DC16 pulseTaskId, PULSE_SimpleDesc
+        DC8 0, 0
+//   88 {
+//   89   PULSE_ENDPOINT,
+//   90   &pulseTaskId,
+//   91   (SimpleDescriptionFormat_t *)&PULSE_SimpleDesc,
+//   92   noLatencyReqs,
+//   93 };
+//   94 /* ------------------------------------------------------------------------------------------------
+//   95  *                                           Typedefs
+//   96  * ------------------------------------------------------------------------------------------------
+//   97  */
+//   98 
+//   99 /* ------------------------------------------------------------------------------------------------
+//  100  *                                           Macros
+//  101  * ------------------------------------------------------------------------------------------------
+//  102  */
+//  103 
+//  104 /* ------------------------------------------------------------------------------------------------
+//  105  *                                           Global Variables
+//  106  * ------------------------------------------------------------------------------------------------
+//  107  */
+//  108 
+//  109 #if TVSA_DATA_CNF
+//  110 uint8 pulseCnfErrCnt;
+//  111 #endif
+//  112 
+//  113 //MHMS  Global Variables
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  114 uint8 pulseTaskId;
+pulseTaskId:
+        DS8 1
+//  115 
+//  116 //(void)osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);   //For testing payload TX
+//  117 /* ------------------------------------------------------------------------------------------------
+//  118  *                                           Local Variables
+//  119  * ------------------------------------------------------------------------------------------------
+//  120  */
+//  121 
+//  122 // Network address of the TVSA Dongle.
+//  123 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  124 static uint16 pulseAddr;
+pulseAddr:
+        DS8 2
+//  125 // Report counter.
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  126 static uint16 pulseCnt;  //MHMS Question what is this for?
+pulseCnt:
+        DS8 2
+//  127 // ZigBee-required packet transaction sequence number in calls to AF_DataRequest().
+//  128 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  129 static uint8 pulseTSN;           //MHMS Question what is thi?
+pulseTSN:
+        DS8 1
+//  130 
+//  131 //Data arrays for Over the air data tx and RX
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  132 static uint8 pulseBuf[PULSE_BUF_LEN];  //MHMS buffer used for recived over the air data
+pulseBuf:
+        DS8 25
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  133 static uint8 pulseDat[PULSE_DAT_LEN];  //MHMS define data array length for Pulse sensor
+pulseDat:
+        DS8 22
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  134 static uint8 TestDatTx[MHMS_TEST_PAYLOAD_LEN];
+TestDatTx:
+        DS8 50
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  135 static uint8 TestRxBuffer[MHMS_TEST_BUFF_LEN];
+TestRxBuffer:
+        DS8 53
+//  136 
+//  137 //Syncronization Flags
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  138 static bool PulseEvtDat_sync = FALSE;  
+PulseEvtDat_sync:
+        DS8 1
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  139 static bool PulseEvtReq_sync;
+PulseEvtReq_sync:
+        DS8 1
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  140 static bool PulseEvtCheckin_sync;  
+PulseEvtCheckin_sync:
+        DS8 1
+//  141    
+//  142 
+//  143 // these variables are volatile because they are used during the interrupt service routine!
+//  144 //MHMS From Arduino 1.1
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  145 volatile int BPM;                   // used to hold the pulse rate
+BPM:
+        DS8 2
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  146 volatile int Signal;                // holds the incoming raw data
+Signal:
+        DS8 2
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_copy
+//  147 volatile int IBI = 600;             // holds the time between beats, the Inter-Beat Interval
+IBI:
+        DS8 2
+        REQUIRE `?<Initializer for IBI>`
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  148 volatile bool Pulse = FALSE;     // TRUE when pulse wave is high, FALSE when it's low
+Pulse:
+        DS8 1
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  149 volatile bool QS = FALSE;        // becomes TRUE when Arduoino finds a beat.  
+QS:
+        DS8 1
+//  150 
+//  151 
+//  152 
+//  153 /* ------------------------------------------------------------------------------------------------
+//  154  *                                           Local Functions
+//  155  * ------------------------------------------------------------------------------------------------
+//  156  */
+//  157 
+//  158 static void pulseAfMsgRx(afIncomingMSGPacket_t *msg);
+//  159 static void pulseSysEvtMsg(void);
+//  160 
+//  161 
+//  162 static void pulseBPM(uint8 *pulsedata);  //MHMS Pulse calculation function
+//  163 static void pulseDataCalc(void);
+//  164 static void pulseDataReq(void);
+//  165 static void pulseZdoStateChange(void);
+//  166 
+//  167 static void pulseNodeCheckIn(void);
+//  168 static void TestPayloadTx(void);
+//  169 
+//  170 static void pulseAnnce(void);
+//  171 static void pulseDataRx(afIncomingMSGPacket_t *msg);
+//  172 static void pulseTestingDataRx(afIncomingMSGPacket_t *msg);
+//  173 
+//  174 static void pulseUartRx(uint8 port, uint8 event);
+//  175 
+//  176 
+//  177 #ifndef TVSA_DEMO  //MHMS Question do we need this?
+//  178 static uint8 calcFCS(uint8 *pBuf, uint8 len);
+//  179 static void sysPingRsp(void);
+//  180 #endif
+//  181 
+//  182 /*  //MHMS Pulse Sensor Functions */ 
+//  183 
+//  184 /**************************************************************************************************
+//  185  * @fn          pulseAppInit
+//  186  *
+//  187  * @brief       This function is the application's task initialization.
+//  188  *
+//  189  * input parameters
+//  190  *
+//  191  * None.
+//  192  *
+//  193  * output parameters
+//  194  *
+//  195  * None.
+//  196  *
+//  197  * @return      None.
+//  198  **************************************************************************************************
+//  199  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  200 void pulseAppInit(uint8 id)
+pulseAppInit:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function pulseAppInit
+//  201 {
+        FUNCALL pulseAppInit, HalUARTOpen
+        LOCFRAME CSTACK, 40, STACK
+        FUNCALL pulseAppInit, afRegister
+        LOCFRAME CSTACK, 40, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+        SUB.W   #0x22, SP
+          CFI CFA SP+40
+        MOV.B   R12, R10
+//  202 
+//  203   halUARTCfg_t uartConfig;
+//  204 
+//  205   uartConfig.configured           = TRUE;              // 2x30 don't care - see uart driver.
+        MOV.B   #0x1, 0(SP)
+//  206   
+//  207 
+//  208   uartConfig.baudRate             = HAL_UART_BR_38400;        //MHMS This baud rate is required to communicate with Zigbee Sensor Monitor
+        MOV.B   #0x2, 0x1(SP)
+//  209   //uartConfig.baudRate             = HAL_UART_BR_115200;         //MHMS This baud rate is required to communicate with the Pulse processing program on PC
+//  210 
+//  211   
+//  212   uartConfig.flowControl          = FALSE;
+        MOV.B   #0x0, 0x2(SP)
+//  213   uartConfig.flowControlThreshold = 16;                // 2x30 don't care - see uart driver.
+        MOV.W   #0x10, 0x4(SP)
+//  214   uartConfig.rx.maxBufSize        = 32;                // 2x30 don't care - see uart driver.
+        MOV.W   #0x20, 0xc(SP)
+//  215   uartConfig.tx.maxBufSize        = 254;               // 2x30 don't care - see uart driver.
+        MOV.W   #0xfe, 0x14(SP)
+//  216   uartConfig.idleTimeout          = 6;                 // 2x30 don't care - see uart driver.
+        MOV.B   #0x6, 0x6(SP)
+//  217   uartConfig.intEnable            = TRUE;              // 2x30 don't care - see uart driver.
+        MOV.B   #0x1, 0x18(SP)
+//  218   uartConfig.callBackFunc         = pulseUartRx;
+        MOV.W   #LWRD(pulseUartRx), 0x1e(SP)
+        MOV.W   #HWRD(pulseUartRx), 0x20(SP)
+//  219   HalUARTOpen(PULSE_PORT, &uartConfig);
+        MOV.W   SP, R13
+        ADD.W   #0x0, R13
+        MOV.B   #0x0, R12
+        CALLA   #HalUARTOpen
+//  220 
+//  221     pulseDat[PULSE_TYP_IDX] = (uint8)PULSE_DEVICE_ID;
+        MOV.B   #0x6, &pulseDat + 19
+//  222     TestDatTx[MHMS_TEST_PAYLOAD_LEN - 3] = (uint8)PULSE_DEVICE_ID;
+        MOV.B   #0x6, &TestDatTx + 47
+//  223 #if defined PULSE_SRC_RTG
+//  224 
+//  225     pulseDat[PULSE_OPT_IDX] = PULSE_OPT_SRC_RTG;
+        MOV.B   #0x1, &pulseDat + 20
+//  226     TestDatTx[MHMS_TEST_PAYLOAD_LEN - 1] = PULSE_OPT_SRC_RTG;
+        MOV.B   #0x1, &TestDatTx + 49
+//  227 #endif
+//  228 
+//  229   pulseTaskId = id;                                    
+        MOV.B   R10, &pulseTaskId
+//  230   pulseAddr = INVALID_NODE_ADDR;
+        MOV.W   #0xfffe, &pulseAddr
+//  231   (void)afRegister((endPointDesc_t *)&PULSE_epDesc);  //MHMS registers endpoint object
+        MOV.W   #PULSE_epDesc, R12
+        CALLA   #afRegister
+//  232   
+//  233   //Initialize Px.y (5.0) to power Pulse sensor
+//  234   P5DIR = 0x1;  //Set IO direction as output
+        MOV.B   #0x1, &0x244
+//  235   P5OUT = 0x1;  //Set output to high
+        MOV.B   #0x1, &0x242
+//  236  
+//  237   //Setup ADC reference 
+//  238   REFCTL0 = REFVSEL_2;  /* REF Reference Voltage Level Select 2.5V */
+        MOV.W   #0x20, &0x1b0
+//  239 }
+        ADD.W   #0x22, SP
+          CFI CFA SP+6
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock0
+        REQUIRE _A_PCDIR_L
+        REQUIRE _A_PCOUT_L
+        REQUIRE _A_REFCTL0_L
+//  240 
+//  241 /**************************************************************************************************
+//  242  * @fn          pulseAppEvt
+//  243  *
+//  244  * @brief       This function is called to process the OSAL events for the task.
+//  245  *
+//  246  * input parameters
+//  247  *
+//  248  * @param       id - OSAL task Id.
+//  249  * @param       evts - OSAL events bit mask of pending events.
+//  250  *
+//  251  * output parameters
+//  252  *
+//  253  * None.
+//  254  *
+//  255  * @return      evts - OSAL events bit mask of unprocessed events.
+//  256  **************************************************************************************************
+//  257  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  258 uint16 pulseAppEvt(uint8 id, uint16 evts)
+pulseAppEvt:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function pulseAppEvt
+//  259 {
+        FUNCALL pulseAppEvt, pulseAfMsgRx
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, osal_msg_deallocate
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, osal_msg_receive
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, pulseZdoStateChange
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, pulseAnnce
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, pulseDataCalc
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, pulseDataReq
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, pulseNodeCheckIn
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseAppEvt, TestPayloadTx
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        MOV.W   R13, R10
+//  260   uint16 mask = 0;
+//  261   (void)id;  //MHMS casts a void to ignore warning for not using variable
+//  262   
+//  263   if (evts & SYS_EVENT_MSG)
+        CMP.W   #0x0, R13
+        JGE     ??pulseAppEvt_3
+//  264   {
+//  265     mask = SYS_EVENT_MSG;
+        MOV.W   #0x8000, R11
+//  266     pulseSysEvtMsg();
+        JMP     ??pulseAppEvt_4
+??pulseAppEvt_0:
+        CALLA   #pulseAfMsgRx
+??pulseAppEvt_1:
+        MOV.W   R8, R12
+        CALLA   #osal_msg_deallocate
+??pulseAppEvt_4:
+        MOV.B   &pulseTaskId, R12
+        CALLA   #osal_msg_receive
+        MOV.W   R12, R8
+        CMP.W   #0x0, R12
+        JEQ     ??pulseAppEvt_5
+        MOV.B   @R12, R14
+        SUB.B   #0x1a, R14
+        JEQ     ??pulseAppEvt_0
+        SUB.B   #0xb7, R14
+        JNE     ??pulseAppEvt_1
+        CALLA   #pulseZdoStateChange
+        JMP     ??pulseAppEvt_1
+//  267   }
+//  268 
+//  269   else if (evts & PULSE_EVT_ANN)
+??pulseAppEvt_3:
+        BIT.W   #0x4000, R13
+        JNC     ??pulseAppEvt_6
+//  270   {
+//  271     mask = PULSE_EVT_ANN;
+        MOV.W   #0x4000, R11
+//  272    pulseAnnce();
+        CALLA   #pulseAnnce
+        JMP     ??pulseAppEvt_5
+//  273   }
+//  274 
+//  275   else if (evts & PULSE_EVT_DAT)
+??pulseAppEvt_6:
+        BIT.W   #0x1000, R13
+        JNC     ??pulseAppEvt_7
+//  276   {
+//  277     mask = PULSE_EVT_DAT;
+        MOV.W   #0x1000, R11
+//  278     pulseDataCalc();
+        CALLA   #pulseDataCalc
+        JMP     ??pulseAppEvt_5
+//  279   }
+//  280   else if (evts & PULSE_EVT_REQ)
+??pulseAppEvt_7:
+        BIT.W   #0x2000, R13
+        JNC     ??pulseAppEvt_8
+//  281   {
+//  282     mask = PULSE_EVT_REQ;
+        MOV.W   #0x2000, R11
+//  283     pulseDataReq();
+        CALLA   #pulseDataReq
+        JMP     ??pulseAppEvt_5
+//  284   }
+//  285     else if (evts & PULSE_EVT_CHECKIN)
+??pulseAppEvt_8:
+        BIT.W   #0x800, R13
+        JNC     ??pulseAppEvt_9
+//  286   {
+//  287     mask = PULSE_EVT_CHECKIN;
+        MOV.W   #0x800, R11
+//  288     pulseNodeCheckIn();
+        CALLA   #pulseNodeCheckIn
+        JMP     ??pulseAppEvt_5
+//  289   }
+//  290 
+//  291 else if (evts & TEST_EVT_PAYLOAD_TX)
+??pulseAppEvt_9:
+        BIT.W   #0x400, R13
+        JNC     ??pulseAppEvt_10
+//  292   {
+//  293     mask = TEST_EVT_PAYLOAD_TX;
+        MOV.W   #0x400, R11
+//  294     TestPayloadTx();
+        CALLA   #TestPayloadTx
+        JMP     ??pulseAppEvt_5
+//  295   }
+//  296   else
+//  297   {
+//  298     mask = evts;  // Discard unknown events - should never happen.
+??pulseAppEvt_10:
+        MOV.W   R13, R11
+//  299   }
+//  300 
+//  301   return (evts ^ mask);  // Return unprocessed events.
+??pulseAppEvt_5:
+        XOR.W   R11, R10
+        MOV.W   R10, R12
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock1
+//  302 }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine9:
+          CFI Block cfiCond2 Using cfiCommon0
+          CFI Function pulseAnnce
+          CFI Conditional ??CrossCallReturnLabel_29
+          CFI CFA SP+24
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI (cfiCond3) Function pulseAnnce
+          CFI (cfiCond3) Conditional ??CrossCallReturnLabel_28
+          CFI (cfiCond3) CFA SP+24
+          CFI Block cfiPicker4 Using cfiCommon1
+          CFI (cfiPicker4) NoFunction
+          CFI (cfiPicker4) Picker
+        MOV.W   #0x4000, R13
+          CFI EndBlock cfiCond2
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiPicker4
+        REQUIRE ??Subroutine15_0
+        // Fall through to label ??Subroutine15_0
+//  303 
+//  304 
+//  305 //MHMS put coord stuff here, recieve func and sys
+//  306 
+//  307 
+//  308 
+//  309 /**************************************************************************************************
+//  310  * @fn          pulseSysEvtMsg
+//  311  *
+//  312  * @brief       This function is called by pulseAppEvt() to process all of the pending OSAL messages.
+//  313  *
+//  314  * input parameters
+//  315  *
+//  316  * None.
+//  317  *
+//  318  * output parameters
+//  319  *
+//  320  * None.
+//  321  *
+//  322  * @return      None.
+//  323  **************************************************************************************************
+//  324  */
+//  325 static void pulseSysEvtMsg(void)
+//  326 {
+//  327   uint8 *msg;
+//  328 
+//  329   while ((msg = osal_msg_receive(pulseTaskId)))
+//  330   {
+//  331     switch (*msg)
+//  332     {
+//  333 #if TVSA_DATA_CNF  //MHMS Question what is this for?
+//  334     case AF_DATA_CONFIRM_CMD:
+//  335       if (ZSuccess != ((afDataConfirm_t *)msg)->hdr.status)
+//  336       {
+//  337         if (0 == ++pulseCnfErrCnt)
+//  338         {
+//  339           pulseCnfErrCnt = 255;
+//  340         }
+//  341       }
+//  342       break;
+//  343 #endif
+//  344 
+//  345     case AF_INCOMING_MSG_CMD:  //MHMS this a router processing the incomming command from the coordinator
+//  346       pulseAfMsgRx((afIncomingMSGPacket_t *)msg);
+//  347       break;
+//  348 
+//  349     case ZDO_STATE_CHANGE:
+//  350       pulseZdoStateChange();
+//  351       break;
+//  352 
+//  353     default:
+//  354       break;
+//  355     }
+//  356 
+//  357     (void)osal_msg_deallocate(msg);  // Receiving task is responsible for releasing the memory.
+//  358   }
+//  359 }
+//  360 
+//  361 /**************************************************************************************************
+//  362  * @fn          pulseAfMsgRx
+//  363  *
+//  364  * @brief       This function is called by pulseSysEvtMsg() to process an incoming AF message.
+//  365  *
+//  366  * input parameters
+//  367  *
+//  368  * @param       msg - A pointer to the afIncomingMSGPacket_t packet.
+//  369  *
+//  370  * output parameters
+//  371  *
+//  372  * None.
+//  373  *
+//  374  * @return      None.
+//  375  **************************************************************************************************
+//  376  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+??Subroutine15_0:
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI Function pulseAfMsgRx
+          CFI Conditional ??pulseAfMsgRx_5
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+10
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI (cfiCond6) Function pulseAnnce
+          CFI (cfiCond6) Conditional ??CrossCallReturnLabel_29
+          CFI (cfiCond6) CFA SP+24
+          CFI Block cfiCond7 Using cfiCommon0
+          CFI (cfiCond7) Function pulseAnnce
+          CFI (cfiCond7) Conditional ??CrossCallReturnLabel_28
+          CFI (cfiCond7) CFA SP+24
+          CFI Block cfiPicker8 Using cfiCommon1
+          CFI (cfiPicker8) NoFunction
+          CFI (cfiPicker8) Picker
+        MOV.B   &pulseTaskId, R12
+        BRA     #osal_set_event
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiCond7
+          CFI EndBlock cfiPicker8
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine11:
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI Function pulseDataCalc
+          CFI Conditional ??CrossCallReturnLabel_12
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+10
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function pulseAnnce
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond10) CFA SP+24
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function pulseZdoStateChange
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond11) R8L Frame(CFA, -12)
+          CFI (cfiCond11) R9L Frame(CFA, -10)
+          CFI (cfiCond11) R10L Frame(CFA, -8)
+          CFI (cfiCond11) R11L Frame(CFA, -6)
+          CFI (cfiCond11) CFA SP+16
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function pulseZdoStateChange
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond12) R8L Frame(CFA, -12)
+          CFI (cfiCond12) R9L Frame(CFA, -10)
+          CFI (cfiCond12) R10L Frame(CFA, -8)
+          CFI (cfiCond12) R11L Frame(CFA, -6)
+          CFI (cfiCond12) CFA SP+16
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function pulseAfMsgRx
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond13) R10L Frame(CFA, -6)
+          CFI (cfiCond13) CFA SP+10
+          CFI Block cfiPicker14 Using cfiCommon1
+          CFI (cfiPicker14) NoFunction
+          CFI (cfiPicker14) Picker
+        CMP.W   #0xfffe, &pulseAddr
+        RETA
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiPicker14
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  377 static void pulseAfMsgRx(afIncomingMSGPacket_t *msg)
+pulseAfMsgRx:
+          CFI Block cfiBlock15 Using cfiCommon0
+          CFI Function pulseAfMsgRx
+//  378 {
+        FUNCALL pulseAfMsgRx, pulseDataRx
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseAfMsgRx, NLME_SetPollRate
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseAfMsgRx, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseAfMsgRx, NLME_SetPollRate
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseAfMsgRx, pulseTestingDataRx
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+//  379   uint8 *buf = msg->cmd.Data;
+        MOV.W   0x24(R12), R10
+//  380 
+//  381   switch (buf[PULSE_CMD_IDX])
+        MOV.B   @R10, R14
+        SUB.B   #0x0, R14
+        JEQ     ??pulseAfMsgRx_0
+        SUB.B   #0x1, R14
+        JEQ     ??pulseAfMsgRx_1
+        SUB.B   #0x1, R14
+        JEQ     ??pulseAfMsgRx_2
+        SUB.B   #0x1, R14
+        JEQ     ??pulseAfMsgRx_3
+        JMP     ??pulseAfMsgRx_4
+//  382   {
+//  383 
+//  384   case PULSE_CMD_DAT:  //Nodes will send this by default
+//  385     pulseDataRx(msg);
+??pulseAfMsgRx_0:
+        CALLA   #pulseDataRx
+//  386     break;
+        JMP     ??pulseAfMsgRx_4
+//  387 
+//  388   case PULSE_CMD_BEG:
+//  389     if (INVALID_NODE_ADDR == pulseAddr)
+??pulseAfMsgRx_1:
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_16:
+        JNE     ??pulseAfMsgRx_5
+//  390     {
+//  391       NLME_SetPollRate(0);
+        MOV.W   #0x0, R12
+        CALLA   #NLME_SetPollRate
+//  392       if(PulseEvtDat_sync == FALSE){
+        CMP.B   #0x0, &PulseEvtDat_sync
+        JNE     ??pulseAfMsgRx_5
+//  393       (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);           //Sync Pulsedat event operation
+        MOV.W   #0x1000, R13
+        CALLA   #??Subroutine15_0
+//  394       
+//  395       }
+//  396     }
+//  397     pulseAddr = BUILD_UINT16(buf[PULSE_ADR_LSB], buf[PULSE_ADR_MSB]);
+??pulseAfMsgRx_5:
+        MOV.B   0x1(R10), R14
+        MOV.B   0x2(R10), R15
+        RPT     #0x8
+        RLAX.W  R15
+        ADD.W   R15, R14
+        MOV.W   R14, &pulseAddr
+//  398     break;
+        JMP     ??pulseAfMsgRx_4
+//  399 
+//  400   case PULSE_CMD_END:
+//  401     NLME_SetPollRate(POLL_RATE);
+??pulseAfMsgRx_2:
+        MOV.W   #0x3e8, R12
+        CALLA   #NLME_SetPollRate
+//  402     pulseAddr = INVALID_NODE_ADDR;
+        MOV.W   #0xfffe, &pulseAddr
+//  403     break;
+        JMP     ??pulseAfMsgRx_4
+//  404 
+//  405   case PULSE_CMD_DAT_TEST:  //This is used for testing different payload sizes. Not used in normal operation
+//  406     pulseTestingDataRx(msg);
+??pulseAfMsgRx_3:
+        CALLA   #pulseTestingDataRx
+//  407     break;
+//  408 
+//  409   default:
+//  410     break;
+//  411   }
+//  412 }
+??pulseAfMsgRx_4:
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock15
+
+        RSEG CODE:CODE:NOROOT(1)
+pulseTestingDataRx:
+          CFI Block cfiBlock16 Using cfiCommon0
+          CFI Function pulseTestingDataRx
+        FUNCALL pulseTestingDataRx, osal_set_event
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL pulseTestingDataRx, osal_memcpy
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL pulseTestingDataRx, calcFCS
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL pulseTestingDataRx, HalUARTWrite
+        LOCFRAME CSTACK, 28, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        SUB.W   #0x10, SP
+          CFI CFA SP+28
+        CALLA   #?Subroutine3
+??CrossCallReturnLabel_3:
+        MOV.B   #0xfe, &TestRxBuffer
+        MOV.W   R11, R10
+        ADD.W   #0x6, R10
+        MOV.B   @R10, &TestRxBuffer + 1
+        MOV.B   0x1(R10), &TestRxBuffer + 2
+        MOV.W   #0x31, R14
+        MOV.W   0x24(R11), R13
+        ADD.W   #0x1, R13
+        MOV.W   #TestRxBuffer + 3, R12
+        CALLA   #osal_memcpy
+        MOV.B   #0x1, R15
+??pulseTestingDataRx_0:
+        XOR.B   TestRxBuffer(R15), R8
+        ADD.B   #0x1, R15
+        CMP.B   #0x34, R15
+        JNC     ??pulseTestingDataRx_0
+        MOV.B   R8, TestRxBuffer(R15)
+        MOV.B   &TestRxBuffer + 11, R14
+        MOV.B   &TestRxBuffer + 12, R15
+        MOV.B   &TestRxBuffer + 13, R13
+          CFI EndBlock cfiBlock16
+        REQUIRE ?Subroutine0
+        // Fall through to label ?Subroutine0
+//  413 
+//  414 /**************************************************************************************************
+//  415  * @fn          pulseDataRx
+//  416  *
+//  417  * @brief       This function is called by pulseAfMsgRx() to process incoming PULSE data.
+//  418  *
+//  419  * input parameters
+//  420  *
+//  421  * @param       msg - A pointer to the afIncomingMSGPacket_t packet.
+//  422  *
+//  423  * output parameters
+//  424  *
+//  425  * None.
+//  426  *
+//  427  * @return      None.
+//  428  **************************************************************************************************
+//  429  */
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiBlock17 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA SP+28
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+        MOV.B   #0xfe, 0(SP)
+        MOV.B   #0xa, 0x1(SP)
+        MOV.B   #0x46, 0x2(SP)
+        MOV.B   #0x87, 0x3(SP)
+        MOV.B   @R10, 0x4(SP)
+        MOV.B   0x1(R10), 0x5(SP)
+        MOV.B   #0x2, 0x6(SP)
+        MOV.B   #0x0, 0x7(SP)
+        MOV.B   #0x4, 0x8(SP)
+        MOV.B   #0x0, 0x9(SP)
+        MOV.B   R13, 0xa(SP)
+        MOV.B   R13, 0xb(SP)
+        MOV.B   R14, 0xc(SP)
+        MOV.B   R15, 0xd(SP)
+        MOV.B   #0xd, R13
+        MOV.W   SP, R12
+        ADD.W   #0x1, R12
+        CALLA   #calcFCS
+        MOV.B   R12, 0xe(SP)
+        MOV.W   #0xf, R14
+        CALLA   #?Subroutine4
+??CrossCallReturnLabel_5:
+        ADD.W   #0x10, SP
+          CFI CFA SP+12
+        POPM.W  #0x4, R11
+          CFI CFA SP+4
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI R10L SameValue
+          CFI R11L SameValue
+        RETA
+          CFI EndBlock cfiBlock17
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+          CFI Block cfiCond18 Using cfiCommon0
+          CFI Function sysPingRsp
+          CFI Conditional ??CrossCallReturnLabel_6
+          CFI CFA SP+16
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI (cfiCond19) Function pulseTestingDataRx
+          CFI (cfiCond19) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond19) R8L Frame(CFA, -12)
+          CFI (cfiCond19) R9L Frame(CFA, -10)
+          CFI (cfiCond19) R10L Frame(CFA, -8)
+          CFI (cfiCond19) R11L Frame(CFA, -6)
+          CFI (cfiCond19) CFA SP+32
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI (cfiCond20) Function pulseDataRx
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond20) R8L Frame(CFA, -12)
+          CFI (cfiCond20) R9L Frame(CFA, -10)
+          CFI (cfiCond20) R10L Frame(CFA, -8)
+          CFI (cfiCond20) R11L Frame(CFA, -6)
+          CFI (cfiCond20) CFA SP+32
+          CFI Block cfiPicker21 Using cfiCommon1
+          CFI (cfiPicker21) NoFunction
+          CFI (cfiPicker21) Picker
+        MOV.W   SP, R13
+        ADD.W   #0x4, R13
+        MOV.B   #0x0, R12
+        BRA     #HalUARTWrite
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiPicker21
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  430 static void pulseDataRx(afIncomingMSGPacket_t *msg)
+pulseDataRx:
+          CFI Block cfiBlock22 Using cfiCommon0
+          CFI Function pulseDataRx
+//  431 {
+        FUNCALL pulseDataRx, osal_set_event
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL pulseDataRx, osal_memcpy
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL pulseDataRx, calcFCS
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL pulseDataRx, HalUARTWrite
+        LOCFRAME CSTACK, 28, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+        SUB.W   #0x10, SP
+          CFI CFA SP+28
+        CALLA   #?Subroutine3
+//  432   uint8 fcs = 0, idx;
+//  433 
+//  434   // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
+//  435   if (INVALID_NODE_ADDR == pulseAddr)
+//  436   {
+//  437     (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+//  438   }
+//  439 
+//  440   pulseBuf[PULSE_SOP_IDX] = PULSE_SOP_VAL;
+??CrossCallReturnLabel_4:
+        MOV.B   #0xfe, &pulseBuf
+//  441   pulseBuf[PULSE_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+        MOV.W   R11, R10
+        ADD.W   #0x6, R10
+        MOV.B   @R10, &pulseBuf + 1
+//  442   pulseBuf[PULSE_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+        MOV.B   0x1(R10), &pulseBuf + 2
+//  443 
+//  444   // 1st byte of message is skipped - CMD is always 0 for data.
+//  445   (void)osal_memcpy(pulseBuf+PULSE_DAT_OFF, msg->cmd.Data+1, PULSE_DAT_LEN-1);  //MHMS copies one buffer to another
+        MOV.W   #0x15, R14
+        MOV.W   0x24(R11), R13
+        ADD.W   #0x1, R13
+        MOV.W   #pulseBuf + 3, R12
+        CALLA   #osal_memcpy
+//  446 
+//  447   for (idx = PULSE_ADR_LSB; idx < PULSE_FCS_IDX; idx++)
+        MOV.B   #0x1, R15
+//  448   {
+//  449     fcs ^= pulseBuf[idx];
+??pulseDataRx_0:
+        XOR.B   pulseBuf(R15), R8
+//  450   }
+        ADD.B   #0x1, R15
+        CMP.B   #0x18, R15
+        JNC     ??pulseDataRx_0
+//  451   pulseBuf[idx] = fcs;
+        MOV.B   R8, pulseBuf(R15)
+//  452   
+//  453   uint8 deviceBPM;
+//  454   uint8 parentAddrLSB;
+//  455   uint8 parentAddrMSB;
+//  456   uint8 zsensorBuf[15];
+//  457   
+//  458   parentAddrLSB= pulseBuf[11];
+        MOV.B   &pulseBuf + 11, R14
+//  459   parentAddrMSB= pulseBuf[12];  
+        MOV.B   &pulseBuf + 12, R15
+//  460   
+//  461   if(pulseBuf[13] == CHECK_IN_INACTIVE){
+        CMP.B   #0x2, &pulseBuf + 13
+        JNE     ??pulseDataRx_2
+//  462   deviceBPM = pulseBuf[15];
+        MOV.B   &pulseBuf + 15, R13
+        JMP     ??pulseDataRx_3
+//  463   }
+//  464   else{
+//  465   deviceBPM = 5;
+??pulseDataRx_2:
+        MOV.B   #0x5, R13
+//  466   }
+//  467   //deviceVolt = 0xFF;
+//  468   
+//  469   //Start of Frame Delimiter
+//  470   zsensorBuf[0]=0xFE;
+??pulseDataRx_3:
+        JMP     ?Subroutine0
+        NOP
+          CFI EndBlock cfiBlock22
+//  471   zsensorBuf[1]=10;
+//  472   zsensorBuf[2]=LO_UINT16(0x8746);
+//  473   zsensorBuf[3]=HI_UINT16(0x8746);
+//  474   
+//  475   //Source Address
+//  476   zsensorBuf[4] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+//  477   zsensorBuf[5] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+//  478   
+//  479   zsensorBuf[6]=LO_UINT16(2);  //MHMS are 6 - 9 being used for anything?
+//  480   zsensorBuf[7]=HI_UINT16(2);
+//  481   zsensorBuf[8]=LO_UINT16(4);
+//  482   zsensorBuf[9]=HI_UINT16(4);
+//  483   
+//  484   //Temperature and Voltage Data
+//  485   zsensorBuf[10]= deviceBPM;
+//  486   zsensorBuf[11]= deviceBPM; //deviceVolt;
+//  487   
+//  488   //Parent Address
+//  489   zsensorBuf[12]=parentAddrLSB;
+//  490   zsensorBuf[13]=parentAddrMSB;
+//  491 
+//  492 
+//  493   //FCS Check on the middle 13 bytes
+//  494   zsensorBuf[14] = calcFCS(&zsensorBuf[1], 13 );
+//  495 
+//  496   HalUARTWrite(PULSE_PORT, zsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
+//  497   
+//  498 /*  //MHMS USB communication with Pulse sensor Processor application
+//  499 
+//  500   uint8 BPMBuf[7] = {'B',0,0,0,10,13};
+//  501   uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
+//  502   uint8 SignalBuf[7] = {'S',0,0,0,10,13};
+//  503   
+//  504   //conversion Signal Dec to ASCII
+//  505   uint16 temp = (BUILD_UINT16(pulseBuf[16], pulseBuf[17])) - 400;
+//  506   if(temp > 999){
+//  507     SignalBuf[1] = '9';
+//  508     SignalBuf[2] = '9';
+//  509     SignalBuf[3] = '9';
+//  510   }
+//  511   else { 
+//  512     SignalBuf[1] = (uint8)((temp/100)+ 48);
+//  513     SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+//  514     SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+//  515   }
+//  516   
+//  517   //conversion BPM Dec to ASCII
+//  518   temp = (uint16)pulseBuf[14];
+//  519   BPMBuf[1] = (uint8)((temp/100)+ 48);
+//  520   BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+//  521   BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+//  522   
+//  523   //conversion IBI Dec to ASCII
+//  524   temp = (uint16)pulseBuf[19];
+//  525   IBIBuf[1] = (uint8)((temp/100)+ 48);
+//  526   IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+//  527   IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+//  528    
+//  529 
+//  530   //HalUARTWrite(PULSE_PORT, SignalBuf, 6);
+//  531  // HalUARTWrite(PULSE_PORT, BPMBuf, 6);
+//  532  // HalUARTWrite(PULSE_PORT, IBIBuf, 6);
+//  533 */
+//  534 
+//  535 }
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine3:
+          CFI Block cfiCond23 Using cfiCommon0
+          CFI Function pulseTestingDataRx
+          CFI Conditional ??CrossCallReturnLabel_3
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+32
+          CFI Block cfiCond24 Using cfiCommon0
+          CFI (cfiCond24) Function pulseDataRx
+          CFI (cfiCond24) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond24) R8L Frame(CFA, -12)
+          CFI (cfiCond24) R9L Frame(CFA, -10)
+          CFI (cfiCond24) R10L Frame(CFA, -8)
+          CFI (cfiCond24) R11L Frame(CFA, -6)
+          CFI (cfiCond24) CFA SP+32
+          CFI Block cfiPicker25 Using cfiCommon1
+          CFI (cfiPicker25) NoFunction
+          CFI (cfiPicker25) Picker
+//  536 
+//  537 /**************************************************************************************************
+//  538  * @fn          pulseTestingDataRx
+//  539  *
+//  540  * @brief       This function is called by pulseAfMsgRx() to process incoming data  This is not used in 
+//  541  *              normal operation.  This is used for testing system with differnt payload sizes.
+//  542  * input parameters
+//  543  *
+//  544  * @param       msg - A pointer to the afIncomingMSGPacket_t packet.
+//  545  *
+//  546  * output parameters
+//  547  *
+//  548  * None.
+//  549  *
+//  550  * @return      None.
+//  551  **************************************************************************************************
+//  552  */
+//  553 static void pulseTestingDataRx(afIncomingMSGPacket_t *msg)
+//  554 {
+        MOV.W   R12, R11
+//  555    uint8 fcs = 0, idx;
+        MOV.B   #0x0, R8
+//  556   
+//  557    //uint8 *TestRxBuffer;
+//  558    //TestRxBuffer = (uint8*)osal_mem_alloc(MHMS_TEST_BUFF_LEN);
+//  559     
+//  560   
+//  561   // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
+//  562   if (INVALID_NODE_ADDR == pulseAddr)
+        CMP.W   #0xfffe, &pulseAddr
+        JNE     ??pulseTestingDataRx_1
+//  563   {
+//  564     (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+        MOV.W   #0x4000, R13
+        MOV.B   &pulseTaskId, R12
+        CALLA   #osal_set_event
+??pulseTestingDataRx_1:
+        RETA
+          CFI EndBlock cfiCond23
+          CFI EndBlock cfiCond24
+          CFI EndBlock cfiPicker25
+//  565   }
+//  566 
+//  567   TestRxBuffer[PULSE_SOP_IDX] = PULSE_SOP_VAL;
+//  568   TestRxBuffer[PULSE_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+//  569   TestRxBuffer[PULSE_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+//  570 
+//  571   // 1st byte of message is skipped - CMD is always 0 for data.
+//  572   (void)osal_memcpy(TestRxBuffer+PULSE_DAT_OFF, msg->cmd.Data+1, MHMS_TEST_PAYLOAD_LEN-1);  //MHMS copies one buffer to another
+//  573 
+//  574   for (idx = PULSE_ADR_LSB; idx < MHMS_FCS_IDX; idx++)
+//  575   {
+//  576     fcs ^= TestRxBuffer[idx];
+//  577   }
+//  578   TestRxBuffer[idx] = fcs;
+//  579   
+//  580   uint8 PktSeqNum; 
+//  581   
+//  582   uint8 parentAddrLSB;
+//  583   uint8 parentAddrMSB;
+//  584   uint8 tsensorBuf[15];
+//  585   
+//  586   parentAddrLSB= TestRxBuffer[11];
+//  587   parentAddrMSB= TestRxBuffer[12];  
+//  588   
+//  589   PktSeqNum = TestRxBuffer[13];
+//  590   
+//  591   //Start of Frame Delimiter
+//  592   tsensorBuf[0]=0xFE;
+//  593   tsensorBuf[1]=10;
+//  594   tsensorBuf[2]=LO_UINT16(0x8746);
+//  595   tsensorBuf[3]=HI_UINT16(0x8746);
+//  596   
+//  597   //Source Address
+//  598   tsensorBuf[4] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+//  599   tsensorBuf[5] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+//  600   
+//  601   tsensorBuf[6]=LO_UINT16(2);  //MHMS are 6 - 9 being used for anything?
+//  602   tsensorBuf[7]=HI_UINT16(2);
+//  603   tsensorBuf[8]=LO_UINT16(4);
+//  604   tsensorBuf[9]=HI_UINT16(4);
+//  605   
+//  606   //Temperature and Voltage Data
+//  607   tsensorBuf[10]= PktSeqNum;
+//  608   tsensorBuf[11]= PktSeqNum; //deviceVolt;
+//  609   
+//  610   //Parent Address
+//  611   tsensorBuf[12]= parentAddrLSB;
+//  612   tsensorBuf[13]= parentAddrMSB;
+//  613 
+//  614 
+//  615   //FCS Check on the middle 13 bytes
+//  616   tsensorBuf[14] = calcFCS(&tsensorBuf[1], 13 );
+//  617 
+//  618   HalUARTWrite(PULSE_PORT, tsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
+//  619   
+//  620   //osal_mem_free(TestRxBuffer);
+//  621 }
+//  622 
+//  623 
+//  624 /**************************************************************************************************
+//  625  * @fn          pulseZdoStateChange 
+//  626  *
+//  627  * @brief       This function is called by pulseSysEvtMsg() for a ZDO_STATE_CHANGE message.
+//  628  *
+//  629  * input parameters
+//  630  *
+//  631  * None.
+//  632  *
+//  633  * output parameters
+//  634  *
+//  635  * None.
+//  636  *
+//  637  * @return      None.
+//  638  **************************************************************************************************
+//  639  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  640 static void pulseZdoStateChange(void)
+pulseZdoStateChange:
+          CFI Block cfiBlock26 Using cfiCommon0
+          CFI Function pulseZdoStateChange
+//  641 {
+        FUNCALL pulseZdoStateChange, osal_stop_timerEx
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, osal_start_timerEx
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, osal_set_event
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, osal_stop_timerEx
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, NLME_GetCoordShortAddr
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, Onboard_rand
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, osal_start_timerEx
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, osal_set_event
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, sAddrExtCpy
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, sAddrExtCpy
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL pulseZdoStateChange, HalLcdWriteValue
+        LOCFRAME CSTACK, 12, STACK
+        PUSHM.W #0x4, R11
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+12
+//  642   if(DEV_ZB_COORD == devState) 
+        MOV.B   &devState, R14
+        MOV.B   #0x7, R11
+        MOV.W   #pulseTaskId, R8
+        CMP.B   #0x9, R14
+        JNE     ??pulseZdoStateChange_0
+//  643   {
+//  644     (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_ANN);
+        MOV.W   #0x4000, R13
+        MOV.B   @R8, R12
+        CALLA   #osal_stop_timerEx
+//  645 
+//  646     if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
+        MOV.B   &devState, R14
+        CMP.B   #0x9, R14
+        JEQ     ??pulseZdoStateChange_1
+        CMP.B   R11, R14
+        JEQ     ??pulseZdoStateChange_1
+        CMP.B   #0x6, R14
+        JNE     ??pulseZdoStateChange_2
+//  647     {
+//  648 
+//  649       if (INVALID_NODE_ADDR == pulseAddr)
+??pulseZdoStateChange_1:
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_14:
+        JNE     ??pulseZdoStateChange_3
+//  650       {
+//  651       pulseAddr = NWK_PAN_COORD_ADDR;
+        MOV.W   #0x0, &pulseAddr
+//  652       }
+//  653 
+//  654 
+//  655       if (INVALID_NODE_ADDR != pulseAddr)
+//  656       {
+//  657         if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, PULSE_DLY_ANN))
+??pulseZdoStateChange_3:
+        MOV.W   #0x1388, R14
+        MOV.W   #0x4000, R13
+        MOV.B   @R8, R12
+        CALLA   #osal_start_timerEx
+        CMP.B   #0x0, R12
+        JEQ     ??pulseZdoStateChange_2
+//  658         {
+//  659           (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+        MOV.W   #0x4000, R13
+        MOV.B   @R8, R12
+        CALLA   #osal_set_event
+        JMP     ??pulseZdoStateChange_2
+//  660         }
+//  661       }
+//  662     }
+//  663   }
+//  664   else if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
+??pulseZdoStateChange_0:
+        CMP.B   R11, R14
+        JEQ     ??pulseZdoStateChange_4
+        CMP.B   #0x6, R14
+        JNE     ??pulseZdoStateChange_2
+//  665   {
+//  666     (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
+??pulseZdoStateChange_4:
+        MOV.W   #0x1000, R13
+        MOV.B   @R8, R12
+        CALLA   #osal_stop_timerEx
+//  667     PulseEvtDat_sync = FALSE; //allow node to respond to Anounce commands to begin pulse collection
+        MOV.B   #0x0, &PulseEvtDat_sync
+//  668 
+//  669         if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState)) //
+        CMP.B   R11, &devState
+        JEQ     ??pulseZdoStateChange_5
+        CMP.B   #0x6, &devState
+        JNE     ??pulseZdoStateChange_2
+//  670         {
+//  671           uint16 tmp = NLME_GetCoordShortAddr();
+??pulseZdoStateChange_5:
+        CALLA   #NLME_GetCoordShortAddr
+        MOV.W   R12, R10
+//  672           uint8 dly = PULSE_STG_DAT;
+        CALLA   #Onboard_rand
+        BIT.W   #0x8000, R12
+        SUBC.B  R14, R14
+        ADD.B   #0x1, R14
+//  673 
+//  674           pulseDat[PULSE_PAR_LSB] = LO_UINT16(tmp);
+        MOV.B   R10, &pulseDat + 9
+        MOV.W   R10, R15
+        RPT     #0x8
+        RRUX.W  R15
+        MOV.B   R15, &pulseDat + 10
+//  675           pulseDat[PULSE_PAR_MSB] = HI_UINT16(tmp);
+//  676           
+//  677           TestDatTx[PULSE_PAR_LSB] = LO_UINT16(tmp);
+        MOV.B   R10, &TestDatTx + 9
+//  678           TestDatTx[PULSE_PAR_MSB] = HI_UINT16(tmp);
+        MOV.B   R15, &TestDatTx + 10
+//  679           if ((DEV_ROUTER == devState) || (DEV_ZB_COORD == devState))
+        CMP.B   R11, &devState
+        JEQ     ??pulseZdoStateChange_6
+        CMP.B   #0x9, &devState
+        JNE     ??pulseZdoStateChange_7
+//  680           {
+//  681             pulseDat[PULSE_TYP_IDX] |= 0x80;
+??pulseZdoStateChange_6:
+        BIS.B   #0x80, &pulseDat + 19
+//  682             TestDatTx[MHMS_TEST_PAYLOAD_LEN-3] |= 0x80;
+        BIS.B   #0x80, &TestDatTx + 47
+        JMP     ??pulseZdoStateChange_8
+//  683 
+//  684           }
+//  685           else
+//  686           {
+//  687             pulseDat[PULSE_TYP_IDX] &= (0xFF ^ 0x80);
+??pulseZdoStateChange_7:
+        BIC.B   #0x80, &pulseDat + 19
+//  688             TestDatTx[MHMS_TEST_PAYLOAD_LEN-3] &= (0xFF ^ 0x80);
+        BIC.B   #0x80, &TestDatTx + 47
+//  689 
+//  690           }
+//  691 
+//  692       #if TVSA_DONGLE_IS_ZC  //MHMS do we need this?
+//  693           if (INVALID_NODE_ADDR == pulseAddr)
+//  694           {
+//  695             // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+//  696             pulseAddr = NWK_PAN_COORD_ADDR;
+//  697           }
+//  698       #endif
+//  699 
+//  700           if (INVALID_NODE_ADDR != pulseAddr)
+??pulseZdoStateChange_8:
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_15:
+        JEQ     ??pulseZdoStateChange_9
+//  701           {
+//  702             if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, (dly + PULSE_DLY_MIN)))
+        ADD.W   #0x1388, R14
+        MOV.W   #0x1000, R13
+        MOV.B   @R8, R12
+        CALLA   #osal_start_timerEx
+        CMP.B   #0x0, R12
+        JEQ     ??pulseZdoStateChange_9
+//  703             {
+//  704               (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+        MOV.W   #0x1000, R13
+        MOV.B   @R8, R12
+        CALLA   #osal_set_event
+//  705             }
+//  706           }
+//  707 
+//  708 
+//  709           if (0 == 0)
+//  710           {
+//  711             (void)osal_cpyExtAddr(pulseDat+PULSE_IEE_IDX, &aExtendedAddress);
+??pulseZdoStateChange_9:
+        MOV.W   #znpIEEE, R13
+        MOV.W   #pulseDat + 1, R12
+        CALLA   #sAddrExtCpy
+//  712             (void)osal_cpyExtAddr(TestDatTx+PULSE_IEE_IDX, &aExtendedAddress);
+        MOV.W   #znpIEEE, R13
+        MOV.W   #TestDatTx + 1, R12
+        CALLA   #sAddrExtCpy
+//  713           }
+//  714         }
+//  715   }
+//  716      
+//  717     
+//  718 
+//  719 #if defined LCD_SUPPORTED
+//  720   HalLcdWriteValue(devState, 10, HAL_LCD_LINE_4);
+??pulseZdoStateChange_2:
+        MOV.B   #0x4, R15
+        MOV.B   #0xa, R14
+        MOV.B   &devState, R12
+        MOV.W   #0x0, R13
+        CALLA   #HalLcdWriteValue
+//  721 #endif
+//  722 }
+        POPM.W  #0x4, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock26
+//  723 
+//  724 
+//  725 /**************************************************************************************************
+//  726  * @fn          pulseAnnce
+//  727  *
+//  728  * @brief       This function is called by pulseAppEvt() to send a TVSA announce to start or stop.
+//  729  *
+//  730  * input parameters
+//  731  *
+//  732  * None.
+//  733  *
+//  734  * output parameters
+//  735  *
+//  736  * None.
+//  737  *
+//  738  * @return      None.
+//  739  **************************************************************************************************
+//  740  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  741 static void pulseAnnce(void)
+pulseAnnce:
+          CFI Block cfiBlock27 Using cfiCommon0
+          CFI Function pulseAnnce
+//  742 {
+        FUNCALL pulseAnnce, osal_start_timerEx
+        LOCFRAME CSTACK, 20, STACK
+        FUNCALL pulseAnnce, osal_set_event
+        LOCFRAME CSTACK, 20, STACK
+        FUNCALL pulseAnnce, AF_DataRequest
+        LOCFRAME CSTACK, 28, STACK
+        FUNCALL pulseAnnce, osal_set_event
+        LOCFRAME CSTACK, 20, STACK
+        SUB.W   #0x10, SP
+          CFI CFA SP+20
+//  743   uint8 msg[3];
+//  744   afAddrType_t addr;
+//  745   
+//  746   addr.addr.shortAddr = NWK_BROADCAST_SHORTADDR_DEVALL;
+        MOV.W   #0xffff, 0x4(SP)
+//  747   addr.addrMode = afAddrBroadcast;
+        MOV.B   #0xf, 0xc(SP)
+//  748   addr.endPoint = PULSE_ENDPOINT;
+        MOV.B   #0x3, 0xd(SP)
+//  749 
+//  750   if (INVALID_NODE_ADDR != pulseAddr)
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_13:
+        JEQ     ??pulseAnnce_0
+//  751   {
+//  752     msg[PULSE_CMD_IDX] = PULSE_CMD_BEG;
+        MOV.B   #0x1, 0(SP)
+//  753     if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, PULSE_DLY_ANN))
+        MOV.W   #0x1388, R14
+        MOV.W   #0x4000, R13
+        MOV.B   &pulseTaskId, R12
+        CALLA   #osal_start_timerEx
+        CMP.B   #0x0, R12
+        JEQ     ??pulseAnnce_1
+//  754     {
+//  755       (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+        CALLA   #?Subroutine9
+//  756     }
+//  757   }
+??CrossCallReturnLabel_29:
+        JMP     ??pulseAnnce_1
+//  758   else
+//  759   {
+//  760     msg[PULSE_CMD_IDX] = PULSE_CMD_END;
+??pulseAnnce_0:
+        MOV.B   #0x2, 0(SP)
+//  761   }
+//  762 
+//  763   msg[PULSE_ADR_LSB] = LO_UINT16(pulseAddr);
+??pulseAnnce_1:
+        MOV.B   &pulseAddr, 0x1(SP)
+//  764   msg[PULSE_ADR_MSB] = HI_UINT16(pulseAddr);
+        MOV.B   &pulseAddr + 1, 0x2(SP)
+//  765 
+//  766   if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+//  767                                           3, msg, &pulseTSN, AF_TX_OPTIONS_NONE, AF_DEFAULT_RADIUS))
+        PUSH.B  #0x1e
+          CFI CFA SP+22
+        PUSH.B  #0x0
+          CFI CFA SP+24
+        PUSH.W  #pulseTSN
+          CFI CFA SP+26
+        MOV.W   SP, R15
+        ADD.W   #0x6, R15
+        PUSH.W  R15
+          CFI CFA SP+28
+        MOV.W   #0x3, R15
+        CALLA   #?Subroutine12
+??CrossCallReturnLabel_26:
+        CALLA   #AF_DataRequest
+        ADD.W   #0x8, SP
+          CFI CFA SP+20
+        CMP.B   #0x0, R12
+        JEQ     ??pulseAnnce_2
+//  768   {
+//  769     osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+        CALLA   #?Subroutine9
+//  770   }
+??CrossCallReturnLabel_28:
+        JMP     ??pulseAnnce_3
+//  771   else
+//  772   {
+//  773     pulseCnt++;
+??pulseAnnce_2:
+        ADD.W   #0x1, &pulseCnt
+//  774   }
+//  775 }
+??pulseAnnce_3:
+        ADD.W   #0x10, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock27
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine12:
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI Function pulseNodeCheckIn
+          CFI Conditional ??CrossCallReturnLabel_27, ??CrossCallReturnLabel_25
+          CFI CFA SP+32
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI (cfiCond29) Function pulseDataReq
+          CFI (cfiCond29) Conditional ??CrossCallReturnLabel_27, ??CrossCallReturnLabel_24
+          CFI (cfiCond29) CFA SP+32
+          CFI Block cfiCond30 Using cfiCommon0
+          CFI (cfiCond30) Function TestPayloadTx
+          CFI (cfiCond30) Conditional ??CrossCallReturnLabel_27, ??CrossCallReturnLabel_23
+          CFI (cfiCond30) R10L Frame(CFA, -6)
+          CFI (cfiCond30) CFA SP+34
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI (cfiCond31) Function pulseAnnce
+          CFI (cfiCond31) Conditional ??CrossCallReturnLabel_26
+          CFI (cfiCond31) CFA SP+32
+          CFI Block cfiPicker32 Using cfiCommon1
+          CFI (cfiPicker32) NoFunction
+          CFI (cfiPicker32) Picker
+        MOV.W   #0x2, R14
+        MOV.W   #PULSE_epDesc, R13
+        MOV.W   SP, R12
+        ADD.W   #0x10, R12
+        RETA
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiCond30
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiPicker32
+//  776 
+//  777 
+//  778 /**************************************************************************************************
+//  779  * @fn          pulseDataCalc
+//  780  *
+//  781  * @brief       This function is called by pulseAppEvt() to calculate the data for a PULSE report.
+//  782  *              The function will called on a 2ms interval and detect whether a pulse is being measured.
+//  783  *              If a pulse is determined it will invoke the PulsedataReq interrupt timer (20ms intervals)
+//  784  *
+//  785  * input parameters
+//  786  *
+//  787  * None.
+//  788  *
+//  789  * output parameters
+//  790  *
+//  791  * None.
+//  792  *
+//  793  * @return      None.
+//  794  **************************************************************************************************
+//  795  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  796 static void pulseDataCalc(void)
+pulseDataCalc:
+          CFI Block cfiBlock33 Using cfiCommon0
+          CFI Function pulseDataCalc
+//  797 {
+        FUNCALL pulseDataCalc, osal_start_timerEx
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseDataCalc, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseDataCalc, pulseBPM
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseDataCalc, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        FUNCALL pulseDataCalc, osal_set_event
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+//  798   PulseEvtDat_sync = TRUE;      //Pulse Data collection has been synced, no need to respond to annc commands to set EVT
+        MOV.B   #0x1, &PulseEvtDat_sync
+//  799   
+//  800   if (INVALID_NODE_ADDR == pulseAddr)
+        CALLA   #?Subroutine11
+??CrossCallReturnLabel_12:
+        JEQ     ??pulseDataCalc_0
+//  801   {
+//  802     return;
+//  803   }
+//  804   
+//  805   if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, PULSE_DLY_DAT))  //If the timer can't be started set event flag again for it to be service again
+        MOV.W   #pulseTaskId, R10
+        MOV.W   #0x2, R14
+        MOV.W   #0x1000, R13
+        MOV.B   @R10, R12
+        CALLA   #osal_start_timerEx
+        CMP.B   #0x0, R12
+        JEQ     ??pulseDataCalc_1
+//  806   {
+//  807     (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
+        MOV.W   #0x1000, R13
+        CALLA   #?Subroutine6
+//  808   }
+//  809   pulseBPM(pulseDat);  //Function to collect/calculate Pulse
+??pulseDataCalc_1:
+        MOV.W   #pulseDat, R12
+        CALLA   #pulseBPM
+//  810 
+//  811 #if TVSA_DATA_CNF
+//  812   pulseDat[PULSE_RTG_IDX] = pulseCnfErrCnt;
+//  813 #else
+//  814   pulseDat[PULSE_RTG_IDX] = 0;
+        MOV.B   #0x0, &pulseDat + 21
+//  815 #endif
+//  816 
+//  817   if(QS == TRUE && PulseEvtReq_sync == FALSE){//If pulse is being measured synchronize pulsedatareq event
+        CMP.B   #0x1, &QS
+        JNE     ??pulseDataCalc_2
+        CMP.B   #0x0, &PulseEvtReq_sync
+        JNE     ??pulseDataCalc_2
+//  818   osal_set_event(pulseTaskId, PULSE_EVT_REQ);
+        MOV.W   #0x2000, R13
+        CALLA   #?Subroutine6
+//  819     }  
+??CrossCallReturnLabel_8:
+        JMP     ??pulseDataCalc_0
+//  820   else if(PulseEvtCheckin_sync == FALSE)
+??pulseDataCalc_2:
+        CMP.B   #0x0, &PulseEvtCheckin_sync
+        JNE     ??pulseDataCalc_0
+//  821   {
+//  822   osal_set_event(pulseTaskId, PULSE_EVT_CHECKIN);  //Since no pulse data is being collect, just send check in data to coordinator
+        MOV.W   #0x800, R13
+        CALLA   #?Subroutine6
+//  823   PulseEvtCheckin_sync = TRUE;
+??CrossCallReturnLabel_7:
+        MOV.B   #0x1, &PulseEvtCheckin_sync
+??pulseDataCalc_0:
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock33
+//  824   }
+//  825  
+//  826 }
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine6:
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI Function TestPayloadTx
+          CFI Conditional ??CrossCallReturnLabel_9
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+22
+          CFI Block cfiCond35 Using cfiCommon0
+          CFI (cfiCond35) Function pulseDataCalc
+          CFI (cfiCond35) Conditional ??pulseDataCalc_1
+          CFI (cfiCond35) R10L Frame(CFA, -6)
+          CFI (cfiCond35) CFA SP+10
+          CFI Block cfiCond36 Using cfiCommon0
+          CFI (cfiCond36) Function pulseDataCalc
+          CFI (cfiCond36) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond36) R10L Frame(CFA, -6)
+          CFI (cfiCond36) CFA SP+10
+          CFI Block cfiCond37 Using cfiCommon0
+          CFI (cfiCond37) Function pulseDataCalc
+          CFI (cfiCond37) Conditional ??CrossCallReturnLabel_7
+          CFI (cfiCond37) R10L Frame(CFA, -6)
+          CFI (cfiCond37) CFA SP+10
+          CFI Block cfiPicker38 Using cfiCommon1
+          CFI (cfiPicker38) NoFunction
+          CFI (cfiPicker38) Picker
+        MOV.B   @R10, R12
+        BRA     #osal_set_event
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiCond35
+          CFI EndBlock cfiCond36
+          CFI EndBlock cfiCond37
+          CFI EndBlock cfiPicker38
+//  827 
+//  828 /**************************************************************************************************
+//  829  * @fn          pulseBPM
+//  830  *
+//  831  * @brief       This function is called by pulseDataCalc().  This function contains the main algorithm for pulse calculation.
+//  832  *
+//  833  *
+//  834  * input parameters
+//  835  *
+//  836  * Pointer to the pulsedata array that will be sent over the air.
+//  837  *
+//  838  * output parameters
+//  839  *
+//  840  * None.
+//  841  *
+//  842  * @return      None.
+//  843  **************************************************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  844 static void pulseBPM(uint8 *pulsedata)
+pulseBPM:
+          CFI Block cfiBlock39 Using cfiCommon0
+          CFI Function pulseBPM
+//  845 {
+        FUNCALL pulseBPM, HalAdcRead
+        LOCFRAME CSTACK, 20, STACK
+        FUNCALL pulseBPM, HalLedSet
+        LOCFRAME CSTACK, 20, STACK
+        FUNCALL pulseBPM, HalLedSet
+        LOCFRAME CSTACK, 20, STACK
+        FUNCALL pulseBPM, HalLcdWriteStringValue
+        LOCFRAME CSTACK, 20, STACK
+        FUNCALL pulseBPM, HalLedSet
+        LOCFRAME CSTACK, 20, STACK
+        FUNCALL pulseBPM, HalLedSet
+        LOCFRAME CSTACK, 20, STACK
+        PUSHM.W #0x8, R11
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+20
+        MOV.W   R12, R10
+//  846 
+//  847 //MHMS 
+//  848 //MHMS From arduino interrupt
+//  849 static volatile int rate[10];                    // used to hold last ten IBI values
+//  850 static volatile uint32 sampleCounter = 0;          // used to determine pulse timing
+//  851 static volatile uint32 lastBeatTime = 0;           // used to find the inter beat interval
+//  852 static volatile int P = 512;                      // used to find peak in pulse wave
+//  853 static volatile int T = 512;                     // used to find trough in pulse wave
+//  854 static volatile int thresh = 512;                // used to find instant moment of heart beat
+//  855 static volatile int amp = 100;                   // used to hold amplitude of pulse waveform
+//  856 static volatile bool firstBeat = TRUE;        // used to seed rate array so we startup with reasonable BPM
+//  857 static volatile bool secondBeat = TRUE;       // used to seed rate array so we startup with reasonable BPM
+//  858   
+//  859 int BPM = pulsedata[PULSE_BPM];                         // used to hold the pulse rate
+        MOV.B   0xd(R12), R7
+//  860 int Signal;                                             // holds the incoming raw data
+//  861 int IBI = pulsedata[PULSE_IBI];                         // holds the time between beats, the Inter-Beat Interval
+        MOV.B   0x12(R12), R8
+//  862 
+//  863 //    cli();                                            // disable interrupts while we do this
+//  864 //    Signal = analogRead(pulsePin);                    // read the Pulse Sensor  //MHMS orginal arduino code
+//  865 
+//  866 //MHMS using HAL layer API to set channel to read and 10 Bit resolution
+//  867   Signal = HalAdcRead(HAL_ADC_CHANNEL_7, HAL_ADC_RESOLUTION_10);
+        MOV.B   #0x2, R13
+        MOV.B   #0x7, R12
+        CALLA   #HalAdcRead
+        MOV.W   R12, R11
+//  868   
+//  869   sampleCounter += 2;                                   // keep track of the time in mS with this variable
+        ADD.W   #0x2, &??sampleCounter
+        ADDC.W  #0x0, &??sampleCounter + 2
+//  870   int Number = (sampleCounter - lastBeatTime);          // monitor the time since the last beat to avoid noise
+        MOV.W   #??sampleCounter, R4
+        MOV.W   @R4, R6
+        SUB.W   &??lastBeatTime, R6
+//  871 
+//  872 //  find the peak and trough of the pulse wave
+//  873     if(Signal < thresh && Number > (IBI/5)*3){          // avoid dichrotic noise by waiting 3/5 of last IBI
+        MOV.W   #??thresh, R9
+        CMP.W   @R9, R12
+        JGE     ??pulseBPM_2
+        CALLA   #?Subroutine10
+??CrossCallReturnLabel_10:
+        JGE     ??pulseBPM_2
+//  874         if (Signal < T){                                // T is the trough
+        CMP.W   &??T, R11
+        JGE     ??pulseBPM_2
+//  875             T = Signal;                                 // keep track of lowest point in pulse wave 
+        MOV.W   R11, &??T
+//  876          }
+//  877        }
+//  878       
+//  879     if(Signal > thresh && Signal > P){          // thresh condition helps avoid noise
+??pulseBPM_2:
+        CMP.W   R11, &??thresh
+        JGE     ??pulseBPM_3
+        CMP.W   R11, &??P
+        JGE     ??pulseBPM_3
+//  880         P = Signal;                             // P is the peak
+        MOV.W   R11, &??P
+//  881        }                                        // keep track of highest point in pulse wave
+//  882     
+//  883   //  NOW IT'S TIME TO LOOK FOR THE HEART BEAT
+//  884   // signal surges up in value every time there is a pulse
+//  885 if (Number > 250){                                   // avoid high frequency noise //MHMS increased from 250 to 500 to reduce high freq noise
+??pulseBPM_3:
+        CMP.W   #0xfb, R6
+        JL      ??pulseBPM_4
+//  886   if ((Signal > thresh) && (Pulse == FALSE) && (Number > (int)(IBI/5)*3) ){        
+        CMP.W   R11, &??thresh
+        JGE     ??pulseBPM_4
+        CMP.B   #0x0, &Pulse
+        JNE     ??pulseBPM_4
+        CALLA   #?Subroutine10
+??CrossCallReturnLabel_11:
+        JGE     ??pulseBPM_4
+//  887     Pulse = TRUE;                               // set the Pulse flag when we think there is a pulse
+        MOV.B   #0x1, &Pulse
+//  888     
+//  889     //MHMS  could define some external LED or just write to LCD screen "Pulse found"
+//  890     HalLedSet (HAL_LED_2, HAL_LED_MODE_OFF);    //MHMS beat found
+        MOV.B   #0x0, R13
+        MOV.B   #0x2, R12
+        CALLA   #HalLedSet
+//  891     HalLedSet (HAL_LED_1, HAL_LED_MODE_ON);     //MHMS LED on during upbeat
+        MOV.B   #0x1, R13
+        MOV.B   #0x1, R12
+        CALLA   #HalLedSet
+//  892     
+//  893     IBI = sampleCounter - lastBeatTime;         // measure time between beats in mS
+        MOV.W   @R4, R8
+        SUB.W   &??lastBeatTime, R8
+//  894     lastBeatTime = sampleCounter;               // keep track of time for next pulse
+        MOV.W   @R4, &??lastBeatTime
+        MOV.W   0x2(R4), &??lastBeatTime + 2
+//  895          
+//  896          if(firstBeat){                         // if it's the first time we found a beat, if firstBeat == TRUE
+        CMP.B   #0x0, &??firstBeat
+        JEQ     ??pulseBPM_5
+//  897              firstBeat = FALSE;                 // clear firstBeat flag
+        MOV.B   #0x0, &??firstBeat
+//  898              return;                            // IBI value is unreliable so discard it
+        JMP     ??pulseBPM_6
+//  899             }   
+//  900          if(secondBeat){                        // if this is the second beat, if secondBeat == TRUE
+??pulseBPM_5:
+        CMP.B   #0x0, &??secondBeat
+        JEQ     ??pulseBPM_7
+//  901             secondBeat = FALSE;                 // clear secondBeat flag
+        MOV.B   #0x0, &??secondBeat
+//  902                for(int i=0; i<=9; i++){         // seed the running total to get a realisitic BPM at startup
+        MOV.W   #0x0, R7
+//  903                     rate[i] = IBI;                      
+??pulseBPM_0:
+        MOV.W   R7, R15
+        RLA.W   R15
+        MOV.W   R8, ??rate(R15)
+//  904                     }
+        ADD.W   #0x1, R7
+        CMP.W   #0xa, R7
+        JL      ??pulseBPM_0
+//  905             }
+//  906           
+//  907     // keep a running total of the last 10 IBI values
+//  908     int16 runningTotal = 0; //word runningTotal = 0;                   // clear the runningTotal variable    
+??pulseBPM_7:
+        MOV.W   #0x0, R15
+//  909 
+//  910     for(int i=0; i<=8; i++){                // shift data in the rate array
+        MOV.W   #0x0, R7
+//  911           rate[i] = rate[i+1];              // and drop the oldest IBI value 
+??pulseBPM_1:
+        MOV.W   R7, R14
+        RLA.W   R14
+        MOV.W   ??rate + 2(R14), ??rate(R14)
+//  912           runningTotal += rate[i];          // add up the 9 oldest IBI values
+        ADD.W   ??rate(R14), R15
+//  913         }
+        ADD.W   #0x1, R7
+        CMP.W   #0x9, R7
+        JL      ??pulseBPM_1
+//  914         
+//  915     rate[9] = IBI;                          // add the latest IBI to the rate array
+        MOV.W   R8, &??rate + 18
+//  916     runningTotal += rate[9];                // add the latest IBI to runningTotal
+//  917     runningTotal /= 10;                     // average the last 10 IBI values 
+//  918     BPM = 60000/runningTotal;               // how many beats can fit into a minute? that's BPM!
+        MOV.W   #0xea60, R12
+        PUSH.W  #0x0
+          CFI CFA SP+22
+        PUSH.W  R12
+          CFI CFA SP+24
+        ADD.W   &??rate + 18, R15
+        MOV.W   R15, R12
+        MOV.W   #0xa, R14
+        CALLA   #?DivMod16s
+        MOV.W   R12, R14
+        MOV.W   R12, R15
+        XOR.W   #0xffff, R15
+        RLA.W   R15
+        SUBC.W  R15, R15
+        POP.W   R12
+          CFI CFA SP+22
+        POP.W   R13
+          CFI CFA SP+20
+        CALLA   #?DivMod32s
+        MOV.B   R12, R7
+//  919     QS = TRUE;                              // set Quantified Self flag //MHMS we will use this to flag other event to transmit data over network
+        MOV.B   #0x1, &QS
+//  920     
+//  921 
+//  922     HalLcdWriteStringValue("BPM:",BPM, 10, HAL_LCD_LINE_5); //MHMS display BPM on LCD screen
+        MOV.B   #0x5, R15
+        MOV.B   #0xa, R14
+        MOV.W   R12, R13
+        MOV.W   #`?<Constant "BPM:">`, R12
+        CALLA   #HalLcdWriteStringValue
+//  923     }                       
+//  924 }
+//  925 
+//  926   if (Signal < thresh && Pulse == TRUE){     // when the values are going down, the beat is over
+??pulseBPM_4:
+        CMP.W   @R9, R11
+        JGE     ??pulseBPM_8
+        CMP.B   #0x1, &Pulse
+        JNE     ??pulseBPM_8
+//  927       //digitalWrite(blinkPin,LOW);            // turn off pin 13 LED
+//  928      //MHMS  could define some external LED or just write to LCD screen "Pulse Not found"
+//  929       HalLedSet (HAL_LED_1, HAL_LED_MODE_OFF);
+        MOV.B   #0x0, R13
+        MOV.B   #0x1, R12
+        CALLA   #HalLedSet
+//  930       
+//  931       Pulse = FALSE;                         // reset the Pulse flag so we can do it again
+        MOV.B   #0x0, &Pulse
+//  932       amp = P - T;                           // get amplitude of the pulse wave
+        MOV.W   &??P, R15
+        SUB.W   &??T, R15
+        MOV.W   R15, &??amp
+//  933       thresh = amp/2 + T + 100;              // set thresh at 50% of the amplitude  //MHMS offset up by 100 to ignore small flucuations due to noise
+        MOV.W   &??amp, R12
+        MOV.W   #0x2, R14
+        CALLA   #?DivMod16s
+        ADD.W   &??T, R12
+        ADD.W   #0x64, R12
+        MOV.W   R12, &??thresh
+//  934       P = thresh;                            // reset these for next time
+        MOV.W   @R9, &??P
+//  935       T = thresh;
+        MOV.W   @R9, &??T
+//  936      }
+//  937   
+//  938   if (Number > 2500){                        // if 2.5 seconds go by without a beat
+??pulseBPM_8:
+        CMP.W   #0x9c5, R6
+        JL      ??pulseBPM_9
+//  939       HalLedSet (HAL_LED_2, HAL_LED_MODE_ON);// MHMS Indicate that no beat found
+        MOV.B   #0x1, R13
+        MOV.B   #0x2, R12
+        CALLA   #HalLedSet
+//  940       thresh = 512 + 100;                    // set thresh default //MHMS offset up by 100 to ignore small flucuations due to noise
+        MOV.W   #0x264, &??thresh
+//  941       P = 512;                               // set P default
+        MOV.W   #0x200, &??P
+//  942       T = 512;                               // set T default
+        MOV.W   #0x200, &??T
+//  943       lastBeatTime = sampleCounter;          // bring the lastBeatTime up to date        
+        MOV.W   @R4+, &??lastBeatTime
+        MOV.W   @R4+, &??lastBeatTime + 2
+//  944       firstBeat = TRUE;                      // set these to avoid noise
+        MOV.B   #0x1, &??firstBeat
+//  945       secondBeat = TRUE;                     // when we get the heartbeat back
+        MOV.B   #0x1, &??secondBeat
+//  946       QS = FALSE;                            // Clears Pulse measurement quantifier flag so no data  is sent over the air
+        MOV.B   #0x0, &QS
+//  947      }
+//  948 
+//  949 //MHMS Loading 16 bit results into 8 bit blocks for pulsedata array              
+//  950 pulsedata[PULSE_BPM] = (uint8)((BPM & 0x00FF));
+??pulseBPM_9:
+        MOV.B   R7, 0xd(R10)
+//  951 pulsedata[PULSE_RAW_MSB] = (uint8)((Signal >> 8));
+        MOV.W   R11, R15
+        RPT     #0x8
+        RRAX.W  R15
+        MOV.B   R15, 0x10(R10)
+//  952 pulsedata[PULSE_RAW_LSB] = (uint8)((Signal & 0x00FF));
+        MOV.B   R11, 0xf(R10)
+//  953 pulsedata[PULSE_IBI] = (uint8)((IBI & 0x00FF));
+        MOV.B   R8, 0x12(R10)
+//  954 
+//  955 pulsedata[PULSE_BPM_CHAR] = 'B';
+        MOV.B   #0x42, 0xc(R10)
+//  956 pulsedata[PULSE_RAW_CHAR] = 'S';
+        MOV.B   #0x53, 0xe(R10)
+//  957 pulsedata[PULSE_IBI_CHAR] = 'Q';
+        MOV.B   #0x51, 0x11(R10)
+//  958 
+//  959 //HalLcdWriteStringValue("Signal:",Signal, 10, 7); //MHMS  for testing ADC values
+//  960 
+//  961 
+//  962   //sei();                                     // enable interrupts when youre done!
+//  963 }// end isr
+??pulseBPM_6:
+        POPM.W  #0x8, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R4L SameValue
+          CFI R5L SameValue
+          CFI R6L SameValue
+          CFI R7L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock39
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine10:
+          CFI Block cfiCond40 Using cfiCommon0
+          CFI Function pulseBPM
+          CFI Conditional ??CrossCallReturnLabel_10
+          CFI R4L Frame(CFA, -20)
+          CFI R5L Frame(CFA, -18)
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+24
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI (cfiCond41) Function pulseBPM
+          CFI (cfiCond41) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond41) R4L Frame(CFA, -20)
+          CFI (cfiCond41) R5L Frame(CFA, -18)
+          CFI (cfiCond41) R6L Frame(CFA, -16)
+          CFI (cfiCond41) R7L Frame(CFA, -14)
+          CFI (cfiCond41) R8L Frame(CFA, -12)
+          CFI (cfiCond41) R9L Frame(CFA, -10)
+          CFI (cfiCond41) R10L Frame(CFA, -8)
+          CFI (cfiCond41) R11L Frame(CFA, -6)
+          CFI (cfiCond41) CFA SP+24
+          CFI Block cfiPicker42 Using cfiCommon1
+          CFI (cfiPicker42) NoFunction
+          CFI (cfiPicker42) Picker
+        MOV.B   R8, R12
+        MOV.B   #0x5, R14
+        CALLA   #?DivMod8u
+        MOV.B   R12, R12
+        MOV.W   R12, R15
+        RPT     #0x2
+        ADDX.W  R12, R15
+        CMP.W   R6, R15
+        RETA
+          CFI EndBlock cfiCond40
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiPicker42
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+??rate:
+        DS8 20
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+??sampleCounter:
+        DS8 4
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+??lastBeatTime:
+        DS8 4
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_copy
+??P:
+        DS8 2
+        REQUIRE `?<Initializer for P>`
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_copy
+??T:
+        DS8 2
+        REQUIRE `?<Initializer for T>`
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_copy
+??thresh:
+        DS8 2
+        REQUIRE `?<Initializer for thresh>`
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_copy
+??amp:
+        DS8 2
+        REQUIRE `?<Initializer for amp>`
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_copy
+??firstBeat:
+        DS8 1
+        REQUIRE `?<Initializer for firstBeat>`
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_copy
+??secondBeat:
+        DS8 1
+        REQUIRE `?<Initializer for secondBeat>`
+//  964 
+//  965 /**************************************************************************************************
+//  966  * @fn          pulseDataReq
+//  967  *
+//  968  * @brief       This function is called by pulseAppEvt() to send a PULSE data report. When it is detected that
+//  969  *              a pulse is found (QS flag is set) this function will start to transfer BPM, IBI, and raw Signal
+//  970  *              data over the air to the coordinator at 20ms intervals. When there is no BPM detected
+//  971  *              this function will stop sending information over the air to the coordinator.
+//  972  *
+//  973  * input parameters
+//  974  *
+//  975  * None.
+//  976  *
+//  977  * output parameters
+//  978  *
+//  979  * None.
+//  980  *
+//  981  * @return      None.
+//  982  **************************************************************************************************
+//  983  */
+//  984 static void pulseDataReq(void)
+//  985 {
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  986   static bool pulseDataReqFlag;
+??pulseDataReqFlag:
+        DS8 1
+
+        RSEG CODE:CODE:NOROOT(1)
+pulseNodeCheckIn:
+          CFI Block cfiBlock43 Using cfiCommon0
+          CFI Function pulseNodeCheckIn
+        FUNCALL pulseNodeCheckIn, osal_stop_timerEx
+        LOCFRAME CSTACK, 16, STACK
+        FUNCALL pulseNodeCheckIn, HalLcdWriteString
+        LOCFRAME CSTACK, 16, STACK
+        FUNCALL pulseNodeCheckIn, AF_DataRequest
+        LOCFRAME CSTACK, 24, STACK
+        FUNCALL pulseNodeCheckIn, osal_set_event
+        LOCFRAME CSTACK, 16, STACK
+        FUNCALL pulseNodeCheckIn, osal_start_timerEx
+        LOCFRAME CSTACK, 16, STACK
+        SUB.W   #0xc, SP
+          CFI CFA SP+16
+        CALLA   #?Subroutine7
+??CrossCallReturnLabel_20:
+        CALLA   #osal_stop_timerEx
+        MOV.B   #0x0, &PulseEvtReq_sync
+        MOV.B   #0x0, &??Flag
+        CALLA   #?Subroutine2
+??CrossCallReturnLabel_1:
+        MOV.B   #0x1, &pulseDat + 11
+        MOV.B   #0x5, R13
+        MOV.W   #`?<Constant "BPMsensor Inacti">`, R12
+        CALLA   #HalLcdWriteString
+        PUSH.B  #0x1e
+          CFI CFA SP+18
+        PUSH.B  #0x20
+          CFI CFA SP+20
+        PUSH.W  #pulseTSN
+          CFI CFA SP+22
+        PUSH.W  #pulseDat
+          CFI CFA SP+24
+        CALLA   #?Subroutine8
+??CrossCallReturnLabel_25:
+        ADD.W   #0x8, SP
+          CFI CFA SP+16
+        CMP.B   #0x0, R12
+        JEQ     ??pulseNodeCheckIn_0
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_17:
+        CALLA   #osal_set_event
+        JMP     ??pulseNodeCheckIn_1
+??pulseNodeCheckIn_0:
+        ADD.W   #0x1, &pulseCnt
+??pulseNodeCheckIn_1:
+        CMP.B   #0x0, &QS
+        JNE     ??pulseNodeCheckIn_2
+        CMP.B   #0x0, &??Flag
+        JNE     ??pulseNodeCheckIn_2
+        MOV.W   #0x2710, R14
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_18:
+        CALLA   #osal_start_timerEx
+        MOV.B   #0x1, &??Flag
+          CFI EndBlock cfiBlock43
+??pulseNodeCheckIn_2:
+        REQUIRE ?Subroutine1
+        // Fall through to label ?Subroutine1
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+          CFI Block cfiBlock44 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA SP+16
+        ADD.W   #0xc, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock44
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine8:
+          CFI Block cfiCond45 Using cfiCommon0
+          CFI Function pulseNodeCheckIn
+          CFI Conditional ??CrossCallReturnLabel_25
+          CFI CFA SP+28
+          CFI Block cfiCond46 Using cfiCommon0
+          CFI (cfiCond46) Function pulseDataReq
+          CFI (cfiCond46) Conditional ??CrossCallReturnLabel_24
+          CFI (cfiCond46) CFA SP+28
+          CFI Block cfiPicker47 Using cfiCommon1
+          CFI (cfiPicker47) NoFunction
+          CFI (cfiPicker47) Picker
+        MOV.W   #0x16, R15
+          CFI EndBlock cfiCond45
+          CFI EndBlock cfiCond46
+          CFI EndBlock cfiPicker47
+        REQUIRE ??Subroutine14_0
+        // Fall through to label ??Subroutine14_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine14_0:
+          CFI Block cfiCond48 Using cfiCommon0
+          CFI Function TestPayloadTx
+          CFI Conditional ??CrossCallReturnLabel_23
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+30
+          CFI Block cfiCond49 Using cfiCommon0
+          CFI (cfiCond49) Function pulseNodeCheckIn
+          CFI (cfiCond49) Conditional ??CrossCallReturnLabel_25
+          CFI (cfiCond49) CFA SP+28
+          CFI Block cfiCond50 Using cfiCommon0
+          CFI (cfiCond50) Function pulseDataReq
+          CFI (cfiCond50) Conditional ??CrossCallReturnLabel_24
+          CFI (cfiCond50) CFA SP+28
+          CFI Block cfiPicker51 Using cfiCommon1
+          CFI (cfiPicker51) NoFunction
+          CFI (cfiPicker51) Picker
+        CALLA   #?Subroutine12
+??CrossCallReturnLabel_27:
+        BRA     #AF_DataRequest
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiCond49
+          CFI EndBlock cfiCond50
+          CFI EndBlock cfiPicker51
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+          CFI Block cfiCond52 Using cfiCommon0
+          CFI Function TestPayloadTx
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+22
+          CFI Block cfiCond53 Using cfiCommon0
+          CFI (cfiCond53) Function pulseNodeCheckIn
+          CFI (cfiCond53) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond53) CFA SP+20
+          CFI Block cfiCond54 Using cfiCommon0
+          CFI (cfiCond54) Function pulseDataReq
+          CFI (cfiCond54) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond54) CFA SP+20
+          CFI Block cfiPicker55 Using cfiCommon1
+          CFI (cfiPicker55) NoFunction
+          CFI (cfiPicker55) Picker
+        MOV.W   &pulseAddr, 0x4(SP)
+        MOV.B   #0x2, 0xc(SP)
+        MOV.B   #0x3, 0xd(SP)
+        RETA
+          CFI EndBlock cfiCond52
+          CFI EndBlock cfiCond53
+          CFI EndBlock cfiCond54
+          CFI EndBlock cfiPicker55
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+pulseDataReq:
+          CFI Block cfiBlock56 Using cfiCommon0
+          CFI Function pulseDataReq
+        FUNCALL pulseDataReq, osal_stop_timerEx
+        LOCFRAME CSTACK, 16, STACK
+        FUNCALL pulseDataReq, AF_DataRequest
+        LOCFRAME CSTACK, 24, STACK
+        FUNCALL pulseDataReq, osal_set_event
+        LOCFRAME CSTACK, 16, STACK
+        FUNCALL pulseDataReq, osal_start_timerEx
+        LOCFRAME CSTACK, 16, STACK
+        SUB.W   #0xc, SP
+          CFI CFA SP+16
+//  987   pulseDataReqFlag = FALSE;
+        MOV.B   #0x0, &??pulseDataReqFlag
+//  988   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
+//  989   
+//  990   osal_stop_timerEx(pulseTaskId, PULSE_EVT_CHECKIN);  //Node is collecting data and sending it to coordinator so turn off check in event
+        CALLA   #?Subroutine5
+??CrossCallReturnLabel_19:
+        CALLA   #osal_stop_timerEx
+//  991   PulseEvtCheckin_sync = FALSE;  
+        MOV.B   #0x0, &PulseEvtCheckin_sync
+//  992   
+//  993   pulseDat[PULSE_CHECK_IN] = CHECK_IN_INACTIVE;   //Flag is off and will notify coordinator that node is not sending check in data
+        MOV.B   #0x2, &pulseDat + 11
+//  994  
+//  995   addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
+        CALLA   #?Subroutine2
+//  996   addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
+//  997   addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+//  998 
+//  999   if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+// 1000                                           PULSE_DAT_LEN, pulseDat, &pulseTSN,
+// 1001                                           AF_DISCV_ROUTE
+// 1002 #if TVSA_DATA_CNF
+// 1003                                         | AF_ACK_REQUEST
+// 1004 #endif
+// 1005                                          ,AF_DEFAULT_RADIUS))  //MHMS
+??CrossCallReturnLabel_2:
+        PUSH.B  #0x1e
+          CFI CFA SP+18
+        PUSH.B  #0x20
+          CFI CFA SP+20
+        PUSH.W  #pulseTSN
+          CFI CFA SP+22
+        PUSH.W  #pulseDat
+          CFI CFA SP+24
+        CALLA   #?Subroutine8
+??CrossCallReturnLabel_24:
+        ADD.W   #0x8, SP
+          CFI CFA SP+16
+        CMP.B   #0x0, R12
+        JEQ     ??pulseDataReq_0
+// 1006   { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
+// 1007         osal_set_event(pulseTaskId, PULSE_EVT_REQ);
+        CALLA   #?Subroutine7
+// 1008   }
+??CrossCallReturnLabel_21:
+        CALLA   #osal_set_event
+        JMP     ??pulseDataReq_1
+// 1009   else
+// 1010   {
+// 1011     pulseCnt++;
+??pulseDataReq_0:
+        ADD.W   #0x1, &pulseCnt
+// 1012   }
+// 1013   if((QS == TRUE) && (pulseDataReqFlag == FALSE)){
+??pulseDataReq_1:
+        CMP.B   #0x1, &QS
+        JNE     ??pulseDataReq_2
+        CMP.B   #0x0, &??pulseDataReqFlag
+        JNE     ??pulseDataReq_2
+// 1014     osal_start_timerEx(pulseTaskId, PULSE_EVT_REQ, PULSE_DLY_DATAREQ);  //send next Pulse data report in 20ms
+        MOV.W   #0x14, R14
+        CALLA   #?Subroutine7
+??CrossCallReturnLabel_22:
+        CALLA   #osal_start_timerEx
+// 1015     pulseDataReqFlag = TRUE;  //to prevent restarting of timer if existing already running
+        MOV.B   #0x1, &??pulseDataReqFlag
+// 1016      
+// 1017   }
+// 1018   /*
+// 1019 
+// 1020   //MHMS USB communication with Pulse sensor Processor application
+// 1021 
+// 1022   uint8 BPMBuf[7] = {'B',0,0,0,10,13};
+// 1023   uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
+// 1024   uint8 SignalBuf[7] = {'S',0,0,0,10,13};
+// 1025   
+// 1026   //conversion Signal Dec to ASCII
+// 1027   uint16 temp = (BUILD_UINT16(pulseDat[15], pulseDat[16])) - 400;
+// 1028   if(temp > 999){
+// 1029     SignalBuf[1] = '9';
+// 1030     SignalBuf[2] = '9';
+// 1031     SignalBuf[3] = '9';
+// 1032   }
+// 1033   else { 
+// 1034     SignalBuf[1] = (uint8)((temp/100)+ 48);
+// 1035     SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+// 1036     SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+// 1037   }
+// 1038   
+// 1039   //conversion BPM Dec to ASCII
+// 1040   temp = (uint16)pulseDat[13];
+// 1041   BPMBuf[1] = (uint8)((temp/100)+ 48);
+// 1042   BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+// 1043   BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+// 1044   
+// 1045   //conversion IBI Dec to ASCII
+// 1046   temp = (uint16)pulseDat[18];
+// 1047   IBIBuf[1] = (uint8)((temp/100)+ 48);
+// 1048   IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+// 1049   IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+// 1050    
+// 1051   
+// 1052   HalUARTWrite(0, SignalBuf, 6);
+// 1053   HalUARTWrite(0, BPMBuf, 6);
+// 1054   HalUARTWrite(0, IBIBuf, 6);
+// 1055   */
+// 1056 }
+??pulseDataReq_2:
+        JMP     ?Subroutine1
+        NOP
+          CFI EndBlock cfiBlock56
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+          CFI Block cfiCond57 Using cfiCommon0
+          CFI Function pulseNodeCheckIn
+          CFI Conditional ??CrossCallReturnLabel_20
+          CFI CFA SP+20
+          CFI Block cfiCond58 Using cfiCommon0
+          CFI (cfiCond58) Function pulseDataReq
+          CFI (cfiCond58) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond58) CFA SP+20
+          CFI Block cfiCond59 Using cfiCommon0
+          CFI (cfiCond59) Function pulseDataReq
+          CFI (cfiCond59) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond59) CFA SP+20
+          CFI Block cfiPicker60 Using cfiCommon1
+          CFI (cfiPicker60) NoFunction
+          CFI (cfiPicker60) Picker
+// 1057 
+// 1058 
+// 1059 /**************************************************************************************************
+// 1060  * @fn          pulseNodeCheckIn
+// 1061  *
+// 1062  * @brief       This function is called by the pulseAppEvt() function.  
+// 1063  *
+// 1064  * input parameters
+// 1065  *
+// 1066  *
+// 1067  * output parameters
+// 1068  *
+// 1069  * None.
+// 1070  *
+// 1071  * @return      None.
+// 1072  **************************************************************************************************
+// 1073  */
+// 1074 
+// 1075 static void pulseNodeCheckIn(void)
+// 1076 {
+// 1077 
+// 1078   static bool Flag;
+// 1079   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
+// 1080   
+// 1081   osal_stop_timerEx(pulseTaskId, PULSE_EVT_REQ); //Stop pulseDataReq() task since no pulse data is being measured
+        MOV.W   #0x2000, R13
+          CFI EndBlock cfiCond57
+          CFI EndBlock cfiCond58
+          CFI EndBlock cfiCond59
+          CFI EndBlock cfiPicker60
+        REQUIRE ?Subroutine13
+        // Fall through to label ?Subroutine13
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine13:
+          CFI Block cfiCond61 Using cfiCommon0
+          CFI Function pulseNodeCheckIn
+          CFI Conditional ??CrossCallReturnLabel_20
+          CFI CFA SP+20
+          CFI Block cfiCond62 Using cfiCommon0
+          CFI (cfiCond62) Function pulseDataReq
+          CFI (cfiCond62) Conditional ??CrossCallReturnLabel_21
+          CFI (cfiCond62) CFA SP+20
+          CFI Block cfiCond63 Using cfiCommon0
+          CFI (cfiCond63) Function pulseDataReq
+          CFI (cfiCond63) Conditional ??CrossCallReturnLabel_22
+          CFI (cfiCond63) CFA SP+20
+          CFI Block cfiCond64 Using cfiCommon0
+          CFI (cfiCond64) Function pulseNodeCheckIn
+          CFI (cfiCond64) Conditional ??CrossCallReturnLabel_17
+          CFI (cfiCond64) CFA SP+20
+          CFI Block cfiCond65 Using cfiCommon0
+          CFI (cfiCond65) Function pulseNodeCheckIn
+          CFI (cfiCond65) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond65) CFA SP+20
+          CFI Block cfiCond66 Using cfiCommon0
+          CFI (cfiCond66) Function pulseDataReq
+          CFI (cfiCond66) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond66) CFA SP+20
+          CFI Block cfiPicker67 Using cfiCommon1
+          CFI (cfiPicker67) NoFunction
+          CFI (cfiPicker67) Picker
+// 1082   PulseEvtReq_sync = FALSE;
+// 1083   Flag = FALSE;
+// 1084   addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
+// 1085   addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
+// 1086   addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+// 1087 
+// 1088   pulseDat[PULSE_CHECK_IN] = CHECK_IN_ACTIVE;   //Flag is set and will notify coordinator that node is currently sending check in data
+// 1089   HalLcdWriteString("BPMsensor Inacti",HAL_LCD_LINE_5);
+// 1090 
+// 1091   if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+// 1092                                           PULSE_DAT_LEN, pulseDat, &pulseTSN, AF_DISCV_ROUTE,AF_DEFAULT_RADIUS))
+// 1093     { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
+// 1094         osal_set_event(pulseTaskId, PULSE_EVT_CHECKIN);
+// 1095   }
+// 1096   else
+// 1097   {
+// 1098     pulseCnt++;
+// 1099   }
+// 1100   if((QS == FALSE) && (Flag == FALSE)){
+// 1101     osal_start_timerEx(pulseTaskId, PULSE_EVT_CHECKIN, PULSE_DLY_CHECKIN);  //send check in dummy packet every 10 seconds
+        MOV.B   &pulseTaskId, R12
+        RETA
+          CFI EndBlock cfiCond61
+          CFI EndBlock cfiCond62
+          CFI EndBlock cfiCond63
+          CFI EndBlock cfiCond64
+          CFI EndBlock cfiCond65
+          CFI EndBlock cfiCond66
+          CFI EndBlock cfiPicker67
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine5:
+          CFI Block cfiCond68 Using cfiCommon0
+          CFI Function pulseNodeCheckIn
+          CFI Conditional ??CrossCallReturnLabel_17
+          CFI CFA SP+20
+          CFI Block cfiCond69 Using cfiCommon0
+          CFI (cfiCond69) Function pulseNodeCheckIn
+          CFI (cfiCond69) Conditional ??CrossCallReturnLabel_18
+          CFI (cfiCond69) CFA SP+20
+          CFI Block cfiCond70 Using cfiCommon0
+          CFI (cfiCond70) Function pulseDataReq
+          CFI (cfiCond70) Conditional ??CrossCallReturnLabel_19
+          CFI (cfiCond70) CFA SP+20
+          CFI Block cfiPicker71 Using cfiCommon1
+          CFI (cfiPicker71) NoFunction
+          CFI (cfiPicker71) Picker
+        MOV.W   #0x800, R13
+        JMP     ?Subroutine13
+        NOP
+          CFI EndBlock cfiCond68
+          CFI EndBlock cfiCond69
+          CFI EndBlock cfiCond70
+          CFI EndBlock cfiPicker71
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+??Flag:
+        DS8 1
+// 1102     Flag = TRUE;  //to prevent restarting of timer if existing already running
+// 1103      
+// 1104   }
+// 1105   
+// 1106 }
+// 1107 
+// 1108 /**************************************************************************************************
+// 1109  * @fn          TestPayloadTx
+// 1110  *
+// 1111  * @brief       This function is called by the pulseAppEvt() function. This function is used to test 
+// 1112  *              network loading by sending test payloads that have a packet size and Tx frequency that
+// 1113  *              are user defined.  This is operated on a timer and is initiated by SW1.
+// 1114  * input parameters
+// 1115  *
+// 1116  *
+// 1117  * output parameters
+// 1118  *
+// 1119  * None.
+// 1120  *
+// 1121  * @return      None.
+// 1122  **************************************************************************************************
+// 1123  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1124 static void TestPayloadTx(void){
+TestPayloadTx:
+          CFI Block cfiBlock72 Using cfiCommon0
+          CFI Function TestPayloadTx
+        FUNCALL TestPayloadTx, osal_stop_timerEx
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL TestPayloadTx, osal_stop_timerEx
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL TestPayloadTx, osal_stop_timerEx
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL TestPayloadTx, HalLcdWriteString
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL TestPayloadTx, AF_DataRequest
+        LOCFRAME CSTACK, 26, STACK
+        FUNCALL TestPayloadTx, osal_set_event
+        LOCFRAME CSTACK, 18, STACK
+        FUNCALL TestPayloadTx, osal_start_timerEx
+        LOCFRAME CSTACK, 18, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+        SUB.W   #0xc, SP
+          CFI CFA SP+18
+// 1125   static uint8 SeqNum =0;
+// 1126   static bool flag = FALSE;
+// 1127   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
+// 1128   
+// 1129   // Turn off collecting data and regular Pulse report generation for Payload testing
+// 1130   osal_stop_timerEx(pulseTaskId, PULSE_EVT_CHECKIN);
+        MOV.W   #pulseTaskId, R10
+        MOV.W   #0x800, R13
+        MOV.B   @R10, R12
+        CALLA   #osal_stop_timerEx
+// 1131   osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
+        MOV.W   #0x1000, R13
+        MOV.B   @R10, R12
+        CALLA   #osal_stop_timerEx
+// 1132   osal_stop_timerEx(pulseTaskId, PULSE_EVT_REQ);
+        MOV.W   #0x2000, R13
+        MOV.B   @R10, R12
+        CALLA   #osal_stop_timerEx
+// 1133   
+// 1134   TestDatTx[11] = SeqNum;
+        MOV.B   &??SeqNum, &TestDatTx + 11
+// 1135   TestDatTx[PULSE_CMD_IDX] = PULSE_CMD_DAT_TEST;
+        MOV.B   #0x3, &TestDatTx
+// 1136   if( flag == FALSE){
+        CMP.B   #0x0, &??flag
+        JNE     ??TestPayloadTx_0
+// 1137   SeqNum++;
+        ADD.B   #0x1, &??SeqNum
+// 1138   }
+// 1139   flag = FALSE;
+??TestPayloadTx_0:
+        MOV.B   #0x0, &??flag
+// 1140   addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
+        CALLA   #?Subroutine2
+// 1141   addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
+// 1142   addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+// 1143 
+// 1144   
+// 1145   HalLcdWriteString("TestPayload TX",HAL_LCD_LINE_5);
+??CrossCallReturnLabel_0:
+        MOV.B   #0x5, R13
+        MOV.W   #`?<Constant "TestPayload TX">`, R12
+        CALLA   #HalLcdWriteString
+// 1146 
+// 1147   if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+// 1148                                           MHMS_TEST_PAYLOAD_LEN, TestDatTx, &pulseTSN, AF_DISCV_ROUTE,AF_DEFAULT_RADIUS))
+        PUSH.B  #0x1e
+          CFI CFA SP+20
+        PUSH.B  #0x20
+          CFI CFA SP+22
+        PUSH.W  #pulseTSN
+          CFI CFA SP+24
+        PUSH.W  #TestDatTx
+          CFI CFA SP+26
+        MOV.W   #0x32, R15
+        CALLA   #??Subroutine14_0
+??CrossCallReturnLabel_23:
+        ADD.W   #0x8, SP
+          CFI CFA SP+18
+        CMP.B   #0x0, R12
+        JEQ     ??TestPayloadTx_1
+// 1149     { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
+// 1150         osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);
+        MOV.W   #0x400, R13
+        CALLA   #?Subroutine6
+// 1151         flag = TRUE;
+??CrossCallReturnLabel_9:
+        MOV.B   #0x1, &??flag
+// 1152   }
+// 1153      osal_start_timerEx(pulseTaskId, TEST_EVT_PAYLOAD_TX, TEST_DLY_PAYLOAD_TX);  //send check in dummy packet every 10 seconds
+??TestPayloadTx_1:
+        MOV.W   #0x2710, R14
+        MOV.W   #0x400, R13
+        MOV.B   @R10, R12
+        CALLA   #osal_start_timerEx
+// 1154   
+// 1155 }
+        ADD.W   #0xc, SP
+          CFI CFA SP+6
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock72
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+??SeqNum:
+        DS8 1
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+??flag:
+        DS8 1
+// 1156 
+// 1157 //MHMS Question do we need this ? tvsaUartRx  this is for recieving command messages from UART
+// 1158 /**************************************************************************************************
+// 1159  * @fn          pulseUartRx
+// 1160  *
+// 1161  * @brief       This function is the Uart callback for Rx data.
+// 1162  *
+// 1163  * input parameters
+// 1164  *
+// 1165  * @param       port - Don't care.
+// 1166  * @param       event - Don't care.
+// 1167  *
+// 1168  * output parameters
+// 1169  *
+// 1170  * None.
+// 1171  *
+// 1172  * @return      None.
+// 1173  **************************************************************************************************
+// 1174  */
+// 1175 
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1176 static void pulseUartRx(uint8 port, uint8 event)
+pulseUartRx:
+          CFI Block cfiBlock73 Using cfiCommon0
+          CFI Function pulseUartRx
+// 1177 {
+        FUNCALL pulseUartRx, HalUARTRead
+        LOCFRAME CSTACK, 10, STACK
+        FUNCALL pulseUartRx, sysPingRsp
+        LOCFRAME CSTACK, 10, STACK
+        SUB.W   #0x6, SP
+          CFI CFA SP+10
+// 1178 #ifdef TVSA_DEMO
+// 1179   uint8 ch;
+// 1180 
+// 1181   while (HalUARTRead(PULSE_PORT, &ch, 1))
+// 1182   {
+// 1183     switch (pulseState)
+// 1184     {
+// 1185     case SOP_STATE:
+// 1186       if (PULSE_SOP_VAL == ch)
+// 1187       {
+// 1188         pulseState = CMD_STATE;
+// 1189       }
+// 1190       break;
+// 1191 
+// 1192     case CMD_STATE:
+// 1193       pulseCmd = ch;
+// 1194       pulseState = FCS_STATE;
+// 1195       break;
+// 1196 
+// 1197     case FCS_STATE:
+// 1198       if (pulseCmd == ch)
+// 1199       {
+// 1200         if (pulseCmd == PULSE_CMD_BEG)
+// 1201         {
+// 1202           pulseAddr = NLME_GetShortAddr();
+// 1203         }
+// 1204         else if (pulseCmd == PULSE_CMD_END)
+// 1205         {
+// 1206           pulseAddr = INVALID_NODE_ADDR;
+// 1207         }
+// 1208         (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+// 1209       }
+// 1210 
+// 1211       pulseState = SOP_STATE;
+// 1212       break;
+// 1213 
+// 1214     default:
+// 1215      break;
+// 1216     }
+// 1217   }
+// 1218 #else
+// 1219   uint8 ch[5];
+// 1220   
+// 1221   HalUARTRead(PULSE_PORT, ch, 5);
+        MOV.W   #0x5, R14
+        MOV.W   SP, R13
+        ADD.W   #0x0, R13
+        MOV.B   #0x0, R12
+        CALLA   #HalUARTRead
+// 1222   if (ch[2]==0x21)   //if statement to check for command from Z-Sensor Monitor
+        CMP.B   #0x21, 0x2(SP)
+        JNE     ??pulseUartRx_0
+// 1223   {
+// 1224     sysPingRsp();
+        CALLA   #sysPingRsp
+// 1225   }
+// 1226 #endif
+// 1227 }
+??pulseUartRx_0:
+        ADD.W   #0x6, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock73
+// 1228 
+// 1229 #ifndef TVSA_DEMO
+// 1230 /******************************************************************************
+// 1231  * @fn          calcFCS
+// 1232  *
+// 1233  * @brief       This function calculates the FCS checksum for the serial message 
+// 1234  *
+// 1235  * @param       pBuf - Pointer to the end of a buffer to calculate the FCS.
+// 1236  *              len - Length of the pBuf.
+// 1237  *
+// 1238  * @return      The calculated FCS.
+// 1239  ******************************************************************************
+// 1240  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1241 static uint8 calcFCS(uint8 *pBuf, uint8 len)
+calcFCS:
+          CFI Block cfiBlock74 Using cfiCommon0
+          CFI Function calcFCS
+// 1242 {
+// 1243   uint8 rtrn = 0;
+        MOV.B   #0x0, R15
+        JMP     ??calcFCS_1
+// 1244 
+// 1245   while (len--)
+// 1246   {
+// 1247     rtrn ^= *pBuf++;
+??calcFCS_0:
+        XOR.B   @R12+, R15
+// 1248   }
+??calcFCS_1:
+        MOV.B   R13, R14
+        ADD.B   #0xff, R13
+        CMP.B   #0x0, R14
+        JNE     ??calcFCS_0
+// 1249 
+// 1250   return rtrn;
+        MOV.B   R15, R12
+        RETA
+          CFI EndBlock cfiBlock74
+// 1251 }
+// 1252 
+// 1253 /*************************************************************************************************
+// 1254  * @fn          sysPingRsp
+// 1255  *
+// 1256  * @brief       Build and send Ping response
+// 1257  *
+// 1258  * @param       none
+// 1259  *              
+// 1260  * @return      none
+// 1261 **************************************************************************************************
+// 1262  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+// 1263 static void sysPingRsp(void)
+sysPingRsp:
+          CFI Block cfiBlock75 Using cfiCommon0
+          CFI Function sysPingRsp
+// 1264 {
+        FUNCALL sysPingRsp, calcFCS
+        LOCFRAME CSTACK, 12, STACK
+        FUNCALL sysPingRsp, HalUARTWrite
+        LOCFRAME CSTACK, 12, STACK
+        SUB.W   #0x8, SP
+          CFI CFA SP+12
+// 1265   uint8 pingBuff[7];
+// 1266   
+// 1267   // Start of Frame Delimiter
+// 1268   pingBuff[0] = 0xFE;
+        MOV.B   #0xfe, 0(SP)
+// 1269   
+// 1270   // Length
+// 1271   pingBuff[1] = 0x02; 
+        MOV.B   #0x2, 0x1(SP)
+// 1272   
+// 1273   // Command type
+// 1274   pingBuff[2] = LO_UINT16(0x0161); 
+        MOV.B   #0x61, 0x2(SP)
+// 1275   pingBuff[3] = HI_UINT16(0x0161);
+        MOV.B   #0x1, 0x3(SP)
+// 1276   
+// 1277   // Stack profile
+// 1278   pingBuff[4] = LO_UINT16(0x0041);
+        MOV.B   #0x41, 0x4(SP)
+// 1279   pingBuff[5] = HI_UINT16(0x0041);
+        MOV.B   #0x0, 0x5(SP)
+// 1280   
+// 1281   // Frame Check Sequence
+// 1282   pingBuff[6] = calcFCS(&pingBuff[1], 5);
+        MOV.B   #0x5, R13
+        MOV.W   SP, R12
+        ADD.W   #0x1, R12
+        CALLA   #calcFCS
+        MOV.B   R12, 0x6(SP)
+// 1283   
+// 1284   
+// 1285   HalUARTWrite(PULSE_PORT,pingBuff, 7);
+        MOV.W   #0x7, R14
+        CALLA   #?Subroutine4
+// 1286 
+// 1287 }
+??CrossCallReturnLabel_6:
+        ADD.W   #0x8, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock75
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(1)
+`?<Initializer for IBI>`:
+        DC16 600
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(1)
+`?<Initializer for P>`:
+        DC16 512
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(1)
+`?<Initializer for T>`:
+        DC16 512
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(1)
+`?<Initializer for thresh>`:
+        DC16 512
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(1)
+`?<Initializer for amp>`:
+        DC16 100
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(0)
+`?<Initializer for firstBeat>`:
+        DC8 1
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(0)
+`?<Initializer for secondBeat>`:
+        DC8 1
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r4:
+        REQUIRE ?setjmp_r4
+        REQUIRE ?longjmp_r4
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r5:
+        REQUIRE ?setjmp_r5
+        REQUIRE ?longjmp_r5
+
+        END
+// 1288 #endif
+// 1289 /**************************************************************************************************
+// 1290 */
+// 1291 
+// 
+// 2 216 bytes in segment CODE
+//     6 bytes in segment DATA16_AN
+//    61 bytes in segment DATA16_C
+//    12 bytes in segment DATA16_I
+//    12 bytes in segment DATA16_ID
+//   197 bytes in segment DATA16_Z
+// 
+// 2 216 bytes of CODE  memory
+//    73 bytes of CONST memory
+//   209 bytes of DATA  memory (+ 6 bytes shared)
+//
+//Errors: none
+//Warnings: 4

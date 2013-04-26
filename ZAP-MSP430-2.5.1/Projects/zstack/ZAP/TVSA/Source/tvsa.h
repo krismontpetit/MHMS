@@ -168,7 +168,7 @@
 #define PULSE_FCS_IDX               PULSE_BUF_LEN-1
 
 // Defined constants for Pulse task event timers
-#define PULSE_DLY_DAT               1000          //MHMS every 2ms PULSE calc interrupt
+#define PULSE_DLY_DAT               2          //MHMS every 2ms PULSE calc interrupt
 #define PULSE_DLY_DATAREQ           20          //MHMS every 20ms PULSE datareq interrupt 
 #define PULSE_DLY_ANN               5000        //MHMS announce event from coordinator
 #define PULSE_DLY_CHECKIN           10000       //MHMS send checkin packet to coordinator at 10s intervals

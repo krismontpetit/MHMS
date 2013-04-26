@@ -113,7 +113,7 @@ uint8 pulseCnfErrCnt;
 //MHMS  Global Variables
 uint8 pulseTaskId;
 
-
+//(void)osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);   //For testing payload TX
 /* ------------------------------------------------------------------------------------------------
  *                                           Local Variables
  * ------------------------------------------------------------------------------------------------
@@ -132,6 +132,7 @@ static uint8 pulseTSN;           //MHMS Question what is thi?
 static uint8 pulseBuf[PULSE_BUF_LEN];  //MHMS buffer used for recived over the air data
 static uint8 pulseDat[PULSE_DAT_LEN];  //MHMS define data array length for Pulse sensor
 static uint8 TestDatTx[MHMS_TEST_PAYLOAD_LEN];
+static uint8 TestRxBuffer[MHMS_TEST_BUFF_LEN];
 
 //Syncronization Flags
 static bool PulseEvtDat_sync = FALSE;  
@@ -222,6 +223,7 @@ void pulseAppInit(uint8 id)
 #if defined PULSE_SRC_RTG
 
     pulseDat[PULSE_OPT_IDX] = PULSE_OPT_SRC_RTG;
+    TestDatTx[MHMS_TEST_PAYLOAD_LEN - 1] = PULSE_OPT_SRC_RTG;
 #endif
 
   pulseTaskId = id;                                    
@@ -389,7 +391,7 @@ static void pulseAfMsgRx(afIncomingMSGPacket_t *msg)
       NLME_SetPollRate(0);
       if(PulseEvtDat_sync == FALSE){
       (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);           //Sync Pulsedat event operation
-      //(void)osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);   //For testing payload TX
+      
       }
     }
     pulseAddr = BUILD_UINT16(buf[PULSE_ADR_LSB], buf[PULSE_ADR_MSB]);
@@ -552,11 +554,10 @@ static void pulseTestingDataRx(afIncomingMSGPacket_t *msg)
 {
    uint8 fcs = 0, idx;
   
-   uint8 *TestRxBuffer;
-   
-   TestRxBuffer = (uint8*)osal_mem_alloc(MHMS_TEST_PAYLOAD_LEN);
+   //uint8 *TestRxBuffer;
+   //TestRxBuffer = (uint8*)osal_mem_alloc(MHMS_TEST_BUFF_LEN);
     
-
+  
   // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
   if (INVALID_NODE_ADDR == pulseAddr)
   {
@@ -580,7 +581,7 @@ static void pulseTestingDataRx(afIncomingMSGPacket_t *msg)
   
   uint8 parentAddrLSB;
   uint8 parentAddrMSB;
-  uint8 zsensorBuf[15];
+  uint8 tsensorBuf[15];
   
   parentAddrLSB= TestRxBuffer[11];
   parentAddrMSB= TestRxBuffer[12];  
@@ -588,35 +589,35 @@ static void pulseTestingDataRx(afIncomingMSGPacket_t *msg)
   PktSeqNum = TestRxBuffer[13];
   
   //Start of Frame Delimiter
-  zsensorBuf[0]=0xFE;
-  zsensorBuf[1]=10;
-  zsensorBuf[2]=LO_UINT16(0x8746);
-  zsensorBuf[3]=HI_UINT16(0x8746);
+  tsensorBuf[0]=0xFE;
+  tsensorBuf[1]=10;
+  tsensorBuf[2]=LO_UINT16(0x8746);
+  tsensorBuf[3]=HI_UINT16(0x8746);
   
   //Source Address
-  zsensorBuf[4] = LO_UINT16(msg->srcAddr.addr.shortAddr);
-  zsensorBuf[5] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+  tsensorBuf[4] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+  tsensorBuf[5] = HI_UINT16(msg->srcAddr.addr.shortAddr);
   
-  zsensorBuf[6]=LO_UINT16(2);  //MHMS are 6 - 9 being used for anything?
-  zsensorBuf[7]=HI_UINT16(2);
-  zsensorBuf[8]=LO_UINT16(4);
-  zsensorBuf[9]=HI_UINT16(4);
+  tsensorBuf[6]=LO_UINT16(2);  //MHMS are 6 - 9 being used for anything?
+  tsensorBuf[7]=HI_UINT16(2);
+  tsensorBuf[8]=LO_UINT16(4);
+  tsensorBuf[9]=HI_UINT16(4);
   
   //Temperature and Voltage Data
-  zsensorBuf[10]= PktSeqNum;
-  zsensorBuf[11]= PktSeqNum; //deviceVolt;
+  tsensorBuf[10]= PktSeqNum;
+  tsensorBuf[11]= PktSeqNum; //deviceVolt;
   
   //Parent Address
-  zsensorBuf[12]= parentAddrLSB;
-  zsensorBuf[13]= parentAddrMSB;
+  tsensorBuf[12]= parentAddrLSB;
+  tsensorBuf[13]= parentAddrMSB;
 
 
   //FCS Check on the middle 13 bytes
-  zsensorBuf[14] = calcFCS(&zsensorBuf[1], 13 );
+  tsensorBuf[14] = calcFCS(&tsensorBuf[1], 13 );
 
-  HalUARTWrite(PULSE_PORT, zsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
+  HalUARTWrite(PULSE_PORT, tsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
   
-  osal_mem_free(TestRxBuffer);
+  //osal_mem_free(TestRxBuffer);
 }
 
 
@@ -1125,8 +1126,13 @@ static void TestPayloadTx(void){
   static bool flag = FALSE;
   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
   
+  // Turn off collecting data and regular Pulse report generation for Payload testing
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_CHECKIN);
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_REQ);
+  
   TestDatTx[11] = SeqNum;
-  TestDatTx[0] = PULSE_CMD_DAT_TEST;
+  TestDatTx[PULSE_CMD_IDX] = PULSE_CMD_DAT_TEST;
   if( flag == FALSE){
   SeqNum++;
   }

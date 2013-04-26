@@ -63,6 +63,8 @@
 #include "ZDApp.h"
 #include "ZDObject.h"
 #include "ZComDef.h"
+   
+#include "tvsa.h"          
 
 /* ------------------------------------------------------------------------------------------------
  *                                           Constants
@@ -724,9 +726,10 @@ static void zapKeys(keyChange_t *msg)
     if (keys & HAL_KEY_SW_4)
     {
     }
-    if (keys &HAL_KEY_SW_7){
-      //MHMS:
-      HalLcdWriteString("HELLO SHIFT WORLD",HAL_LCD_LINE_7);
+    if (keys &HAL_KEY_SW_7){ //S2 + S1 (shift key) on the EXP board
+      //MHMS:  Stop sending Test Payload data, But allow check in event
+      osal_set_event(pulseTaskId, PULSE_EVT_CHECKIN);
+      osal_stop_timerEx(pulseTaskId, TEST_EVT_PAYLOAD_TX);
     }
   }
   else
@@ -769,9 +772,9 @@ static void zapKeys(keyChange_t *msg)
         HalLcdWriteString("Should Join Now",HAL_LCD_LINE_7);
       }
     }
-    if (keys &HAL_KEY_SW_7){
-      //MHMS:
-      HalLcdWriteString("HELLO WORLD",HAL_LCD_LINE_7);
+    if (keys &HAL_KEY_SW_7){ //S2 on the EXP board
+      //MHMS:  Start sending Test payload data
+      osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);
     
     }
         

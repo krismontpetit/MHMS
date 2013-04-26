@@ -1,0 +1,1270 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430      26/Apr/2013  14:00:04 /
+// Copyright 1996-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    __rt_version  =  3                                                      /
+//    __double_size =  32                                                     /
+//    __reg_r4      =  free                                                   /
+//    __reg_r5      =  free                                                   /
+//    __pic         =  no                                                     /
+//    __core        =  430X                                                   /
+//    __data_model  =  small                                                  /
+//    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Components\hal\target\MSP5438ZAP\hal_board.c         /
+//    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap /
+//                     .cfg (-DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1          /
+//                     -DHAL_UART=1 -DZAP_PHY_SPI=1                           /
+//                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE   /
+//                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                 /
+//                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE              /
+//                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE           /
+//                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE           /
+//                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG           /
+//                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC              /
+//                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC         /
+//                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0        /
+//                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                /
+//                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000          /
+//                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)     /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Components\hal\target\MSP5438ZAP\hal_board.c -lC     /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List\    /
+//                     -lA C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- /
+//                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List /
+//                     \ --remarks --diag_suppress Pe001,Pe193,Pe236,Pe826    /
+//                     -o C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2 /
+//                     .5.1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\Obj\  /
+//                     --debug -D__MSP430F5438A__ -e --double=32 --clib -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\ -I                 /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I       /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\target\MSP5438ZAP\ -I                       /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\hal\include\ -I C:\Users\student\Documents\GitH /
+//                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 /
+//                     438\..\..\..\..\..\Components\mac\include\ -I          /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\Z /
+//                     AP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\.. /
+//                     \..\..\..\Components\osal\include\ -I                  /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\osal\mcu\msp430\ -I                             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\services\saddr\ -I C:\Users\student\Documents\G /
+//                     itHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\E /
+//                     XP5438\..\..\..\..\..\Components\services\sdata\ -I    /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\af\ -I C:\Users\student\Documents\GitHub\ /
+//                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 /
+//                     \..\..\..\..\..\Components\stack\nwk\ -I               /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sapi\ -I C:\Users\student\Documents\GitHu /
+//                     b\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 /
+//                     38\..\..\..\..\..\Components\stack\sec\ -I             /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\stack\sys\ -I C:\Users\student\Documents\GitHub /
+//                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP543 /
+//                     8\..\..\..\..\..\Components\stack\zdo\ -I              /
+//                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Comp /
+//                     onents\zmac\ -I C:\Users\student\Documents\GitHub\MHMS /
+//                     \ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\ /
+//                     ..\..\..\..\Components\zmac\f8w\ --core=430X           /
+//                     --data_model=small -Ohz --multiplier=32                /
+//                     --multiplier_location=4C0 --require_prototypes         /
+//                     --hw_workaround=CPU40 --hw_workaround=CPU42            /
+//    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. /
+//                     1\Projects\zstack\ZAP\TVSA\EXP5438\Routinator\List\hal /
+//                     _board.s43                                             /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME hal_board
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__core", "430X"
+        RTMODEL "__data_model", "small"
+        RTMODEL "__double_size", "32"
+        RTMODEL "__pic", "no"
+        RTMODEL "__reg_r4", "free"
+        RTMODEL "__reg_r5", "free"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:REORDER:NOROOT(0)
+
+        EXTERN ?DivMod16u
+        EXTERN ?cstart_init_copy
+        EXTERN ?cstart_init_zero
+        EXTERN ?longjmp_r4
+        EXTERN ?longjmp_r5
+        EXTERN ?setjmp_r4
+        EXTERN ?setjmp_r5
+
+        PUBWEAK `??HalBoardPort1Isr??INTVEC 94`
+        PUBWEAK `??HalBoardTimerRolloverIsr??INTVEC 108`
+        PUBWEAK ?setjmp_save_r4
+        PUBWEAK ?setjmp_save_r5
+        PUBLIC HalBoardDelay
+        FUNCTION HalBoardDelay,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC HalBoardDelayed
+        FUNCTION HalBoardDelayed,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC HalBoardPort1Isr
+        FUNCTION HalBoardPort1Isr,0233H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC HalBoardTimerRolloverIsr
+        FUNCTION HalBoardTimerRolloverIsr,0233H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC InitBoard
+        FUNCTION InitBoard,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC InitClock
+        FUNCTION InitClock,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC OnBoard_KeyCallback
+        FUNCTION OnBoard_KeyCallback,021603H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC OnBoard_SendKeys
+        FUNCTION OnBoard_SendKeys,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 8, STACK
+        PUBLIC OnBoard_stack_used
+        FUNCTION OnBoard_stack_used,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC OnboardKeyIntEnable
+        PUBLIC Onboard_rand
+        FUNCTION Onboard_rand,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC Onboard_wait
+        FUNCTION Onboard_wait,080203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBLIC RegisterForKeys
+        FUNCTION RegisterForKeys,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        PUBWEAK TA0CCR0
+        PUBWEAK TA0CCTL0
+        PUBWEAK TA0CTL
+        PUBWEAK _A_PAIFG_L
+        PUBLIC _itoa
+        FUNCTION _itoa,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 22, STACK
+        PUBLIC osalTimeUpdate
+        FUNCTION osalTimeUpdate,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 6, STACK
+        PUBLIC osal_getClock
+        FUNCTION osal_getClock,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 4, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA SP DATA
+          CFI Resource PC:20, SP:20, SR:16, R4L:16, R4H:4, R4:20, R5L:16, R5H:4
+          CFI Resource R5:20, R6L:16, R6H:4, R6:20, R7L:16, R7H:4, R7:20, R8L:16
+          CFI Resource R8H:4, R8:20, R9L:16, R9H:4, R9:20, R10L:16, R10H:4
+          CFI Resource R10:20, R11L:16, R11H:4, R11:20, R12L:16, R12H:4, R12:20
+          CFI Resource R13L:16, R13H:4, R13:20, R14L:16, R14H:4, R14:20, R15L:16
+          CFI Resource R15H:4, R15:20
+          CFI ResourceParts R4 R4H, R4L
+          CFI ResourceParts R5 R5H, R5L
+          CFI ResourceParts R6 R6H, R6L
+          CFI ResourceParts R7 R7H, R7L
+          CFI ResourceParts R8 R8H, R8L
+          CFI ResourceParts R9 R9H, R9L
+          CFI ResourceParts R10 R10H, R10L
+          CFI ResourceParts R11 R11H, R11L
+          CFI ResourceParts R12 R12H, R12L
+          CFI ResourceParts R13 R13H, R13L
+          CFI ResourceParts R14 R14H, R14L
+          CFI ResourceParts R15 R15H, R15L
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L Undefined
+          CFI R12H Undefined
+          CFI R12 Undefined
+          CFI R13L Undefined
+          CFI R13H Undefined
+          CFI R13 Undefined
+          CFI R14L Undefined
+          CFI R14H Undefined
+          CFI R14 Undefined
+          CFI R15L Undefined
+          CFI R15H Undefined
+          CFI R15 Undefined
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC Frame(CFA, -4)
+          CFI SR Undefined
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L SameValue
+          CFI R12H 0
+          CFI R12 Concat
+          CFI R13L SameValue
+          CFI R13H 0
+          CFI R13 Concat
+          CFI R14L SameValue
+          CFI R14H 0
+          CFI R14 Concat
+          CFI R15L SameValue
+          CFI R15H 0
+          CFI R15 Concat
+          CFI EndCommon cfiCommon1
+        
+        
+          CFI Common cfiCommon2 Using cfiNames0
+          CFI CodeAlign 2
+          CFI DataAlign 2
+          CFI ReturnAddress PC CODE
+          CFI CFA SP+4
+          CFI PC or(load(2, DATA, add(CFA, literal(-2))), lshift(and(load(2, DATA, add(CFA, literal(-4))), 61440), 4))
+          CFI SR Frame(CFA, -4)
+          CFI R4L SameValue
+          CFI R4H 0
+          CFI R4 Concat
+          CFI R5L SameValue
+          CFI R5H 0
+          CFI R5 Concat
+          CFI R6L SameValue
+          CFI R6H 0
+          CFI R6 Concat
+          CFI R7L SameValue
+          CFI R7H 0
+          CFI R7 Concat
+          CFI R8L SameValue
+          CFI R8H 0
+          CFI R8 Concat
+          CFI R9L SameValue
+          CFI R9H 0
+          CFI R9 Concat
+          CFI R10L SameValue
+          CFI R10H 0
+          CFI R10 Concat
+          CFI R11L SameValue
+          CFI R11H 0
+          CFI R11 Concat
+          CFI R12L SameValue
+          CFI R12H 0
+          CFI R12 Concat
+          CFI R13L SameValue
+          CFI R13H 0
+          CFI R13 Concat
+          CFI R14L SameValue
+          CFI R14H 0
+          CFI R14 Concat
+          CFI R15L SameValue
+          CFI R15H 0
+          CFI R15 Concat
+          CFI EndCommon cfiCommon2
+        
+HalBoardPort1Isr    SYMBOL "HalBoardPort1Isr"
+`??HalBoardPort1Isr??INTVEC 94` SYMBOL "??INTVEC 94", HalBoardPort1Isr
+HalBoardTimerRolloverIsr SYMBOL "HalBoardTimerRolloverIsr"
+`??HalBoardTimerRolloverIsr??INTVEC 108` SYMBOL "??INTVEC 108", HalBoardTimerRolloverIsr
+
+        EXTERN osalTimerUpdate
+        FUNCTION osalTimerUpdate,0202H
+        EXTERN zapSysReq
+        FUNCTION zapSysReq,0202H
+        EXTERN osal_msg_allocate
+        FUNCTION osal_msg_allocate,0202H
+        EXTERN osal_msg_send
+        FUNCTION osal_msg_send,0202H
+        EXTERN HalKeyConfig
+        FUNCTION HalKeyConfig,0202H
+
+// C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Components\hal\target\MSP5438ZAP\hal_board.c
+//    1 /**************************************************************************************************
+//    2   Filename:       hal_board.c
+//    3   Revised:        $Date:$
+//    4   Revision:       $Revision:$
+//    5 
+//    6   Description:    Board specific declarations
+//    7   Notes:          This version targets the Texas Instruments EXP5418
+//    8 
+//    9 
+//   10   Copyright 2009 Texas Instruments Incorporated. All rights reserved.
+//   11 
+//   12   IMPORTANT: Your use of this Software is limited to those specific rights
+//   13   granted under the terms of a software license agreement between the user
+//   14   who downloaded the software, his/her employer (which must be your employer)
+//   15   and Texas Instruments Incorporated (the "License").  You may not use this
+//   16   Software unless you agree to abide by the terms of the License. The License
+//   17   limits your use, and you acknowledge, that the Software may not be modified,
+//   18   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   19   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   20   frequency transceiver, which is integrated into your product.  Other than for
+//   21   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   22   works of, modify, distribute, perform, display or sell this Software and/or
+//   23   its documentation for any purpose.
+//   24 
+//   25   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   26   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   27   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   28   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   29   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   30   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   31   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   32   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   33   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   34   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   35   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   36 
+//   37   Should you have any questions regarding your right to use this Software,
+//   38   contact Texas Instruments Incorporated at www.TI.com.
+//   39 **************************************************************************************************/
+//   40 
+//   41 /*********************************************************************
+//   42  * INCLUDES
+//   43  */
+//   44 
+//   45 #include "ZComDef.h"
+//   46 #include "OnBoard.h"
+
+        ASEGN DATA16_AN:DATA:NOROOT,021cH
+// union <unnamed> _A_PAIFG_L
+_A_PAIFG_L:
+        DS8 2
+
+        ASEGN DATA16_AN:DATA:NOROOT,0340H
+// unsigned short volatile TA0CTL
+TA0CTL:
+        DS8 2
+
+        ASEGN DATA16_AN:DATA:NOROOT,0342H
+// unsigned short volatile TA0CCTL0
+TA0CCTL0:
+        DS8 2
+
+        ASEGN DATA16_AN:DATA:NOROOT,0352H
+// unsigned short volatile TA0CCR0
+TA0CCR0:
+        DS8 2
+//   47 #include "OSAL.h"
+//   48 #include "OSAL_Clock.h"
+//   49 #include "MT.h"
+//   50 #include "MT_SYS.h"
+//   51 #include "DebugTrace.h"
+//   52 #include "zap_app.h"
+//   53 
+//   54 /* Hal */
+//   55 #include "hal_lcd.h"
+//   56 #include "hal_mcu.h"
+//   57 #include "hal_timer.h"
+//   58 #include "hal_key.h"
+//   59 #include "hal_led.h"
+//   60 
+//   61 /*********************************************************************
+//   62  * MACROS
+//   63  */
+//   64 
+//   65 /*********************************************************************
+//   66  * CONSTANTS
+//   67  */
+//   68 
+//   69 // Task ID not initialized
+//   70 #define NO_TASK_ID 0xFF
+//   71 
+//   72 // Minimum length RAM "pattern" for Stack check
+//   73 #define MIN_RAM_INIT 12
+//   74 
+//   75 /*********************************************************************
+//   76  * TYPEDEFS
+//   77  */
+//   78 
+//   79 /*********************************************************************
+//   80  * GLOBAL VARIABLES
+//   81  */
+//   82 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//   83 uint8 OnboardKeyIntEnable;
+OnboardKeyIntEnable:
+        DS8 1
+//   84 
+//   85 /*********************************************************************
+//   86  * EXTERNAL VARIABLES
+//   87  */
+//   88 
+//   89 /*********************************************************************
+//   90  * EXTERNAL FUNCTIONS
+//   91  */
+//   92 
+//   93 /*********************************************************************
+//   94  * LOCAL VARIABLES
+//   95  */
+//   96 
+//   97 // Registered keys task ID, initialized to NOT USED.
+
+        RSEG DATA16_I:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_copy
+//   98 static uint8 registeredKeysTaskID = NO_TASK_ID;
+registeredKeysTaskID:
+        DS8 1
+        REQUIRE `?<Initializer for registeredKeysTaskID>`
+//   99 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  100 static volatile uint16 halBrdTmrTick;
+halBrdTmrTick:
+        DS8 2
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  101 static volatile uint8 halBrdTmrDlyF;
+halBrdTmrDlyF:
+        DS8 1
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  102 static uint16 halBrdTmrDly;
+halBrdTmrDly:
+        DS8 2
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  103 static uint16 halBrdTmrTickShdw;
+halBrdTmrTickShdw:
+        DS8 2
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(0)
+        REQUIRE ?cstart_init_zero
+//  104 static uint8 halBrdDlySleep;
+halBrdDlySleep:
+        DS8 1
+//  105 
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  106 static UTCTime OSAL_timeSeconds;
+OSAL_timeSeconds:
+        DS8 4
+
+        RSEG DATA16_Z:DATA:SORT:NOROOT(1)
+        REQUIRE ?cstart_init_zero
+//  107 static uint16 timeMSec;
+timeMSec:
+        DS8 2
+//  108 
+//  109 /*********************************************************************
+//  110  * LOCAL FUNCTIONS
+//  111  */
+//  112 
+//  113 static void osalClockUpdate( uint16 elapsedMSec );
+//  114 
+//  115 /*********************************************************************
+//  116  * @fn      osalClockUpdate
+//  117  *
+//  118  * @brief   Updates the OSAL Clock time with elapsed milliseconds.
+//  119  *
+//  120  * @param   elapsedMSec - elapsed milliseconds
+//  121  *
+//  122  * @return  none
+//  123  */
+//  124 static void osalClockUpdate( uint16 elapsedMSec )
+//  125 {
+//  126   // Add elapsed milliseconds to the saved millisecond portion of time
+//  127   timeMSec += elapsedMSec;
+//  128 
+//  129   // Roll up milliseconds to the number of seconds
+//  130   if ( timeMSec > 1000 )
+//  131   {
+//  132     OSAL_timeSeconds += timeMSec / 1000;
+//  133     timeMSec = timeMSec % 1000;
+//  134   }
+//  135 }
+//  136 
+//  137 /*********************************************************************
+//  138  * @fn      InitClock()
+//  139  * @brief   Initialize the CC2420DB Board Peripherals
+//  140  * @param   None
+//  141  * @return  None
+//  142  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  143 void InitClock(void)
+InitClock:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function InitClock
+//  144 {
+//  145   // Configure TimerA as 1-KHz HAL Board timer to drive OSAL timers and block waiting/sleeping.
+//  146   TA0CCR0 = HAL_CPU_CLOCK_MHZ * 1000;
+        MOV.W   #0x2ee0, &0x352
+//  147   TA0CTL = TASSEL_2 + MC_1;  // SMCLK, upmode
+        MOV.W   #0x210, &0x340
+//  148   TA0CCTL0 = CCIE;
+        MOV.W   #0x10, &0x342
+//  149 }
+        RETA
+          CFI EndBlock cfiBlock0
+        REQUIRE TA0CCR0
+        REQUIRE TA0CTL
+        REQUIRE TA0CCTL0
+//  150 
+//  151 /*********************************************************************
+//  152  * @fn      InitBoard()
+//  153  * @brief   Initialize the CC2420DB Board Peripherals
+//  154  * @param   None
+//  155  * @return  None
+//  156  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  157 void InitBoard(void)
+InitBoard:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function InitBoard
+//  158 {
+//  159   OnboardKeyIntEnable = HAL_KEY_INTERRUPT_DISABLE;
+        FUNCALL InitBoard, HalKeyConfig
+        LOCFRAME CSTACK, 4, STACK
+        MOV.B   #0x0, &OnboardKeyIntEnable
+//  160   HalKeyConfig( OnboardKeyIntEnable, OnBoard_KeyCallback);
+        MOV.W   #LWRD(OnBoard_KeyCallback), R14
+        MOV.W   #HWRD(OnBoard_KeyCallback), R15
+        MOV.B   #0x0, R12
+        BRA     #HalKeyConfig
+          CFI EndBlock cfiBlock1
+//  161 }
+//  162 
+//  163 /*********************************************************************
+//  164  * Keyboard Register function
+//  165  *
+//  166  * The keyboard handler is setup to send all keyboard changes to
+//  167  * one task (if a task is registered).
+//  168  *
+//  169  * If a task registers, it will get all the keys. You can change this
+//  170  * to register for individual keys.
+//  171  *********************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  172 void RegisterForKeys( uint8 task_id )
+RegisterForKeys:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function RegisterForKeys
+//  173 {
+//  174   registeredKeysTaskID = task_id;
+        MOV.B   R12, &registeredKeysTaskID
+//  175 }
+        RETA
+          CFI EndBlock cfiBlock2
+//  176 
+//  177 /*********************************************************************
+//  178  * @fn      OnBoard_SendKeys
+//  179  *
+//  180  * @brief   Send "Key Pressed" message to application.
+//  181  *
+//  182  * @param   keys  - keys that were pressed
+//  183  *          state - shifted
+//  184  *
+//  185  * @return  status
+//  186  *********************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  187 uint8 OnBoard_SendKeys( uint8 keys, uint8 state )
+OnBoard_SendKeys:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function OnBoard_SendKeys
+//  188 {
+        FUNCALL OnBoard_SendKeys, osal_msg_allocate
+        LOCFRAME CSTACK, 8, STACK
+        FUNCALL OnBoard_SendKeys, osal_msg_send
+        LOCFRAME CSTACK, 8, STACK
+        PUSHM.W #0x2, R11
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+8
+        MOV.B   R12, R10
+        MOV.B   R13, R11
+//  189   keyChange_t *msgPtr;
+//  190 
+//  191   if ( registeredKeysTaskID != NO_TASK_ID )
+        CMP.B   #0xff, &registeredKeysTaskID
+        JEQ     ??OnBoard_SendKeys_0
+//  192   {
+//  193     // Send the address to the task
+//  194     msgPtr = (keyChange_t *)osal_msg_allocate( sizeof(keyChange_t) );
+        MOV.W   #0x4, R12
+        CALLA   #osal_msg_allocate
+//  195     if ( msgPtr )
+        CMP.W   #0x0, R12
+        JEQ     ??OnBoard_SendKeys_1
+//  196     {
+//  197       msgPtr->hdr.event = KEY_CHANGE;
+        MOV.B   #0xc0, 0(R12)
+//  198       msgPtr->state = state;
+        MOV.B   R11, 0x2(R12)
+//  199       msgPtr->keys = keys;
+        MOV.B   R10, 0x3(R12)
+//  200 
+//  201       osal_msg_send( registeredKeysTaskID, (uint8 *)msgPtr );
+        MOV.W   R12, R13
+        MOV.B   &registeredKeysTaskID, R12
+        CALLA   #osal_msg_send
+//  202     }
+//  203     return ( ZSuccess );
+??OnBoard_SendKeys_1:
+        MOV.B   #0x0, R12
+        JMP     ??OnBoard_SendKeys_2
+//  204   }
+//  205   else
+//  206     return ( ZFailure );
+??OnBoard_SendKeys_0:
+        MOV.B   #0x1, R12
+??OnBoard_SendKeys_2:
+        POPM.W  #0x2, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock3
+//  207 }
+//  208 
+//  209 /*********************************************************************
+//  210  * @fn      OnBoard_KeyCallback
+//  211  *
+//  212  * @brief   Callback service for keys
+//  213  *
+//  214  * @param   keys  - keys that were pressed
+//  215  *          state - shifted
+//  216  *
+//  217  * @return  void
+//  218  *********************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  219 void OnBoard_KeyCallback ( uint8 keys, uint8 state )
+OnBoard_KeyCallback:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function OnBoard_KeyCallback
+//  220 {
+//  221   uint8 shift;
+//  222   (void)state;
+//  223 
+//  224   shift = (keys & HAL_KEY_SW_6) ? true : false;
+//  225 
+//  226   if ( OnBoard_SendKeys( keys, shift ) != ZSuccess )
+        FUNCALL OnBoard_KeyCallback, OnBoard_SendKeys
+        LOCFRAME CSTACK, 4, STACK
+        BIT.B   #0x20, R12
+        SUBC.B  R13, R13
+        ADD.B   #0x1, R13
+        BRA     #OnBoard_SendKeys
+          CFI EndBlock cfiBlock4
+//  227   {
+//  228     // Process SW1 here
+//  229     if ( keys & HAL_KEY_SW_1 )  // Switch 1
+//  230     {
+//  231     }
+//  232     // Process SW2 here
+//  233     if ( keys & HAL_KEY_SW_2 )  // Switch 2
+//  234     {
+//  235     }
+//  236     // Process SW3 here
+//  237     if ( keys & HAL_KEY_SW_3 )  // Switch 3
+//  238     {
+//  239     }
+//  240     // Process SW4 here
+//  241     if ( keys & HAL_KEY_SW_4 )  // Switch 4
+//  242     {
+//  243     }
+//  244     // Process SW5 here
+//  245     if ( keys & HAL_KEY_SW_5 )  // Switch 5
+//  246     {
+//  247     }
+//  248     // Process SW6 here
+//  249     if ( keys & HAL_KEY_SW_6 )  // Switch 6
+//  250     {
+//  251     }
+//  252   }
+//  253 }
+//  254 
+//  255 /*********************************************************************
+//  256  * @fn      OnBoard_stack_used
+//  257  *
+//  258  * @brief   Runs through the stack looking for touched memory.
+//  259  *
+//  260  * @param   none
+//  261  *
+//  262  * @return  Maximum number of bytes used by the stack.
+//  263  *********************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  264 uint16 OnBoard_stack_used(void)
+OnBoard_stack_used:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function OnBoard_stack_used
+//  265 {
+//  266   uint8 const *ptr;
+//  267   uint8 cnt = 0;
+        MOV.B   #0x0, R14
+//  268 
+//  269   for (ptr = CSTACK_END; ptr > CSTACK_BEG; ptr--)
+        MOV.W   #LWRD(SFE(CSTACK) - 1), R15
+        JMP     ??OnBoard_stack_used_2
+//  270   {
+//  271     if (STACK_INIT_VALUE == *ptr)
+//  272     {
+//  273       if (++cnt >= MIN_RAM_INIT)
+//  274       {
+//  275         ptr += MIN_RAM_INIT;
+//  276         break;
+//  277       }
+//  278     }
+//  279     else
+//  280     {
+//  281       cnt = 0;
+??OnBoard_stack_used_0:
+        MOV.B   #0x0, R14
+//  282     }
+??OnBoard_stack_used_1:
+        ADD.W   #0xffff, R15
+??OnBoard_stack_used_2:
+        MOV.W   #SFB(CSTACK), R13
+        CMP.W   R15, R13
+        JC      ??OnBoard_stack_used_3
+        CMP.B   #0xcd, 0(R15)
+        JNE     ??OnBoard_stack_used_0
+        ADD.B   #0x1, R14
+        CMP.B   #0xc, R14
+        JNC     ??OnBoard_stack_used_1
+        ADD.W   #0xc, R15
+//  283   }
+//  284 
+//  285   return (uint16)(CSTACK_END - ptr + 1);
+??OnBoard_stack_used_3:
+        MOV.W   #LWRD(SFE(CSTACK) - 1), R12
+        SUB.W   R15, R12
+        ADD.W   #0x1, R12
+        RETA
+          CFI EndBlock cfiBlock5
+//  286 }
+//  287 
+//  288 /*********************************************************************
+//  289  * @fn      _itoa
+//  290  *
+//  291  * @brief   convert a 16bit number to ASCII
+//  292  *
+//  293  * @param   num -
+//  294  *          buf -
+//  295  *          radix -
+//  296  *
+//  297  * @return  void
+//  298  *
+//  299  *********************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  300 void _itoa(uint16 num, uint8 *buf, uint8 radix)
+_itoa:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function _itoa
+//  301 {
+        PUSHM.W #0x6, R11
+          CFI R6L Frame(CFA, -16)
+          CFI R7L Frame(CFA, -14)
+          CFI R8L Frame(CFA, -12)
+          CFI R9L Frame(CFA, -10)
+          CFI R10L Frame(CFA, -8)
+          CFI R11L Frame(CFA, -6)
+          CFI CFA SP+16
+        SUB.W   #0x6, SP
+          CFI CFA SP+22
+        MOV.W   R12, R11
+        MOV.W   R13, R8
+//  302   char c,i;
+//  303   uint8 *p, rst[5];
+//  304 
+//  305   p = rst;
+        MOV.W   SP, R9
+        ADD.W   #0x0, R9
+//  306   for ( i=0; i<5; i++,p++ )
+        MOV.B   #0x0, R6
+        MOV.B   R14, R10
+//  307   {
+//  308     c = num % radix;  // Isolate a digit
+??_itoa_0:
+        MOV.W   R11, R12
+        MOV.W   R10, R14
+        CALLA   #?DivMod16u
+//  309     *p = c + (( c < 10 ) ? '0' : '7');  // Convert to Ascii
+        CMP.B   #0xa, R14
+        JNC     ??_itoa_2
+        MOV.B   #0x37, R15
+        JMP     ??_itoa_3
+??_itoa_2:
+        MOV.B   #0x30, R15
+??_itoa_3:
+        ADD.B   R15, R14
+        MOV.B   R14, 0(R9)
+//  310     num /= radix;
+        MOV.W   R11, R12
+        MOV.W   R10, R14
+        CALLA   #?DivMod16u
+        MOV.W   R12, R11
+//  311     if ( !num )
+        CMP.W   #0x0, R12
+        JEQ     ??_itoa_4
+//  312       break;
+//  313   }
+        ADD.B   #0x1, R6
+        ADD.W   #0x1, R9
+        CMP.B   #0x5, R6
+        JNC     ??_itoa_0
+//  314 
+//  315   for ( c=0 ; c<=i; c++ )
+??_itoa_4:
+        MOV.B   #0x0, R14
+//  316     *buf++ = *p--;  // Reverse character order
+??_itoa_1:
+        MOV.B   @R9, 0(R8)
+        ADD.W   #0xffff, R9
+        ADD.W   #0x1, R8
+        ADD.B   #0x1, R14
+        CMP.B   R14, R6
+        JC      ??_itoa_1
+//  317 
+//  318   *buf = '\0';
+        MOV.B   #0x0, 0(R8)
+//  319 }
+        ADD.W   #0x6, SP
+          CFI CFA SP+16
+        POPM.W  #0x6, R11
+          CFI R10L SameValue
+          CFI R11L SameValue
+          CFI R6L SameValue
+          CFI R7L SameValue
+          CFI R8L SameValue
+          CFI R9L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock6
+//  320 
+//  321 /*********************************************************************
+//  322  * @fn        Onboard_rand
+//  323  *
+//  324  * @brief    Random number generator
+//  325  *
+//  326  * @param   none
+//  327  *
+//  328  * @return  uint16 - new random number
+//  329  *
+//  330  *********************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  331 uint16 Onboard_rand( void )
+Onboard_rand:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function Onboard_rand
+//  332 {
+        FUNCALL Onboard_rand, zapSysReq
+        LOCFRAME CSTACK, 6, STACK
+        SUB.W   #0x2, SP
+          CFI CFA SP+6
+//  333   uint16 randy;
+//  334 
+//  335   zapSysReq(MT_SYS_RANDOM, (uint8 *)&randy, NULL);
+        MOV.W   #0x0, R14
+        MOV.W   SP, R13
+        ADD.W   #0x0, R13
+        MOV.B   #0xc, R12
+        CALLA   #zapSysReq
+//  336   return randy;
+        MOV.W   @SP, R12
+        ADD.W   #0x2, SP
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock7
+//  337 }
+//  338 
+//  339 /*********************************************************************
+//  340  * @fn        Onboard_wait
+//  341  *
+//  342  * @brief    Delay wait
+//  343  *
+//  344  * @param   uint16 - time to wait
+//  345  *
+//  346  * @return  none
+//  347  *
+//  348  *********************************************************************/
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  349 void Onboard_wait( uint16 timeout )
+Onboard_wait:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function Onboard_wait
+//  350 {
+        JMP     ??Onboard_wait_1
+//  351   // TODO: MSP430 Port required
+//  352   while (timeout--)
+//  353   {
+//  354     asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP");
+??Onboard_wait_0:
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+//  355     asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP"); asm("NOP");
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+//  356   }
+??Onboard_wait_1:
+        MOV.W   R12, R15
+        ADD.W   #0xffff, R12
+        CMP.W   #0x0, R15
+        JNE     ??Onboard_wait_0
+//  357 }
+        RETA
+          CFI EndBlock cfiBlock8
+//  358 
+//  359 /*********************************************************************
+//  360  * @fn      osalTimeUpdate
+//  361  *
+//  362  * @brief   Uses the free running rollover count of the ZAP timer.
+//  363  *          This function is intended to be invoked from the background, not interrupt level.
+//  364  *
+//  365  * @param   None.
+//  366  *
+//  367  * @return  None.
+//  368  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  369 void osalTimeUpdate(void)
+osalTimeUpdate:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function osalTimeUpdate
+//  370 {
+        FUNCALL osalTimeUpdate, osalTimerUpdate
+        LOCFRAME CSTACK, 6, STACK
+        PUSH.W  R10
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+6
+//  371   uint16 tmp = halBrdTmrTick;
+        MOV.W   &halBrdTmrTick, R15
+//  372 
+//  373   if (tmp != halBrdTmrTickShdw)
+        CMP.W   &halBrdTmrTickShdw, R15
+        JEQ     ??osalTimeUpdate_0
+//  374   {
+//  375     // Calculate the elapsed ticks of the free-running timer.
+//  376     uint16 elapsedMSec = tmp - halBrdTmrTickShdw;
+        MOV.W   R15, R10
+        SUB.W   &halBrdTmrTickShdw, R10
+//  377   
+//  378     // Store the ZAP Timer tick count for the next time through this function.
+//  379     halBrdTmrTickShdw = tmp;
+        MOV.W   R15, &halBrdTmrTickShdw
+//  380   
+//  381     osalTimerUpdate(elapsedMSec);
+        MOV.W   R10, R12
+        CALLA   #osalTimerUpdate
+//  382     osalClockUpdate(elapsedMSec);
+        ADD.W   R10, &timeMSec
+        MOV.W   &timeMSec, R10
+        CMP.W   #0x3e9, R10
+        JNC     ??osalTimeUpdate_0
+        CALLA   #?Subroutine0
+//  383   }
+??CrossCallReturnLabel_0:
+        ADD.W   R12, &OSAL_timeSeconds
+        ADDC.W  #0x0, &OSAL_timeSeconds + 2
+        CALLA   #?Subroutine0
+??CrossCallReturnLabel_1:
+        MOV.W   R14, &timeMSec
+//  384 }
+??osalTimeUpdate_0:
+        POP.W   R10
+          CFI R10L SameValue
+          CFI CFA SP+4
+        RETA
+          CFI EndBlock cfiBlock9
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?Subroutine0:
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI Function osalTimeUpdate
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R10L Frame(CFA, -6)
+          CFI CFA SP+10
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function osalTimeUpdate
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond11) R10L Frame(CFA, -6)
+          CFI (cfiCond11) CFA SP+10
+          CFI Block cfiPicker12 Using cfiCommon1
+          CFI (cfiPicker12) NoFunction
+          CFI (cfiPicker12) Picker
+        MOV.W   R10, R12
+        MOV.W   #0x3e8, R14
+        BRA     #?DivMod16u
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiPicker12
+//  385 
+//  386 /*********************************************************************
+//  387  * @fn      osal_getClock
+//  388  *
+//  389  * @brief   Gets the current time.  This will only return the seconds
+//  390  *          portion of time and doesn't include the factional second
+//  391  *          counter.
+//  392  *
+//  393  * @param   none
+//  394  *
+//  395  * @return  number of seconds since 0 hrs, 0 minutes, 0 seconds,
+//  396  *          on the 1st of January 2000 UTC
+//  397  */
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  398 UTCTime osal_getClock( void )
+osal_getClock:
+          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Function osal_getClock
+//  399 {
+//  400   return ( OSAL_timeSeconds );
+        MOV.W   &OSAL_timeSeconds, R12
+        MOV.W   &OSAL_timeSeconds + 2, R13
+        RETA
+          CFI EndBlock cfiBlock13
+//  401 }
+//  402 
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  403 void HalBoardDelay(uint16 delay, uint8 sleep)
+HalBoardDelay:
+          CFI Block cfiBlock14 Using cfiCommon0
+          CFI Function HalBoardDelay
+//  404 {
+//  405   halBrdTmrDly = halBrdTmrTick + delay + 1;
+        ADD.W   &halBrdTmrTick, R12
+        ADD.W   #0x1, R12
+        MOV.W   R12, &halBrdTmrDly
+//  406   halBrdTmrDlyF = TRUE;
+        MOV.B   #0x1, &halBrdTmrDlyF
+//  407 
+//  408   if (sleep)
+        CMP.B   #0x0, R13
+        JEQ     ??HalBoardDelay_0
+//  409   {
+//  410     halBrdDlySleep = TRUE;
+        MOV.B   #0x1, &halBrdDlySleep
+//  411   }
+//  412   __low_power_mode_1();
+??HalBoardDelay_0:
+        BIS.W   #0x58, SR
+//  413 
+//  414   halBrdDlySleep = FALSE;
+        MOV.B   #0x0, &halBrdDlySleep
+//  415 }
+        RETA
+          CFI EndBlock cfiBlock14
+//  416 
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+//  417 uint8 HalBoardDelayed(void)
+HalBoardDelayed:
+          CFI Block cfiBlock15 Using cfiCommon0
+          CFI Function HalBoardDelayed
+//  418 {
+//  419   return halBrdTmrDlyF;
+        MOV.B   &halBrdTmrDlyF, R12
+        RETA
+          CFI EndBlock cfiBlock15
+//  420 }
+//  421 
+//  422 // Timer A0 interrupt service routine
+
+        RSEG ISR_CODE:CODE:REORDER:NOROOT(1)
+//  423 HAL_ISR_FUNCTION(HalBoardTimerRolloverIsr, TIMER0_A0_VECTOR)
+HalBoardTimerRolloverIsr:
+          CFI Block cfiBlock16 Using cfiCommon2
+          CFI Function HalBoardTimerRolloverIsr
+//  424 {
+        PUSH.W  R15
+          CFI R15L Frame(CFA, -6)
+          CFI CFA SP+6
+//  425   if (++halBrdTmrTick == halBrdTmrDly)
+        MOV.W   &halBrdTmrTick, R15
+        ADD.W   #0x1, R15
+        MOV.W   R15, &halBrdTmrTick
+        CMP.W   &halBrdTmrDly, R15
+        JNE     ??HalBoardTimerRolloverIsr_0
+//  426   {
+//  427     halBrdTmrDlyF = FALSE;
+        MOV.B   #0x0, &halBrdTmrDlyF
+//  428     __low_power_mode_off_on_exit();
+        BIC.W   #0xf0, 0x2(SP)
+//  429   }
+//  430   if (!halBrdDlySleep)
+??HalBoardTimerRolloverIsr_0:
+        CMP.B   #0x0, &halBrdDlySleep
+        JNE     ??HalBoardTimerRolloverIsr_1
+//  431   {
+//  432     __low_power_mode_off_on_exit();
+        BIC.W   #0xf0, 0x2(SP)
+//  433   }
+//  434 }
+??HalBoardTimerRolloverIsr_1:
+        POP.W   R15
+          CFI R15L SameValue
+          CFI CFA SP+4
+        RETI
+          CFI EndBlock cfiBlock16
+//  435 
+
+        RSEG ISR_CODE:CODE:REORDER:NOROOT(1)
+//  436 HAL_ISR_FUNCTION(HalBoardPort1Isr, PORT1_VECTOR)
+HalBoardPort1Isr:
+          CFI Block cfiBlock17 Using cfiCommon2
+          CFI Function HalBoardPort1Isr
+//  437 {
+//  438   P1IFG = 0;
+        MOV.B   #0x0, &0x21c
+//  439   __low_power_mode_off_on_exit();
+        BIC.W   #0xf0, 0(SP)
+//  440 }
+        RETI
+          CFI EndBlock cfiBlock17
+        REQUIRE _A_PAIFG_L
+
+        COMMON INTVEC:CONST:ROOT(1)
+        ORG 94
+`??HalBoardPort1Isr??INTVEC 94`:
+        DC16    HalBoardPort1Isr
+
+        COMMON INTVEC:CONST:ROOT(1)
+        ORG 108
+`??HalBoardTimerRolloverIsr??INTVEC 108`:
+        DC16    HalBoardTimerRolloverIsr
+
+        RSEG DATA16_ID:CONST:SORT:NOROOT(0)
+`?<Initializer for registeredKeysTaskID>`:
+        DC8 255
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r4:
+        REQUIRE ?setjmp_r4
+        REQUIRE ?longjmp_r4
+
+        RSEG CODE:CODE:REORDER:NOROOT(1)
+?setjmp_save_r5:
+        REQUIRE ?setjmp_r5
+        REQUIRE ?longjmp_r5
+
+        RSEG CSTACK:DATA:REORDER:NOROOT(0)
+
+        END
+//  441 
+//  442 /*********************************************************************
+//  443 *********************************************************************/
+// 
+// 452 bytes in segment CODE
+//   8 bytes in segment DATA16_AN
+//   1 byte  in segment DATA16_I
+//   1 byte  in segment DATA16_ID
+//  15 bytes in segment DATA16_Z
+//   4 bytes in segment INTVEC
+//  56 bytes in segment ISR_CODE
+// 
+// 508 bytes of CODE  memory
+//   1 byte  of CONST memory (+ 4 bytes shared)
+//  16 bytes of DATA  memory (+ 8 bytes shared)
+//
+//Errors: none
+//Warnings: none

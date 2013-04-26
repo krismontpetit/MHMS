@@ -1,0 +1,646 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.51.2.50607/W32 for MSP430       26/Apr/2013  13:59:27 #
+# Copyright 1996-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    __rt_version  =  3                                                       #
+#    __double_size =  32                                                      #
+#    __reg_r4      =  free                                                    #
+#    __reg_r5      =  free                                                    #
+#    __pic         =  no                                                      #
+#    __core        =  430X                                                    #
+#    __data_model  =  small                                                   #
+#    Source file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\Source\zap_znp.c                   #
+#    Command line  =  -f C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2. #
+#                     5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\zap.c #
+#                     fg (-DTVSA_DEVICE_ID=0x0016 -DTVSA_DONGLE=1             #
+#                     -DHAL_UART=1 -DZAP_PHY_SPI=1                            #
+#                     -DZAP_PHY_UART=!ZAP_PHY_SPI -DZAP_PHY_RESET_ZNP=TRUE    #
+#                     -DZAP_ZNP_MT=FALSE -DZAP_APP_MSG=FALSE                  #
+#                     -DZAP_SBL_PROXY=FALSE -DZAP_AUTO_CFG=TRUE               #
+#                     -DZAP_AUTO_START=TRUE -DZAP_NV_RESTORE=FALSE            #
+#                     -DLCD_SUPPORTED -DZAP_AF_DATA_REQ_FRAG=FALSE            #
+#                     -DZAP_AF_DATA_REQ_AREQ=!ZAP_AF_DATA_REQ_FRAG            #
+#                     -DZAP_ZDO_STARTUP_AREQ=TRUE -DZAP_AF_FUNC               #
+#                     -DZAP_SAPI_FUNC -DZAP_SYS_FUNC -DZAP_UTIL_FUNC          #
+#                     -DZAP_ZDO_FUNC -DSECURE=0 -DZG_SECURE_DYNAMIC=0         #
+#                     "-DDEFAULT_CHANLIST=(uint32)0x00000800"                 #
+#                     -DZDAPP_CONFIG_PAN_ID=0xFFFF -DPOLL_RATE=1000           #
+#                     -DNWK_START_DELAY=100 -DMAX_BINDING_CLUSTER_IDS=4)      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\Source\zap_znp.c -D                #
+#                     ZAP_DEVICETYPE=ZG_DEVICETYPE_COORDINATOR -D             #
+#                     TVSA_DEVICE_ID=0x0016 -D TVSA_DONGLE=1 -D HAL_UART=1    #
+#                     -lC "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP              #
+#                     Coordinator\List\" -lA "C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\ZAP Coordinator\List\" --remarks --diag_suppress     #
+#                     Pe001,Pe193,Pe236,Pe826 -o                              #
+#                     "C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5. #
+#                     1\Projects\zstack\ZAP\TVSA\EXP5438\ZAP                  #
+#                     Coordinator\Obj\" --debug -D__MSP430F5438A__ -e         #
+#                     --double=32 --clib -I C:\Users\student\Documents\GitHub #
+#                     \MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438 #
+#                     \ -I C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430- #
+#                     2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\Source\ -I    #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\Source\ -I      #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\target\MSP5438ZAP\ -I                          #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\hal\include\ -I C:\Users\student\Documents\GitHub\ #
+#                     MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\ #
+#                     ..\..\..\..\..\Components\mac\include\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\mt\ -I C:\Users\student\Documents\GitHub\MHMS\ZAP- #
+#                     MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\ #
+#                     ..\..\Components\osal\include\ -I                       #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\osal\mcu\msp430\ -I C:\Users\student\Documents\Git #
+#                     Hub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5 #
+#                     438\..\..\..\..\..\Components\services\saddr\ -I        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\services\sdata\ -I C:\Users\student\Documents\GitH #
+#                     ub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP54 #
+#                     38\..\..\..\..\..\Components\stack\af\ -I               #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\nwk\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sapi\ -I                  #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\sec\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\stack\sys\ -I                   #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\stack\zdo\ -I C:\Users\student\Documents\GitHub\MH #
+#                     MS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\TVSA\EXP5438\.. #
+#                     \..\..\..\..\Components\zmac\ -I                        #
+#                     C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\..\..\..\..\..\Compon #
+#                     ents\zmac\f8w\ --core=430X --data_model=small -Ohz      #
+#                     --multiplier=32 --multiplier_location=4C0               #
+#                     --require_prototypes --hw_workaround=CPU40              #
+#                     --hw_workaround=CPU42                                   #
+#    List file     =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\List\zap_znp.lst                            #
+#    Object file   =  C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1 #
+#                     \Projects\zstack\ZAP\TVSA\EXP5438\ZAP                   #
+#                     Coordinator\Obj\zap_znp.r43                             #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\student\Documents\GitHub\MHMS\ZAP-MSP430-2.5.1\Projects\zstack\ZAP\Source\zap_znp.c
+      1          /**************************************************************************************************
+      2              Filename:       zap_znp.c
+      3              Revised:        $Date: 2012-04-02 17:17:51 -0700 (Mon, 02 Apr 2012) $
+      4              Revision:       $Revision: 29997 $
+      5          
+      6              Description:
+      7          
+      8              This file defines the ZAP proxy functionality to the ZNP.
+      9          
+     10          
+     11              Copyright 2009-2012 Texas Instruments Incorporated. All rights reserved.
+     12          
+     13              IMPORTANT: Your use of this Software is limited to those specific rights
+     14              granted under the terms of a software license agreement between the user
+     15              who downloaded the software, his/her employer (which must be your employer)
+     16              and Texas Instruments Incorporated (the "License").  You may not use this
+     17              Software unless you agree to abide by the terms of the License. The License
+     18              limits your use, and you acknowledge, that the Software may not be modified,
+     19              copied or distributed unless embedded on a Texas Instruments microcontroller
+     20              or used solely and exclusively in conjunction with a Texas Instruments radio
+     21              frequency transceiver, which is integrated into your product.  Other than for
+     22              the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     23              works of, modify, distribute, perform, display or sell this Software and/or
+     24              its documentation for any purpose.
+     25          
+     26              YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     27              PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     28              INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     29              NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     30              TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     31              NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     32              LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     33              INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     34              OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     35              OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     36              (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     37          
+     38              Should you have any questions regarding your right to use this Software,
+     39              contact Texas Instruments Incorporated at www.TI.com.
+     40          **************************************************************************************************/
+     41          
+     42          /* ------------------------------------------------------------------------------------------------
+     43           *                                          Includes
+     44           * ------------------------------------------------------------------------------------------------
+     45           */
+     46          
+     47          #include "mt.h"
+     48          #include "mt_rpc.h"
+     49          #include "zap_app.h"
+     50          #include "zap_phy.h"
+     51          #include "zap_znp.h"
+     52          #include "ZDApp.h"
+     53          #include "ZComDef.h"
+     54          
+     55          /* ------------------------------------------------------------------------------------------------
+     56           *                                          Constants
+     57           * ------------------------------------------------------------------------------------------------
+     58           */
+     59          
+     60          /* ------------------------------------------------------------------------------------------------
+     61           *                                           Typedefs
+     62           * ------------------------------------------------------------------------------------------------
+     63           */
+     64          
+     65          /* ------------------------------------------------------------------------------------------------
+     66           *                                          Macros
+     67           * ------------------------------------------------------------------------------------------------
+     68           */
+     69          
+     70          /* ------------------------------------------------------------------------------------------------
+     71           *                                           Global Variables
+     72           * ------------------------------------------------------------------------------------------------
+     73           */
+     74          
+     75          /* ------------------------------------------------------------------------------------------------
+     76           *                                           Local Variables
+     77           * ------------------------------------------------------------------------------------------------
+     78           */
+     79          
+     80          /* ------------------------------------------------------------------------------------------------
+     81           *                                           Local Functions
+     82           * ------------------------------------------------------------------------------------------------
+     83           */
+     84          
+     85          /*********************************************************************
+     86           * @fn          zgSetItem
+     87           *
+     88           * @brief       This function is called to initialize NV items based on zgItemTable
+     89           *
+     90           * @param       id - NV ID
+     91           *              len - NV item length
+     92           *              buf - pointer to the input buffer
+     93           *
+     94           * @return      none
+     95           */
+
+   \                                 In  segment CODE, align 2
+     96          void zgSetItem(uint16 id, uint16 len, void *buf)
+   \                     zgSetItem:
+     97          {
+     98            (void)znp_nv_write(id, 0, len, buf);
+   \   000000   0F4E         MOV.W   R14, R15
+   \   000002   4E4D         MOV.B   R13, R14
+   \   000004   4D43         MOV.B   #0x0, R13
+   \   000006   ........     BRA     #znp_nv_write
+     99          }
+    100          
+    101          /**************************************************************************************************
+    102           * @fn          znp_afRegisterExtended
+    103           *
+    104           * @brief       This function is the ZAP proxy to the ZNP afRegisterExtended() functionality.
+    105           *
+    106           * input parameters
+    107           *
+    108           * @param       epDesc - A pointer to the EndPoint descriptor to register. The 'simpleDesc' member
+    109           *                       of the EndPoint descriptor must be a non-NULL pointer to a valid
+    110           *                       SimpleDescriptionFormat_t. If the 'simpleDesc' member is NULL, this is a
+    111           *                       dummy EndPoint descriptor and does not need to be registered with the AF
+    112           *                       on the ZNP.
+    113           *
+    114           * output parameters
+    115           *
+    116           * None.
+    117           *
+    118           * @return      SUCCESS or FAILURE.
+    119           **************************************************************************************************
+    120           */
+
+   \                                 In  segment CODE, align 2
+    121          uint8 znp_afRegisterExtended(endPointDesc_t *epDesc)
+   \                     znp_afRegisterExtended:
+    122          {
+   \   000000   3B15         PUSHM.W #0x4, R11
+   \   000002   2183         SUB.W   #0x2, SP
+   \   000004   084C         MOV.W   R12, R8
+   \   000006   1F4C0400     MOV.W   0x4(R12), R15
+   \   00000A   5B4F0700     MOV.B   0x7(R15), R11
+   \   00000E   5B5F0A00     ADD.B   0xa(R15), R11
+   \   000012   4B5B         RLA.B   R11
+   \   000014   7B500900     ADD.B   #0x9, R11
+    123            const uint8 len = ((epDesc->simpleDesc->AppNumInClusters) * 2) +
+    124                              ((epDesc->simpleDesc->AppNumOutClusters) * 2) + 9;
+    125            uint8 *pBuf = zap_msg_allocate(len, (uint8)MT_RPC_SYS_AF | (uint8)MT_RPC_CMD_SREQ,
+    126                                                (uint8)MT_AF_REGISTER);
+   \   000018   4E43         MOV.B   #0x0, R14
+   \   00001A   7D402400     MOV.B   #0x24, R13
+   \   00001E   4C4B         MOV.B   R11, R12
+   \   000020   ........     CALLA   #zap_msg_allocate
+   \   000024   814C0000     MOV.W   R12, 0(SP)
+    127            uint8 rtrn = FAILURE;
+   \   000028   5A43         MOV.B   #0x1, R10
+    128          
+    129            if (pBuf != NULL)
+   \   00002A   0C93         CMP.W   #0x0, R12
+   \   00002C   5F24         JEQ     ??znp_afRegisterExtended_2
+    130            {
+    131              uint8 idx;
+    132          
+    133              *pBuf++ = (uint8)epDesc->endPoint;
+   \   00002E   EC480000     MOV.B   @R8, 0(R12)
+   \   000032   ........     CALLA   #?Subroutine5
+    134              *pBuf++ = (uint8)(epDesc->simpleDesc->AppProfId);
+   \                     ??CrossCallReturnLabel_10:
+   \   000036   DE4F02000000 MOV.B   0x2(R15), 0(R14)
+   \   00003C   ........     CALLA   #?Subroutine2
+    135              *pBuf++ = (uint8)(epDesc->simpleDesc->AppProfId >> 8);
+   \                     ??CrossCallReturnLabel_2:
+   \   000040   DE4F03000000 MOV.B   0x3(R15), 0(R14)
+   \   000046   ........     CALLA   #?Subroutine2
+    136              *pBuf++ = (uint8)(epDesc->simpleDesc->AppDeviceId);
+   \                     ??CrossCallReturnLabel_3:
+   \   00004A   DE4F04000000 MOV.B   0x4(R15), 0(R14)
+   \   000050   ........     CALLA   #?Subroutine2
+    137              *pBuf++ = (uint8)(epDesc->simpleDesc->AppDeviceId >> 8);
+   \                     ??CrossCallReturnLabel_4:
+   \   000054   DE4F05000000 MOV.B   0x5(R15), 0(R14)
+   \   00005A   ........     CALLA   #?Subroutine2
+    138              *pBuf++ = epDesc->simpleDesc->AppDevVer;
+   \                     ??CrossCallReturnLabel_5:
+   \   00005E   5E4F0600     MOV.B   0x6(R15), R14
+   \   000062   7EF00F00     AND.B   #0xf, R14
+   \   000066   2F41         MOV.W   @SP, R15
+   \   000068   CF4E0000     MOV.B   R14, 0(R15)
+   \   00006C   2F41         MOV.W   @SP, R15
+   \   00006E   1F53         ADD.W   #0x1, R15
+   \   000070   814F0000     MOV.W   R15, 0(SP)
+    139              *pBuf++ = epDesc->latencyReq;
+   \   000074   DF4806000000 MOV.B   0x6(R8), 0(R15)
+   \   00007A   ........     CALLA   #?Subroutine5
+    140              *pBuf++ = epDesc->simpleDesc->AppNumInClusters;
+   \                     ??CrossCallReturnLabel_11:
+   \   00007E   DE4F07000000 MOV.B   0x7(R15), 0(R14)
+   \   000084   ........     CALLA   #?Subroutine2
+    141              for (idx = 0; idx < epDesc->simpleDesc->AppNumInClusters; idx++)
+   \                     ??CrossCallReturnLabel_6:
+   \   000088   4E43         MOV.B   #0x0, R14
+   \   00008A   0A3C         JMP     ??znp_afRegisterExtended_3
+    142              {
+    143                *pBuf++ = LO_UINT16(epDesc->simpleDesc->pAppInClusterList[idx]);
+   \                     ??znp_afRegisterExtended_0:
+   \   00008C   4D4E         MOV.B   R14, R13
+   \   00008E   0D5D         RLA.W   R13
+   \   000090   1A4F0800     MOV.W   0x8(R15), R10
+   \   000094   ........     CALLA   #?Subroutine4
+    144                *pBuf++ = HI_UINT16(epDesc->simpleDesc->pAppInClusterList[idx]);
+   \                     ??CrossCallReturnLabel_8:
+   \   000098   1A4F0800     MOV.W   0x8(R15), R10
+   \   00009C   ........     CALLA   #?Subroutine3
+    145              }
+   \                     ??znp_afRegisterExtended_3:
+   \   0000A0   5E9F0700     CMP.B   0x7(R15), R14
+   \   0000A4   F32B         JNC     ??znp_afRegisterExtended_0
+    146              *pBuf++ = epDesc->simpleDesc->AppNumOutClusters;
+   \   0000A6   2E41         MOV.W   @SP, R14
+   \   0000A8   DE4F0A000000 MOV.B   0xa(R15), 0(R14)
+   \   0000AE   ........     CALLA   #?Subroutine2
+    147              for (idx = 0; idx < epDesc->simpleDesc->AppNumOutClusters; idx++)
+   \                     ??CrossCallReturnLabel_7:
+   \   0000B2   4E43         MOV.B   #0x0, R14
+   \   0000B4   0A3C         JMP     ??znp_afRegisterExtended_4
+    148              {
+    149                *pBuf++ = LO_UINT16(epDesc->simpleDesc->pAppOutClusterList[idx]);
+   \                     ??znp_afRegisterExtended_1:
+   \   0000B6   4D4E         MOV.B   R14, R13
+   \   0000B8   0D5D         RLA.W   R13
+   \   0000BA   1A4F0C00     MOV.W   0xc(R15), R10
+   \   0000BE   ........     CALLA   #?Subroutine4
+    150                *pBuf++ = HI_UINT16(epDesc->simpleDesc->pAppOutClusterList[idx]);
+   \                     ??CrossCallReturnLabel_9:
+   \   0000C2   1A4F0C00     MOV.W   0xc(R15), R10
+   \   0000C6   ........     CALLA   #?Subroutine3
+    151              }
+   \                     ??znp_afRegisterExtended_4:
+   \   0000CA   5E9F0A00     CMP.B   0xa(R15), R14
+   \   0000CE   F32B         JNC     ??znp_afRegisterExtended_1
+    152          
+    153              pBuf -= len;
+   \   0000D0   2D41         MOV.W   @SP, R13
+   \   0000D2   0D8B         SUB.W   R11, R13
+   \   0000D4   814D0000     MOV.W   R13, 0(SP)
+    154              zapPhySend(zapAppPort, pBuf);
+   \   0000D8   5C42....     MOV.B   &zapAppPort, R12
+   \   0000DC   ........     CALLA   #zapPhySend
+    155              rtrn = ZAP_SRSP_STATUS(pBuf);
+   \   0000E0   2F41         MOV.W   @SP, R15
+   \   0000E2   6A4F         MOV.B   @R15, R10
+    156              zap_msg_deallocate(&pBuf);
+   \   0000E4   0C41         MOV.W   SP, R12
+   \   0000E6   0C53         ADD.W   #0x0, R12
+   \   0000E8   ........     CALLA   #zap_msg_deallocate
+    157            }
+    158          
+    159            return rtrn;
+   \                     ??znp_afRegisterExtended_2:
+   \   0000EC   4C4A         MOV.B   R10, R12
+   \   0000EE   2153         ADD.W   #0x2, SP
+   \   0000F0   3817         POPM.W  #0x4, R11
+   \   0000F2   1001         RETA
+    160          }
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine5:
+   \   000000   1F410400     MOV.W   0x4(SP), R15
+   \   000004   1F53         ADD.W   #0x1, R15
+   \   000006   814F0400     MOV.W   R15, 0x4(SP)
+   \   00000A   1F480400     MOV.W   0x4(R8), R15
+   \   00000E   1E410400     MOV.W   0x4(SP), R14
+   \   000012   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine4:
+   \   000000   0A5D         ADD.W   R13, R10
+   \   000002   18410400     MOV.W   0x4(SP), R8
+   \   000006   E84A0000     MOV.B   @R10, 0(R8)
+   \   00000A   1A410400     MOV.W   0x4(SP), R10
+   \   00000E   1A53         ADD.W   #0x1, R10
+   \   000010   814A0400     MOV.W   R10, 0x4(SP)
+   \   000014   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine3:
+   \   000000   0A5D         ADD.W   R13, R10
+   \   000002   1D410400     MOV.W   0x4(SP), R13
+   \   000006   DD4A01000000 MOV.B   0x1(R10), 0(R13)
+   \   00000C   1D410400     MOV.W   0x4(SP), R13
+   \   000010   1D53         ADD.W   #0x1, R13
+   \   000012   814D0400     MOV.W   R13, 0x4(SP)
+   \   000016   5E53         ADD.B   #0x1, R14
+   \   000018   1001         RETA
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine2:
+   \   000000   1E410400     MOV.W   0x4(SP), R14
+   \   000004   1E53         ADD.W   #0x1, R14
+   \   000006   814E0400     MOV.W   R14, 0x4(SP)
+   \   00000A   1001         RETA
+    161          
+    162          /**************************************************************************************************
+    163           * @fn          znp_nv_read
+    164           *
+    165           * @brief       This function is the ZAP proxy to the ZNP uint8 osal_nv_read() functionality.
+    166           *
+    167           * input parameters
+    168           *
+    169           * @param       id  - Valid NV item Id.
+    170           * @param       ndx - Index offset into item
+    171           * @param       len - Length of data to read.
+    172           * @param       *buf - Data to read.
+    173           *
+    174           * output parameters
+    175           *
+    176           * None.
+    177           *
+    178           * @return      ZSUCCESS if NV data was copied to the parameter 'buf'.
+    179           *              Otherwise, NV_OPER_FAILED for failure.
+    180           **************************************************************************************************
+    181           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   ........     CALLA   #zapSysReq
+   \   000004   6C41         MOV.B   @SP, R12
+   \   000006   2152         ADD.W   #0x4, SP
+   \   000008   1001         RETA
+
+   \                                 In  segment CODE, align 2
+    182          uint8 znp_nv_read(uint16 id, uint8 ndx, uint8 len, void *buf)
+   \                     znp_nv_read:
+    183          {
+   \   000000   2182         SUB.W   #0x4, SP
+    184            uint8 args[4];
+    185          
+    186            args[0] = LO_UINT16(id);
+   \   000002   ........     CALLA   #?Subroutine1
+    187            args[1] = HI_UINT16(id);
+    188            args[2] = ndx;  // TODO - ZNP MT_SYS_OSAL_NV_READ is only supporting uint8 here.
+    189            args[3] = len;  // TODO - ZNP MT_SYS_OSAL_NV_READ is not even supporting len.
+    190          
+    191            zapSysReq(MT_SYS_OSAL_NV_READ, (uint8 *)buf, args);
+   \                     ??CrossCallReturnLabel_1:
+   \   000006   7C42         MOV.B   #0x8, R12
+   \   000008   ....         JMP     ?Subroutine0
+   \   00000A   0343         NOP
+    192            return args[0];
+    193          }
+
+   \                                 In  segment CODE, align 2
+   \                     ?Subroutine1:
+   \   000000   C14C0400     MOV.B   R12, 0x4(SP)
+   \   000004                RPT     #0x8
+   \   000004   47190C10     RRUX.W  R12
+   \   000008   C14C0500     MOV.B   R12, 0x5(SP)
+   \   00000C   C14D0600     MOV.B   R13, 0x6(SP)
+   \   000010   C14E0700     MOV.B   R14, 0x7(SP)
+   \   000014   0E41         MOV.W   SP, R14
+   \   000016   2E52         ADD.W   #0x4, R14
+   \   000018   0D4F         MOV.W   R15, R13
+   \   00001A   1001         RETA
+    194          
+    195          /**************************************************************************************************
+    196           * @fn          znp_nv_write
+    197           *
+    198           * @brief       This function is the ZAP proxy to the ZNP uint8 osal_nv_write() functionality.
+    199           *
+    200           * input parameters
+    201           *
+    202           * @param       id  - Valid NV item Id.
+    203           * @param       ndx - Index offset into item
+    204           * @param       len - Length of data to write.
+    205           * @param       *buf - Data to write.
+    206           *
+    207           * output parameters
+    208           *
+    209           * None.
+    210           *
+    211           * @return      SUCCESS if successful.
+    212           *              NV_ITEM_UNINIT if item did not exist in NV.
+    213           *              NV_OPER_FAILED if failure.
+    214           **************************************************************************************************
+    215           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    216          uint8 znp_nv_write(uint16 id, uint8 ndx, uint8 len, void *buf)
+   \                     znp_nv_write:
+    217          {
+   \   000000   2182         SUB.W   #0x4, SP
+    218            uint8 args[4];
+    219          
+    220            args[0] = LO_UINT16(id);
+   \   000002   ........     CALLA   #?Subroutine1
+    221            args[1] = HI_UINT16(id);
+    222            args[2] = ndx;  // TODO - ZNP MT_SYS_OSAL_NV_WRITE is only supporting uint8 here.
+    223            args[3] = len;  // TODO - ZNP MT_SYS_OSAL_NV_WRITE is only supporting uint8 here.
+    224          
+    225            zapSysReq(MT_SYS_OSAL_NV_WRITE, (uint8 *)buf, args);
+   \                     ??CrossCallReturnLabel_0:
+   \   000006   7C400900     MOV.B   #0x9, R12
+   \   00000A                REQUIRE ?Subroutine0
+   \   00000A                // Fall through to label ?Subroutine0
+    226            return args[0];
+    227          }
+    228          
+    229          /*********************************************************************
+    230           * @fn          znp_ZDO_RegisterForZDOMsg
+    231           *
+    232           * @brief       This function is the ZAP proxy to the ZNP ZDO_RegisterForZDOMsg() functionality.
+    233           *
+    234           * @param       clusterID - What message?
+    235           *
+    236           * @return      ZSuccess - successful, ZMemError if not
+    237           */
+
+   \                                 In  segment CODE, align 2
+    238          ZStatus_t znp_ZDO_RegisterForZDOMsg(uint16 clusterID)
+   \                     znp_ZDO_RegisterForZDOMsg:
+    239          {
+   \   000000   1B15         PUSHM.W #0x2, R11
+   \   000002   2183         SUB.W   #0x2, SP
+   \   000004   0A4C         MOV.W   R12, R10
+    240            uint8 *pBuf, rtrn = ZMemError;
+   \   000006   7B401000     MOV.B   #0x10, R11
+    241          
+    242            // Note that this could be sent AREQ to free up the host (but then no status.)
+    243            if ((pBuf = zap_msg_allocate(2, (uint8)MT_RPC_SYS_ZDO | (uint8)MT_RPC_CMD_SREQ,
+    244                                                    (uint8)MT_ZDO_MSG_CB_REGISTER)))
+   \   00000A   7E403E00     MOV.B   #0x3e, R14
+   \   00000E   7D402500     MOV.B   #0x25, R13
+   \   000012   6C43         MOV.B   #0x2, R12
+   \   000014   ........     CALLA   #zap_msg_allocate
+   \   000018   814C0000     MOV.W   R12, 0(SP)
+   \   00001C   0C93         CMP.W   #0x0, R12
+   \   00001E   1224         JEQ     ??znp_ZDO_RegisterForZDOMsg_0
+    245            {
+    246              pBuf[0] = LO_UINT16(clusterID);
+   \   000020   CC4A0000     MOV.B   R10, 0(R12)
+    247              pBuf[1] = HI_UINT16(clusterID);
+   \   000024                RPT     #0x8
+   \   000024   47190A10     RRUX.W  R10
+   \   000028   2F41         MOV.W   @SP, R15
+   \   00002A   CF4A0100     MOV.B   R10, 0x1(R15)
+    248              zapPhySend(zapAppPort, pBuf);
+   \   00002E   2D41         MOV.W   @SP, R13
+   \   000030   5C42....     MOV.B   &zapAppPort, R12
+   \   000034   ........     CALLA   #zapPhySend
+    249              rtrn = ZAP_SRSP_STATUS(pBuf);
+   \   000038   2F41         MOV.W   @SP, R15
+   \   00003A   6B4F         MOV.B   @R15, R11
+    250              zap_msg_deallocate(&pBuf);
+   \   00003C   0C41         MOV.W   SP, R12
+   \   00003E   0C53         ADD.W   #0x0, R12
+   \   000040   ........     CALLA   #zap_msg_deallocate
+    251            }
+    252          
+    253            return (ZStatus_t)rtrn;
+   \                     ??znp_ZDO_RegisterForZDOMsg_0:
+   \   000044   4C4B         MOV.B   R11, R12
+   \   000046   2153         ADD.W   #0x2, SP
+   \   000048   1A17         POPM.W  #0x2, R11
+   \   00004A   1001         RETA
+    254          }
+    255          
+    256          /**************************************************************************************************
+    257           * @fn          znpSystemReset
+    258           *
+    259           * @brief       This function is the ZAP proxy to the ZNP SystemReset() functionality.
+    260           *
+    261           * input parameters
+    262           *
+    263           * @param       type - Hard or soft reset type: ZNP_RESET_HARD  or ZNP_RESET_SOFT.
+    264           *
+    265           * output parameters
+    266           *
+    267           * None.
+    268           *
+    269           * @return      None.
+    270           **************************************************************************************************
+    271           */
+
+   \                                 In  segment CODE, align 2
+    272          void znpSystemReset(uint8 type)
+   \                     znpSystemReset:
+    273          {
+   \   000000   4C12         PUSH.B  R12
+    274            zapSysReq(MT_SYS_RESET_REQ, NULL, &type);
+   \   000002   0E41         MOV.W   SP, R14
+   \   000004   0E53         ADD.W   #0x0, R14
+   \   000006   0D43         MOV.W   #0x0, R13
+   \   000008   4C43         MOV.B   #0x0, R12
+   \   00000A   ........     CALLA   #zapSysReq
+    275          }
+   \   00000E   2153         ADD.W   #0x2, SP
+   \   000010   1001         RETA
+    276          
+    277          /**************************************************************************************************
+    278          */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+       4  zgSetItem
+             4 -> znp_nv_write
+       6  znpSystemReset
+             6 -> zapSysReq
+      10  znp_ZDO_RegisterForZDOMsg
+            10 -> zapPhySend
+            10 -> zap_msg_allocate
+            10 -> zap_msg_deallocate
+      14  znp_afRegisterExtended
+            14 -> zapPhySend
+            14 -> zap_msg_allocate
+            14 -> zap_msg_deallocate
+       8  znp_nv_read
+             8 -> zapSysReq
+       8  znp_nv_write
+             8 -> zapSysReq
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      10  ?Subroutine0
+      28  ?Subroutine1
+      12  ?Subroutine2
+      26  ?Subroutine3
+      22  ?Subroutine4
+      20  ?Subroutine5
+      10  zgSetItem
+      18  znpSystemReset
+      76  znp_ZDO_RegisterForZDOMsg
+     244  znp_afRegisterExtended
+      12  znp_nv_read
+      10  znp_nv_write
+
+ 
+ 488 bytes in segment CODE
+ 
+ 488 bytes of CODE memory
+
+Errors: none
+Warnings: none
