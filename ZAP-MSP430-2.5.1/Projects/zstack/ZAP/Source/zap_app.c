@@ -224,7 +224,7 @@ static void zapMonInfo(void);
 static void zapKeys(keyChange_t *msg);
 #endif
 static void zapMonitor(void);
-static void zapSync(void);
+
 static void zapSysEvtMsg(void);
 
 //MHMS:Adding function from ZGlobals.c to avoid includes
@@ -713,8 +713,14 @@ static void zapKeys(keyChange_t *msg)
   if (msg->state)  // Shift key.
   {
     if (keys & HAL_KEY_SW_1)
-      //MHMS:
-      HalLcdWriteString("HELLO AGAIN WORLD",HAL_LCD_LINE_7);
+      //MHMS: Toggle node to sent pulse sketch data to Processor program
+      if(EnableUSBPulseSketchTxFlag == 0){
+        HalLcdWriteString("PulseSketch Tx on",HAL_LCD_LINE_8);
+      }
+      else{
+        HalLcdWriteString("PulseSketch Tx off",HAL_LCD_LINE_8);
+      }
+    EnableUSBPulseSketchTxFlag ^= 0x1;  //Toggle Tx via USB for pulsesketch on/off
     {
     }
     if (keys & HAL_KEY_SW_2)
@@ -728,8 +734,8 @@ static void zapKeys(keyChange_t *msg)
     }
     if (keys &HAL_KEY_SW_7){ //S2 + S1 (shift key) on the EXP board
       //MHMS:  Stop sending Test Payload data, But allow check in event
-      osal_set_event(pulseTaskId, PULSE_EVT_CHECKIN);
-      osal_stop_timerEx(pulseTaskId, TEST_EVT_PAYLOAD_TX);
+      osal_set_event(MHMSTaskId, MHMS_EVT_CHECKIN);
+      osal_stop_timerEx(MHMSTaskId, TEST_EVT_PAYLOAD_TX);
     }
   }
   else
@@ -774,7 +780,7 @@ static void zapKeys(keyChange_t *msg)
     }
     if (keys &HAL_KEY_SW_7){ //S2 on the EXP board
       //MHMS:  Start sending Test payload data
-      osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);
+      osal_set_event(MHMSTaskId, TEST_EVT_PAYLOAD_TX);
     
     }
         
@@ -859,7 +865,7 @@ static void zapMonitor(void)
  * @return      None.
  **************************************************************************************************
  */
-static void zapSync(void)
+void zapSync(void)
 {
   uint8 pBuf[Z_EXTADDR_LEN];
 

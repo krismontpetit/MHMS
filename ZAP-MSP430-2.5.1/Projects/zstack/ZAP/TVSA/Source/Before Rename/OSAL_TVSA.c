@@ -57,7 +57,7 @@
 const pTaskEventHandlerFn tasksArr[] = {
   Hal_ProcessEvent,  // HAL should be a higher priority than any ZNP task.
   zapEvt,            // ZAP APP should be the highest priority ZNP task.
-  MHMSAppEvt
+  pulseAppEvt
   
 };
 
@@ -82,7 +82,7 @@ void osalInitTasks( void )
 
   Hal_Init(taskID++);  // HAL should be a higher priority than any ZNP task.
   zapInit(taskID++);   // ZAP APP should be the highest priority ZNP task.
-  MHMSAppInit(taskID);  //MHMS registers endpoint and other initialization stuff
+  pulseAppInit(taskID);  //MHMS registers endpoint and other initialization stuff
 }
 
 /**************************************************************************************************

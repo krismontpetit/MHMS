@@ -68,29 +68,29 @@
 
 // Constants for Pulse Sensor
 
-static const cId_t MHMS_ClusterList[MHMS_CLUSTER_CNT] =
+static const cId_t PULSE_ClusterList[PULSE_CLUSTER_CNT] =
 {
-  MHMS_CLUSTER_ID
+  PULSE_CLUSTER_ID
 };
 
-static const SimpleDescriptionFormat_t MHMS_SimpleDesc =
+static const SimpleDescriptionFormat_t PULSE_SimpleDesc =
 {
-  MHMS_ENDPOINT,
-  MHMS_PROFILE_ID,
-  MHMS_DEVICE_ID,
-  MHMS_DEVICE_VERSION,
-  MHMS_FLAGS,
-  MHMS_CLUSTER_CNT,
-  (cId_t *)MHMS_ClusterList,
-  MHMS_CLUSTER_CNT,
-  (cId_t *)MHMS_ClusterList
+  PULSE_ENDPOINT,
+  PULSE_PROFILE_ID,
+  PULSE_DEVICE_ID,
+  PULSE_DEVICE_VERSION,
+  PULSE_FLAGS,
+  PULSE_CLUSTER_CNT,
+  (cId_t *)PULSE_ClusterList,
+  PULSE_CLUSTER_CNT,
+  (cId_t *)PULSE_ClusterList
 };
 
-static const endPointDesc_t MHMS_epDesc=
+static const endPointDesc_t PULSE_epDesc=
 {
-  MHMS_ENDPOINT,
-  &MHMSTaskId,
-  (SimpleDescriptionFormat_t *)&MHMS_SimpleDesc,
+  PULSE_ENDPOINT,
+  &pulseTaskId,
+  (SimpleDescriptionFormat_t *)&PULSE_SimpleDesc,
   noLatencyReqs,
 };
 /* ------------------------------------------------------------------------------------------------
@@ -109,18 +109,18 @@ static const endPointDesc_t MHMS_epDesc=
  */
 
 #if TVSA_DATA_CNF
-uint8 MHMSCnfErrCnt;
+uint8 pulseCnfErrCnt;
 #endif
 
 //MHMS  Global Variables
-uint8 MHMSTaskId;
+uint8 pulseTaskId;
 
 //Flags to check if a zapsync() was detected
 bool syncAttempted=FALSE;
 bool PanEstablishedwithRouter = FALSE;
 
 //Flag for enabling and disabling direct USB link for communicating with Pulse sketch program. 
-uint8 EnableUSBPulseSketchTxFlag = 0;   
+bool EnableUSBPulseSketchTxFlag;   
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,25 +130,24 @@ uint8 EnableUSBPulseSketchTxFlag = 0;
 
 // Network address of the TVSA Dongle.
 
-static uint16 MHMSAddr;
+static uint16 pulseAddr;
 // Report counter.
-static uint16 MHMSCnt;  //MHMS Question what is this for?
+static uint16 pulseCnt;  //MHMS Question what is this for?
 // ZigBee-required packet transaction sequence number in calls to AF_DataRequest().
 
-static uint8 MHMSTSN;
+static uint8 pulseTSN;
 
 //Data arrays for Over the air data tx and RX
-static uint8 MHMSBuf[MHMS_BUF_LEN];  //MHMS buffer used for recived over the air data
-static uint8 MHMSDat[MHMS_DAT_LEN];  //MHMS define data array length for Pulse sensor
+static uint8 pulseBuf[PULSE_BUF_LEN];  //MHMS buffer used for recived over the air data
+static uint8 pulseDat[PULSE_DAT_LEN];  //MHMS define data array length for Pulse sensor
 static uint8 TestDatTx[MHMS_TEST_PAYLOAD_LEN];
 static uint8 TestRxBuffer[MHMS_TEST_BUFF_LEN];
 
 //Syncronization Flags and other flags
-static bool MHMSEvtDat_sync = FALSE;  
-static bool MHMSEvtReq_sync;
-static bool MHMSEvtCheckin_sync;  
+static bool PulseEvtDat_sync = FALSE;  
+static bool PulseEvtReq_sync;
+static bool PulseEvtCheckin_sync;  
 
-static bool dev_gateway = FALSE;
 
 
 volatile bool QS = FALSE;        // becomes TRUE when Arduino finds a beat.  
@@ -160,23 +159,23 @@ volatile bool QS = FALSE;        // becomes TRUE when Arduino finds a beat.
  * ------------------------------------------------------------------------------------------------
  */
 
-static void MHMSAfMsgRx(afIncomingMSGPacket_t *msg);
-static void MHMSSysEvtMsg(void);
+static void pulseAfMsgRx(afIncomingMSGPacket_t *msg);
+static void pulseSysEvtMsg(void);
 
 
 static void pulseBPM(uint8 *pulsedata);  //MHMS Pulse calculation function
 static void pulseDataCalc(void);
-static void MHMSDataReq(void);
-static void MHMSZdoStateChange(void);
+static void pulseDataReq(void);
+static void pulseZdoStateChange(void);
 
-static void MHMSNodeCheckIn(void);
+static void pulseNodeCheckIn(void);
 static void TestPayloadTx(void);
 
-static void MHMSAnnce(void);
-static void MHMSDataRx(afIncomingMSGPacket_t *msg);
-static void MHMSTestingDataRx(afIncomingMSGPacket_t *msg);
+static void pulseAnnce(void);
+static void pulseDataRx(afIncomingMSGPacket_t *msg);
+static void pulseTestingDataRx(afIncomingMSGPacket_t *msg);
 
-static void MHMSUartRx(uint8 port, uint8 event);
+static void pulseUartRx(uint8 port, uint8 event);
 
 
 #ifndef TVSA_DEMO  //MHMS Question do we need this?
@@ -187,7 +186,7 @@ static void sysPingRsp(void);
 /*  //MHMS Pulse Sensor Functions */ 
 
 /**************************************************************************************************
- * @fn          MHMSAppInit
+ * @fn          pulseAppInit
  *
  * @brief       This function is the application's task initialization.
  *
@@ -202,7 +201,7 @@ static void sysPingRsp(void);
  * @return      None.
  **************************************************************************************************
  */
-void MHMSAppInit(uint8 id)
+void pulseAppInit(uint8 id)
 {
 
   halUARTCfg_t uartConfig;
@@ -210,8 +209,8 @@ void MHMSAppInit(uint8 id)
   uartConfig.configured           = TRUE;              // 2x30 don't care - see uart driver.
   
 
-  //uartConfig.baudRate             = HAL_UART_BR_38400;        //MHMS This baud rate is required to communicate with Zigbee Sensor Monitor
-  uartConfig.baudRate             = HAL_UART_BR_115200;         //MHMS This baud rate is required to communicate with the Pulse processing program on PC
+  uartConfig.baudRate             = HAL_UART_BR_38400;        //MHMS This baud rate is required to communicate with Zigbee Sensor Monitor
+  //uartConfig.baudRate             = HAL_UART_BR_115200;         //MHMS This baud rate is required to communicate with the Pulse processing program on PC
 
   
   uartConfig.flowControl          = FALSE;
@@ -220,20 +219,20 @@ void MHMSAppInit(uint8 id)
   uartConfig.tx.maxBufSize        = 254;               // 2x30 don't care - see uart driver.
   uartConfig.idleTimeout          = 6;                 // 2x30 don't care - see uart driver.
   uartConfig.intEnable            = TRUE;              // 2x30 don't care - see uart driver.
-  uartConfig.callBackFunc         = MHMSUartRx;
-  HalUARTOpen(MHMS_PORT, &uartConfig);
+  uartConfig.callBackFunc         = pulseUartRx;
+  HalUARTOpen(PULSE_PORT, &uartConfig);
 
-    MHMSDat[MHMS_TYP_IDX] = (uint8)MHMS_DEVICE_ID;
-    TestDatTx[MHMS_TEST_PAYLOAD_LEN - 3] = (uint8)MHMS_DEVICE_ID;
-#if defined MHMS_SRC_RTG
+    pulseDat[PULSE_TYP_IDX] = (uint8)PULSE_DEVICE_ID;
+    TestDatTx[MHMS_TEST_PAYLOAD_LEN - 3] = (uint8)PULSE_DEVICE_ID;
+#if defined PULSE_SRC_RTG
 
-    MHMSDat[MHMS_OPT_IDX] = MHMS_OPT_SRC_RTG;
-    TestDatTx[MHMS_TEST_PAYLOAD_LEN - 1] = MHMS_OPT_SRC_RTG;
+    pulseDat[PULSE_OPT_IDX] = PULSE_OPT_SRC_RTG;
+    TestDatTx[MHMS_TEST_PAYLOAD_LEN - 1] = PULSE_OPT_SRC_RTG;
 #endif
 
-  MHMSTaskId = id;                                    
-  MHMSAddr = INVALID_NODE_ADDR;
-  (void)afRegister((endPointDesc_t *)&MHMS_epDesc);  //MHMS registers endpoint object
+  pulseTaskId = id;                                    
+  pulseAddr = INVALID_NODE_ADDR;
+  (void)afRegister((endPointDesc_t *)&PULSE_epDesc);  //MHMS registers endpoint object
   
   //Initialize Px.y (5.0) to power Pulse sensor
   P5DIR = 0x1;  //Set IO direction as output
@@ -249,7 +248,7 @@ P4OUT = 0x1;
 }
 
 /**************************************************************************************************
- * @fn          MHMSAppEvt
+ * @fn          pulseAppEvt
  *
  * @brief       This function is called to process the OSAL events for the task.
  *
@@ -265,7 +264,7 @@ P4OUT = 0x1;
  * @return      evts - OSAL events bit mask of unprocessed events.
  **************************************************************************************************
  */
-uint16 MHMSAppEvt(uint8 id, uint16 evts)
+uint16 pulseAppEvt(uint8 id, uint16 evts)
 {
   uint16 mask = 0;
   (void)id;  //MHMS casts a void to ignore warning for not using variable
@@ -273,29 +272,29 @@ uint16 MHMSAppEvt(uint8 id, uint16 evts)
   if (evts & SYS_EVENT_MSG)
   {
     mask = SYS_EVENT_MSG;
-    MHMSSysEvtMsg();
+    pulseSysEvtMsg();
   }
 
-  else if (evts & MHMS_EVT_ANN)
+  else if (evts & PULSE_EVT_ANN)
   {
-    mask = MHMS_EVT_ANN;
-   MHMSAnnce();
+    mask = PULSE_EVT_ANN;
+   pulseAnnce();
   }
 
-  else if (evts & MHMS_EVT_DAT)
+  else if (evts & PULSE_EVT_DAT)
   {
-    mask = MHMS_EVT_DAT;
+    mask = PULSE_EVT_DAT;
     pulseDataCalc();
   }
-  else if (evts & MHMS_EVT_REQ)
+  else if (evts & PULSE_EVT_REQ)
   {
-    mask = MHMS_EVT_REQ;
-    MHMSDataReq();
+    mask = PULSE_EVT_REQ;
+    pulseDataReq();
   }
-    else if (evts & MHMS_EVT_CHECKIN)
+    else if (evts & PULSE_EVT_CHECKIN)
   {
-    mask = MHMS_EVT_CHECKIN;
-    MHMSNodeCheckIn();
+    mask = PULSE_EVT_CHECKIN;
+    pulseNodeCheckIn();
   }
 
 else if (evts & TEST_EVT_PAYLOAD_TX)
@@ -317,9 +316,9 @@ else if (evts & TEST_EVT_PAYLOAD_TX)
 
 
 /**************************************************************************************************
- * @fn          MHMSSysEvtMsg
+ * @fn          pulseSysEvtMsg
  *
- * @brief       This function is called by MHMSAppEvt() to process all of the pending OSAL messages.
+ * @brief       This function is called by pulseAppEvt() to process all of the pending OSAL messages.
  *
  * input parameters
  *
@@ -332,11 +331,11 @@ else if (evts & TEST_EVT_PAYLOAD_TX)
  * @return      None.
  **************************************************************************************************
  */
-static void MHMSSysEvtMsg(void)
+static void pulseSysEvtMsg(void)
 {
   uint8 *msg;
 
-  while ((msg = osal_msg_receive(MHMSTaskId)))
+  while ((msg = osal_msg_receive(pulseTaskId)))
   {
     switch (*msg)
     {
@@ -344,20 +343,20 @@ static void MHMSSysEvtMsg(void)
     case AF_DATA_CONFIRM_CMD:
       if (ZSuccess != ((afDataConfirm_t *)msg)->hdr.status)
       {
-        if (0 == ++MHMSCnfErrCnt)
+        if (0 == ++pulseCnfErrCnt)
         {
-          MHMSCnfErrCnt = 255;
+          pulseCnfErrCnt = 255;
         }
       }
       break;
 #endif
 
     case AF_INCOMING_MSG_CMD:  //MHMS this a router processing the incomming command from the coordinator
-      MHMSAfMsgRx((afIncomingMSGPacket_t *)msg);
+      pulseAfMsgRx((afIncomingMSGPacket_t *)msg);
       break;
 
     case ZDO_STATE_CHANGE:
-      MHMSZdoStateChange();
+      pulseZdoStateChange();
       break;
 
     default:
@@ -369,9 +368,9 @@ static void MHMSSysEvtMsg(void)
 }
 
 /**************************************************************************************************
- * @fn          MHMSAfMsgRx
+ * @fn          pulseAfMsgRx
  *
- * @brief       This function is called by MHMSSysEvtMsg() to process an incoming AF message.
+ * @brief       This function is called by pulseSysEvtMsg() to process an incoming AF message.
  *
  * input parameters
  *
@@ -384,53 +383,49 @@ static void MHMSSysEvtMsg(void)
  * @return      None.
  **************************************************************************************************
  */
-static void MHMSAfMsgRx(afIncomingMSGPacket_t *msg)
+static void pulseAfMsgRx(afIncomingMSGPacket_t *msg)
 {
   uint8 *buf = msg->cmd.Data;
   
   if(PanEstablishedwithRouter == FALSE & devState == DEV_ZB_COORD){
     if(zap_set_logicalType(ZG_DEVICETYPE_ROUTER)){
-      HalLcdWriteString("Ready",HAL_LCD_LINE_7);
+      HalLcdWriteString("Should be Router",HAL_LCD_LINE_7);
       }
     PanEstablishedwithRouter = TRUE;
         
-    if (ZSuccess != osal_start_timerEx(MHMSTaskId, MHMS_EVT_ANN, MHMS_DLY_ANN))
+    if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, PULSE_DLY_ANN))
       {
-        (void)osal_set_event(MHMSTaskId, MHMS_EVT_ANN);
+        (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
       }
   }
-  else if(PanEstablishedwithRouter == FALSE & devState == DEV_ROUTER){
-    HalLcdWriteString("Ready",HAL_LCD_LINE_7);
-    PanEstablishedwithRouter = TRUE;
-  }
-  else {
-  switch (buf[MHMS_CMD_IDX])
+  else{
+  
+  switch (buf[PULSE_CMD_IDX])
   {
 
-  case MHMS_CMD_DAT:  //Nodes will send this by default
-    MHMSDataRx(msg);
+  case PULSE_CMD_DAT:  //Nodes will send this by default
+    pulseDataRx(msg);
     break;
 
-  case MHMS_CMD_BEG:
-    if (INVALID_NODE_ADDR == MHMSAddr)
+  case PULSE_CMD_BEG:
+    if (INVALID_NODE_ADDR == pulseAddr)
     {
-      if(dev_gateway == FALSE){
       NLME_SetPollRate(0);
-      if(MHMSEvtDat_sync == FALSE){
-      (void)osal_set_event(MHMSTaskId, MHMS_EVT_DAT);           //Sync Pulsedat event operation
-       }
+      if(PulseEvtDat_sync == FALSE){
+      (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);           //Sync Pulsedat event operation
+      
       }
     }
-    MHMSAddr = msg->srcAddr.addr.shortAddr; // BUILD_UINT16(buf[MHMS_ADR_LSB], buf[MHMS_ADR_MSB]);
+    pulseAddr = msg->srcAddr.addr.shortAddr; // BUILD_UINT16(buf[PULSE_ADR_LSB], buf[PULSE_ADR_MSB]);
     break;
 
-  case MHMS_CMD_END:
+  case PULSE_CMD_END:
     NLME_SetPollRate(POLL_RATE);
-    MHMSAddr = INVALID_NODE_ADDR;
+    pulseAddr = INVALID_NODE_ADDR;
     break;
 
-  case MHMS_CMD_DAT_TEST:  //This is used for testing different payload sizes. Not used in normal operation
-    MHMSTestingDataRx(msg);
+  case PULSE_CMD_DAT_TEST:  //This is used for testing different payload sizes. Not used in normal operation
+    pulseTestingDataRx(msg);
     break;
 
   default:
@@ -439,9 +434,9 @@ static void MHMSAfMsgRx(afIncomingMSGPacket_t *msg)
 } //end else
 }
 /**************************************************************************************************
- * @fn          MHMSDataRx
+ * @fn          pulseDataRx
  *
- * @brief       This function is called by MHMSAfMsgRx() to process incoming MHMS data.
+ * @brief       This function is called by pulseAfMsgRx() to process incoming PULSE data.
  *
  * input parameters
  *
@@ -454,43 +449,44 @@ static void MHMSAfMsgRx(afIncomingMSGPacket_t *msg)
  * @return      None.
  **************************************************************************************************
  */
-static void MHMSDataRx(afIncomingMSGPacket_t *msg)
+static void pulseDataRx(afIncomingMSGPacket_t *msg)
 {
   uint8 fcs = 0, idx;
     
   // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
-  if (INVALID_NODE_ADDR == MHMSAddr)
+  if (INVALID_NODE_ADDR == pulseAddr)
   {
-    (void)osal_set_event(MHMSTaskId, MHMS_EVT_ANN);
+    (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
   }
 
-  MHMSBuf[MHMS_SOP_IDX] = MHMS_SOP_VAL;
-  MHMSBuf[MHMS_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
-  MHMSBuf[MHMS_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+  pulseBuf[PULSE_SOP_IDX] = PULSE_SOP_VAL;
+  pulseBuf[PULSE_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+  pulseBuf[PULSE_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
 
   // 1st byte of message is skipped - CMD is always 0 for data.
-  (void)osal_memcpy(MHMSBuf+MHMS_DAT_OFF, msg->cmd.Data+1, MHMS_DAT_LEN-1);  //MHMS copies one buffer to another
+  (void)osal_memcpy(pulseBuf+PULSE_DAT_OFF, msg->cmd.Data+1, PULSE_DAT_LEN-1);  //MHMS copies one buffer to another
 
-  for (idx = MHMS_ADR_LSB; idx < MHMS_FCS_IDX; idx++)
+  for (idx = PULSE_ADR_LSB; idx < PULSE_FCS_IDX; idx++)
   {
-    fcs ^= MHMSBuf[idx];
+    fcs ^= pulseBuf[idx];
   }
-  MHMSBuf[idx] = fcs;
+  pulseBuf[idx] = fcs;
   
   uint8 deviceBPM;
   uint8 parentAddrLSB;
   uint8 parentAddrMSB;
   uint8 zsensorBuf[15];
   
-  parentAddrLSB= MHMSBuf[11];
-  parentAddrMSB= MHMSBuf[12];  
+  parentAddrLSB= pulseBuf[11];
+  parentAddrMSB= pulseBuf[12];  
   
-  if(MHMSBuf[13] == CHECK_IN_INACTIVE){
-  deviceBPM = MHMSBuf[15];
+  if(pulseBuf[13] == CHECK_IN_INACTIVE){
+  deviceBPM = pulseBuf[15];
   }
   else{
   deviceBPM = 5;
   }
+  //deviceVolt = 0xFF;
   
   //Start of Frame Delimiter
   zsensorBuf[0]=0xFE;
@@ -519,17 +515,16 @@ static void MHMSDataRx(afIncomingMSGPacket_t *msg)
   //FCS Check on the middle 13 bytes
   zsensorBuf[14] = calcFCS(&zsensorBuf[1], 13 );
 
-  HalUARTWrite(MHMS_PORT, zsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
+  HalUARTWrite(PULSE_PORT, zsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
   
 /*  //MHMS USB communication with Pulse sensor Processor application
-   
-  
+
   uint8 BPMBuf[7] = {'B',0,0,0,10,13};
   uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
   uint8 SignalBuf[7] = {'S',0,0,0,10,13};
   
   //conversion Signal Dec to ASCII
-  uint16 temp = (BUILD_UINT16(MHMSBuf[16], MHMSBuf[17])) - 400;
+  uint16 temp = (BUILD_UINT16(pulseBuf[16], pulseBuf[17])) - 400;
   if(temp > 999){
     SignalBuf[1] = '9';
     SignalBuf[2] = '9';
@@ -542,29 +537,29 @@ static void MHMSDataRx(afIncomingMSGPacket_t *msg)
   }
   
   //conversion BPM Dec to ASCII
-  temp = (uint16)MHMSBuf[14];
+  temp = (uint16)pulseBuf[14];
   BPMBuf[1] = (uint8)((temp/100)+ 48);
   BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
   BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
   
   //conversion IBI Dec to ASCII
-  temp = (uint16)MHMSBuf[19];
+  temp = (uint16)pulseBuf[19];
   IBIBuf[1] = (uint8)((temp/100)+ 48);
   IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
   IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
    
 
-  //HalUARTWrite(MHMS_PORT, SignalBuf, 6);
- // HalUARTWrite(MHMS_PORT, BPMBuf, 6);
- // HalUARTWrite(MHMS_PORT, IBIBuf, 6);
+  //HalUARTWrite(PULSE_PORT, SignalBuf, 6);
+ // HalUARTWrite(PULSE_PORT, BPMBuf, 6);
+ // HalUARTWrite(PULSE_PORT, IBIBuf, 6);
 */
 
 }
 
 /**************************************************************************************************
- * @fn          MHMSTestingDataRx
+ * @fn          pulseTestingDataRx
  *
- * @brief       This function is called by MHMSAfMsgRx() to process incoming data  This is not used in 
+ * @brief       This function is called by pulseAfMsgRx() to process incoming data  This is not used in 
  *              normal operation.  This is used for testing system with differnt payload sizes.
  * input parameters
  *
@@ -577,7 +572,7 @@ static void MHMSDataRx(afIncomingMSGPacket_t *msg)
  * @return      None.
  **************************************************************************************************
  */
-static void MHMSTestingDataRx(afIncomingMSGPacket_t *msg)
+static void pulseTestingDataRx(afIncomingMSGPacket_t *msg)
 {
    uint8 fcs = 0, idx;
    int8 Rssi;
@@ -589,19 +584,19 @@ static void MHMSTestingDataRx(afIncomingMSGPacket_t *msg)
   
 
   // Last announce broadcast to stop must have expired before a parent could forward to a ZED.
-  if (INVALID_NODE_ADDR == MHMSAddr)
+  if (INVALID_NODE_ADDR == pulseAddr)
   {
-    (void)osal_set_event(MHMSTaskId, MHMS_EVT_ANN);
+    (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
   }
 
-  TestRxBuffer[MHMS_SOP_IDX] = MHMS_SOP_VAL;
-  TestRxBuffer[MHMS_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
-  TestRxBuffer[MHMS_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
+  TestRxBuffer[PULSE_SOP_IDX] = PULSE_SOP_VAL;
+  TestRxBuffer[PULSE_ADR_LSB] = LO_UINT16(msg->srcAddr.addr.shortAddr);
+  TestRxBuffer[PULSE_ADR_MSB] = HI_UINT16(msg->srcAddr.addr.shortAddr);
 
   // 1st byte of message is skipped - CMD is always 0 for data.
-  (void)osal_memcpy(TestRxBuffer+MHMS_DAT_OFF, msg->cmd.Data+1, MHMS_TEST_PAYLOAD_LEN-1);  //MHMS copies one buffer to another
+  (void)osal_memcpy(TestRxBuffer+PULSE_DAT_OFF, msg->cmd.Data+1, MHMS_TEST_PAYLOAD_LEN-1);  //MHMS copies one buffer to another
 
-  for (idx = MHMS_ADR_LSB; idx < MHMS_FCS_IDX; idx++)
+  for (idx = PULSE_ADR_LSB; idx < MHMS_FCS_IDX; idx++)
   {
     fcs ^= TestRxBuffer[idx];
   }
@@ -645,16 +640,16 @@ static void MHMSTestingDataRx(afIncomingMSGPacket_t *msg)
   //FCS Check on the middle 13 bytes
   tsensorBuf[14] = calcFCS(&tsensorBuf[1], 13 );
 
-  HalUARTWrite(MHMS_PORT, tsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
+  HalUARTWrite(PULSE_PORT, tsensorBuf, 15);  //For communicating with the Zigbee sensor Monitor
   
   //osal_mem_free(TestRxBuffer);
 }
 
 
 /**************************************************************************************************
- * @fn          MHMSZdoStateChange 
+ * @fn          pulseZdoStateChange 
  *
- * @brief       This function is called by MHMSSysEvtMsg() for a ZDO_STATE_CHANGE message.
+ * @brief       This function is called by pulseSysEvtMsg() for a ZDO_STATE_CHANGE message.
  *
  * input parameters
  *
@@ -667,81 +662,84 @@ static void MHMSTestingDataRx(afIncomingMSGPacket_t *msg)
  * @return      None.
  **************************************************************************************************
  */
-static void MHMSZdoStateChange(void)
+static void pulseZdoStateChange(void)
 {
   if(DEV_ZB_COORD == devState) 
   {
-    (void)osal_stop_timerEx(MHMSTaskId, MHMS_EVT_ANN);
+    (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_ANN);
 
     if ((DEV_ZB_COORD == devState) || (DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
     {
 
-      if (INVALID_NODE_ADDR == MHMSAddr)
+      if (INVALID_NODE_ADDR == pulseAddr)
       {
-      MHMSAddr = NWK_PAN_COORD_ADDR;
+      pulseAddr = NWK_PAN_COORD_ADDR;
       }
 
-      if (INVALID_NODE_ADDR != MHMSAddr)
+
+      if (INVALID_NODE_ADDR != pulseAddr)
       {
-        if (ZSuccess != osal_start_timerEx(MHMSTaskId, MHMS_EVT_ANN, MHMS_DLY_ANN))
+        if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, PULSE_DLY_ANN))
         {
-          (void)osal_set_event(MHMSTaskId, MHMS_EVT_ANN);
+          (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
         }
       }
     }
   }
   else if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState))
   {
-    (void)osal_stop_timerEx(MHMSTaskId, MHMS_EVT_DAT);
-    MHMSEvtDat_sync = FALSE; //allow node to respond to Anounce commands to begin pulse collection
+    (void)osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
+    PulseEvtDat_sync = FALSE; //allow node to respond to Anounce commands to begin pulse collection
 
         if ((DEV_ROUTER == devState) || (DEV_END_DEVICE == devState)) //
         {
           uint16 tmp = NLME_GetCoordShortAddr();
-          uint8 dly = MHMS_STG_DAT;
+          uint8 dly = PULSE_STG_DAT;
 
-          MHMSDat[MHMS_PAR_LSB] = LO_UINT16(tmp);
-          MHMSDat[MHMS_PAR_MSB] = HI_UINT16(tmp);
+          pulseDat[PULSE_PAR_LSB] = LO_UINT16(tmp);
+          pulseDat[PULSE_PAR_MSB] = HI_UINT16(tmp);
           
-          TestDatTx[MHMS_PAR_LSB] = LO_UINT16(tmp);
-          TestDatTx[MHMS_PAR_MSB] = HI_UINT16(tmp);
+          TestDatTx[PULSE_PAR_LSB] = LO_UINT16(tmp);
+          TestDatTx[PULSE_PAR_MSB] = HI_UINT16(tmp);
           if ((DEV_ROUTER == devState) || (DEV_ZB_COORD == devState))
           {
-            MHMSDat[MHMS_TYP_IDX] |= 0x80;
+            pulseDat[PULSE_TYP_IDX] |= 0x80;
             TestDatTx[MHMS_TEST_PAYLOAD_LEN-3] |= 0x80;
 
           }
           else
           {
-            MHMSDat[MHMS_TYP_IDX] &= (0xFF ^ 0x80);
+            pulseDat[PULSE_TYP_IDX] &= (0xFF ^ 0x80);
             TestDatTx[MHMS_TEST_PAYLOAD_LEN-3] &= (0xFF ^ 0x80);
 
           }
 
-      #if TVSA_DONGLE_IS_ZC
-          if (INVALID_NODE_ADDR == MHMSAddr)
+      #if TVSA_DONGLE_IS_ZC  //MHMS do we need this?
+          if (INVALID_NODE_ADDR == pulseAddr)
           {
-
-            MHMSAddr = NWK_PAN_COORD_ADDR;
+            // Assume ZC is the TVSA Dongle until a TVSA_CMD_BEG gives a different address.
+            pulseAddr = NWK_PAN_COORD_ADDR;
           }
       #endif
 
-          if (INVALID_NODE_ADDR != MHMSAddr && dev_gateway == FALSE)
+          if (INVALID_NODE_ADDR != pulseAddr)
           {
-            if (ZSuccess != osal_start_timerEx(MHMSTaskId, MHMS_EVT_DAT, (dly + MHMS_DLY_MIN)))
+            if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, (dly + PULSE_DLY_MIN)))
             {
-              (void)osal_set_event(MHMSTaskId, MHMS_EVT_DAT);
+              (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
             }
           }
 
 
           if (0 == 0)
           {
-            (void)osal_cpyExtAddr(MHMSDat+MHMS_IEE_IDX, &aExtendedAddress);
-            (void)osal_cpyExtAddr(TestDatTx+MHMS_IEE_IDX, &aExtendedAddress);
+            (void)osal_cpyExtAddr(pulseDat+PULSE_IEE_IDX, &aExtendedAddress);
+            (void)osal_cpyExtAddr(TestDatTx+PULSE_IEE_IDX, &aExtendedAddress);
           }
         }
   }
+     
+    
 
 #if defined LCD_SUPPORTED
   HalLcdWriteValue(devState, 10, HAL_LCD_LINE_4);
@@ -750,9 +748,9 @@ static void MHMSZdoStateChange(void)
 
 
 /**************************************************************************************************
- * @fn          MHMSAnnce
+ * @fn          pulseAnnce
  *
- * @brief       This function is called by MHMSAppEvt() to send a TVSA announce to start or stop.
+ * @brief       This function is called by pulseAppEvt() to send a TVSA announce to start or stop.
  *
  * input parameters
  *
@@ -765,39 +763,39 @@ static void MHMSZdoStateChange(void)
  * @return      None.
  **************************************************************************************************
  */
-static void MHMSAnnce(void)
+static void pulseAnnce(void)
 {
   uint8 msg[3];
   afAddrType_t addr;
   
   addr.addr.shortAddr = NWK_BROADCAST_SHORTADDR_DEVALL;
   addr.addrMode = afAddrBroadcast;
-  addr.endPoint = MHMS_ENDPOINT;
+  addr.endPoint = PULSE_ENDPOINT;
 
-  if (INVALID_NODE_ADDR != MHMSAddr)
+  if (INVALID_NODE_ADDR != pulseAddr)
   {
-    msg[MHMS_CMD_IDX] = MHMS_CMD_BEG;
-    if (ZSuccess != osal_start_timerEx(MHMSTaskId, MHMS_EVT_ANN, MHMS_DLY_ANN))
+    msg[PULSE_CMD_IDX] = PULSE_CMD_BEG;
+    if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, PULSE_DLY_ANN))
     {
-      (void)osal_set_event(MHMSTaskId, MHMS_EVT_ANN);
+      (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
     }
   }
   else
   {
-    msg[MHMS_CMD_IDX] = MHMS_CMD_END;
+    msg[PULSE_CMD_IDX] = PULSE_CMD_END;
   }
 
-  msg[MHMS_ADR_LSB] = LO_UINT16(MHMSAddr);
-  msg[MHMS_ADR_MSB] = HI_UINT16(MHMSAddr);
+  msg[PULSE_ADR_LSB] = LO_UINT16(pulseAddr);
+  msg[PULSE_ADR_MSB] = HI_UINT16(pulseAddr);
 
-  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&MHMS_epDesc, MHMS_CLUSTER_ID,
-                                          3, msg, &MHMSTSN, AF_TX_OPTIONS_NONE, AF_DEFAULT_RADIUS))
+  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+                                          3, msg, &pulseTSN, AF_TX_OPTIONS_NONE, AF_DEFAULT_RADIUS))
   {
-    osal_set_event(MHMSTaskId, MHMS_EVT_ANN);
+    osal_set_event(pulseTaskId, PULSE_EVT_ANN);
   }
   else
   {
-    MHMSCnt++;
+    pulseCnt++;
   }
 }
 
@@ -805,9 +803,9 @@ static void MHMSAnnce(void)
 /**************************************************************************************************
  * @fn          pulseDataCalc
  *
- * @brief       This function is called by MHMSAppEvt() to calculate the data for a MHMS report.
+ * @brief       This function is called by pulseAppEvt() to calculate the data for a PULSE report.
  *              The function will called on a 2ms interval and detect whether a pulse is being measured.
- *              If a pulse is determined it will invoke the MHMSdataReq interrupt timer (20ms intervals)
+ *              If a pulse is determined it will invoke the PulsedataReq interrupt timer (20ms intervals)
  *
  * input parameters
  *
@@ -822,93 +820,48 @@ static void MHMSAnnce(void)
  */
 static void pulseDataCalc(void)
 {
-  MHMSEvtDat_sync = TRUE;      //Pulse Data collection has been synced, no need to respond to annc commands to set EVT
-  static int Pulse_sketch_count = 0;
+  PulseEvtDat_sync = TRUE;      //Pulse Data collection has been synced, no need to respond to annc commands to set EVT
   
-  if (INVALID_NODE_ADDR == MHMSAddr)
+  if (INVALID_NODE_ADDR == pulseAddr)
   {
     return;
   }
   
-  if (ZSuccess != osal_start_timerEx(MHMSTaskId, MHMS_EVT_DAT, MHMS_DLY_DAT))  //If the timer can't be started set event flag again for it to be service again
+  if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_DAT, PULSE_DLY_DAT))  //If the timer can't be started set event flag again for it to be service again
   {
-    (void)osal_set_event(MHMSTaskId, MHMS_EVT_DAT);
+    (void)osal_set_event(pulseTaskId, PULSE_EVT_DAT);
   }
-  pulseBPM(MHMSDat);  //Function to collect/calculate Pulse
+  pulseBPM(pulseDat);  //Function to collect/calculate Pulse
 
 #if TVSA_DATA_CNF
-  MHMSDat[MHMS_RTG_IDX] = MHMSCnfErrCnt;
+  pulseDat[PULSE_RTG_IDX] = pulseCnfErrCnt;
 #else
-  MHMSDat[MHMS_RTG_IDX] = 0;
+  pulseDat[PULSE_RTG_IDX] = 0;
 #endif
   
-if(QS == TRUE && MHMSEvtReq_sync == FALSE){//If pulse is being measured synchronize MHMSdatareq event
-  osal_set_event(MHMSTaskId, MHMS_EVT_REQ);
-  MHMSEvtReq_sync = TRUE;
+  
+ if(QS == TRUE && PulseEvtReq_sync == FALSE){//If pulse is being measured synchronize pulsedatareq event
+  osal_set_event(pulseTaskId, PULSE_EVT_REQ);
+  PulseEvtReq_sync = TRUE;
     }  
- else if(QS == FALSE && MHMSEvtCheckin_sync == FALSE)
+ else if(QS == FALSE && PulseEvtCheckin_sync == FALSE)
   {
-  osal_set_event(MHMSTaskId, MHMS_EVT_CHECKIN);  //Since no pulse data is being collected, just send check in data to gateway
-  MHMSEvtCheckin_sync = TRUE;
+  osal_set_event(pulseTaskId, PULSE_EVT_CHECKIN);  //Since no pulse data is being collect, just send check in data to coordinator
+  PulseEvtCheckin_sync = TRUE;
   }
  
-  Pulse_sketch_count++;
-
-
-  //MHMS USB communication with Pulse sensor Processor application
-  
-  if(EnableUSBPulseSketchTxFlag == TRUE && Pulse_sketch_count >= 10){
-  
-  uint8 BPMBuf[7] = {'B',0,0,0,10,13};
-  uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
-  uint8 SignalBuf[7] = {'S',0,0,0,10,13};
-  
-  Pulse_sketch_count = 0;  //reset count
- 
-  //conversion Signal Dec to ASCII
-  uint16 temp = (BUILD_UINT16(MHMSDat[15], MHMSDat[16])) - 400;
-  if(temp > 999){
-    SignalBuf[1] = '9';
-    SignalBuf[2] = '9';
-    SignalBuf[3] = '9';
-  }
-  else { 
-    SignalBuf[1] = (uint8)((temp/100)+ 48);
-    SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
-    SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
-  }
-  
-  //conversion BPM Dec to ASCII
-  temp = (uint16)MHMSDat[13];
-  BPMBuf[1] = (uint8)((temp/100)+ 48);
-  BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
-  BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
-  
-  //conversion IBI Dec to ASCII
-  temp = (uint16)MHMSDat[18];
-  IBIBuf[1] = (uint8)((temp/100)+ 48);
-  IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
-  IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
-   
-  
-  HalUARTWrite(0, SignalBuf, 6);
-  HalUARTWrite(0, BPMBuf, 6);
-  HalUARTWrite(0, IBIBuf, 6);
-}
-
-
 }
 
 /**************************************************************************************************
  * @fn          pulseBPM
  *
  * @brief       This function is called by pulseDataCalc().  This function contains the main algorithm for 
- *              pulse calculation that originally develop.
- *              
+ *              pulse calculation that originally developed by .
+ *              T
  *
  * input parameters
  *
- * Pointer to the MHMSdata array that will be sent over the air.
+ * Pointer to the pulsedata array that will be sent over the air.
  *
  * output parameters
  *
@@ -937,8 +890,8 @@ static  int thresh = 512;                // used to find instant moment of heart
 static  int amp = 100;                   // used to hold amplitude of pulse waveform
 static  bool firstBeat = TRUE;        // used to seed rate array so we startup with reasonable BPM
 static  bool secondBeat = TRUE;       // used to seed rate array so we startup with reasonable BPM
-BPM = pulsedata[MHMS_BPM];                         // used to hold the pulse rate
-IBI = pulsedata[MHMS_IBI];                         // holds the time between beats, the Inter-Beat Interval
+BPM = pulsedata[PULSE_BPM];                         // used to hold the pulse rate
+IBI = pulsedata[PULSE_IBI];                         // holds the time between beats, the Inter-Beat Interval
 
      P4OUT = 0x0;
 
@@ -1030,23 +983,25 @@ if (Number > 500){                                   // avoid high frequency noi
      }
 
 //MHMS Loading 16 bit results into 8 bit blocks for pulsedata array              
-pulsedata[MHMS_BPM] = (uint8)((BPM & 0x00FF));
-pulsedata[MHMS_RAW_MSB] = (uint8)((Signal >> 8));
-pulsedata[MHMS_RAW_LSB] = (uint8)((Signal & 0x00FF));
-pulsedata[MHMS_IBI] = (uint8)((IBI & 0x00FF));
+pulsedata[PULSE_BPM] = (uint8)((BPM & 0x00FF));
+pulsedata[PULSE_RAW_MSB] = (uint8)((Signal >> 8));
+pulsedata[PULSE_RAW_LSB] = (uint8)((Signal & 0x00FF));
+pulsedata[PULSE_IBI] = (uint8)((IBI & 0x00FF));
 
-pulsedata[MHMS_BPM_CHAR] = 'B';
-pulsedata[MHMS_RAW_CHAR] = 'S';
-pulsedata[MHMS_IBI_CHAR] = 'Q';
+pulsedata[PULSE_BPM_CHAR] = 'B';
+pulsedata[PULSE_RAW_CHAR] = 'S';
+pulsedata[PULSE_IBI_CHAR] = 'Q';
+
+//HalLcdWriteStringValue("Signal:",Signal, 10, 7); //MHMS  for testing ADC values
 
      P4OUT = 0x1;
   //sei();                                     // enable interrupts when youre done!
 }// end isr
 
 /**************************************************************************************************
- * @fn          MHMSDataReq
+ * @fn          pulseDataReq
  *
- * @brief       This function is called by MHMSAppEvt() to send a MHMS data report. When it is detected that
+ * @brief       This function is called by pulseAppEvt() to send a PULSE data report. When it is detected that
  *              a pulse is found (QS flag is set) this function will start to transfer BPM, IBI, and raw Signal
  *              data over the air to the coordinator at 20ms intervals. When there is no BPM detected
  *              this function will stop sending information over the air to the coordinator.
@@ -1062,40 +1017,89 @@ pulsedata[MHMS_IBI_CHAR] = 'Q';
  * @return      None.
  **************************************************************************************************
  */
-static void MHMSDataReq(void)
+static void pulseDataReq(void)
 {
-  static bool MHMSDataReqFlag;
-  MHMSDataReqFlag = FALSE;
+  static bool pulseDataReqFlag;
+  pulseDataReqFlag = FALSE;
   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
   
-  osal_stop_timerEx(MHMSTaskId, MHMS_EVT_CHECKIN);  //Node is collecting data and sending it to coordinator so turn off check in event
-  MHMSEvtCheckin_sync = FALSE;  
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_CHECKIN);  //Node is collecting data and sending it to coordinator so turn off check in event
+  PulseEvtCheckin_sync = FALSE;  
   
-  MHMSDat[MHMS_CHECK_IN] = CHECK_IN_INACTIVE;   //Flag is off and will notify coordinator that node is not sending check in data
+  pulseDat[PULSE_CHECK_IN] = CHECK_IN_INACTIVE;   //Flag is off and will notify coordinator that node is not sending check in data
  
-  addr.addr.shortAddr = MHMSAddr;      //loading short address (16-bit) with pulse address
+  addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
   addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
-  addr.endPoint = MHMS_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+  addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
 
-  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&MHMS_epDesc, MHMS_CLUSTER_ID,
-                                          MHMS_DAT_LEN, MHMSDat, &MHMSTSN,
-                                          AF_DISCV_ROUTE,AF_DEFAULT_RADIUS)) 
+  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+                                          PULSE_DAT_LEN, pulseDat, &pulseTSN,
+                                          AF_DISCV_ROUTE,AF_DEFAULT_RADIUS))  //MHMS
   { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
-        osal_set_event(MHMSTaskId, MHMS_EVT_REQ);
+        osal_set_event(pulseTaskId, PULSE_EVT_REQ);
   }
   
-  if((QS == TRUE) && (MHMSDataReqFlag == FALSE)){
-    osal_start_timerEx(MHMSTaskId, MHMS_EVT_REQ, MHMS_DLY_DATAREQ);  //send next Pulse data report in 500ms
-    MHMSDataReqFlag = TRUE;  //to prevent restarting of timer if existing already running
+
+  //else
+  //{
+  //  pulseCnt++;
+  //}
+
+  
+
+  
+  if((QS == TRUE) && (pulseDataReqFlag == FALSE)){
+    osal_start_timerEx(pulseTaskId, PULSE_EVT_REQ, PULSE_DLY_DATAREQ);  //send next Pulse data report in 20ms
+    pulseDataReqFlag = TRUE;  //to prevent restarting of timer if existing already running
      
   }
+  /*
+  
+  //MHMS USB communication with Pulse sensor Processor application
+  
+  if(EnableUSBPulseSketchTxFlag == TRUE ){  
+  uint8 BPMBuf[7] = {'B',0,0,0,10,13};
+  uint8 IBIBuf[7] = {'Q',0,0,0,10,13};
+  uint8 SignalBuf[7] = {'S',0,0,0,10,13};
+  
+  //conversion Signal Dec to ASCII
+  uint16 temp = (BUILD_UINT16(pulseDat[15], pulseDat[16])) - 400;
+  if(temp > 999){
+    SignalBuf[1] = '9';
+    SignalBuf[2] = '9';
+    SignalBuf[3] = '9';
+  }
+  else { 
+    SignalBuf[1] = (uint8)((temp/100)+ 48);
+    SignalBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+    SignalBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+  }
+  
+  //conversion BPM Dec to ASCII
+  temp = (uint16)pulseDat[13];
+  BPMBuf[1] = (uint8)((temp/100)+ 48);
+  BPMBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+  BPMBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+  
+  //conversion IBI Dec to ASCII
+  temp = (uint16)pulseDat[18];
+  IBIBuf[1] = (uint8)((temp/100)+ 48);
+  IBIBuf[2] = (uint8)((((temp%100) - (temp % 100)%10)/10) + 48);
+  IBIBuf[3] = (uint8)(((temp % 100)%10)+ 48);
+   
+  
+  HalUARTWrite(0, SignalBuf, 6);
+  HalUARTWrite(0, BPMBuf, 6);
+  HalUARTWrite(0, IBIBuf, 6);
+}
+  */
 }
 
 
 /**************************************************************************************************
- * @fn          MHMSNodeCheckIn
+ * @fn          pulseNodeCheckIn
  *
- * @brief       This function is called by the MHMSAppEvt() function.  
+ * @brief       This function is called by the pulseAppEvt() function.  
  *
  * input parameters
  *
@@ -1108,35 +1112,36 @@ static void MHMSDataReq(void)
  **************************************************************************************************
  */
 
-static void MHMSNodeCheckIn(void)
+static void pulseNodeCheckIn(void)
 {
 
   static bool Flag;
   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
   
-  osal_stop_timerEx(MHMSTaskId, MHMS_EVT_REQ); //Stop MHMSDataReq() task since no pulse data is being measured
-  MHMSEvtReq_sync = FALSE;
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_REQ); //Stop pulseDataReq() task since no pulse data is being measured
+  PulseEvtReq_sync = FALSE;
   Flag = FALSE;
-  addr.addr.shortAddr = MHMSAddr;      //loading short address (16-bit) with pulse address
+  addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
   addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
-  addr.endPoint = MHMS_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+  addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
 
-  MHMSDat[MHMS_CHECK_IN] = CHECK_IN_ACTIVE;   //Flag is set and will notify coordinator that node is currently sending check in data
+  pulseDat[PULSE_CHECK_IN] = CHECK_IN_ACTIVE;   //Flag is set and will notify coordinator that node is currently sending check in data
   HalLcdWriteString("BPMsensor Inacti",HAL_LCD_LINE_5);
 
-  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&MHMS_epDesc, MHMS_CLUSTER_ID,
-                                          MHMS_DAT_LEN, MHMSDat, &MHMSTSN, AF_DISCV_ROUTE,AF_DEFAULT_RADIUS))
+  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+                                          PULSE_DAT_LEN, pulseDat, &pulseTSN, AF_DISCV_ROUTE,AF_DEFAULT_RADIUS))
     { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
-        osal_set_event(MHMSTaskId, MHMS_EVT_CHECKIN);
+        osal_set_event(pulseTaskId, PULSE_EVT_CHECKIN);
   }
   else
   {
-    MHMSCnt++;
+    pulseCnt++;
   }
 
   if((QS == FALSE) && (Flag == FALSE)){
-    osal_start_timerEx(MHMSTaskId, MHMS_EVT_CHECKIN, MHMS_DLY_CHECKIN);  //send check in dummy packet every 10 seconds
+    osal_start_timerEx(pulseTaskId, PULSE_EVT_CHECKIN, PULSE_DLY_CHECKIN);  //send check in dummy packet every 10 seconds
     Flag = TRUE;  //to prevent restarting of timer if existing already running
+     
   }
   
 }
@@ -1144,7 +1149,7 @@ static void MHMSNodeCheckIn(void)
 /**************************************************************************************************
  * @fn          TestPayloadTx
  *
- * @brief       This function is called by the MHMSAppEvt() function. This function is used to test 
+ * @brief       This function is called by the pulseAppEvt() function. This function is used to test 
  *              network loading by sending test payloads that have a packet size and Tx frequency that
  *              are user defined.  This is operated on a timer and is initiated by SW1.
  * input parameters
@@ -1163,36 +1168,36 @@ static void TestPayloadTx(void){
   afAddrType_t addr;                    //AF address stucture defined for info on the destination Endpoint object that data will be sent to
   
   // Turn off collecting data and regular Pulse report generation for Payload testing
-  osal_stop_timerEx(MHMSTaskId, MHMS_EVT_CHECKIN);
-  osal_stop_timerEx(MHMSTaskId, MHMS_EVT_DAT);
-  osal_stop_timerEx(MHMSTaskId, MHMS_EVT_REQ);
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_CHECKIN);
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_DAT);
+  osal_stop_timerEx(pulseTaskId, PULSE_EVT_REQ);
   
   TestDatTx[11] = SeqNum;
-  TestDatTx[MHMS_CMD_IDX] = MHMS_CMD_DAT_TEST;
+  TestDatTx[PULSE_CMD_IDX] = PULSE_CMD_DAT_TEST;
   if( flag == FALSE){
   SeqNum++;
   }
   flag = FALSE;
-  addr.addr.shortAddr = MHMSAddr;      //loading short address (16-bit) with pulse address
+  addr.addr.shortAddr = pulseAddr;      //loading short address (16-bit) with pulse address
   addr.addrMode = afAddr16Bit;          //Set to directly sent to a node
-  addr.endPoint = MHMS_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
+  addr.endPoint = PULSE_ENDPOINT;       //Sets the endpoint of the final destination (coordinator?)
 
   
   HalLcdWriteString("TestPayload TX",HAL_LCD_LINE_5);
 
-  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&MHMS_epDesc, MHMS_CLUSTER_ID,
-                                          MHMS_TEST_PAYLOAD_LEN, TestDatTx, &MHMSTSN, AF_DISCV_ROUTE,AF_DEFAULT_RADIUS))
+  if (afStatus_SUCCESS != AF_DataRequest(&addr, (endPointDesc_t *)&PULSE_epDesc, PULSE_CLUSTER_ID,
+                                          MHMS_TEST_PAYLOAD_LEN, TestDatTx, &pulseTSN, AF_DISCV_ROUTE,AF_DEFAULT_RADIUS))
     { //if data transfer is unsuccessful place event immediately back into queue to attempt to send again
-        osal_set_event(MHMSTaskId, TEST_EVT_PAYLOAD_TX);
+        osal_set_event(pulseTaskId, TEST_EVT_PAYLOAD_TX);
         flag = TRUE;
   }
-     osal_start_timerEx(MHMSTaskId, TEST_EVT_PAYLOAD_TX, TEST_DLY_PAYLOAD_TX);  //send check in dummy packet every 10 seconds
+     osal_start_timerEx(pulseTaskId, TEST_EVT_PAYLOAD_TX, TEST_DLY_PAYLOAD_TX);  //send check in dummy packet every 10 seconds
 
 }
 
 //MHMS Question do we need this ? tvsaUartRx  this is for recieving command messages from UART
 /**************************************************************************************************
- * @fn          MHMSUartRx
+ * @fn          pulseUartRx
  *
  * @brief       This function is the Uart callback for Rx data.
  *
@@ -1209,14 +1214,52 @@ static void TestPayloadTx(void){
  **************************************************************************************************
  */
 
-static void MHMSUartRx(uint8 port, uint8 event)
+static void pulseUartRx(uint8 port, uint8 event)
 {
+#ifdef TVSA_DEMO
+  uint8 ch;
 
+  while (HalUARTRead(PULSE_PORT, &ch, 1))
+  {
+    switch (pulseState)
+    {
+    case SOP_STATE:
+      if (PULSE_SOP_VAL == ch)
+      {
+        pulseState = CMD_STATE;
+      }
+      break;
+
+    case CMD_STATE:
+      pulseCmd = ch;
+      pulseState = FCS_STATE;
+      break;
+
+    case FCS_STATE:
+      if (pulseCmd == ch)
+      {
+        if (pulseCmd == PULSE_CMD_BEG)
+        {
+          pulseAddr = NLME_GetShortAddr();
+        }
+        else if (pulseCmd == PULSE_CMD_END)
+        {
+          pulseAddr = INVALID_NODE_ADDR;
+        }
+        (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
+      }
+
+      pulseState = SOP_STATE;
+      break;
+
+    default:
+     break;
+    }
+  }
+#else
   uint8 ch[5];
   
-  HalUARTRead(MHMS_PORT, ch, 5);
-  
-  dev_gateway = TRUE;   //flag that device is acting as device
+  HalUARTRead(PULSE_PORT, ch, 5);
   if (ch[2]==0x21)   //if statement to check for command from Z-Sensor Monitor
   {
     sysPingRsp();
@@ -1225,21 +1268,21 @@ static void MHMSUartRx(uint8 port, uint8 event)
     if(znpPanId == INVALID_PAN_ID){
       //if still invalid id, there is no PAN so set one up by becomeing the coordinator
      if(zap_set_logicalType(ZG_DEVICETYPE_COORDINATOR)){
-      HalLcdWriteString("Initilizing NWK...",HAL_LCD_LINE_7);
+      HalLcdWriteString("Should be Coord.",HAL_LCD_LINE_7);
      }    
      else{
       HalLcdWriteString("Problem",HAL_LCD_LINE_7);
      }
     }
     else{
-      MHMSAddr = znpAddr;
-    if (ZSuccess != osal_start_timerEx(MHMSTaskId, MHMS_EVT_ANN, MHMS_DLY_ANN))
+      pulseAddr = znpAddr;
+    if (ZSuccess != osal_start_timerEx(pulseTaskId, PULSE_EVT_ANN, PULSE_DLY_ANN))
       {
-        (void)osal_set_event(MHMSTaskId, MHMS_EVT_ANN);
+        (void)osal_set_event(pulseTaskId, PULSE_EVT_ANN);
       }
     }
   }
-
+#endif
 }
 
 #ifndef TVSA_DEMO
@@ -1298,7 +1341,7 @@ static void sysPingRsp(void)
   pingBuff[6] = calcFCS(&pingBuff[1], 5);
   
   
-  HalUARTWrite(MHMS_PORT,pingBuff, 7);
+  HalUARTWrite(PULSE_PORT,pingBuff, 7);
 
 }
 #endif
