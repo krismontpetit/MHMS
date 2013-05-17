@@ -4014,13 +4014,13 @@
   <group>
     <name>App</name>
     <file>
-      <name>$PROJ_DIR$\..\Source\OSAL_TVSA.c</name>
+      <name>$PROJ_DIR$\..\Source\MHMS.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Source\tvsa.c</name>
+      <name>$PROJ_DIR$\..\Source\MHMS.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Source\tvsa.h</name>
+      <name>$PROJ_DIR$\..\Source\OSAL_MHMS.c</name>
     </file>
   </group>
   <group>
