@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>1734295055</fileChecksum>
+  <configuration>
+    <name>Sensor Platform</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\Source\MHMS.h</file>
+      <file>$PROJ_DIR$\..\Source\OSAL_MHMS.c</file>
+      <file>$PROJ_DIR$\..\Source\MHMS.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_app.h</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_app.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\common\hal_assert.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_assert.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_defs.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\common\hal_drivers.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_adc.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_lcd.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_led.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\include\OSAL.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL_Memory.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\mcu\msp430\OSAL_Nv.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\include\OSAL_Memory.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL_PwrMgr.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL_Timers.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\include\ZComDef.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\include\OSAL_Timers.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\services\saddr\saddr.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\services\saddr\saddr.h</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_af.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_phy.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_sapi.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_sys.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_util.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_zdo.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_zmac.c</file>
+      <file>$PROJ_DIR$\..\..\Source\zap_znp.c</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_lcd.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_drivers.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_startup.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_main.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_led.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_MHMS.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_board.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_adc.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\MHMS.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_dco.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_assert.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_key.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_app.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\MSP430FlashUtil.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_Memory.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_Nv.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_spi.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_uart.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_znp.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_zmac.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\MHMS.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_MHMS.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_assert.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_app.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_dco.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_adc.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_board.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\nwk.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\include\comdef.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_uart.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_board.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_board_cfg.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_dco.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_dco.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_startup.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_adc.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_board.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_key.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_lcd.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_led.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_main.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_spi.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_uart.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_mcu.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_types.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\mcu\msp430\MSP430FlashUtil.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL.c</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\saddr.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_af.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_sapi.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_sys.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_phy.r43</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\af\AF.h</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_drivers.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_af.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_phy.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_sapi.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_sys.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_util.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_zdo.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_zmac.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_znp.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Exe\MHMS.d43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\MHMS.pbd</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_key.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_lcd.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_led.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_main.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_spi.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_uart.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\MSP430FlashUtil.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_Memory.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_Nv.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_PwrMgr.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_Timers.pbi</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\saddr.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\APS.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\zdo\ZDConfig.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\zdo\ZDProfile.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\reflecttrack.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430f5438a.h</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\OnBoard.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\zdo\ZDApp.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\NLMEDE.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_sleep.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\sec\ssp.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\nwk_bufs.h</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\hal_startup.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\AssocList.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\APSMEDE.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\nwk_globals.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\nwk\BindingTable.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\stack\sys\ZGlobals.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\hal\include\hal_board.h</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_Timers.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_zdo.r43</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\mac\include\mac_api.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\services\sdata\sdata.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\zmac\f8w\zmac_internal.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\Components\zmac\ZMAC.h</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\zap_util.r43</file>
+      <file>$PROJ_DIR$\Sensor Platform\Obj\OSAL_PwrMgr.r43</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 93</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Source\OSAL_MHMS.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 35</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 52</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Source\MHMS.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 38</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 83 18 59 75 7 21 58 134 133 131 132 121 118 123 120 124 125 126 12 15 19 127 10 128 62 74 109 113 114 115 6 64 60 116 61 119 3 117 108 112 111 110 0 11 9</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_app.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 42</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 54</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\common\hal_assert.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 40</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\common\hal_drivers.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 31</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL_Memory.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 45</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\osal\mcu\msp430\OSAL_Nv.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 46</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 104</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL_PwrMgr.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 136</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 105</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL_Timers.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 129</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 106</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\services\saddr\saddr.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 78</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 107</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_af.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 79</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 85</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_phy.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 82</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 86</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_sapi.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 80</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 87</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_sys.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 81</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 88</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_util.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 135</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 89</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_zdo.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 130</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 90</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_zmac.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 50</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 91</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\zap_znp.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 49</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 92</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_dco.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 39</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 55</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_startup.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 32</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 122</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_adc.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 37</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 56</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_board.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 36</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 57</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_key.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 41</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 95</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_lcd.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 30</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 96</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_led.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 34</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 97</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_main.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 98</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_spi.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 47</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 99</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\hal\target\MSP5438ZAP\hal_uart.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 48</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 100</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\osal\mcu\msp430\MSP430FlashUtil.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 43</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 101</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\Components\osal\common\OSAL.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 44</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 102</file>
+        </tool>
+      </outputs>
+    </file>
+  </configuration>
+</project>
+
+

@@ -2,11 +2,26 @@
     Filename:       zap_app.c
     Revised:        $Date: 2011-07-05 11:35:58 -0700 (Tue, 05 Jul 2011) $
     Revision:       $Revision: 26589 $
+    Mobile Health Monitoring System Group Members: Travis Fary, Masaru Ho, Kris Monpetit
 
     Description:
+    
+    
+    This file defines the functionality of the ZNP Application Processor, with several modifications to network functionality
+    to meet specifications for the Mobile Health Monitoring System.
+    
+    Functions implemented by MHMS are:
+    
+    quickReset() sends a reset command to the ZNP without going through a zapLostSync() routine afterward, making it faster
+    and less likely to make erroneous changes during a logical type change.
+    
+    zap_set_logicalType() implements a logical type change in the ZNP.
 
-    This file defines the functionality of the ZNP Application Processor.
+    zapSync() was modified to check global variable zLogicalType and others to dynamically set the logical type in the application layer.
 
+    zapKeys() was modified to add debugging functionality by pressing buttons to change the logical type and allow/disallow network association.
+
+    Search for the string 'MHMS' to view all changes.
 
     Copyright 2009-2011 Texas Instruments Incorporated. All rights reserved.
 
@@ -1035,18 +1050,7 @@ bool zap_set_logicalType(uint8 newType)
 }
 /**************************************************************************************************
 */
-//MHMS: Had to make this to handle API commands outside of scope of this demo.
-/*
-void makeRPC(uint8 length, uint8 cmd0,uint8 cmd1,uint8 * args){
- 
-  uint8 *pBuf = zap_msg_allocate(length, 0x25, 0x34);
-  if (NULL != pBuf)
-  {
-    (void)osal_memcpy(pBuf,args,length);
-    zapPhySend(zapAppPort, pBuf);
-    zap_msg_deallocate(&pBuf);
-  }
-}*/
+
 //MHMS: skips lostSync in ZapPhyReset
 void quickReset(void){
   HAL_ZNP_RST();
